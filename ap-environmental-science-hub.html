@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Environmental Science Teacher Resource Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #228B22;
+            --sky-blue: #87CEEB;
+            --earth-brown: #8B4513;
+            --sage: #9DC183;
+            --light-sage: #C5E1A5;
+            --cream: #F5F5DC;
+            --dark-green: #1B5E20;
+            --light-blue: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #E8F5E9 0%, #E3F2FD 50%, #F1F8E9 100%);
+            min-height: 100vh;
+            color: #2E4A32;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(34, 139, 34, 0.3);
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23ffffff10' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23ffffff10' stroke-width='1'/%3E%3C/svg%3E") center/100px repeat;
+            animation: rotate 60s linear infinite;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        h1 { font-family: 'Fredoka One', cursive; font-size: 2.5rem; position: relative; z-index: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .subtitle { font-size: 1.1rem; opacity: 0.95; margin-top: 0.5rem; position: relative; z-index: 1; }
+        .floating-leaf { position: absolute; opacity: 0.15; animation: float 8s ease-in-out infinite; z-index: 0; }
+        .leaf-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .leaf-2 { top: 60%; left: 10%; animation-delay: 2s; }
+        .leaf-3 { top: 20%; right: 8%; animation-delay: 4s; }
+        .leaf-4 { top: 70%; right: 5%; animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
+        .earth-icon { position: absolute; top: 50%; right: 3%; transform: translateY(-50%); width: 80px; height: 80px; opacity: 0.2; animation: spin 30s linear infinite; }
+        @keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
+        .tab-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem; padding: 1rem; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .tab-btn { font-family: 'Nunito', sans-serif; font-weight: 600; padding: 0.5rem 0.9rem; border: none; background: var(--light-sage); color: var(--dark-green); border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; }
+        .tab-btn:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 139, 34, 0.3); }
+        .tab-btn.active { background: var(--forest-green); color: white; box-shadow: 0 4px 15px rgba(34, 139, 34, 0.4); }
+        .content-area { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .tab-content { display: none; background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { font-family: 'Fredoka One', cursive; color: var(--forest-green); font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--sage); }
+        h3 { font-family: 'Fredoka One', cursive; color: var(--earth-brown); font-size: 1.3rem; margin: 1.5rem 0 1rem; }
+        h4 { color: var(--dark-green); font-weight: 700; margin: 1rem 0 0.5rem; }
+        .info-box { background: linear-gradient(135deg, #E8F5E9, #F1F8E9); border-left: 4px solid var(--forest-green); padding: 1rem 1.5rem; margin: 1rem 0; border-radius: 0 10px 10px 0; }
+        .warning-box { background: linear-gradient(135deg, #FFF3E0, #FFECB3); border-left: 4px solid #FF9800; padding: 1rem 1.5rem; margin: 1rem 0; border-radius: 0 10px 10px 0; }
+        .safety-box { background: linear-gradient(135deg, #FFEBEE, #FCE4EC); border-left: 4px solid #E53935; padding: 1rem 1.5rem; margin: 1rem 0; border-radius: 0 10px 10px 0; }
+        .unit-card { background: linear-gradient(135deg, var(--light-sage), var(--light-blue)); border-radius: 15px; padding: 1.5rem; margin: 1rem 0; border: 2px solid var(--sage); }
+        .unit-weight { display: inline-block; background: var(--forest-green); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-left: 0.5rem; }
+        .collapsible { background: var(--sage); color: var(--dark-green); cursor: pointer; padding: 1rem 1.5rem; width: 100%; border: none; text-align: left; font-size: 1.1rem; font-weight: 700; border-radius: 10px; margin: 0.5rem 0; transition: all 0.3s ease; font-family: 'Nunito', sans-serif; display: flex; justify-content: space-between; align-items: center; }
+        .collapsible:hover { background: var(--forest-green); color: white; }
+        .collapsible::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s ease; }
+        .collapsible.open::after { transform: rotate(180deg); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; border-radius: 0 0 10px 10px; }
+        .collapsible-content.open { max-height: 3000px; padding: 1.5rem; border: 2px solid var(--sage); border-top: none; }
+        .lab-card { background: white; border: 2px solid var(--sky-blue); border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 4px 15px rgba(135, 206, 235, 0.2); }
+        .lab-card h4 { color: var(--forest-green); font-size: 1.2rem; margin-bottom: 1rem; }
+        .cer-section { background: #E3F2FD; border-radius: 10px; padding: 1rem; margin-top: 1rem; }
+        .lesson-card { background: linear-gradient(135deg, #FFF8E1, #FFFDE7); border: 2px solid #FFB300; border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; }
+        .phase-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .engage { background: #E53935; color: white; }
+        .explore { background: #FB8C00; color: white; }
+        .explain { background: #FDD835; color: #333; }
+        .elaborate { background: #43A047; color: white; }
+        .evaluate { background: #1E88E5; color: white; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .video-card { background: white; border-radius: 12px; padding: 1.25rem; border: 2px solid var(--light-sage); transition: all 0.3s ease; }
+        .video-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-color: var(--forest-green); }
+        .article-card { background: white; border-left: 4px solid var(--earth-brown); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .lexile-badge { display: inline-block; background: var(--earth-brown); color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+        .rubric-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        .rubric-table th { background: var(--forest-green); color: white; padding: 0.75rem; text-align: left; }
+        .rubric-table td { padding: 0.75rem; border: 1px solid var(--sage); vertical-align: top; }
+        .rubric-table tr:nth-child(even) { background: #F1F8E9; }
+        .frq-box { background: #FAFAFA; border: 2px solid var(--sage); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .points-badge { display: inline-block; background: var(--sky-blue); color: var(--dark-green); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 700; }
+        .printable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .printable-item { background: linear-gradient(135deg, #ECEFF1, #CFD8DC); border-radius: 10px; padding: 1rem; text-align: center; border: 2px dashed #90A4AE; transition: all 0.3s ease; }
+        .printable-item:hover { background: linear-gradient(135deg, #CFD8DC, #B0BEC5); transform: scale(1.02); }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+        .vocab-term { background: white; border-radius: 8px; padding: 0.75rem 1rem; border-left: 4px solid var(--forest-green); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .vocab-term strong { color: var(--dark-green); }
+        .game-card { background: linear-gradient(135deg, #E1F5FE, #B3E5FC); border-radius: 15px; padding: 1.5rem; margin: 1rem 0; border: 2px solid var(--sky-blue); }
+        .scientist-card { background: white; border-radius: 15px; padding: 1.5rem; margin: 1rem 0; border: 2px solid var(--sage); display: flex; gap: 1rem; align-items: flex-start; }
+        .scientist-icon { width: 60px; height: 60px; background: var(--forest-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .misconception-item { background: #FFF3E0; border-radius: 10px; padding: 1rem; margin: 1rem 0; }
+        .misconception-item .wrong { color: #D32F2F; font-weight: 700; }
+        .misconception-item .correct { color: #388E3C; font-weight: 700; }
+        .timeline-item { display: flex; gap: 1rem; margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--forest-green); }
+        .timeline-year { background: var(--forest-green); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-weight: 700; white-space: nowrap; height: fit-content; }
+        ul, ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+        li { margin: 0.3rem 0; }
+        .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        @media (max-width: 768px) { h1 { font-size: 1.8rem; } .tab-btn { padding: 0.4rem 0.7rem; font-size: 0.75rem; } .content-area { padding: 1rem; } .tab-content { padding: 1.25rem; } .scientist-card { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <svg class="floating-leaf leaf-1" width="40" height="40" viewBox="0 0 24 24" fill="white"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+        <svg class="floating-leaf leaf-2" width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+        <svg class="floating-leaf leaf-3" width="45" height="45" viewBox="0 0 24 24" fill="white"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+        <svg class="floating-leaf leaf-4" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+        <svg class="earth-icon" viewBox="0 0 100 100" fill="white"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="50" cy="50" rx="45" ry="20" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="50" cy="50" rx="20" ry="45" fill="none" stroke="currentColor" stroke-width="2"/><line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="2"/></svg>
+        <h1>🌍 AP Environmental Science</h1>
+        <p class="subtitle">Comprehensive Teacher Resource Hub | College Board Aligned</p>
+    </header>
+    
+    <nav class="tab-container">
+        <button class="tab-btn active" data-tab="standards">Standards</button>
+        <button class="tab-btn" data-tab="background">Teacher Background</button>
+        <button class="tab-btn" data-tab="labs">Labs & CER</button>
+        <button class="tab-btn" data-tab="lessons">5E Lessons</button>
+        <button class="tab-btn" data-tab="videos">Videos</button>
+        <button class="tab-btn" data-tab="articles">Articles</button>
+        <button class="tab-btn" data-tab="assessments">Assessments</button>
+        <button class="tab-btn" data-tab="printables">Printables</button>
+        <button class="tab-btn" data-tab="vocabulary">Vocabulary</button>
+        <button class="tab-btn" data-tab="games">Games</button>
+        <button class="tab-btn" data-tab="safety">Safety</button>
+        <button class="tab-btn" data-tab="differentiation">Differentiation</button>
+        <button class="tab-btn" data-tab="misconceptions">Misconceptions</button>
+        <button class="tab-btn" data-tab="cultural">Cultural Connections</button>
+    </nav>
+    
+    <main class="content-area">
+        <!-- STANDARDS TAB -->
+        <section id="standards" class="tab-content active">
+            <h2>📋 Standards Alignment</h2>
+            <div class="info-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 5px solid #4caf50;">
+                <h3>🎯 Standards Framework</h3>
+                <p><strong>Primary:</strong> College Board AP Environmental Science Curriculum Framework</p>
+                <p><strong>Aligned to:</strong></p>
+                <span style="background:#DBEAFE;color:#1E40AF;padding:5px 12px;border-radius:8px;margin:3px;display:inline-block;">NGSS HS-LS2, HS-ESS2, HS-ESS3</span>
+                <span style="background:#FEE2E2;color:#991B1B;padding:5px 12px;border-radius:8px;margin:3px;display:inline-block;">GSE Environmental Science</span>
+                <span style="background:#D1FAE5;color:#065F46;padding:5px 12px;border-radius:8px;margin:3px;display:inline-block;">AKS Environmental Science</span>
+                <p style="margin-top:10px;"><em>AP Environmental Science is interdisciplinary, covering biology, chemistry, and earth science standards plus advanced college-level content.</em></p>
+            </div>
+            <div class="info-box"><strong>Course Overview:</strong> AP Environmental Science (APES) is an interdisciplinary course embracing biology, geology, chemistry, and geography. Students explore the interrelationships of the natural world, identify and analyze environmental problems, evaluate risks, and propose solutions.</div>
+            
+            <h3>🎯 Big Ideas</h3>
+            <div class="unit-card"><h4>Big Idea 1: Energy Transfer (ENG)</h4><p>Energy conversions underlie all ecological processes. Energy cannot be created or destroyed but changes form as it flows through systems.</p></div>
+            <div class="unit-card"><h4>Big Idea 2: Interactions Between Earth Systems (ERT)</h4><p>The Earth is one interconnected system. Natural and human-induced changes affect biogeochemical cycles.</p></div>
+            <div class="unit-card"><h4>Big Idea 3: Interactions Between Different Species and the Environment (ING)</h4><p>Organisms interact with each other and their environments in complex ways. These interactions determine ecosystem structure and function.</p></div>
+            <div class="unit-card"><h4>Big Idea 4: Sustainability (SUS)</h4><p>Human survival depends on developing practices that achieve sustainable systems. The goal is to meet present needs without compromising future generations.</p></div>
+            
+            <h3>🔬 Science Practices</h3>
+            <div class="two-column">
+                <div class="info-box"><strong>Practice 1:</strong> Concept Explanation — Explain environmental concepts, processes, and models</div>
+                <div class="info-box"><strong>Practice 2:</strong> Visual Representations — Analyze and interpret visual representations</div>
+                <div class="info-box"><strong>Practice 3:</strong> Text Analysis — Analyze environmental data from texts</div>
+                <div class="info-box"><strong>Practice 4:</strong> Scientific Experiments — Analyze research studies</div>
+                <div class="info-box"><strong>Practice 5:</strong> Data Analysis — Analyze quantitative data</div>
+                <div class="info-box"><strong>Practice 6:</strong> Mathematical Routines — Apply calculations</div>
+                <div class="info-box"><strong>Practice 7:</strong> Environmental Solutions — Propose solutions</div>
+            </div>
+            
+            <h3>📚 Course Units & Exam Weights</h3>
+            <div class="unit-card"><h4>Unit 1: The Living World: Ecosystems <span class="unit-weight">6-8%</span></h4><p>Introduction to ecosystems, food webs, energy flow, and biogeochemical cycles (carbon, nitrogen, phosphorus, hydrologic).</p></div>
+            <div class="unit-card"><h4>Unit 2: The Living World: Biodiversity <span class="unit-weight">6-8%</span></h4><p>Ecosystem services, island biogeography, ecological tolerance, natural disruptions, and adaptations.</p></div>
+            <div class="unit-card"><h4>Unit 3: Populations <span class="unit-weight">10-15%</span></h4><p>Population ecology, growth models, carrying capacity, demographics, and human population dynamics.</p></div>
+            <div class="unit-card"><h4>Unit 4: Earth Systems and Resources <span class="unit-weight">10-15%</span></h4><p>Plate tectonics, soil composition, Earth's atmosphere, and global wind patterns.</p></div>
+            <div class="unit-card"><h4>Unit 5: Land and Water Use <span class="unit-weight">10-15%</span></h4><p>Agriculture, forestry, rangelands, urban land development, mining, and fishing practices.</p></div>
+            <div class="unit-card"><h4>Unit 6: Energy Resources and Consumption <span class="unit-weight">10-15%</span></h4><p>Renewable and nonrenewable energy sources, global energy consumption, and conservation.</p></div>
+            <div class="unit-card"><h4>Unit 7: Atmospheric Pollution <span class="unit-weight">7-10%</span></h4><p>Air pollution sources, photochemical smog, thermal inversions, and acid deposition.</p></div>
+            <div class="unit-card"><h4>Unit 8: Aquatic and Terrestrial Pollution <span class="unit-weight">7-10%</span></h4><p>Water pollution sources, sewage treatment, solid waste disposal, and toxicology.</p></div>
+            <div class="unit-card"><h4>Unit 9: Global Change <span class="unit-weight">15-20%</span></h4><p>Stratospheric ozone depletion, climate change, ocean warming, and invasive species.</p></div>
+            
+            <h3>📝 AP Exam Format</h3>
+            <div class="two-column">
+                <div class="info-box"><strong>Section I: Multiple Choice (60%)</strong><br>80 questions in 90 minutes. Includes individual questions and question sets with graphs, data, or passages.</div>
+                <div class="info-box"><strong>Section II: Free Response (40%)</strong><br>3 questions in 70 minutes. Design investigation, mathematical analysis, and propose a solution.</div>
+            </div>
+        </section>
+        
+        <!-- TEACHER BACKGROUND TAB -->
+        <section id="background" class="tab-content">
+            <h2>📖 Teacher Background Knowledge</h2>
+            <p>Click each topic to expand comprehensive background information for effective instruction.</p>
+            
+            <button class="collapsible">1. Biogeochemical Cycles</button>
+            <div class="collapsible-content">
+                <h4>Carbon Cycle</h4>
+                <p>Carbon moves through the atmosphere, biosphere, hydrosphere, and lithosphere. Key processes include photosynthesis (carbon fixation), cellular respiration, decomposition, combustion, and ocean absorption. Fossil fuel combustion has increased atmospheric CO₂ from ~280 ppm (pre-industrial) to over 420 ppm today.</p>
+                <h4>Nitrogen Cycle</h4>
+                <p>Nitrogen (N₂) comprises 78% of atmosphere but is unusable by most organisms. Key processes: nitrogen fixation (by bacteria and lightning), nitrification (NH₃ → NO₂⁻ → NO₃⁻), assimilation, ammonification, and denitrification. The Haber-Bosch process artificially fixes nitrogen for fertilizers.</p>
+                <h4>Phosphorus Cycle</h4>
+                <p>Unlike other cycles, phosphorus has no atmospheric component. It cycles through rock weathering, soil absorption, plant uptake, and eventual return to sediments. Phosphorus is often a limiting nutrient. Agricultural runoff causes eutrophication.</p>
+                <h4>Hydrologic Cycle</h4>
+                <p>Water cycles through evaporation, transpiration (evapotranspiration), condensation, precipitation, infiltration, and runoff. Human impacts include dam construction, groundwater depletion, and urbanization.</p>
+            </div>
+            
+            <button class="collapsible">2. Energy Flow & Ecosystem Dynamics</button>
+            <div class="collapsible-content">
+                <h4>Laws of Thermodynamics in Ecosystems</h4>
+                <p>First Law: Energy is neither created nor destroyed, only transformed. Second Law: Every energy transformation increases entropy; useful energy decreases.</p>
+                <h4>The 10% Rule</h4>
+                <p>Only about 10% of energy transfers between trophic levels. This explains why food chains are typically limited to 4-5 levels.</p>
+                <h4>Gross vs. Net Primary Productivity</h4>
+                <p>GPP = total energy captured by photosynthesis. NPP = GPP - respiration (energy available for consumers). Different biomes have vastly different NPP values—tropical rainforests (~2,200 g/m²/yr) vs. deserts (~90 g/m²/yr).</p>
+            </div>
+            
+            <button class="collapsible">3. Population Ecology & Demographics</button>
+            <div class="collapsible-content">
+                <h4>Population Growth Models</h4>
+                <p><strong>Exponential Growth:</strong> N(t) = N₀e^(rt) — occurs with unlimited resources. J-shaped curve.</p>
+                <p><strong>Logistic Growth:</strong> dN/dt = rN[(K-N)/K] — incorporates carrying capacity. S-shaped curve.</p>
+                <h4>r-Selected vs. K-Selected Species</h4>
+                <p>r-selected: many offspring, little parental care, short lifespan. K-selected: few offspring, extensive parental care, long lifespan.</p>
+                <h4>Demographic Transition Model</h4>
+                <p>Stage 1: High birth/death rates. Stage 2: Death rates fall. Stage 3: Birth rates fall. Stage 4: Low birth/death rates. Stage 5: Birth rates below death rates.</p>
+            </div>
+            
+            <button class="collapsible">4. Earth Systems & Geology</button>
+            <div class="collapsible-content">
+                <h4>Plate Tectonics</h4>
+                <p>Earth's lithosphere is divided into tectonic plates moving on the asthenosphere. Plate boundaries: divergent (spreading), convergent (subduction/collision), and transform (sliding).</p>
+                <h4>Soil Science</h4>
+                <p>Soil horizons: O (organic), A (topsoil), E (eluviation), B (subsoil), C (parent material), R (bedrock). Soil formation takes 200-1000 years per centimeter.</p>
+                <h4>Atmosphere Structure</h4>
+                <p>Troposphere (weather, 0-12 km), Stratosphere (ozone layer, 12-50 km), Mesosphere (50-85 km), Thermosphere (85-600 km).</p>
+            </div>
+            
+            <button class="collapsible">5. Environmental Laws Timeline</button>
+            <div class="collapsible-content">
+                <div class="timeline-item"><span class="timeline-year">1969</span><div><strong>NEPA</strong> - Requires Environmental Impact Statements</div></div>
+                <div class="timeline-item"><span class="timeline-year">1970</span><div><strong>Clean Air Act</strong> - Regulates air emissions</div></div>
+                <div class="timeline-item"><span class="timeline-year">1970</span><div><strong>EPA Established</strong></div></div>
+                <div class="timeline-item"><span class="timeline-year">1972</span><div><strong>Clean Water Act</strong> - Regulates pollutant discharge</div></div>
+                <div class="timeline-item"><span class="timeline-year">1973</span><div><strong>Endangered Species Act</strong></div></div>
+                <div class="timeline-item"><span class="timeline-year">1976</span><div><strong>RCRA</strong> - Regulates hazardous waste</div></div>
+                <div class="timeline-item"><span class="timeline-year">1980</span><div><strong>CERCLA (Superfund)</strong> - Cleans up contaminated sites</div></div>
+                <div class="timeline-item"><span class="timeline-year">1987</span><div><strong>Montreal Protocol</strong> - Phases out ozone-depleting substances</div></div>
+                <div class="timeline-item"><span class="timeline-year">2015</span><div><strong>Paris Agreement</strong> - International climate accord</div></div>
+            </div>
+        </section>
+        
+        <!-- LABS TAB -->
+        <section id="labs" class="tab-content">
+            <h2>🔬 Laboratory Investigations & CER Frameworks</h2>
+            <div class="info-box"><strong>AP Environmental Science Lab Philosophy:</strong> Labs should connect directly to environmental issues, incorporate real data collection, and require students to analyze results in the context of larger environmental systems.</div>
+            
+            <div class="lab-card">
+                <h4>🧪 Lab 1: Primary Productivity and Dissolved Oxygen</h4>
+                <p><strong>Duration:</strong> 2 class periods | <strong>Unit:</strong> Unit 1 - Ecosystems</p>
+                <p><strong>Overview:</strong> Students measure dissolved oxygen before and after light/dark exposure to calculate gross and net primary productivity.</p>
+                <h4>Materials</h4>
+                <ul><li>Pond water with algae or Elodea</li><li>Dissolved oxygen probe or test kit</li><li>BOD bottles (light and dark)</li><li>Light source, thermometer</li></ul>
+                <div class="cer-section">
+                    <h4>CER Framework</h4>
+                    <p><strong>Sample Claim:</strong> The pond water sample has a positive net primary productivity.</p>
+                    <p><strong>Evidence:</strong> DO measurements from each bottle showing the difference.</p>
+                    <p><strong>Reasoning:</strong> The increase in dissolved oxygen in the light bottle represents oxygen produced through photosynthesis...</p>
+                </div>
+            </div>
+            
+            <div class="lab-card">
+                <h4>🧪 Lab 2: Biodiversity Assessment Using Quadrat Sampling</h4>
+                <p><strong>Duration:</strong> 2 class periods | <strong>Unit:</strong> Unit 2 - Biodiversity</p>
+                <p><strong>Overview:</strong> Students use quadrat sampling to estimate species diversity in different habitats.</p>
+                <p><strong>Key Calculation:</strong> Simpson's Diversity Index: D = 1 - Σ(n/N)²</p>
+                <div class="cer-section">
+                    <h4>CER Framework</h4>
+                    <p><strong>Sample Claim:</strong> The unmowed meadow shows significantly higher biodiversity than the maintained lawn.</p>
+                </div>
+            </div>
+            
+            <div class="lab-card">
+                <h4>🧪 Lab 3: Water Quality Testing</h4>
+                <p><strong>Duration:</strong> 1-2 class periods | <strong>Unit:</strong> Unit 8 - Pollution</p>
+                <p><strong>Parameters:</strong> pH: 6.5-8.5 | DO: >6 mg/L | Nitrates: <10 mg/L | Phosphates: <0.1 mg/L</p>
+            </div>
+            
+            <div class="lab-card">
+                <h4>🧪 Lab 4: LD50 Simulation with Seeds</h4>
+                <p><strong>Duration:</strong> 5-7 days | <strong>Unit:</strong> Unit 8 - Toxicology</p>
+                <p><strong>Overview:</strong> Students determine the approximate LD50 of salt on seed germination using serial dilutions.</p>
+            </div>
+            
+            <div class="lab-card">
+                <h4>🧪 Lab 5: Energy Audit and Carbon Footprint</h4>
+                <p><strong>Duration:</strong> 2 class periods + homework | <strong>Unit:</strong> Unit 6 - Energy</p>
+                <p><strong>Key Calculations:</strong></p>
+                <p>CO₂ from electricity: kWh × ~0.4 kg CO₂/kWh (US average)</p>
+                <p>CO₂ from gasoline: gallons × 8.89 kg CO₂/gallon</p>
+            </div>
+        </section>
+        
+        <!-- 5E LESSONS TAB -->
+        <section id="lessons" class="tab-content">
+            <h2>📝 5E Inquiry-Based Lessons</h2>
+            
+            <div class="lesson-card">
+                <h3>🌊 Lesson 1: The Plastic Problem — Marine Pollution</h3>
+                <p><strong>Unit:</strong> 8 - Aquatic Pollution | <strong>Duration:</strong> 3-4 class periods</p>
+                
+                <span class="phase-tag engage">ENGAGE</span>
+                <p>Show video on plastic pollution. Ask: Where does your plastic go after you throw it away?</p>
+                
+                <span class="phase-tag explore">EXPLORE</span>
+                <p>Microplastics Investigation: Filter samples and examine under magnification.</p>
+                
+                <span class="phase-tag explain">EXPLAIN</span>
+                <p>Introduce persistence, bioaccumulation, and biomagnification concepts.</p>
+                
+                <span class="phase-tag elaborate">ELABORATE</span>
+                <p>Case Study Analysis: Laysan albatross, Arctic microplastics, ghost fishing gear.</p>
+                
+                <span class="phase-tag evaluate">EVALUATE</span>
+                <p>CER: Why is reducing plastic production more effective than cleanup?</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h3>🌡️ Lesson 2: Climate Change Evidence</h3>
+                <p><strong>Unit:</strong> 9 - Global Change | <strong>Duration:</strong> 4-5 class periods</p>
+                
+                <span class="phase-tag engage">ENGAGE</span>
+                <p>Present NASA climate time-lapse and ice core CO₂ data over 800,000 years.</p>
+                
+                <span class="phase-tag explore">EXPLORE</span>
+                <p>Station rotation analyzing ice cores, sea level data, phenology, and temperature trends.</p>
+                
+                <span class="phase-tag explain">EXPLAIN</span>
+                <p>Greenhouse effect mechanism, feedback loops, carbon sources and sinks.</p>
+                
+                <span class="phase-tag elaborate">ELABORATE</span>
+                <p>Research IPCC scenarios and develop mitigation/adaptation strategies.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h3>🌱 Lesson 3: Sustainable Agriculture</h3>
+                <p><strong>Unit:</strong> 5 - Land and Water Use | <strong>Duration:</strong> 3-4 class periods</p>
+                
+                <span class="phase-tag engage">ENGAGE</span>
+                <p>Compare monoculture vs. permaculture images. Taste test organic vs. conventional produce.</p>
+                
+                <span class="phase-tag explore">EXPLORE</span>
+                <p>Jigsaw research: Green Revolution, CAFOs, Organic Farming, IPM, Polyculture.</p>
+                
+                <span class="phase-tag elaborate">ELABORATE</span>
+                <p>Design a 100-acre sustainable farm with crop selection, water management, soil health plan.</p>
+            </div>
+        </section>
+        
+        <!-- VIDEOS TAB -->
+        <section id="videos" class="tab-content">
+            <h2>🎬 Curated Video Resources</h2>
+            
+            <h3>🌍 Ecosystems & Biodiversity</h3>
+            <div class="video-grid">
+                <div class="video-card"><h4>How Wolves Change Rivers</h4><p>Yellowstone wolf reintroduction and trophic cascades. 4 min.</p><p><strong>Discussion:</strong> What other keystone species might have similar effects?</p></div>
+                <div class="video-card"><h4>Ecosystem Ecology (Crash Course)</h4><p>Energy flow, nutrient cycles, ecosystem interactions. 10 min.</p></div>
+            </div>
+            
+            <h3>👥 Population Dynamics</h3>
+            <div class="video-grid">
+                <div class="video-card"><h4>Human Population Through Time (AMNH)</h4><p>Visualization of human population growth from 1 CE. 6 min.</p></div>
+                <div class="video-card"><h4>Don't Panic - Hans Rosling</h4><p>Demographic transition explained with engaging data visualization.</p></div>
+            </div>
+            
+            <h3>⚡ Energy & Pollution</h3>
+            <div class="video-grid">
+                <div class="video-card"><h4>Nuclear Energy Explained (Kurzgesagt)</h4><p>Balanced examination of nuclear pros and cons. 11 min.</p></div>
+                <div class="video-card"><h4>The Story of Stuff</h4><p>Materials economy from extraction to disposal. 21 min.</p></div>
+            </div>
+            
+            <h3>🌡️ Global Change</h3>
+            <div class="video-grid">
+                <div class="video-card"><h4>Ozone Layer Recovery (NASA)</h4><p>Success story of the Montreal Protocol. 8 min.</p></div>
+                <div class="video-card"><h4>Ocean Acidification (NOAA)</h4><p>The "other CO₂ problem" explained. 6 min.</p></div>
+            </div>
+        </section>
+        
+        <!-- ARTICLES TAB -->
+        <section id="articles" class="tab-content">
+            <h2>📰 Reading Passages</h2>
+            
+            <div class="article-card">
+                <h3>Article 1: The Hidden Carbon Cost of Your Digital Life</h3>
+                <span class="lexile-badge">Lexile 1240L</span>
+                <p><strong>Unit:</strong> 6 - Energy Resources</p>
+                <p>Data centers consume 1-2% of global electricity, projected to double by 2030. Streaming video generates ~36g CO₂ per hour. Manufacturing a smartphone produces over 70 kg CO₂ equivalent.</p>
+                <h4>Questions:</h4>
+                <ol><li>What percentage of global electricity do data centers consume?</li><li>Calculate annual CO₂ from 1 billion hours of daily streaming.</li></ol>
+            </div>
+            
+            <div class="article-card">
+                <h3>Article 2: Environmental Justice and the Geography of Pollution</h3>
+                <span class="lexile-badge">Lexile 1280L</span>
+                <p><strong>Unit:</strong> 7 & 8 - Pollution</p>
+                <p>Research documented that race was the most significant variable in predicting hazardous waste facility locations. Warren County, NC protests in 1982 sparked the environmental justice movement.</p>
+            </div>
+            
+            <div class="article-card">
+                <h3>Article 3: Ocean Acidification</h3>
+                <span class="lexile-badge">Lexile 1260L</span>
+                <p><strong>Unit:</strong> 9 - Global Change</p>
+                <p>Ocean pH has dropped from 8.2 to 8.1 since pre-industrial times—a 30% increase in acidity (logarithmic scale). This affects shell-building organisms like corals and pteropods.</p>
+            </div>
+        </section>
+        
+        <!-- ASSESSMENTS TAB -->
+        <section id="assessments" class="tab-content">
+            <h2>📊 Assessments & Rubrics</h2>
+            
+            <h3>CER Rubric</h3>
+            <table class="rubric-table">
+                <tr><th>Component</th><th>Exemplary (4)</th><th>Proficient (3)</th><th>Developing (2)</th><th>Beginning (1)</th></tr>
+                <tr><td><strong>Claim</strong></td><td>Clear, specific, includes qualifiers</td><td>Clear, answers question</td><td>Vague or overgeneralized</td><td>Missing or unclear</td></tr>
+                <tr><td><strong>Evidence</strong></td><td>Multiple relevant, quantitative data</td><td>Sufficient relevant evidence</td><td>Limited evidence</td><td>Missing or inappropriate</td></tr>
+                <tr><td><strong>Reasoning</strong></td><td>Explains HOW evidence supports claim using scientific principles</td><td>Connects evidence to claim</td><td>Incomplete reasoning</td><td>Missing connection</td></tr>
+            </table>
+            
+            <h3>AP-Style FRQ</h3>
+            <div class="frq-box">
+                <h4>FRQ 1: Design an Investigation <span class="points-badge">10 points</span></h4>
+                <p>A local environmental group is concerned about algal blooms in Lake Clearwater, surrounded by agricultural land and residential developments.</p>
+                <p>(a) Identify ONE testable hypothesis about the cause of eutrophication. (1 pt)</p>
+                <p>(b) Design a controlled experiment with IV, DV, control group, and data collection. (4 pts)</p>
+                <p>(c) Describe TWO potential nutrient pollution sources. (2 pts)</p>
+                <p>(d) Explain processes leading from excess nutrients to fish kills. (2 pts)</p>
+                <p>(e) Propose ONE solution addressing the root cause. (1 pt)</p>
+            </div>
+        </section>
+        
+        <!-- PRINTABLES TAB -->
+        <section id="printables" class="tab-content">
+            <h2>📄 Printable Reference Materials</h2>
+            <div class="printable-grid">
+                <div class="printable-item"><h4>📊 Biogeochemical Cycles</h4><p>Carbon, nitrogen, phosphorus, and water cycles</p></div>
+                <div class="printable-item"><h4>⚖️ Environmental Laws Timeline</h4><p>NEPA to Paris Agreement</p></div>
+                <div class="printable-item"><h4>🔢 Energy Calculations</h4><p>Power, energy, efficiency formulas</p></div>
+                <div class="printable-item"><h4>☠️ LD50 & Dose-Response</h4><p>Toxicology concepts</p></div>
+                <div class="printable-item"><h4>📈 Population Equations</h4><p>Growth models and demographic formulas</p></div>
+                <div class="printable-item"><h4>🌡️ Greenhouse Gases</h4><p>Sources, GWP, atmospheric lifetime</p></div>
+            </div>
+            
+            <h3>Energy Calculations Reference</h3>
+            <div class="unit-card">
+                <p><strong>Power:</strong> P = E/t (watts = joules/seconds)</p>
+                <p><strong>Efficiency:</strong> η = (useful output / total input) × 100%</p>
+                <p><strong>Conversions:</strong> 1 kWh = 3.6 × 10⁶ J | 1 gallon gasoline ≈ 33.4 kWh</p>
+                <p><strong>Carbon:</strong> Coal ~820 g CO₂/kWh | Natural Gas ~490 g CO₂/kWh | Gasoline 8.89 kg CO₂/gal</p>
+            </div>
+            
+            <h3>Population Calculations Reference</h3>
+            <div class="unit-card">
+                <p><strong>Exponential:</strong> N(t) = N₀ × e^(rt)</p>
+                <p><strong>Logistic:</strong> dN/dt = rN[(K-N)/K]</p>
+                <p><strong>Doubling Time:</strong> 70 / growth rate (%)</p>
+                <p><strong>Natural Increase:</strong> (CBR - CDR) / 10 = % annual growth</p>
+            </div>
+        </section>
+        
+        <!-- VOCABULARY TAB -->
+        <section id="vocabulary" class="tab-content">
+            <h2>📚 Essential Vocabulary</h2>
+            
+            <h3>Unit 1-2: Ecosystems & Biodiversity</h3>
+            <div class="vocab-grid">
+                <div class="vocab-term"><strong>Ecosystem:</strong> Community of organisms interacting with their physical environment</div>
+                <div class="vocab-term"><strong>Primary productivity:</strong> Rate at which producers convert energy to biomass</div>
+                <div class="vocab-term"><strong>Trophic level:</strong> Position in food chain</div>
+                <div class="vocab-term"><strong>Keystone species:</strong> Species with disproportionate ecosystem effect</div>
+                <div class="vocab-term"><strong>Ecological succession:</strong> Gradual change in species composition</div>
+                <div class="vocab-term"><strong>Ecosystem services:</strong> Benefits humans receive from ecosystems</div>
+            </div>
+            
+            <h3>Unit 3: Populations</h3>
+            <div class="vocab-grid">
+                <div class="vocab-term"><strong>Carrying capacity (K):</strong> Maximum sustainable population</div>
+                <div class="vocab-term"><strong>r-selected:</strong> High reproductive rate, short lifespan</div>
+                <div class="vocab-term"><strong>K-selected:</strong> Low reproductive rate, long lifespan</div>
+                <div class="vocab-term"><strong>Demographic transition:</strong> Shift from high to low birth/death rates</div>
+            </div>
+            
+            <h3>Units 7-8: Pollution</h3>
+            <div class="vocab-grid">
+                <div class="vocab-term"><strong>Point source:</strong> Pollution from identifiable single location</div>
+                <div class="vocab-term"><strong>Nonpoint source:</strong> Pollution from diffuse sources</div>
+                <div class="vocab-term"><strong>Eutrophication:</strong> Excess nutrients causing algal blooms</div>
+                <div class="vocab-term"><strong>Bioaccumulation:</strong> Toxin buildup in organism over time</div>
+                <div class="vocab-term"><strong>Biomagnification:</strong> Increasing toxin concentration up food chain</div>
+                <div class="vocab-term"><strong>LD50:</strong> Dose lethal to 50% of test population</div>
+            </div>
+            
+            <h3>Unit 9: Global Change</h3>
+            <div class="vocab-grid">
+                <div class="vocab-term"><strong>Greenhouse effect:</strong> Trapping of heat by atmospheric gases</div>
+                <div class="vocab-term"><strong>Ocean acidification:</strong> Decreasing ocean pH from CO₂</div>
+                <div class="vocab-term"><strong>Albedo:</strong> Reflectivity of a surface</div>
+                <div class="vocab-term"><strong>Mitigation:</strong> Actions to reduce emissions</div>
+                <div class="vocab-term"><strong>Adaptation:</strong> Adjusting to climate changes</div>
+            </div>
+        </section>
+        
+        <!-- GAMES TAB -->
+        <section id="games" class="tab-content">
+            <h2>🎮 Games & Simulations</h2>
+            
+            <div class="game-card">
+                <h3>🎣 Tragedy of the Commons Fishing Game</h3>
+                <p><strong>Topic:</strong> Unit 5 - Sustainable resource management | <strong>Duration:</strong> 30-45 min</p>
+                <p><strong>Setup:</strong> Groups of 4-5 share a "fish pond" (20 tokens). Fish double after each round (max 20).</p>
+                <p><strong>Rules:</strong> Each student takes 0-5 fish per round. Repeat until fish are gone or 8 rounds complete.</p>
+                <p><strong>Debrief:</strong> What happened? What strategy maximizes long-term harvest? What policies prevent overfishing?</p>
+            </div>
+            
+            <div class="game-card">
+                <h3>🔗 Food Web Yarn Toss</h3>
+                <p><strong>Topic:</strong> Unit 1 - Ecosystems | <strong>Duration:</strong> 20-30 min</p>
+                <p>Students form a circle, each representing an organism. Toss yarn to organisms that eat them, creating a web. Simulate species removal to observe cascading effects.</p>
+            </div>
+            
+            <div class="game-card">
+                <h3>🌍 Climate Conference Role-Play</h3>
+                <p><strong>Topic:</strong> Unit 9 - Global change | <strong>Duration:</strong> 2-3 class periods</p>
+                <p>Assign students to represent: US, China, India, EU, small island states, fossil fuel exporters, NGOs. Negotiate emission targets, financing, and enforcement.</p>
+            </div>
+            
+            <div class="game-card">
+                <h3>🔬 Online Simulations</h3>
+                <p><strong>PhET:</strong> Greenhouse Effect, Natural Selection, Energy Forms</p>
+                <p><strong>HHMI BioInteractive:</strong> EarthViewer, Population Dynamics</p>
+                <p><strong>NASA Climate Time Machine:</strong> Sea level, sea ice, CO₂ visualizations</p>
+            </div>
+        </section>
+        
+        <!-- SAFETY TAB -->
+        <section id="safety" class="tab-content">
+            <h2>⚠️ Safety Protocols</h2>
+            
+            <h3>🌲 Field Work Safety</h3>
+            <div class="safety-box">
+                <h4>Before the Field Trip</h4>
+                <ul><li>Obtain all permissions</li><li>Scout location for hazards</li><li>Check weather forecast</li><li>Collect emergency contacts and medical alerts</li><li>Prepare first aid kit</li></ul>
+            </div>
+            
+            <div class="warning-box">
+                <h4>Environmental Hazards</h4>
+                <ul><li><strong>Toxic plants:</strong> Teach poison ivy identification</li><li><strong>Ticks:</strong> Wear long pants, check afterward</li><li><strong>Water safety:</strong> No entering water without supervision</li><li><strong>Sun exposure:</strong> Require sunscreen and hats</li></ul>
+            </div>
+            
+            <h3>🧪 Laboratory Safety</h3>
+            <div class="safety-box">
+                <ul><li>Wear appropriate PPE (goggles, gloves)</li><li>Know location of eyewash, shower, fire extinguisher</li><li>No food or drink in laboratory</li><li>Never taste or directly smell chemicals</li><li>Report all spills and accidents immediately</li></ul>
+            </div>
+            
+            <h3>Chemical Safety</h3>
+            <table class="rubric-table">
+                <tr><th>Chemical/Test</th><th>Hazards</th><th>Precautions</th></tr>
+                <tr><td>pH indicators</td><td>May irritate skin/eyes</td><td>Goggles; wash if contact</td></tr>
+                <tr><td>Dissolved oxygen reagents</td><td>Caustic, toxic</td><td>Gloves and goggles required</td></tr>
+                <tr><td>Nitrate test reagents</td><td>May contain cadmium</td><td>Gloves; proper disposal</td></tr>
+            </table>
+        </section>
+        
+        <!-- DIFFERENTIATION TAB -->
+        <section id="differentiation" class="tab-content">
+            <h2>🎯 Differentiation Strategies</h2>
+            
+            <h3>📖 For English Language Learners</h3>
+            <div class="unit-card">
+                <ul><li>Pre-teach key vocabulary with visual supports and cognates</li><li>Create personal glossaries with native language definitions</li><li>Use word walls with images</li><li>Provide sentence stems for scientific writing</li><li>Pair with bilingual peer for support</li><li>Allow extended time for reading and writing</li></ul>
+            </div>
+            
+            <h3>📚 For Students with Learning Differences</h3>
+            <div class="unit-card">
+                <ul><li>Provide audio versions of readings</li><li>Chunk text into smaller sections</li><li>Use graphic organizers</li><li>Allow speech-to-text technology</li><li>Extended time on assessments</li><li>Alternative formats (matching instead of fill-in-blank)</li></ul>
+            </div>
+            
+            <h3>🚀 For Advanced Learners</h3>
+            <div class="unit-card">
+                <ul><li>Independent research on cutting-edge topics</li><li>Analysis of primary scientific literature</li><li>Design and conduct original investigations</li><li>Environmental science competitions (Envirothon)</li><li>Mentorship with local environmental professionals</li><li>Advanced mathematical modeling</li></ul>
+            </div>
+        </section>
+        
+        <!-- MISCONCEPTIONS TAB -->
+        <section id="misconceptions" class="tab-content">
+            <h2>❌ Common Misconceptions</h2>
+            
+            <h3>🌍 Ecosystems & Energy</h3>
+            <div class="misconception-item">
+                <p class="wrong">❌ "Energy is recycled through ecosystems like nutrients."</p>
+                <p class="correct">✓ Energy flows one-way through ecosystems (sun → producers → consumers → heat). Only about 10% transfers between levels. Nutrients, however, ARE recycled.</p>
+            </div>
+            
+            <h3>🌡️ Climate & Atmosphere</h3>
+            <div class="misconception-item">
+                <p class="wrong">❌ "The greenhouse effect is bad and caused by humans."</p>
+                <p class="correct">✓ The natural greenhouse effect is essential—without it, Earth would be ~33°C colder. The problem is the ENHANCED greenhouse effect from human emissions.</p>
+            </div>
+            <div class="misconception-item">
+                <p class="wrong">❌ "The ozone hole causes global warming."</p>
+                <p class="correct">✓ These are separate issues. Ozone depletion affects UV radiation. Global warming is caused by greenhouse gases trapping heat.</p>
+            </div>
+            <div class="misconception-item">
+                <p class="wrong">❌ "A cold winter disproves global warming."</p>
+                <p class="correct">✓ Weather (short-term, local) differs from climate (long-term, global patterns). Climate change can cause more extreme weather events.</p>
+            </div>
+            
+            <h3>💧 Water & Pollution</h3>
+            <div class="misconception-item">
+                <p class="wrong">❌ "Dilution is the solution to pollution."</p>
+                <p class="correct">✓ Many pollutants persist, bioaccumulate, or cause problems even at low concentrations.</p>
+            </div>
+            <div class="misconception-item">
+                <p class="wrong">❌ "Eutrophication means too much oxygen."</p>
+                <p class="correct">✓ Eutrophication involves excess nutrients leading to algal blooms. Decomposition then DEPLETES oxygen (hypoxia).</p>
+            </div>
+            
+            <h3>♻️ Sustainability</h3>
+            <div class="misconception-item">
+                <p class="wrong">❌ "Recycling solves our waste problems."</p>
+                <p class="correct">✓ Recycling is helpful but limited. The waste hierarchy prioritizes REDUCE and REUSE over recycling.</p>
+            </div>
+            <div class="misconception-item">
+                <p class="wrong">❌ "Renewable energy is completely clean."</p>
+                <p class="correct">✓ All energy sources have impacts. Solar and wind require mining for materials. Hydroelectric alters ecosystems. They're generally better than fossil fuels, but not impact-free.</p>
+            </div>
+        </section>
+        
+        <!-- CULTURAL CONNECTIONS TAB -->
+        <section id="cultural" class="tab-content">
+            <h2>🌍 Cultural Connections & Environmental Justice</h2>
+            
+            <div class="info-box"><strong>Why This Matters:</strong> Environmental science has historically underrepresented contributions from women, people of color, and Indigenous communities. Including diverse perspectives enriches understanding and addresses the reality that environmental burdens are not equally distributed.</div>
+            
+            <h3>🌱 Diverse Environmental Scientists</h3>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">🌳</div>
+                <div><h4>Wangari Maathai (1940-2011) — Kenya</h4>
+                <p><strong>Contributions:</strong> Founded the Green Belt Movement, planted 51+ million trees. First African woman to receive Nobel Peace Prize (2004).</p>
+                <p><strong>Quote:</strong> "Until you dig a hole, plant a tree, water it and make it survive, you haven't done a thing."</p></div>
+            </div>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">📚</div>
+                <div><h4>Rachel Carson (1907-1964) — United States</h4>
+                <p><strong>Contributions:</strong> "Silent Spring" documented pesticide dangers, launched the modern environmental movement, led to DDT ban and EPA creation.</p></div>
+            </div>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">🌊</div>
+                <div><h4>Sylvia Earle (1935-present) — United States</h4>
+                <p><strong>Contributions:</strong> "Her Deepness" — pioneering marine biologist, former NOAA Chief Scientist, founded Mission Blue for marine protected areas.</p>
+                <p><strong>Quote:</strong> "No water, no life. No blue, no green."</p></div>
+            </div>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">⚖️</div>
+                <div><h4>Robert Bullard (1946-present) — United States</h4>
+                <p><strong>Contributions:</strong> "Father of Environmental Justice." Documented disproportionate pollution in Black communities. Author of "Dumping in Dixie."</p></div>
+            </div>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">🌾</div>
+                <div><h4>Vandana Shiva (1952-present) — India</h4>
+                <p><strong>Contributions:</strong> Founded Navdanya promoting biodiversity and organic farming. Advocates for traditional farming knowledge and food sovereignty.</p></div>
+            </div>
+            
+            <div class="scientist-card">
+                <div class="scientist-icon">💧</div>
+                <div><h4>Winona LaDuke (1959-present) — Ojibwe, United States</h4>
+                <p><strong>Contributions:</strong> Founded White Earth Land Recovery Project. Advocates for renewable energy and Indigenous sovereignty. Connects environmental protection to Indigenous rights.</p></div>
+            </div>
+            
+            <h3>⚖️ Environmental Justice Framework</h3>
+            <div class="unit-card">
+                <h4>Integrating Environmental Justice Across Units</h4>
+                <p><strong>Unit 5:</strong> Whose land is protected? Who is displaced by development?</p>
+                <p><strong>Unit 6:</strong> Where are power plants located? Who bears the risks?</p>
+                <p><strong>Unit 7-8:</strong> Which communities have worst air/water quality?</p>
+                <p><strong>Unit 9:</strong> Which communities are most vulnerable to climate impacts?</p>
+            </div>
+            
+            <h3>🗺️ Case Studies</h3>
+            <div class="article-card">
+                <h4>Cancer Alley, Louisiana</h4>
+                <p>85-mile stretch with 150+ petrochemical plants. Predominantly Black communities experience elevated cancer rates.</p>
+            </div>
+            <div class="article-card">
+                <h4>Flint Water Crisis, Michigan</h4>
+                <p>City switched water sources without proper treatment, exposing residents to lead contamination. Demonstrates how systemic racism manifests in environmental policy.</p>
+            </div>
+            <div class="article-card">
+                <h4>Standing Rock and Dakota Access Pipeline</h4>
+                <p>Standing Rock Sioux led protests against pipeline threatening water supply. Pipeline had been rerouted away from majority-white community due to water concerns.</p>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+                document.querySelector('.content-area').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('open');
+                button.nextElementSibling.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

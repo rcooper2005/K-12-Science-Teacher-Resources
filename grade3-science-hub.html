@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 3 Science Teacher Resource Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-green: #059669;
+            --primary-purple: #7c3aed;
+            --primary-orange: #ea580c;
+            --primary-red: #dc2626;
+            --primary-yellow: #ca8a04;
+            --primary-pink: #db2777;
+            --primary-teal: #0891b2;
+            --light-blue: #dbeafe;
+            --light-green: #d1fae5;
+            --light-purple: #ede9fe;
+            --light-orange: #fed7aa;
+            --light-red: #fecaca;
+            --light-yellow: #fef3c7;
+            --light-pink: #fce7f3;
+            --light-teal: #cffafe;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --forces-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --life-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --weather-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            color: var(--gray-800);
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        header p { font-size: 1.2rem; color: var(--gray-600); font-weight: 600; }
+        .grade-badge {
+            display: inline-block;
+            background: var(--forces-gradient);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .unit-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .unit-card {
+            padding: 20px;
+            border-radius: 16px;
+            color: white;
+            text-align: center;
+        }
+        .unit-card.forces { background: var(--forces-gradient); }
+        .unit-card.life { background: var(--life-gradient); }
+        .unit-card.weather { background: var(--weather-gradient); }
+        .unit-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.5rem; margin-bottom: 8px; }
+        .unit-card p { font-size: 0.95rem; opacity: 0.95; }
+        .tab-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .tab-btn {
+            padding: 10px 16px;
+            border: none;
+            background: var(--gray-100);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--gray-600);
+        }
+        .tab-btn:hover { background: var(--light-blue); color: var(--primary-blue); transform: translateY(-2px); }
+        .tab-btn.active { background: var(--primary-blue); color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .tab-content.active { display: block; }
+        .tab-content h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--light-blue);
+        }
+        .unit-header { padding: 20px; border-radius: 12px; color: white; margin: 25px 0 20px 0; }
+        .unit-header.forces { background: var(--forces-gradient); }
+        .unit-header.life { background: var(--life-gradient); }
+        .unit-header.weather { background: var(--weather-gradient); }
+        .unit-header h3 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; }
+        .objective-box { background: var(--light-blue); border-left: 5px solid var(--primary-blue); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .objective-box h4 { color: var(--primary-blue); font-weight: 800; margin-bottom: 8px; font-size: 1rem; }
+        .cer-box { background: var(--light-yellow); border-left: 5px solid var(--primary-yellow); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .cer-box h4 { color: var(--primary-yellow); font-weight: 800; margin-bottom: 8px; }
+        .materials-box { background: var(--light-green); border-left: 5px solid var(--primary-green); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .materials-box h4 { color: var(--primary-green); font-weight: 800; margin-bottom: 8px; }
+        .procedure-box { background: var(--light-purple); border-left: 5px solid var(--primary-purple); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .procedure-box h4 { color: var(--primary-purple); font-weight: 800; margin-bottom: 8px; }
+        .assessment-box { background: var(--light-red); border-left: 5px solid var(--primary-red); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .assessment-box h4 { color: var(--primary-red); font-weight: 800; margin-bottom: 8px; }
+        .info-box { background: var(--light-teal); border-left: 5px solid var(--primary-teal); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .info-box h4 { color: var(--primary-teal); font-weight: 800; margin-bottom: 8px; }
+        .warning-box { background: var(--light-orange); border-left: 5px solid var(--primary-orange); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+        .warning-box h4 { color: var(--primary-orange); font-weight: 800; margin-bottom: 8px; }
+        .standard-card { background: var(--gray-50); border: 2px solid var(--gray-200); border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .standard-card h4 { font-family: 'Fredoka One', cursive; color: var(--primary-purple); margin-bottom: 12px; }
+        .standard-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin: 3px; }
+        .badge-ngss { background: var(--light-blue); color: var(--primary-blue); }
+        .badge-dci { background: var(--light-green); color: var(--primary-green); }
+        .badge-sep { background: var(--light-purple); color: var(--primary-purple); }
+        .badge-ccc { background: var(--light-orange); color: var(--primary-orange); }
+        .badge-aks { background: var(--light-pink); color: var(--primary-pink); }
+        .badge-gse { background: var(--light-teal); color: var(--primary-teal); }
+        .badge-time { background: var(--light-yellow); color: var(--primary-yellow); }
+        .lab-card { background: white; border: 2px solid var(--gray-200); border-radius: 16px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .lab-card h3 { font-family: 'Fredoka One', cursive; color: var(--primary-purple); font-size: 1.4rem; margin-bottom: 15px; }
+        .lesson-card { background: white; border: 2px solid var(--gray-200); border-radius: 16px; padding: 25px; margin: 20px 0; }
+        .lesson-card h3 { font-family: 'Fredoka One', cursive; color: var(--primary-green); font-size: 1.4rem; margin-bottom: 15px; }
+        .phase-box { margin: 15px 0; padding: 15px; border-radius: 10px; }
+        .phase-engage { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+        .phase-explore { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+        .phase-explain { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+        .phase-elaborate { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+        .phase-evaluate { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+        .phase-box h4 { font-weight: 800; margin-bottom: 10px; }
+        .video-card { background: var(--gray-50); border-radius: 12px; padding: 20px; margin: 15px 0; border: 2px solid var(--gray-200); }
+        .video-card h4 { color: var(--primary-red); font-weight: 800; margin-bottom: 8px; }
+        .video-link { color: var(--primary-blue); text-decoration: none; font-weight: 700; }
+        .video-link:hover { text-decoration: underline; }
+        .article-card { background: white; border: 2px solid var(--gray-200); border-radius: 16px; padding: 25px; margin: 20px 0; }
+        .article-card h3 { font-family: 'Fredoka One', cursive; color: var(--primary-teal); margin-bottom: 15px; }
+        .article-content { background: var(--gray-50); padding: 20px; border-radius: 10px; line-height: 1.8; margin: 15px 0; }
+        .vocab-highlight { background: var(--light-yellow); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin: 20px 0; }
+        .vocab-card { background: var(--gray-50); border-radius: 12px; padding: 15px; border-left: 4px solid var(--primary-purple); }
+        .vocab-card h4 { color: var(--primary-purple); font-weight: 800; margin-bottom: 5px; }
+        .vocab-card .definition { font-size: 0.95rem; margin-bottom: 8px; }
+        .vocab-card .example { font-size: 0.9rem; color: var(--gray-600); font-style: italic; }
+        .game-card { background: linear-gradient(135deg, var(--light-pink), var(--light-purple)); border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .game-card h4 { color: var(--primary-pink); font-weight: 800; margin-bottom: 10px; }
+        .misconception-card { background: white; border: 2px solid var(--gray-200); border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .misconception-card .myth { background: var(--light-red); padding: 12px; border-radius: 8px; margin-bottom: 10px; }
+        .misconception-card .myth h4 { color: var(--primary-red); font-weight: 800; }
+        .misconception-card .reality { background: var(--light-green); padding: 12px; border-radius: 8px; margin-bottom: 10px; }
+        .misconception-card .reality h4 { color: var(--primary-green); font-weight: 800; }
+        .misconception-card .address { background: var(--light-blue); padding: 12px; border-radius: 8px; }
+        .misconception-card .address h4 { color: var(--primary-blue); font-weight: 800; }
+        .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        .diff-card { border-radius: 12px; padding: 20px; }
+        .diff-card h4 { font-weight: 800; margin-bottom: 12px; }
+        .diff-below { background: var(--light-blue); }
+        .diff-below h4 { color: var(--primary-blue); }
+        .diff-advanced { background: var(--light-purple); }
+        .diff-advanced h4 { color: var(--primary-purple); }
+        .diff-ell { background: var(--light-green); }
+        .diff-ell h4 { color: var(--primary-green); }
+        .diff-iep { background: var(--light-orange); }
+        .diff-iep h4 { color: var(--primary-orange); }
+        .diff-visual { background: var(--light-pink); }
+        .diff-visual h4 { color: var(--primary-pink); }
+        .diff-auditory { background: var(--light-teal); }
+        .diff-auditory h4 { color: var(--primary-teal); }
+        .diff-kinesthetic { background: var(--light-yellow); }
+        .diff-kinesthetic h4 { color: var(--primary-yellow); }
+        .cultural-card { background: var(--gray-50); border-radius: 12px; padding: 20px; margin: 15px 0; border: 2px solid var(--gray-200); }
+        .cultural-card h4 { color: var(--primary-teal); font-weight: 800; margin-bottom: 10px; }
+        .safety-card { background: var(--light-orange); border-radius: 12px; padding: 20px; margin: 15px 0; border-left: 5px solid var(--primary-orange); }
+        .safety-card h4 { color: var(--primary-orange); font-weight: 800; margin-bottom: 10px; }
+        .printable-section { background: white; border: 2px dashed var(--gray-200); border-radius: 12px; padding: 25px; margin: 20px 0; }
+        .printable-section h3 { font-family: 'Fredoka One', cursive; color: var(--primary-purple); margin-bottom: 15px; }
+        .print-btn { background: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; margin: 10px 0; }
+        .print-btn:hover { background: #1d4ed8; }
+        .question-list { list-style: none; padding: 0; }
+        .question-list li { padding: 12px 15px; background: var(--gray-50); margin: 8px 0; border-radius: 8px; border-left: 4px solid var(--primary-blue); }
+        .question-list li strong { color: var(--primary-blue); }
+        .rubric-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .rubric-table th, .rubric-table td { border: 2px solid var(--gray-200); padding: 12px; text-align: left; }
+        .rubric-table th { background: var(--primary-purple); color: white; font-weight: 700; }
+        .rubric-table tr:nth-child(even) { background: var(--gray-50); }
+        ul, ol { margin-left: 25px; margin-top: 10px; margin-bottom: 10px; }
+        li { margin: 8px 0; line-height: 1.6; }
+        p { line-height: 1.7; margin: 10px 0; }
+        @media print {
+            .tab-navigation, .print-btn { display: none; }
+            .tab-content { display: block !important; page-break-after: always; }
+            body { background: white; }
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .tab-btn { font-size: 0.8rem; padding: 8px 12px; }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 Grade 3 Science Resource Hub</h1>
+            <p>Complete Teacher Resources for Elementary Science</p>
+            <span class="grade-badge">📚 Grade 3</span>
+        </header>
+
+        <div class="unit-overview">
+            <div class="unit-card forces">
+                <h3>⚡ Forces &amp; Motion</h3>
+                <p>Push, pull, balanced &amp; unbalanced forces, patterns of motion, magnetic interactions</p>
+            </div>
+            <div class="unit-card life">
+                <h3>🦋 Life Cycles &amp; Traits</h3>
+                <p>Plant &amp; animal life cycles, inherited vs. learned traits, adaptations for survival</p>
+            </div>
+            <div class="unit-card weather">
+                <h3>🌦️ Weather &amp; Climate</h3>
+                <p>Weather patterns, climate zones, natural hazards, weather data collection</p>
+            </div>
+        </div>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" onclick="showTab('standards')">📋 Standards</button>
+            <button class="tab-btn" onclick="showTab('background')">👩‍🏫 Teacher Background</button>
+            <button class="tab-btn" onclick="showTab('labs')">🧪 Labs &amp; CER</button>
+            <button class="tab-btn" onclick="showTab('5e')">📚 5E Lessons</button>
+            <button class="tab-btn" onclick="showTab('videos')">🎬 Videos</button>
+            <button class="tab-btn" onclick="showTab('articles')">📖 Student Articles</button>
+            <button class="tab-btn" onclick="showTab('assessments')">📝 Assessments</button>
+            <button class="tab-btn" onclick="showTab('printables')">🖨️ Printables</button>
+            <button class="tab-btn" onclick="showTab('vocabulary')">📖 Vocabulary</button>
+            <button class="tab-btn" onclick="showTab('games')">🎮 Games</button>
+            <button class="tab-btn" onclick="showTab('safety')">⚠️ Safety</button>
+            <button class="tab-btn" onclick="showTab('differentiation')">👥 Differentiation</button>
+            <button class="tab-btn" onclick="showTab('misconceptions')">💭 Misconceptions</button>
+            <button class="tab-btn" onclick="showTab('cultural')">🌍 Cultural</button>
+        </nav>
+
+        <!-- STANDARDS TAB -->
+        <div id="standards" class="tab-content active">
+            <h2>📋 Standards Alignment</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Unit 1: Forces &amp; Motion</h3>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-PS2-1: Plan and conduct an investigation to provide evidence of the effects of balanced and unbalanced forces on the motion of an object.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI (Disciplinary Core Idea)</h4>
+                    <p><strong>PS2.A:</strong> Each force acts on one particular object and has both strength and a direction. An object at rest typically has multiple forces acting on it, but they add to give zero net force on the object. Forces that do not sum to zero can cause changes in the object's speed or direction of motion.</p>
+                </div>
+                <div class="objective-box">
+                    <h4>🔬 SEP (Science &amp; Engineering Practice)</h4>
+                    <p><strong>Planning and Carrying Out Investigations:</strong> Plan and conduct an investigation collaboratively to produce data to serve as the basis for evidence, using fair tests in which variables are controlled.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>🔗 CCC (Crosscutting Concept)</h4>
+                    <p><strong>Cause and Effect:</strong> Cause and effect relationships are routinely identified, tested, and used to explain change.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-PS2-2: Make observations and/or measurements of an object's motion to provide evidence that a pattern can be used to predict future motion.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>PS2.A:</strong> The patterns of an object's motion in various situations can be observed and measured; when that past motion exhibits a regular pattern, future motion can be predicted from it.</p>
+                </div>
+                <div class="objective-box">
+                    <h4>🔬 SEP</h4>
+                    <p><strong>Analyzing and Interpreting Data:</strong> Analyze and interpret data to make sense of phenomena using logical reasoning.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>🔗 CCC</h4>
+                    <p><strong>Patterns:</strong> Patterns of change can be used to make predictions.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-PS2-3: Ask questions to determine cause and effect relationships of electric or magnetic interactions between two objects not in contact with each other.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>PS2.B:</strong> Electric and magnetic forces between a pair of objects do not require that the objects be in contact. The sizes of the forces depend on the properties of the objects and their distances apart.</p>
+                </div>
+                <div class="objective-box">
+                    <h4>🔬 SEP</h4>
+                    <p><strong>Asking Questions:</strong> Ask questions that can be investigated based on patterns such as cause and effect relationships.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-PS2-4: Define a simple design problem that can be solved by applying scientific ideas about magnets.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>PS2.B:</strong> Objects in contact exert forces on each other. Electric and magnetic forces between a pair of objects do not require contact.</p>
+                </div>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Unit 2: Life Cycles &amp; Traits</h3>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-LS1-1: Develop models to describe that organisms have unique and diverse life cycles but all have in common birth, growth, reproduction, and death.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>LS1.B:</strong> Reproduction is essential to the continued existence of every kind of organism. Plants and animals have unique and diverse life cycles.</p>
+                </div>
+                <div class="objective-box">
+                    <h4>🔬 SEP</h4>
+                    <p><strong>Developing and Using Models:</strong> Develop models to describe phenomena.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-LS2-1: Construct an argument that some animals form groups that help members survive.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>LS2.D:</strong> Being part of a group helps animals obtain food, defend themselves, and cope with changes.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-LS3-1: Analyze and interpret data to provide evidence that plants and animals have traits inherited from parents and that variation of these traits exists.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>LS3.A:</strong> Many characteristics of organisms are inherited from their parents. Other characteristics result from individuals' interactions with the environment.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-LS3-2: Use evidence to support the explanation that traits can be influenced by the environment.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>LS3.A &amp; LS3.B:</strong> Other characteristics result from individuals' interactions with the environment. Many characteristics involve both inheritance and environment.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-LS4-2: Use evidence to construct an explanation for how variations in characteristics provide advantages in surviving and reproducing.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>LS4.B:</strong> Sometimes the differences in characteristics between individuals of the same species provide advantages in surviving and reproducing.</p>
+                </div>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Unit 3: Weather &amp; Climate</h3>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-ESS2-1: Represent data in tables and graphical displays to describe typical weather conditions expected during a particular season.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>ESS2.D:</strong> Scientists record patterns of the weather across different times and areas so that they can make predictions about what kind of weather might happen next.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-ESS2-2: Obtain and combine information to describe climates in different regions of the world.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>ESS2.D:</strong> Climate describes a range of an area's typical weather conditions and the extent to which those conditions vary over years.</p>
+                </div>
+            </div>
+
+            <div class="standard-card">
+                <h4>3-ESS3-1: Make a claim about the merit of a design solution that reduces the impacts of a weather-related hazard.</h4>
+                <p><span class="standard-badge badge-ngss">NGSS PE</span></p>
+                <div class="info-box">
+                    <h4>📘 DCI</h4>
+                    <p><strong>ESS3.B:</strong> A variety of natural hazards result from natural processes. Humans cannot eliminate natural hazards but can take steps to reduce their impacts.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; color: var(--primary-pink);">🍑 Georgia State Standards</h3>
+
+            <div class="standard-card">
+                <h4>Gwinnett County AKS &amp; Georgia GSE Alignment</h4>
+                <p><span class="standard-badge badge-aks">S3P1</span> <span class="standard-badge badge-gse">GSE S3P1</span></p>
+                <p><strong>Forces &amp; Motion:</strong> Obtain, evaluate, and communicate information about the ways objects can be moved. Investigate the relationship of the strength of a force to an object's motion.</p>
+
+                <p style="margin-top: 15px;"><span class="standard-badge badge-aks">S3L1</span> <span class="standard-badge badge-gse">GSE S3L1</span></p>
+                <p><strong>Life Cycles:</strong> Obtain, evaluate, and communicate information about the life cycles of plants and animals.</p>
+
+                <p style="margin-top: 15px;"><span class="standard-badge badge-aks">S3L2</span> <span class="standard-badge badge-gse">GSE S3L2</span></p>
+                <p><strong>Heredity &amp; Traits:</strong> Obtain, evaluate, and communicate information about inherited traits and learned behaviors.</p>
+
+                <p style="margin-top: 15px;"><span class="standard-badge badge-aks">S3E1</span> <span class="standard-badge badge-gse">GSE S3E1</span></p>
+                <p><strong>Weather &amp; Climate:</strong> Obtain, evaluate, and communicate information about weather patterns and climate zones.</p>
+            </div>
+        </div>
+
+        <!-- TEACHER BACKGROUND TAB -->
+        <div id="background" class="tab-content">
+            <h2>👩‍🏫 Teacher Background Knowledge</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Unit 1: Forces &amp; Motion</h3>
+            </div>
+
+            <div class="info-box">
+                <h4>📚 Essential Content Knowledge</h4>
+                <p><strong>Force Fundamentals:</strong> A force is a push or pull that acts upon an object. Forces have both magnitude (strength) and direction. Forces can cause objects to start moving, stop moving, change direction, or change speed.</p>
+                <p><strong>Balanced vs. Unbalanced Forces:</strong> When forces are balanced, they are equal in size but opposite in direction, resulting in no change in motion. When forces are unbalanced, one force is greater than the other, resulting in a change in motion.</p>
+                <p><strong>Magnetism:</strong> Magnets produce magnetic fields that can attract or repel other magnets and attract certain metals (iron, nickel, cobalt). Unlike poles attract; like poles repel. Magnetic forces act at a distance without contact.</p>
+            </div>
+
+            <div class="cer-box">
+                <h4>❓ Common Student Questions</h4>
+                <ul>
+                    <li><strong>"Why do things stop moving?"</strong> Friction (a force) acts against motion. Without friction, objects would continue moving forever!</li>
+                    <li><strong>"How do magnets work?"</strong> Magnets have special atoms that are all lined up the same way, creating a magnetic field.</li>
+                    <li><strong>"Why doesn't a book fall through the table?"</strong> The table pushes back up on the book with an equal force - balanced forces!</li>
+                </ul>
+            </div>
+
+            <div class="objective-box">
+                <h4>🌍 Real-World Connections</h4>
+                <ul>
+                    <li>Sports: Kicking a ball (unbalanced force), tug-of-war (balanced/unbalanced)</li>
+                    <li>Transportation: Cars stopping (friction), maglev trains (magnetic levitation)</li>
+                    <li>Everyday life: Refrigerator magnets, door handles, sliding on a slide</li>
+                </ul>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Unit 2: Life Cycles &amp; Traits</h3>
+            </div>
+
+            <div class="info-box">
+                <h4>📚 Essential Content Knowledge</h4>
+                <p><strong>Life Cycles:</strong> All organisms go through a life cycle: birth, growth, reproduction, and death. Some undergo complete metamorphosis (butterfly), some incomplete metamorphosis (grasshopper), and some have no metamorphosis (humans).</p>
+                <p><strong>Inherited Traits:</strong> Traits passed from parents to offspring through genes. Examples: eye color, flower color, fur patterns.</p>
+                <p><strong>Learned Behaviors:</strong> Behaviors that organisms develop through experience and practice. Examples: riding a bike, hunting techniques, language.</p>
+                <p><strong>Environmental Influences:</strong> The environment can affect how traits are expressed. Example: A plant's height can be affected by sunlight, water, and soil nutrients.</p>
+            </div>
+
+            <div class="cer-box">
+                <h4>❓ Common Student Questions</h4>
+                <ul>
+                    <li><strong>"Why don't I look exactly like my parents?"</strong> You get half your genes from each parent, creating unique combinations.</li>
+                    <li><strong>"Is being good at sports inherited or learned?"</strong> Both! You may inherit physical abilities, but skills require practice.</li>
+                    <li><strong>"Why do animals have babies?"</strong> Reproduction ensures the survival of the species.</li>
+                </ul>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Unit 3: Weather &amp; Climate</h3>
+            </div>
+
+            <div class="info-box">
+                <h4>📚 Essential Content Knowledge</h4>
+                <p><strong>Weather vs. Climate:</strong> Weather is the day-to-day condition of the atmosphere. Climate is the average weather conditions over a long period (30+ years). Weather changes daily; climate changes slowly.</p>
+                <p><strong>Weather Components:</strong> Temperature (how hot or cold), precipitation (rain, snow, etc.), humidity (moisture in air), wind (moving air), and air pressure.</p>
+                <p><strong>Climate Zones:</strong> Tropical (near equator, warm year-round), Temperate (moderate, four seasons), Polar (near poles, cold year-round), Desert (dry, extreme temperatures).</p>
+                <p><strong>Natural Hazards:</strong> Weather-related hazards include hurricanes, tornadoes, floods, droughts, and blizzards. Humans can prepare for and reduce impacts but cannot prevent them.</p>
+            </div>
+
+            <div class="cer-box">
+                <h4>❓ Common Student Questions</h4>
+                <ul>
+                    <li><strong>"Why is it hot in summer?"</strong> Earth is tilted toward the sun in summer, receiving more direct sunlight.</li>
+                    <li><strong>"Why does it rain?"</strong> Water evaporates, forms clouds, and falls as precipitation when droplets get heavy.</li>
+                    <li><strong>"Can we stop hurricanes?"</strong> No, but we can prepare for them and build safer structures.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LABS & CER TAB -->
+        <div id="labs" class="tab-content">
+            <h2>🧪 Labs &amp; CER Activities</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Forces &amp; Motion Labs</h3>
+            </div>
+
+            <div class="lab-card">
+                <h3>🚗 Lab 1: Ramp Racers - Investigating Forces</h3>
+                <p><span class="standard-badge badge-ngss">3-PS2-1</span> <span class="standard-badge badge-ngss">3-PS2-2</span> <span class="standard-badge badge-aks">S3P1</span> <span class="standard-badge badge-time">⏱️ 45 minutes</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to investigate how the strength of a force affects an object's motion.</li>
+                        <li>Students will be able to collect data and identify patterns in motion.</li>
+                        <li>Students will be able to use evidence to support a claim about forces.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials (per group)</h4>
+                    <ul>
+                        <li>1 ramp (board or cardboard)</li>
+                        <li>3-4 books for adjusting height</li>
+                        <li>1 toy car or ball</li>
+                        <li>Measuring tape or meter stick</li>
+                        <li>Masking tape for marking distances</li>
+                        <li>Recording sheet</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Step-by-Step Procedure</h4>
+                    <ol>
+                        <li><strong>Setup:</strong> Create a ramp using the board and 1 book. Mark the starting line at the top.</li>
+                        <li><strong>Hypothesis:</strong> Predict how changing ramp height affects how far the car travels.</li>
+                        <li><strong>Trial 1 (Low):</strong> Use 1 book. Release car from starting line. Measure and record distance.</li>
+                        <li><strong>Trial 2 (Medium):</strong> Use 2 books. Release car. Measure and record.</li>
+                        <li><strong>Trial 3 (High):</strong> Use 3 books. Release car. Measure and record.</li>
+                        <li><strong>Repeat:</strong> Conduct 3 trials at each height for accuracy.</li>
+                        <li><strong>Analyze:</strong> Create a bar graph showing average distance at each height.</li>
+                    </ol>
+                </div>
+
+                <div class="cer-box">
+                    <h4>📝 CER Framework</h4>
+                    <p><strong>Question:</strong> How does the height of a ramp affect how far a car travels?</p>
+                    <p><strong>Sample Claim:</strong> The higher the ramp, the farther the car travels because there is a greater force acting on it.</p>
+                    <p><strong>Evidence Examples:</strong></p>
+                    <ul>
+                        <li>At 1 book height, the car traveled an average of 45 cm.</li>
+                        <li>At 2 books height, the car traveled an average of 78 cm.</li>
+                        <li>At 3 books height, the car traveled an average of 112 cm.</li>
+                    </ul>
+                    <p><strong>Reasoning:</strong> When the ramp is higher, gravity pulls the car down with more force, making it go faster and travel farther. A greater height means a stronger unbalanced force, which causes a greater change in motion.</p>
+                </div>
+
+                <div class="assessment-box">
+                    <h4>✅ Assessment Checklist</h4>
+                    <ul>
+                        <li>☐ Student followed safety procedures</li>
+                        <li>☐ Collected accurate data for all trials</li>
+                        <li>☐ Created clear data table and graph</li>
+                        <li>☐ Claim answers the question</li>
+                        <li>☐ Evidence includes specific data from investigation</li>
+                        <li>☐ Reasoning connects evidence to scientific concepts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h3>🧲 Lab 2: Magnetic Mystery - Forces at a Distance</h3>
+                <p><span class="standard-badge badge-ngss">3-PS2-3</span> <span class="standard-badge badge-ngss">3-PS2-4</span> <span class="standard-badge badge-aks">S3P1</span> <span class="standard-badge badge-time">⏱️ 40 minutes</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to investigate how magnets interact without touching.</li>
+                        <li>Students will be able to determine which materials are attracted to magnets.</li>
+                        <li>Students will be able to explain cause and effect relationships in magnetic interactions.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials (per group)</h4>
+                    <ul>
+                        <li>2-3 bar magnets</li>
+                        <li>Variety of objects: paper clips, pennies, rubber bands, aluminum foil, iron nail, plastic button, wooden craft stick</li>
+                        <li>Ruler</li>
+                        <li>Recording sheet with prediction column</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Step-by-Step Procedure</h4>
+                    <ol>
+                        <li><strong>Predict:</strong> For each object, predict if it will be attracted to a magnet.</li>
+                        <li><strong>Test:</strong> Hold magnet near each object (don't touch) and record what happens.</li>
+                        <li><strong>Pole Test:</strong> Bring two magnets together. Test north-north, south-south, north-south.</li>
+                        <li><strong>Distance Test:</strong> How far away can a magnet attract a paper clip? Measure.</li>
+                        <li><strong>Barrier Test:</strong> Can magnets attract through paper? Plastic? Your hand?</li>
+                    </ol>
+                </div>
+
+                <div class="cer-box">
+                    <h4>📝 CER Framework</h4>
+                    <p><strong>Question:</strong> How do magnets interact with different materials?</p>
+                    <p><strong>Sample Claim:</strong> Magnets can attract certain metal objects without touching them, and can attract or repel other magnets depending on pole orientation.</p>
+                    <p><strong>Evidence:</strong> Paper clips and iron nails were attracted; pennies and plastic were not. Opposite poles attracted; same poles repelled.</p>
+                    <p><strong>Reasoning:</strong> Magnets produce invisible force fields that attract objects containing iron. Opposite poles attract and like poles repel because of how magnetic fields interact.</p>
+                </div>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Life Cycles &amp; Traits Labs</h3>
+            </div>
+
+            <div class="lab-card">
+                <h3>🐛 Lab 3: Butterfly Life Cycle Observation</h3>
+                <p><span class="standard-badge badge-ngss">3-LS1-1</span> <span class="standard-badge badge-aks">S3L1</span> <span class="standard-badge badge-time">⏱️ 3-4 weeks (ongoing)</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to observe and document the four stages of complete metamorphosis.</li>
+                        <li>Students will be able to develop a model showing the butterfly life cycle.</li>
+                        <li>Students will be able to identify patterns in life cycles of organisms.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials</h4>
+                    <ul>
+                        <li>Butterfly habitat/cup with caterpillars (order from science supplier)</li>
+                        <li>Magnifying glasses</li>
+                        <li>Science journals</li>
+                        <li>Colored pencils</li>
+                        <li>Ruler for measuring caterpillar growth</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Step-by-Step Procedure</h4>
+                    <ol>
+                        <li><strong>Day 1:</strong> Observe caterpillars. Draw and describe appearance. Measure length.</li>
+                        <li><strong>Daily:</strong> Record observations in journal - size, color, behavior, eating.</li>
+                        <li><strong>Chrysalis:</strong> When caterpillar forms chrysalis, record date and draw appearance.</li>
+                        <li><strong>Emergence:</strong> Watch butterfly emerge. Record observations.</li>
+                        <li><strong>Release:</strong> After 24 hours, release butterflies outside.</li>
+                        <li><strong>Final Model:</strong> Create life cycle diagram with observations.</li>
+                    </ol>
+                </div>
+
+                <div class="cer-box">
+                    <h4>📝 CER Framework</h4>
+                    <p><strong>Question:</strong> What stages do butterflies go through in their life cycle?</p>
+                    <p><strong>Sample Claim:</strong> Butterflies go through four distinct stages: egg, larva, pupa, and adult (complete metamorphosis).</p>
+                    <p><strong>Evidence:</strong> Day 1 caterpillars were 0.5 cm; by Day 7 they grew to 3 cm. On Day 8, chrysalis formed. On Day 18, butterfly emerged.</p>
+                    <p><strong>Reasoning:</strong> The dramatic changes show complete metamorphosis - total body transformation at each stage.</p>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h3>🧬 Lab 4: Trait Detective - Inherited vs. Learned</h3>
+                <p><span class="standard-badge badge-ngss">3-LS3-1</span> <span class="standard-badge badge-ngss">3-LS3-2</span> <span class="standard-badge badge-aks">S3L2</span> <span class="standard-badge badge-time">⏱️ 45 minutes</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to distinguish between inherited traits and learned behaviors.</li>
+                        <li>Students will be able to collect and analyze data about trait variations.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials</h4>
+                    <ul>
+                        <li>Trait survey worksheet</li>
+                        <li>Mirror (for self-observation)</li>
+                        <li>Class data chart</li>
+                        <li>Colored pencils for graphing</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Procedure</h4>
+                    <ol>
+                        <li>Record your own traits: earlobes, tongue rolling, dimples, hair color, eye color</li>
+                        <li>Compile class data - how many students have each trait?</li>
+                        <li>Create bar graphs showing trait variations</li>
+                        <li>Sort traits/behaviors into "inherited" or "learned"</li>
+                    </ol>
+                </div>
+
+                <div class="cer-box">
+                    <h4>📝 CER Framework</h4>
+                    <p><strong>Question:</strong> How can you tell if a trait is inherited or learned?</p>
+                    <p><strong>Claim:</strong> Inherited traits are physical characteristics from parents; learned behaviors are developed through practice.</p>
+                    <p><strong>Evidence:</strong> 15/22 students have attached earlobes (can't change this); all students learned to read (babies can't do this).</p>
+                </div>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Weather &amp; Climate Labs</h3>
+            </div>
+
+            <div class="lab-card">
+                <h3>📊 Lab 5: Weather Watchers - Data Collection</h3>
+                <p><span class="standard-badge badge-ngss">3-ESS2-1</span> <span class="standard-badge badge-aks">S3E1</span> <span class="standard-badge badge-time">⏱️ 2 weeks (daily 10 min)</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to collect and record daily weather data.</li>
+                        <li>Students will be able to represent weather data in tables and graphs.</li>
+                        <li>Students will be able to identify patterns in weather conditions.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials</h4>
+                    <ul>
+                        <li>Outdoor thermometer</li>
+                        <li>Rain gauge</li>
+                        <li>Weather data recording sheet</li>
+                        <li>Cloud identification chart</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Procedure</h4>
+                    <ol>
+                        <li>Daily: Go outside and record temperature, cloud cover, precipitation, wind</li>
+                        <li>Enter data in daily log with date</li>
+                        <li>After 2 weeks: Create line graph of temperature changes</li>
+                        <li>Analyze: Create pie chart of cloud cover types</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h3>🏠 Lab 6: Natural Hazard Solution Design</h3>
+                <p><span class="standard-badge badge-ngss">3-ESS3-1</span> <span class="standard-badge badge-aks">S3E1</span> <span class="standard-badge badge-time">⏱️ 60 minutes</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to identify weather-related natural hazards.</li>
+                        <li>Students will be able to design a solution to reduce hazard impacts.</li>
+                        <li>Students will be able to make a claim about the merit of their design.</li>
+                    </ul>
+                </div>
+
+                <div class="materials-box">
+                    <h4>📦 Materials</h4>
+                    <ul>
+                        <li>Cardboard, craft sticks, aluminum foil</li>
+                        <li>Tape, glue, plastic wrap</li>
+                        <li>Small fan (to simulate wind)</li>
+                        <li>Spray bottle (to simulate rain)</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-box">
+                    <h4>📋 Procedure</h4>
+                    <ol>
+                        <li>Choose hazard: flood, tornado, hurricane, or blizzard</li>
+                        <li>Research: What damage does it cause?</li>
+                        <li>Design: Plan a structure to reduce impact</li>
+                        <li>Build: Construct your model</li>
+                        <li>Test: Expose model to simulated conditions</li>
+                        <li>Present: Share design and explain how it reduces impacts</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5E LESSONS TAB -->
+        <div id="lessons" class="tab-content">
+            <h2>📚 5E Model Lessons</h2>
+
+            <div class="lesson-card">
+                <h3>⚡ Lesson 1: The Push-Pull of Forces</h3>
+                <p><span class="standard-badge badge-ngss">3-PS2-1</span> <span class="standard-badge badge-aks">S3P1</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to define force as a push or pull.</li>
+                        <li>Students will be able to demonstrate how forces affect motion.</li>
+                        <li>Students will be able to differentiate between balanced and unbalanced forces.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>❓ Essential Question</h4>
+                    <p>How do forces make things move, stop, or change direction?</p>
+                </div>
+
+                <div class="phase-box phase-engage">
+                    <h4>🎯 ENGAGE (10 minutes)</h4>
+                    <p><strong>Activity:</strong> Show video of a soccer game. Ask: "What makes the ball move? Stop? Change direction?"</p>
+                    <p><strong>Materials:</strong> Video clip, whiteboard</p>
+                    <p><strong>Assessment Point:</strong> KWL chart - What do students know about forces?</p>
+                </div>
+
+                <div class="phase-box phase-explore">
+                    <h4>🔍 EXPLORE (20 minutes)</h4>
+                    <p><strong>Activity:</strong> Force Stations Rotation</p>
+                    <ul>
+                        <li>Station 1: Push a toy car - observe motion</li>
+                        <li>Station 2: Pull a wagon with string</li>
+                        <li>Station 3: Two students push book from opposite sides (balanced)</li>
+                        <li>Station 4: Tug-of-war (unbalanced)</li>
+                    </ul>
+                    <p><strong>Teacher Role:</strong> Circulate, ask probing questions</p>
+                </div>
+
+                <div class="phase-box phase-explain">
+                    <h4>📖 EXPLAIN (15 minutes)</h4>
+                    <p><strong>Vocabulary:</strong> force, push, pull, motion, balanced forces, unbalanced forces</p>
+                    <p><strong>Key Concepts:</strong></p>
+                    <ul>
+                        <li>Force = push or pull that changes motion</li>
+                        <li>Forces have strength and direction</li>
+                        <li>Balanced forces = no motion change</li>
+                        <li>Unbalanced forces = motion changes</li>
+                    </ul>
+                </div>
+
+                <div class="phase-box phase-elaborate">
+                    <h4>🚀 ELABORATE (15 minutes)</h4>
+                    <p><strong>Extension:</strong> Force Scavenger Hunt - find and photograph examples of forces in the classroom.</p>
+                </div>
+
+                <div class="phase-box phase-evaluate">
+                    <h4>✅ EVALUATE (10 minutes)</h4>
+                    <p><strong>Exit Ticket:</strong></p>
+                    <ol>
+                        <li>What is a force? Give examples of push and pull.</li>
+                        <li>Draw balanced forces on a book on a table.</li>
+                        <li>Explain why a soccer ball moves when kicked.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🦋 Lesson 2: Life Cycles - From Egg to Adult</h3>
+                <p><span class="standard-badge badge-ngss">3-LS1-1</span> <span class="standard-badge badge-aks">S3L1</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to identify the four stages of complete metamorphosis.</li>
+                        <li>Students will be able to compare life cycles of different organisms.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>❓ Essential Question</h4>
+                    <p>How do living things change as they grow from birth to adult?</p>
+                </div>
+
+                <div class="phase-box phase-engage">
+                    <h4>🎯 ENGAGE (10 minutes)</h4>
+                    <p><strong>Activity:</strong> Mystery Box - Show caterpillar and butterfly. "Could these be the same animal?"</p>
+                </div>
+
+                <div class="phase-box phase-explore">
+                    <h4>🔍 EXPLORE (25 minutes)</h4>
+                    <p><strong>Activity:</strong> Life Cycle Sort and Match - Groups sort cards to create correct life cycles for butterfly, frog, chicken, human.</p>
+                </div>
+
+                <div class="phase-box phase-explain">
+                    <h4>📖 EXPLAIN (15 minutes)</h4>
+                    <p><strong>Vocabulary:</strong> life cycle, metamorphosis, larva, pupa, nymph</p>
+                    <p><strong>Key Concepts:</strong> All organisms: birth → growth → reproduction → death. Complete vs. incomplete metamorphosis.</p>
+                </div>
+
+                <div class="phase-box phase-elaborate">
+                    <h4>🚀 ELABORATE (20 minutes)</h4>
+                    <p><strong>Extension:</strong> Create a 3D life cycle model of chosen organism.</p>
+                </div>
+
+                <div class="phase-box phase-evaluate">
+                    <h4>✅ EVALUATE (10 minutes)</h4>
+                    <p><strong>Exit Ticket:</strong> Name the four butterfly stages. What do ALL life cycles have in common?</p>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🧬 Lesson 3: Inherited Traits vs. Learned Behaviors</h3>
+                <p><span class="standard-badge badge-ngss">3-LS3-1</span> <span class="standard-badge badge-aks">S3L2</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to distinguish between inherited traits and learned behaviors.</li>
+                        <li>Students will be able to explain how environment can influence traits.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>❓ Essential Question</h4>
+                    <p>What makes you, YOU - and where did those traits come from?</p>
+                </div>
+
+                <div class="phase-box phase-engage">
+                    <h4>🎯 ENGAGE (10 minutes)</h4>
+                    <p><strong>Activity:</strong> Show celebrity family photos. "How can you tell they're related?"</p>
+                </div>
+
+                <div class="phase-box phase-explore">
+                    <h4>🔍 EXPLORE (20 minutes)</h4>
+                    <p><strong>Activity:</strong> Survey your own traits. Compile class data. Sort behaviors/traits.</p>
+                </div>
+
+                <div class="phase-box phase-explain">
+                    <h4>📖 EXPLAIN (15 minutes)</h4>
+                    <p><strong>Vocabulary:</strong> trait, inherited, learned behavior, genes, offspring, variation, environment</p>
+                </div>
+
+                <div class="phase-box phase-elaborate">
+                    <h4>🚀 ELABORATE (15 minutes)</h4>
+                    <p><strong>Extension:</strong> "Nature vs. Nurture" scenarios analysis</p>
+                </div>
+
+                <div class="phase-box phase-evaluate">
+                    <h4>✅ EVALUATE (10 minutes)</h4>
+                    <p><strong>Exit Ticket:</strong> List 3 inherited traits and 3 learned behaviors. How can environment change traits?</p>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🌦️ Lesson 4: Weather Patterns &amp; Predictions</h3>
+                <p><span class="standard-badge badge-ngss">3-ESS2-1</span> <span class="standard-badge badge-aks">S3E1</span></p>
+
+                <div class="objective-box">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to describe typical weather for each season.</li>
+                        <li>Students will be able to differentiate between weather and climate.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>❓ Essential Question</h4>
+                    <p>How can we use patterns to predict what the weather will be like?</p>
+                </div>
+
+                <div class="phase-box phase-engage">
+                    <h4>🎯 ENGAGE (10 minutes)</h4>
+                    <p><strong>Activity:</strong> Show same location in different seasons. "Why does weather change so much?"</p>
+                </div>
+
+                <div class="phase-box phase-explore">
+                    <h4>🔍 EXPLORE (25 minutes)</h4>
+                    <p><strong>Activity:</strong> Analyze weather data from different months. Look for patterns.</p>
+                </div>
+
+                <div class="phase-box phase-explain">
+                    <h4>📖 EXPLAIN (15 minutes)</h4>
+                    <p><strong>Vocabulary:</strong> weather, climate, temperature, precipitation, humidity, season, pattern</p>
+                </div>
+
+                <div class="phase-box phase-elaborate">
+                    <h4>🚀 ELABORATE (15 minutes)</h4>
+                    <p><strong>Extension:</strong> Climate Postcard Project - "visit" a different climate zone</p>
+                </div>
+
+                <div class="phase-box phase-evaluate">
+                    <h4>✅ EVALUATE (10 minutes)</h4>
+                    <p><strong>Exit Ticket:</strong> What's the difference between weather and climate? Describe Georgia summer weather.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEOS TAB -->
+        <div id="videos" class="tab-content">
+            <h2>🎬 Recommended Videos</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Forces &amp; Motion Videos</h3>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Force and Motion for Kids</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=pexrmDzNjfE" class="video-link" target="_blank">YouTube - Learning Junction</a></p>
+                <p><strong>Duration:</strong> 7:32 | <strong>Purpose:</strong> Introduction to push, pull, and motion concepts</p>
+                <p><strong>Discussion Questions:</strong> What are examples of push forces? What happens when you increase force?</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Balanced and Unbalanced Forces</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=aRhDWjvJfQk" class="video-link" target="_blank">YouTube - SciShow Kids</a></p>
+                <p><strong>Duration:</strong> 4:48 | <strong>Purpose:</strong> Visual demonstration of balanced vs. unbalanced forces</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Magnetism for Kids</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=snNG481SvgY" class="video-link" target="_blank">YouTube - SciShow Kids</a></p>
+                <p><strong>Duration:</strong> 5:24 | <strong>Purpose:</strong> Introduction to magnets and magnetic forces</p>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Life Cycles &amp; Traits Videos</h3>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 The Life Cycle of a Butterfly</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=O1S8WzwLPlM" class="video-link" target="_blank">YouTube - Homeschool Pop</a></p>
+                <p><strong>Duration:</strong> 5:12 | <strong>Purpose:</strong> Clear explanation of complete metamorphosis</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Inherited Traits and Learned Behaviors</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=hdg56-xOluc" class="video-link" target="_blank">YouTube - Generation Genius</a></p>
+                <p><strong>Duration:</strong> 6:15 | <strong>Purpose:</strong> Distinguishing inherited traits from learned behaviors</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Animal Groups and Survival</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=S3vhns4_kCw" class="video-link" target="_blank">YouTube - FreeSchool</a></p>
+                <p><strong>Duration:</strong> 8:21 | <strong>Purpose:</strong> How living in groups helps animals survive</p>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Weather &amp; Climate Videos</h3>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Weather vs. Climate</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=vH298zSCQzY" class="video-link" target="_blank">YouTube - National Geographic Kids</a></p>
+                <p><strong>Duration:</strong> 3:27 | <strong>Purpose:</strong> Clear distinction between weather and climate</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 The Four Seasons</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=VS9zCQtksqw" class="video-link" target="_blank">YouTube - SciShow Kids</a></p>
+                <p><strong>Duration:</strong> 4:12 | <strong>Purpose:</strong> Explains why seasons happen and their weather patterns</p>
+            </div>
+
+            <div class="video-card">
+                <h4>📺 Natural Hazards</h4>
+                <p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=4-079YIasck" class="video-link" target="_blank">YouTube - National Geographic Kids</a></p>
+                <p><strong>Duration:</strong> 5:48 | <strong>Purpose:</strong> Types of weather hazards and safety</p>
+            </div>
+        </div>
+
+        <!-- STUDENT ARTICLES TAB -->
+        <div id="articles" class="tab-content">
+            <h2>📖 Student Reading Articles</h2>
+
+            <div class="article-card">
+                <h3>📄 Article 1: The Power of Push and Pull</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div class="article-content">
+                    <p>Have you ever wondered what makes things move? The answer is <span class="vocab-highlight">force</span>! A force is a push or a pull that makes objects start moving, stop moving, or change direction.</p>
+                    <p>Every time you kick a soccer ball, you use a <span class="vocab-highlight">push</span> force. When you pull a wagon, you use a <span class="vocab-highlight">pull</span> force. Forces are all around us!</p>
+                    <p>Forces have two important parts: <span class="vocab-highlight">strength</span> and <span class="vocab-highlight">direction</span>. Push gently, the ball moves slowly. Push hard, it zooms away!</p>
+                    <p>When forces are <span class="vocab-highlight">balanced</span>, they cancel out and nothing moves. When forces are <span class="vocab-highlight">unbalanced</span>, one force wins and motion changes!</p>
+                </div>
+                <div class="cer-box">
+                    <h4>📝 Comprehension Questions</h4>
+                    <ol>
+                        <li>What is a force?</li>
+                        <li>What are the two parts of a force?</li>
+                        <li>What happens when forces are balanced?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3>📄 Article 2: The Amazing Journey of a Butterfly</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div class="article-content">
+                    <p>Did you know that a beautiful butterfly starts its life as a tiny egg? The way a butterfly grows up is called its <span class="vocab-highlight">life cycle</span>, and it's one of nature's most amazing transformations!</p>
+                    <p><strong>Stage 1: Egg</strong> - A mother butterfly lays tiny eggs on a leaf.</p>
+                    <p><strong>Stage 2: Larva (Caterpillar)</strong> - The <span class="vocab-highlight">larva</span> eats and grows bigger and bigger.</p>
+                    <p><strong>Stage 3: Pupa (Chrysalis)</strong> - Inside the <span class="vocab-highlight">chrysalis</span>, its body completely changes!</p>
+                    <p><strong>Stage 4: Adult Butterfly</strong> - A beautiful butterfly emerges!</p>
+                    <p>This big change is called <span class="vocab-highlight">complete metamorphosis</span>.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>📝 Comprehension Questions</h4>
+                    <ol>
+                        <li>What are the four stages of a butterfly's life cycle?</li>
+                        <li>What does the caterpillar do during its stage?</li>
+                        <li>What happens inside the chrysalis?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3>📄 Article 3: Traits - What Makes You, You!</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div class="article-content">
+                    <p>Your eye color is a <span class="vocab-highlight">trait</span> – a characteristic that makes you who you are!</p>
+                    <p>Some traits are <span class="vocab-highlight">inherited</span>. This means they were passed down from your parents through <span class="vocab-highlight">genes</span>. That's why you might have your mom's smile but your dad's hair!</p>
+                    <p>Inherited traits include: eye color, hair color, freckles, dimples, whether you can roll your tongue.</p>
+                    <p>But some things you had to learn! These are called <span class="vocab-highlight">learned behaviors</span>. You weren't born knowing how to read or ride a bike!</p>
+                    <p>Sometimes the <span class="vocab-highlight">environment</span> affects inherited traits. A plant might have genes to grow tall, but without enough sunlight, it stays small.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>📝 Comprehension Questions</h4>
+                    <ol>
+                        <li>What is the difference between inherited traits and learned behaviors?</li>
+                        <li>Where do your genes come from?</li>
+                        <li>How can environment change an inherited trait?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3>📄 Article 4: Weather Patterns All Around Us</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div class="article-content">
+                    <p><span class="vocab-highlight">Weather</span> is what's happening in the sky right now, and it can change every day!</p>
+                    <p><span class="vocab-highlight">Meteorologists</span> measure temperature, precipitation, wind speed, and cloud types.</p>
+                    <p>Weather follows <span class="vocab-highlight">patterns</span>! Dark, puffy clouds often mean rain is coming. Weather also follows seasonal patterns.</p>
+                    <p>Weather is different from <span class="vocab-highlight">climate</span>. Climate is the average weather over many years. Georgia has a temperate climate with hot summers and mild winters.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>📝 Comprehension Questions</h4>
+                    <ol>
+                        <li>What is weather?</li>
+                        <li>How is weather different from climate?</li>
+                        <li>What patterns help us predict weather?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3>📄 Article 5: Staying Safe in Severe Weather</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div class="article-content">
+                    <p><span class="vocab-highlight">Natural hazards</span> are dangerous events like hurricanes, tornadoes, floods, and blizzards.</p>
+                    <p><strong>Tornadoes:</strong> Go to the lowest floor, away from windows. A bathroom or closet is safest!</p>
+                    <p><strong>Hurricanes:</strong> People might need to evacuate their homes.</p>
+                    <p><strong>Floods:</strong> Never walk through flood water – it's deeper and faster than it looks!</p>
+                    <p>We can't stop natural hazards, but we CAN prepare! Engineers design buildings that resist strong winds. Weather scientists give warnings so we can get to safety.</p>
+                </div>
+                <div class="cer-box">
+                    <h4>📝 Comprehension Questions</h4>
+                    <ol>
+                        <li>What are natural hazards?</li>
+                        <li>Where should you go during a tornado?</li>
+                        <li>Can humans stop natural hazards? What can we do instead?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASSESSMENTS TAB -->
+        <div id="assessments" class="tab-content">
+            <h2>📝 Assessments</h2>
+
+            <h3 style="color: var(--primary-blue);">🔍 Pre-Assessments</h3>
+
+            <div class="unit-header forces">
+                <h3>⚡ Forces &amp; Motion Pre-Assessment</h3>
+            </div>
+            <ul class="question-list">
+                <li><strong>1.</strong> What is a force? Give an example.</li>
+                <li><strong>2.</strong> What happens to a ball when you push it?</li>
+                <li><strong>3.</strong> What materials do magnets attract?</li>
+            </ul>
+
+            <div class="unit-header life">
+                <h3>🦋 Life Cycles Pre-Assessment</h3>
+            </div>
+            <ul class="question-list">
+                <li><strong>1.</strong> What is a life cycle?</li>
+                <li><strong>2.</strong> How does a caterpillar become a butterfly?</li>
+                <li><strong>3.</strong> Why do children often look like their parents?</li>
+            </ul>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Weather Pre-Assessment</h3>
+            </div>
+            <ul class="question-list">
+                <li><strong>1.</strong> What is weather?</li>
+                <li><strong>2.</strong> What is the difference between weather and climate?</li>
+                <li><strong>3.</strong> Name three types of severe weather.</li>
+            </ul>
+
+            <h3 style="color: var(--primary-purple); margin-top: 30px;">📊 Unit Tests</h3>
+
+            <div class="standard-card">
+                <h4>⚡ Forces &amp; Motion Unit Test (10 Questions)</h4>
+                <ol>
+                    <li>A force is ____. A) only a push B) only a pull C) a push or pull D) not related to motion</li>
+                    <li>When you kick a ball, you are using a ____. A) balanced force B) push force C) pull force D) magnetic force</li>
+                    <li>If two people push on opposite sides of a box with equal force, the box will ____. A) move right B) move left C) not move D) fall over</li>
+                    <li>Unbalanced forces cause objects to ____. A) stay still B) change motion C) disappear D) become heavier</li>
+                    <li>Magnets attract objects made of ____. A) wood B) plastic C) iron D) paper</li>
+                    <li>When two north poles face each other, they will ____. A) attract B) repel C) stick together D) do nothing</li>
+                    <li>What makes a car go faster down a ramp? A) lower ramp B) higher ramp C) horizontal ramp D) doesn't matter</li>
+                    <li>Friction is a force that ____. A) speeds up objects B) slows down objects C) only acts on balls D) doesn't exist</li>
+                    <li>Short Answer: Explain why a book on a table doesn't fall through.</li>
+                    <li>Short Answer: Design a way to move a heavy object using forces.</li>
+                </ol>
+            </div>
+
+            <div class="standard-card">
+                <h4>🦋 Life Cycles &amp; Traits Unit Test (10 Questions)</h4>
+                <ol>
+                    <li>The correct butterfly life cycle order is ____. A) egg, pupa, larva, adult B) egg, larva, pupa, adult C) larva, egg, pupa, adult D) adult, egg, larva, pupa</li>
+                    <li>All life cycles include ____. A) metamorphosis B) birth, growth, reproduction, death C) chrysalis D) tadpoles</li>
+                    <li>An inherited trait is ____. A) something you learn B) passed from parents through genes C) only in animals D) always visible</li>
+                    <li>Which is a learned behavior? A) eye color B) riding a bike C) dimples D) earlobes</li>
+                    <li>Why do siblings look similar but not identical? A) different parents B) different combination of genes C) different houses D) they do look identical</li>
+                    <li>A plant in shade grows shorter than one in sun. This shows ____. A) genes don't matter B) environment affects traits C) plants don't have genes D) shade is unhealthy</li>
+                    <li>Complete metamorphosis means ____. A) small changes B) no changes C) complete body transformation D) partial changes</li>
+                    <li>Animals in groups helps them ____. A) find food B) stay safe C) raise young D) all of the above</li>
+                    <li>Short Answer: Compare butterfly and human life cycles.</li>
+                    <li>Short Answer: Give two examples of environment affecting traits.</li>
+                </ol>
+            </div>
+
+            <h3 style="color: var(--primary-red); margin-top: 30px;">📋 CER Rubric</h3>
+
+            <table class="rubric-table">
+                <tr>
+                    <th>Criteria</th>
+                    <th>4 - Exceeds</th>
+                    <th>3 - Meets</th>
+                    <th>2 - Approaching</th>
+                    <th>1 - Beginning</th>
+                </tr>
+                <tr>
+                    <td><strong>Claim</strong></td>
+                    <td>Clear, specific claim with scientific insight</td>
+                    <td>Clear claim that answers the question</td>
+                    <td>Claim present but unclear</td>
+                    <td>Missing or restates question</td>
+                </tr>
+                <tr>
+                    <td><strong>Evidence</strong></td>
+                    <td>Multiple pieces with measurements</td>
+                    <td>At least 2 pieces from investigation</td>
+                    <td>1 piece or vague evidence</td>
+                    <td>Missing or doesn't support claim</td>
+                </tr>
+                <tr>
+                    <td><strong>Reasoning</strong></td>
+                    <td>Thoroughly explains connection</td>
+                    <td>Explains evidence-claim connection</td>
+                    <td>Some attempt to connect</td>
+                    <td>Missing reasoning</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PRINTABLES TAB -->
+        <div id="printables" class="tab-content">
+            <h2>🖨️ Printable Resources</h2>
+
+            <div class="printable-section">
+                <h3>📝 CER Recording Sheet</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div style="border: 2px solid #333; padding: 20px; margin: 15px 0; background: white;">
+                    <p style="text-align: center; font-weight: bold; font-size: 1.2rem;">Claim - Evidence - Reasoning (CER)</p>
+                    <p><strong>Name:</strong> _______________________ <strong>Date:</strong> _______________</p>
+                    <p><strong>Investigation:</strong> _________________________________________________</p>
+                    <div style="margin-top: 20px;">
+                        <p><strong>❓ QUESTION:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 50px; padding: 10px; margin: 10px 0;"></div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p><strong>💡 CLAIM:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 60px; padding: 10px; margin: 10px 0;"></div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p><strong>📊 EVIDENCE:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 100px; padding: 10px; margin: 10px 0;"></div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p><strong>🧠 REASONING:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 100px; padding: 10px; margin: 10px 0;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="printable-section">
+                <h3>📋 Lab Recording Sheet</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div style="border: 2px solid #333; padding: 20px; margin: 15px 0; background: white;">
+                    <p style="text-align: center; font-weight: bold; font-size: 1.2rem;">Science Lab Recording Sheet</p>
+                    <p><strong>Name:</strong> _______________________ <strong>Date:</strong> _______________</p>
+                    <p><strong>Lab Title:</strong> _________________________________________________</p>
+                    <div style="margin-top: 15px;">
+                        <p><strong>❓ Question:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 40px; padding: 10px;"></div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <p><strong>🔮 Hypothesis:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 40px; padding: 10px;"></div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <p><strong>📦 Materials:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 60px; padding: 10px;"></div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <p><strong>📊 Data Table:</strong></p>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="border: 1px solid #333; padding: 20px; width: 25%;"></td>
+                                <td style="border: 1px solid #333; padding: 20px; width: 25%;"></td>
+                                <td style="border: 1px solid #333; padding: 20px; width: 25%;"></td>
+                                <td style="border: 1px solid #333; padding: 20px; width: 25%;"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                                <td style="border: 1px solid #333; padding: 20px;"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <p><strong>✅ Conclusion:</strong></p>
+                        <div style="border: 1px solid #ccc; min-height: 60px; padding: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="printable-section">
+                <h3>📚 Vocabulary Cards Template</h3>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;">
+                    <div style="border: 2px solid #333; padding: 15px; min-height: 150px;">
+                        <p style="font-weight: bold; border-bottom: 2px solid #333; padding-bottom: 5px;">Word:</p>
+                        <p style="margin-top: 10px;"><strong>Definition:</strong></p>
+                        <p style="margin-top: 30px;"><strong>Picture:</strong></p>
+                    </div>
+                    <div style="border: 2px solid #333; padding: 15px; min-height: 150px;">
+                        <p style="font-weight: bold; border-bottom: 2px solid #333; padding-bottom: 5px;">Word:</p>
+                        <p style="margin-top: 10px;"><strong>Definition:</strong></p>
+                        <p style="margin-top: 30px;"><strong>Picture:</strong></p>
+                    </div>
+                    <div style="border: 2px solid #333; padding: 15px; min-height: 150px;">
+                        <p style="font-weight: bold; border-bottom: 2px solid #333; padding-bottom: 5px;">Word:</p>
+                        <p style="margin-top: 10px;"><strong>Definition:</strong></p>
+                        <p style="margin-top: 30px;"><strong>Picture:</strong></p>
+                    </div>
+                    <div style="border: 2px solid #333; padding: 15px; min-height: 150px;">
+                        <p style="font-weight: bold; border-bottom: 2px solid #333; padding-bottom: 5px;">Word:</p>
+                        <p style="margin-top: 10px;"><strong>Definition:</strong></p>
+                        <p style="margin-top: 30px;"><strong>Picture:</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VOCABULARY TAB -->
+        <div id="vocabulary" class="tab-content">
+            <h2>📖 Vocabulary Terms</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Forces &amp; Motion Vocabulary</h3>
+            </div>
+
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>Force</h4>
+                    <p class="definition">A push or pull that acts upon an object.</p>
+                    <p class="example">Example: Kicking a ball uses a push force.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Push</h4>
+                    <p class="definition">A force that moves an object away from you.</p>
+                    <p class="example">Example: Pushing a shopping cart forward.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Pull</h4>
+                    <p class="definition">A force that moves an object toward you.</p>
+                    <p class="example">Example: Pulling a wagon with a handle.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Motion</h4>
+                    <p class="definition">The act of moving or changing position.</p>
+                    <p class="example">Example: A car driving is in motion.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Balanced Forces</h4>
+                    <p class="definition">Forces equal in size, opposite in direction - no motion change.</p>
+                    <p class="example">Example: A book sitting still on a table.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Unbalanced Forces</h4>
+                    <p class="definition">Unequal forces causing a change in motion.</p>
+                    <p class="example">Example: One team winning tug-of-war.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Friction</h4>
+                    <p class="definition">A force that slows down moving objects.</p>
+                    <p class="example">Example: Brakes on a bike use friction.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Magnet</h4>
+                    <p class="definition">An object that produces a magnetic field.</p>
+                    <p class="example">Example: Refrigerator magnets.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Attract</h4>
+                    <p class="definition">To pull toward; opposite poles attract.</p>
+                    <p class="example">Example: A magnet attracts a paper clip.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Repel</h4>
+                    <p class="definition">To push away; like poles repel.</p>
+                    <p class="example">Example: Two north poles push apart.</p>
+                </div>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Life Cycles &amp; Traits Vocabulary</h3>
+            </div>
+
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>Life Cycle</h4>
+                    <p class="definition">Stages from birth to death.</p>
+                    <p class="example">Example: A butterfly's life cycle has four stages.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Metamorphosis</h4>
+                    <p class="definition">Major body form change during life cycle.</p>
+                    <p class="example">Example: Caterpillar to butterfly.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Larva</h4>
+                    <p class="definition">Immature form (caterpillar).</p>
+                    <p class="example">Example: A caterpillar is the larva stage.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Pupa</h4>
+                    <p class="definition">Stage of transformation in a protective covering.</p>
+                    <p class="example">Example: A butterfly pupa is a chrysalis.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Trait</h4>
+                    <p class="definition">A characteristic or feature of an organism.</p>
+                    <p class="example">Example: Eye color is a trait.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Inherited Trait</h4>
+                    <p class="definition">Trait passed from parents through genes.</p>
+                    <p class="example">Example: Dimples are inherited.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Learned Behavior</h4>
+                    <p class="definition">Behavior developed through experience.</p>
+                    <p class="example">Example: Reading is learned.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Genes</h4>
+                    <p class="definition">Instructions in cells that determine traits.</p>
+                    <p class="example">Example: Genes determine your hair color.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Offspring</h4>
+                    <p class="definition">The young produced by organisms.</p>
+                    <p class="example">Example: Puppies are the offspring of dogs.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Adaptation</h4>
+                    <p class="definition">Trait that helps survival in an environment.</p>
+                    <p class="example">Example: Thick fur for cold climates.</p>
+                </div>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Weather &amp; Climate Vocabulary</h3>
+            </div>
+
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>Weather</h4>
+                    <p class="definition">Daily condition of the atmosphere.</p>
+                    <p class="example">Example: Today is sunny and 75°F.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Climate</h4>
+                    <p class="definition">Average weather over many years.</p>
+                    <p class="example">Example: Florida has a warm climate.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Temperature</h4>
+                    <p class="definition">A measure of how hot or cold.</p>
+                    <p class="example">Example: The temperature is 80 degrees.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Precipitation</h4>
+                    <p class="definition">Water falling from clouds - rain, snow, etc.</p>
+                    <p class="example">Example: We got 2 inches of rain.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Humidity</h4>
+                    <p class="definition">Amount of water vapor in the air.</p>
+                    <p class="example">Example: High humidity feels sticky.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Season</h4>
+                    <p class="definition">One of four periods with distinct weather.</p>
+                    <p class="example">Example: Summer is hot in Georgia.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Natural Hazard</h4>
+                    <p class="definition">A dangerous natural event.</p>
+                    <p class="example">Example: A tornado is a natural hazard.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Meteorologist</h4>
+                    <p class="definition">Scientist who studies weather.</p>
+                    <p class="example">Example: The meteorologist predicted rain.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Forecast</h4>
+                    <p class="definition">A prediction of future weather.</p>
+                    <p class="example">Example: The forecast shows sunny skies.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Atmosphere</h4>
+                    <p class="definition">The layer of gases surrounding Earth.</p>
+                    <p class="example">Example: Weather happens in the atmosphere.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMES TAB -->
+        <div id="games" class="tab-content">
+            <h2>🎮 Games &amp; Activities</h2>
+
+            <h3 style="color: var(--primary-purple);">🏃 Hands-On Activities</h3>
+
+            <div class="game-card">
+                <h4>⚡ Force Olympics</h4>
+                <p><strong>Materials:</strong> Various balls, toy cars, ramps, targets</p>
+                <p><strong>How to Play:</strong> Set up stations where students compete using force concepts: Paper ball toss, Marble roll, Magnetic maze, Balloon rocket race.</p>
+            </div>
+
+            <div class="game-card">
+                <h4>🦋 Life Cycle Relay Race</h4>
+                <p><strong>Materials:</strong> Life cycle stage cards, cones</p>
+                <p><strong>How to Play:</strong> Teams race to place life cycle stages in correct order. First correct sequence wins!</p>
+            </div>
+
+            <div class="game-card">
+                <h4>🧬 Trait Bingo</h4>
+                <p><strong>Materials:</strong> Bingo cards with trait pictures</p>
+                <p><strong>How to Play:</strong> Call out descriptions ("Something you were born with"). First to get 5 in a row wins!</p>
+            </div>
+
+            <div class="game-card">
+                <h4>🌦️ Weather Charades</h4>
+                <p><strong>Materials:</strong> Weather condition cards</p>
+                <p><strong>How to Play:</strong> Act out weather types without speaking. Classmates guess!</p>
+            </div>
+
+            <div class="game-card">
+                <h4>🧲 Magnet Scavenger Hunt</h4>
+                <p><strong>Materials:</strong> Magnets, recording sheets</p>
+                <p><strong>How to Play:</strong> Predict which items are magnetic, then test and record.</p>
+            </div>
+
+            <div class="game-card">
+                <h4>🌍 Climate Zone Match</h4>
+                <p><strong>Materials:</strong> World map, animal/plant cards</p>
+                <p><strong>How to Play:</strong> Match organisms to their climate zones based on adaptations.</p>
+            </div>
+
+            <h3 style="color: var(--primary-blue); margin-top: 30px;">💻 Online Resources</h3>
+
+            <div class="info-box">
+                <h4>🔗 Recommended Websites</h4>
+                <ul>
+                    <li><a href="https://pbskids.org" target="_blank">PBS Kids - Science Games</a></li>
+                    <li><a href="https://www.brainpop.com" target="_blank">BrainPOP - Science Videos</a></li>
+                    <li><a href="https://www.generationgenius.com" target="_blank">Generation Genius - Science Lessons</a></li>
+                    <li><a href="https://www.abcya.com" target="_blank">ABCya - Educational Games</a></li>
+                    <li><a href="https://www.weather.gov/education" target="_blank">National Weather Service - Education</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SAFETY TAB -->
+        <div id="safety" class="tab-content">
+            <h2>⚠️ Safety Guidelines</h2>
+
+            <div class="safety-card">
+                <h4>🔬 General Lab Safety Rules</h4>
+                <ul>
+                    <li>Always follow teacher instructions</li>
+                    <li>Walk, don't run, in the lab area</li>
+                    <li>Keep your workspace clean and organized</li>
+                    <li>Report all spills, accidents, or broken equipment immediately</li>
+                    <li>Wash hands before and after experiments</li>
+                    <li>Never taste or smell anything unless instructed</li>
+                    <li>Wear safety goggles when required</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h4>⚡ Forces &amp; Motion Safety</h4>
+                <ul>
+                    <li>Keep ramps stable and secure before testing</li>
+                    <li>Don't throw objects at classmates</li>
+                    <li>Keep small objects (marbles, balls) away from walkways</li>
+                    <li>Use caution with rubber bands and projectiles</li>
+                    <li>Clean up any objects that could cause tripping</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h4>🧲 Magnet Safety</h4>
+                <ul>
+                    <li>Keep magnets away from electronics (phones, computers, tablets)</li>
+                    <li>Don't put magnets near credit cards or ID badges</li>
+                    <li>Strong magnets can pinch fingers - handle carefully</li>
+                    <li>Don't swallow small magnets - very dangerous!</li>
+                    <li>Store magnets properly to prevent damage</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h4>🦋 Life Science Safety</h4>
+                <ul>
+                    <li>Wash hands after handling live organisms</li>
+                    <li>Be gentle with caterpillars and butterflies</li>
+                    <li>Report any allergies to the teacher</li>
+                    <li>Keep habitat containers closed and stable</li>
+                    <li>Never release non-native species outdoors</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h4>🌦️ Weather &amp; Outdoor Safety</h4>
+                <ul>
+                    <li>Stay indoors during thunderstorms</li>
+                    <li>Dress appropriately for outdoor weather observations</li>
+                    <li>Use sunscreen and hats on sunny days</li>
+                    <li>Never go outside alone during severe weather</li>
+                    <li>Know the school's severe weather procedures</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DIFFERENTIATION TAB -->
+        <div id="differentiation" class="tab-content">
+            <h2>👥 Differentiation Strategies</h2>
+
+            <div class="diff-grid">
+                <div class="diff-card diff-below">
+                    <h4>📘 Below Level Support</h4>
+                    <ul>
+                        <li>Pre-teach vocabulary with visuals</li>
+                        <li>Use graphic organizers for concepts</li>
+                        <li>Provide sentence starters for CER</li>
+                        <li>Pair with supportive partner</li>
+                        <li>Break tasks into smaller steps</li>
+                        <li>Allow extra time for processing</li>
+                        <li>Use manipulatives for abstract concepts</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-advanced">
+                    <h4>🚀 Advanced Learners</h4>
+                    <ul>
+                        <li>Extend investigations with new variables</li>
+                        <li>Research real-world applications</li>
+                        <li>Design original experiments</li>
+                        <li>Lead group discussions</li>
+                        <li>Create teaching materials for peers</li>
+                        <li>Explore advanced vocabulary</li>
+                        <li>Connect to engineering design challenges</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-ell">
+                    <h4>🌍 English Language Learners</h4>
+                    <ul>
+                        <li>Provide bilingual glossaries</li>
+                        <li>Use visual supports extensively</li>
+                        <li>Allow native language discussions</li>
+                        <li>Pre-teach key vocabulary</li>
+                        <li>Use real objects and demonstrations</li>
+                        <li>Provide sentence frames</li>
+                        <li>Partner with bilingual peers</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-iep">
+                    <h4>📋 IEP/504 Accommodations</h4>
+                    <ul>
+                        <li>Extended time for assignments and tests</li>
+                        <li>Preferential seating</li>
+                        <li>Reduced assignment length</li>
+                        <li>Alternative assessment formats</li>
+                        <li>Frequent breaks</li>
+                        <li>Assistive technology as needed</li>
+                        <li>Modified reading materials</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-visual">
+                    <h4>👁️ Visual Learners</h4>
+                    <ul>
+                        <li>Use diagrams, charts, and graphs</li>
+                        <li>Provide graphic organizers</li>
+                        <li>Show videos and animations</li>
+                        <li>Use color-coding systems</li>
+                        <li>Create anchor charts</li>
+                        <li>Include pictures in assessments</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-auditory">
+                    <h4>👂 Auditory Learners</h4>
+                    <ul>
+                        <li>Read aloud instructions</li>
+                        <li>Use songs and rhymes for vocabulary</li>
+                        <li>Allow verbal responses</li>
+                        <li>Partner discussions</li>
+                        <li>Oral presentations</li>
+                        <li>Audiobooks and podcasts</li>
+                    </ul>
+                </div>
+
+                <div class="diff-card diff-kinesthetic">
+                    <h4>✋ Kinesthetic Learners</h4>
+                    <ul>
+                        <li>Hands-on experiments and activities</li>
+                        <li>Movement breaks</li>
+                        <li>Role-play and simulations</li>
+                        <li>Manipulatives for concepts</li>
+                        <li>Gallery walks</li>
+                        <li>Building models and projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MISCONCEPTIONS TAB -->
+        <div id="misconceptions" class="tab-content">
+            <h2>💭 Common Misconceptions</h2>
+
+            <div class="unit-header forces">
+                <h3>⚡ Forces &amp; Motion Misconceptions</h3>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"Heavier objects fall faster than lighter objects."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>In a vacuum, all objects fall at the same rate regardless of mass. Air resistance makes lighter objects appear to fall slower.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Drop a book and a piece of paper separately, then put the paper on top of the book and drop together. The paper falls with the book because air resistance is eliminated.</p>
+                </div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"Objects need a constant force to keep moving."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>Objects in motion stay in motion unless a force (like friction) acts on them. Forces cause CHANGES in motion, not motion itself.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Discuss hockey pucks on ice - they slide far because there's little friction. Compare to a ball on carpet.</p>
+                </div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"All metals are magnetic."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>Only iron, nickel, and cobalt (and their alloys) are magnetic. Aluminum, copper, and gold are metals but not magnetic.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Test different metal objects with magnets. Pennies (copper/zinc) and aluminum foil won't attract!</p>
+                </div>
+            </div>
+
+            <div class="unit-header life">
+                <h3>🦋 Life Cycles &amp; Traits Misconceptions</h3>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"Caterpillars grow wings inside the chrysalis."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>The caterpillar's body is completely broken down and rebuilt into a butterfly. It's not just adding wings - it's total reconstruction!</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Compare caterpillar and butterfly body parts - different legs, different mouths, different eyes. Everything changes!</p>
+                </div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"You can 'learn' physical traits."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>Physical traits like eye color are determined by genes and cannot be changed through practice or learning.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Ask: "Can you practice to change your eye color? Can you learn to have curly hair?" vs. "Can you learn to read?"</p>
+                </div>
+            </div>
+
+            <div class="unit-header weather">
+                <h3>🌦️ Weather &amp; Climate Misconceptions</h3>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"Seasons are caused by Earth getting closer or farther from the sun."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>Seasons are caused by Earth's tilt on its axis, not distance from the sun. The hemisphere tilted toward the sun gets more direct rays.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Use a flashlight and globe to show how tilt affects the angle of light. Also note that Earth is actually closest to the sun during Northern Hemisphere winter!</p>
+                </div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="myth">
+                    <h4>❌ Misconception</h4>
+                    <p>"Weather and climate are the same thing."</p>
+                </div>
+                <div class="reality">
+                    <h4>✅ Reality</h4>
+                    <p>Weather is daily conditions; climate is the average weather over many years (30+). Weather can be rainy today in a desert climate.</p>
+                </div>
+                <div class="address">
+                    <h4>🔧 How to Address</h4>
+                    <p>Use the analogy: "Weather is your mood today; climate is your personality." Show weather data for one week vs. 30-year averages.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CULTURAL TAB -->
+        <div id="cultural" class="tab-content">
+            <h2>🌍 Cultural Connections &amp; Diverse Resources</h2>
+
+            <h3 style="color: var(--primary-teal);">🌎 Global Connections</h3>
+
+            <div class="cultural-card">
+                <h4>⚡ Forces &amp; Motion Around the World</h4>
+                <ul>
+                    <li><strong>Japan:</strong> Maglev trains use magnetic levitation for high-speed travel</li>
+                    <li><strong>Egypt:</strong> Ancient Egyptians used ramps and rollers to move massive stones for pyramids</li>
+                    <li><strong>China:</strong> Invented the magnetic compass for navigation</li>
+                    <li><strong>Brazil:</strong> Capoeira martial art demonstrates forces and momentum</li>
+                </ul>
+            </div>
+
+            <div class="cultural-card">
+                <h4>🦋 Life Cycles in Different Cultures</h4>
+                <ul>
+                    <li><strong>Mexico:</strong> Monarch butterfly migration celebrated in Día de los Muertos</li>
+                    <li><strong>Japan:</strong> Silkworm life cycle essential to silk production for centuries</li>
+                    <li><strong>Indigenous Cultures:</strong> Traditional ecological knowledge of local species life cycles</li>
+                    <li><strong>India:</strong> Sacred regard for certain animals and their life cycles</li>
+                </ul>
+            </div>
+
+            <div class="cultural-card">
+                <h4>🌦️ Weather &amp; Climate in Different Regions</h4>
+                <ul>
+                    <li><strong>Arctic Indigenous Peoples:</strong> Multiple words for different types of snow and ice</li>
+                    <li><strong>African Traditions:</strong> Rain dances and weather prediction through nature observation</li>
+                    <li><strong>Pacific Islands:</strong> Traditional navigation using clouds and weather patterns</li>
+                    <li><strong>South America:</strong> El Niño named by Peruvian fishermen observing climate patterns</li>
+                </ul>
+            </div>
+
+            <h3 style="color: var(--primary-purple); margin-top: 30px;">📚 Diverse Books List</h3>
+
+            <div class="info-box">
+                <h4>Recommended Diverse Science Books</h4>
+                <ul>
+                    <li><strong>"Ada Twist, Scientist"</strong> by Andrea Beaty - African American girl scientist</li>
+                    <li><strong>"The Boy Who Harnessed the Wind"</strong> by William Kamkwamba - True story from Malawi</li>
+                    <li><strong>"Rosie Revere, Engineer"</strong> by Andrea Beaty - Girl engineer solving problems</li>
+                    <li><strong>"Hidden Figures"</strong> (Young Readers Edition) - African American women mathematicians at NASA</li>
+                    <li><strong>"Celia Cruz, Queen of Salsa"</strong> - Cuban immigrant's life cycle</li>
+                    <li><strong>"Maria's Comet"</strong> - Maria Mitchell, first American female astronomer</li>
+                </ul>
+            </div>
+
+            <h3 style="color: var(--primary-green); margin-top: 30px;">👩‍🔬 Diverse Scientists</h3>
+
+            <div class="cultural-card">
+                <h4>Scientists to Feature in Lessons</h4>
+                <ul>
+                    <li><strong>Mae Jemison</strong> - First African American female astronaut</li>
+                    <li><strong>George Washington Carver</strong> - African American botanist and inventor</li>
+                    <li><strong>Chien-Shiung Wu</strong> - Chinese American physicist</li>
+                    <li><strong>Mario Molina</strong> - Mexican chemist, Nobel Prize winner for climate research</li>
+                    <li><strong>Maria Sibylla Merian</strong> - German naturalist who studied insect metamorphosis</li>
+                    <li><strong>Wangari Maathai</strong> - Kenyan environmentalist, Nobel Peace Prize winner</li>
+                    <li><strong>Ellen Ochoa</strong> - First Hispanic female astronaut</li>
+                    <li><strong>Percy Julian</strong> - African American chemist and pioneer in drug synthesis</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
