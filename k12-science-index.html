@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-12 Science Teacher Resources | Dr. Rebecca Cooper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ggc-green: #006747;
+            --ggc-green-light: #008a5e;
+            --ggc-green-lighter: #00a86b;
+            --gray: #6b7280;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --cream: #fdfbf7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--ggc-green) 0%, var(--ggc-green-light) 50%, var(--ggc-green-lighter) 100%);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--ggc-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ggc-green), var(--ggc-green-lighter));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Grade Cards Grid */
+        .grade-section {
+            margin-bottom: 3rem;
+        }
+
+        .grade-section h3 {
+            font-size: 1.3rem;
+            color: var(--ggc-green);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ggc-green-lighter);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-grade {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ggc-green);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            flex-grow: 1;
+        }
+
+        .card-arrow {
+            color: var(--ggc-green);
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--ggc-green-lighter);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔬 K-12 Science Teacher Resources</h1>
+        <p>Comprehensive resource hubs for science educators featuring lesson plans, labs, assessments, and cultural connections aligned with state and national standards.</p>
+        <a href="https://rcooper2005.github.io/Rebecca-Cooper-/" class="back-link">← Back to Dr. Cooper's Website</a>
+    </header>
+
+    <main>
+        <!-- Elementary School -->
+        <section class="grade-section">
+            <h3>📚 Elementary School (K-5)</h3>
+            <div class="cards-grid">
+                <a href="kindergarten.html" class="card">
+                    <div class="card-icon">🌱</div>
+                    <div class="card-grade">Grade K</div>
+                    <h4>Kindergarten Science</h4>
+                    <p>Foundational science concepts and activities designed for our youngest learners.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="grade1.html" class="card">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-grade">Grade 1</div>
+                    <h4>Grade 1 Science</h4>
+                    <p>First grade science resources building on early exploration and discovery.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="grade2-science-hub.html" class="card">
+                    <div class="card-icon">🦋</div>
+                    <div class="card-grade">Grade 2</div>
+                    <h4>Grade 2 Science</h4>
+                    <p>Second grade science resources exploring life cycles, matter, and weather.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="grade3-science-hub.html" class="card">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-grade">Grade 3</div>
+                    <h4>Grade 3 Science</h4>
+                    <p>Third grade science curriculum introducing scientific inquiry and investigation.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="grade4-science-hub.html" class="card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-grade">Grade 4</div>
+                    <h4>Grade 4 Science</h4>
+                    <p>Fourth grade science curriculum resources and hands-on activities.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="grade5_science_hub.html" class="card">
+                    <div class="card-icon">🌍</div>
+                    <div class="card-grade">Grade 5</div>
+                    <h4>Grade 5 Science</h4>
+                    <p>Fifth grade science resources preparing students for middle school.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Middle School -->
+        <section class="grade-section">
+            <h3>🧪 Middle School (6-8)</h3>
+            <div class="cards-grid">
+                <a href="earth-space-science-hub.html" class="card">
+                    <div class="card-icon">🌍</div>
+                    <div class="card-grade">Grade 6</div>
+                    <h4>Earth & Space Science</h4>
+                    <p>Exploring Earth systems, weather, climate, and our place in the universe.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="life-science-hub.html" class="card">
+                    <div class="card-icon">🧬</div>
+                    <div class="card-grade">Grade 7</div>
+                    <h4>Life Science</h4>
+                    <p>Comprehensive life science resources covering biology and living systems.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="8th-grade-physical-science-hub.html" class="card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-grade">Grade 8</div>
+                    <h4>Physical Science</h4>
+                    <p>Introduction to physics and chemistry concepts for 8th graders.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- High School -->
+        <section class="grade-section">
+            <h3>🎓 High School (9-11)</h3>
+            <div class="cards-grid">
+                <a href="9th-Grade-Biology-Resource-Hub.html" class="card">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-grade">Grade 9</div>
+                    <h4>Biology</h4>
+                    <p>Comprehensive biology curriculum covering cells, genetics, evolution, and ecology.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="chemistry-hub.html" class="card">
+                    <div class="card-icon">⚗️</div>
+                    <div class="card-grade">Grade 10</div>
+                    <h4>Chemistry</h4>
+                    <p>Chemistry resources including atomic structure, reactions, and stoichiometry.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="physics-teacher-hub.html" class="card">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-grade">Grade 11</div>
+                    <h4>Physics</h4>
+                    <p>Physics resources including mechanics, energy, waves, and more.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- AP Courses -->
+        <section class="grade-section">
+            <h3>⭐ AP Courses</h3>
+            <div class="cards-grid">
+                <a href="ap_biology_resource_hub.html" class="card">
+                    <div class="card-icon">🧬</div>
+                    <div class="card-grade">AP Course</div>
+                    <h4>AP Biology</h4>
+                    <p>Advanced Placement Biology resources for college-level study.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="ap_chemistry_resource_hub.html" class="card">
+                    <div class="card-icon">⚗️</div>
+                    <div class="card-grade">AP Course</div>
+                    <h4>AP Chemistry</h4>
+                    <p>Advanced Placement Chemistry resources and exam preparation.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="APphysics-resource-hub%20(2).html" class="card">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-grade">AP Course</div>
+                    <h4>AP Physics</h4>
+                    <p>Advanced Placement Physics resources for AP Physics 1, 2, and C.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+                <a href="ap-environmental-science-hub.html" class="card">
+                    <div class="card-icon">🌿</div>
+                    <div class="card-grade">AP Course</div>
+                    <h4>AP Environmental Science</h4>
+                    <p>Advanced Placement Environmental Science resources and labs.</p>
+                    <div class="card-arrow">Explore →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Standards Info -->
+        <section style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+            <h3 style="color: var(--ggc-green); margin-bottom: 1rem;">📋 Standards Alignment</h3>
+            <p style="color: var(--gray); max-width: 600px; margin: 0 auto 1rem;">All resources are aligned with state and national standards to ensure comprehensive coverage of required content.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
+                <span style="background: linear-gradient(135deg, var(--ggc-green), var(--ggc-green-lighter)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">NGSS Aligned</span>
+                <span style="background: linear-gradient(135deg, var(--ggc-green), var(--ggc-green-lighter)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Georgia Standards of Excellence</span>
+                <span style="background: linear-gradient(135deg, var(--ggc-green), var(--ggc-green-lighter)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">AKS Aligned</span>
+                <span style="background: linear-gradient(135deg, var(--ggc-green), var(--ggc-green-lighter)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">5E Lesson Plans</span>
+                <span style="background: linear-gradient(135deg, var(--ggc-green), var(--ggc-green-lighter)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">CER Framework</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by <a href="https://rcooper2005.github.io/Rebecca-Cooper-/">Dr. Rebecca Cooper</a> | Georgia Gwinnett College</p>
+        <p style="margin-top: 0.5rem;"><a href="https://github.com/rcooper2005/K-12-Science-Teacher-Resources">View on GitHub</a></p>
+    </footer>
+</body>
+</html>
