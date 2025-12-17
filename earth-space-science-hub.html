@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 Earth & Space Science Teacher Resource Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #6B5B95;
+            --primary-blue: #4A90D9;
+            --accent-teal: #45B7AA;
+            --accent-orange: #F5A623;
+            --accent-coral: #E85A71;
+            --accent-green: #5CB85C;
+            --box-blue: #E3F2FD;
+            --box-yellow: #FFF9E6;
+            --box-green: #E8F5E9;
+            --box-purple: #F3E5F5;
+            --box-red: #FFEBEE;
+            --box-orange: #FFF3E0;
+            --box-teal: #E0F7FA;
+            --text-dark: #2C3E50;
+            --text-medium: #546E7A;
+            --bg-light: #F8FAFC;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 50%, var(--accent-teal) 100%); color: white; padding: 2rem; text-align: center; }
+        .header h1 { font-family: 'Fredoka One', cursive; font-size: 2.8rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .header p { font-size: 1.2rem; opacity: 0.95; }
+        .header-icons { font-size: 2rem; margin-top: 1rem; }
+        .nav-container { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; max-width: 1400px; margin: 0 auto; padding: 0.5rem; gap: 0.25rem; }
+        .nav-tab { padding: 0.6rem 1rem; border: none; background: transparent; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-medium); border-radius: 25px; transition: all 0.3s ease; white-space: nowrap; }
+        .nav-tab:hover { background: var(--box-purple); color: var(--primary-purple); }
+        .nav-tab.active { background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); color: white; box-shadow: 0 2px 8px rgba(107, 91, 149, 0.4); }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-header { font-family: 'Fredoka One', cursive; font-size: 2rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 4px solid var(--primary-purple); }
+        .unit-header { font-family: 'Fredoka One', cursive; font-size: 1.5rem; padding: 1rem 1.5rem; border-radius: 10px; margin: 2rem 0 1rem 0; color: white; }
+        .unit-header.earth { background: linear-gradient(135deg, #8B4513, #CD853F); }
+        .unit-header.weather { background: linear-gradient(135deg, #87CEEB, #1E90FF); }
+        .unit-header.ocean { background: linear-gradient(135deg, #006994, #00CED1); }
+        .unit-header.space { background: linear-gradient(135deg, #1a1a2e, #0f3460); }
+        .content-box { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 5px solid; }
+        .box-blue { background: var(--box-blue); border-color: var(--primary-blue); }
+        .box-yellow { background: var(--box-yellow); border-color: var(--accent-orange); }
+        .box-green { background: var(--box-green); border-color: var(--accent-green); }
+        .box-purple { background: var(--box-purple); border-color: var(--primary-purple); }
+        .box-red { background: var(--box-red); border-color: var(--accent-coral); }
+        .box-orange { background: var(--box-orange); border-color: var(--accent-orange); }
+        .box-teal { background: var(--box-teal); border-color: var(--accent-teal); }
+        .box-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 3px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0,0,0,0.12); }
+        .card-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-purple); }
+        .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .data-table th { background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); color: white; padding: 1rem; text-align: left; font-weight: 700; }
+        .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; }
+        .data-table tr:nth-child(even) { background: var(--bg-light); }
+        .data-table tr:hover { background: var(--box-blue); }
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        a { color: var(--primary-blue); text-decoration: none; }
+        a:hover { color: var(--primary-purple); text-decoration: underline; }
+        .vocab-term { display: inline-block; background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-right: 0.5rem; }
+        .question { background: white; padding: 1.25rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .question-number { display: inline-block; background: var(--primary-purple); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; margin-right: 0.75rem; }
+        .answer-choices { margin-left: 2.5rem; margin-top: 0.75rem; }
+        .answer-choices div { padding: 0.25rem 0; }
+        .procedure-step { display: flex; align-items: flex-start; margin-bottom: 1rem; padding: 0.75rem; background: white; border-radius: 8px; }
+        .step-number { background: var(--accent-teal); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 1rem; flex-shrink: 0; }
+        .misconception-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 1.5rem; }
+        .misconception-wrong { background: var(--box-red); padding: 1rem 1.5rem; border-left: 5px solid var(--accent-coral); }
+        .misconception-right { background: var(--box-green); padding: 1rem 1.5rem; border-left: 5px solid var(--accent-green); }
+        .printable { border: 2px dashed var(--text-medium); padding: 1.5rem; margin: 1rem 0; background: white; }
+        .printable-title { font-family: 'Fredoka One', cursive; text-align: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--text-dark); }
+        .cer-box { display: grid; grid-template-columns: 100px 1fr; gap: 0; margin: 1rem 0; border-radius: 10px; overflow: hidden; }
+        .cer-label { padding: 1rem; color: white; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .cer-claim { background: var(--accent-coral); }
+        .cer-evidence { background: var(--primary-blue); }
+        .cer-reasoning { background: var(--accent-green); }
+        .cer-content { padding: 1rem; background: white; border: 2px solid; }
+        .cer-content.claim-border { border-color: var(--accent-coral); }
+        .cer-content.evidence-border { border-color: var(--primary-blue); }
+        .cer-content.reasoning-border { border-color: var(--accent-green); }
+        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .badge-earth { background: #DEB887; color: #5D4037; }
+        .badge-weather { background: #87CEEB; color: #1565C0; }
+        .badge-ocean { background: #40E0D0; color: #00695C; }
+        .badge-space { background: #7B68EE; color: white; }
+        .scientist-card { display: flex; gap: 1.5rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 1.5rem; }
+        .scientist-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+        .scientist-info h4 { font-family: 'Fredoka One', cursive; color: var(--primary-purple); margin-bottom: 0.25rem; }
+        .scientist-info .dates { color: var(--text-medium); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .video-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 1rem; }
+        .video-title { font-weight: 700; color: var(--primary-purple); margin-bottom: 0.5rem; }
+        .video-meta { font-size: 0.85rem; color: var(--text-medium); margin-bottom: 0.75rem; }
+        .phase-tag { display: inline-block; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .engage { background: #FFE082; color: #F57F17; }
+        .explore { background: #A5D6A7; color: #2E7D32; }
+        .explain { background: #90CAF9; color: #1565C0; }
+        .elaborate { background: #CE93D8; color: #7B1FA2; }
+        .evaluate { background: #EF9A9A; color: #C62828; }
+        .collapsible { background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); color: white; cursor: pointer; padding: 1rem 1.5rem; width: 100%; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 1.1rem; border-radius: 10px; margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .collapsible:hover { background: linear-gradient(135deg, #5a4a84, #3a7fc9); }
+        .collapsible::after { content: '+'; font-size: 1.5rem; }
+        .collapsible.active::after { content: '−'; }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: white; border-radius: 0 0 10px 10px; }
+        .collapsible-content.show { max-height: 5000px; padding: 1.5rem; border: 2px solid var(--primary-purple); border-top: none; }
+        .highlight { background: linear-gradient(120deg, #ffd700 0%, #ffd700 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 90%; }
+        @media print { .nav-container { display: none; } .tab-content { display: block !important; page-break-before: always; } }
+        @media (max-width: 768px) { .header h1 { font-size: 1.8rem; } .nav-tab { padding: 0.5rem 0.75rem; font-size: 0.75rem; } .main-content { padding: 1rem; } .cards-grid { grid-template-columns: 1fr; } .scientist-card { flex-direction: column; } }
+        footer { background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue)); color: white; text-align: center; padding: 2rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🌍 Grade 6 Earth & Space Science 🚀</h1>
+        <p>Teacher Resource Hub • Complete Curriculum Guide</p>
+        <div class="header-icons">🌋 ☁️ 🌊 🌙</div>
+    </header>
+    <nav class="nav-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="openTab(event, 'standards')">📋 Standards</button>
+            <button class="nav-tab" onclick="openTab(event, 'background')">📚 Teacher Background</button>
+            <button class="nav-tab" onclick="openTab(event, 'labs')">🔬 Labs & CER</button>
+            <button class="nav-tab" onclick="openTab(event, 'lessons')">📝 5E Lessons</button>
+            <button class="nav-tab" onclick="openTab(event, 'videos')">🎬 Videos</button>
+            <button class="nav-tab" onclick="openTab(event, 'articles')">📰 Articles</button>
+            <button class="nav-tab" onclick="openTab(event, 'assessments')">✅ Assessments</button>
+            <button class="nav-tab" onclick="openTab(event, 'printables')">🖨️ Printables</button>
+            <button class="nav-tab" onclick="openTab(event, 'vocabulary')">📖 Vocabulary</button>
+            <button class="nav-tab" onclick="openTab(event, 'games')">🎮 Games</button>
+            <button class="nav-tab" onclick="openTab(event, 'safety')">⚠️ Safety</button>
+            <button class="nav-tab" onclick="openTab(event, 'differentiation')">🎯 Differentiation</button>
+            <button class="nav-tab" onclick="openTab(event, 'misconceptions')">❌ Misconceptions</button>
+            <button class="nav-tab" onclick="openTab(event, 'cultural')">🌐 Cultural</button>
+        </div>
+    </nav>
+    <main class="main-content">
+        <!-- TAB 1: STANDARDS -->
+        <section id="standards" class="tab-content active">
+            <h2 class="section-header">📋 Standards Alignment</h2>
+            <div class="content-box box-blue">
+                <div class="box-title">🎯 Overview</div>
+                <p>This curriculum aligns with <strong style="color:#1E40AF;">NGSS</strong> (Next Generation Science Standards), <strong style="color:#991B1B;">GSE</strong> (Georgia Standards of Excellence), and <strong style="color:#065F46;">AKS</strong> (Gwinnett County Academic Knowledge and Skills) for Middle School Earth and Space Science.</p>
+            </div>
+            <h3 class="unit-header earth">🌋 Unit 1: Earth's Structure & Processes</h3>
+            <div class="content-box box-purple">
+                <div class="box-title">Georgia GSE: S6E5</div>
+                <p><strong>S6E5. Obtain, evaluate, and communicate information to show how Earth's surface is formed.</strong></p>
+                <ul>
+                    <li><strong>S6E5.a</strong> - Compare and contrast the Earth's crust, mantle, inner and outer cores</li>
+                    <li><strong>S6E5.b</strong> - Investigate the contribution of minerals to rock composition</li>
+                    <li><strong>S6E5.c</strong> - Classify rocks by their process of formation</li>
+                    <li><strong>S6E5.d</strong> - Describe processes that change rocks and Earth's surface</li>
+                    <li><strong>S6E5.e</strong> - Recognize that lithospheric plates constantly move</li>
+                </ul>
+            </div>
+            <div class="content-box box-green">
+                <div class="box-title">NGSS: MS-ESS2 Earth's Systems</div>
+                <p><strong>MS-ESS2-1:</strong> Develop a model to describe the cycling of Earth's materials and the flow of energy that drives this process.</p>
+                <p><strong>MS-ESS2-2:</strong> Construct an explanation for how geoscience processes have changed Earth's surface.</p>
+                <p><strong>MS-ESS2-3:</strong> Analyze and interpret data on the distribution of fossils and rocks to provide evidence of past plate motions.</p>
+            </div>
+            <h3 class="unit-header weather">☁️ Unit 2: Weather & Climate</h3>
+            <div class="content-box box-purple">
+                <div class="box-title">Georgia GSE: S6E4</div>
+                <p><strong>S6E4. Obtain, evaluate, and communicate information about how the sun, land, and water affect climate and weather.</strong></p>
+                <ul>
+                    <li><strong>S6E4.a</strong> - Analyze data to compare atmospheric layers</li>
+                    <li><strong>S6E4.b</strong> - Investigate how temperature, pressure, and density affect weather</li>
+                    <li><strong>S6E4.c</strong> - Construct arguments about air masses and weather patterns</li>
+                    <li><strong>S6E4.d</strong> - Explain the relationship between air pressure, fronts, and weather</li>
+                    <li><strong>S6E4.e</strong> - Analyze weather data to explain differences between weather and climate</li>
+                </ul>
+            </div>
+            <h3 class="unit-header ocean">🌊 Unit 3: Oceanography</h3>
+            <div class="content-box box-purple">
+                <div class="box-title">Georgia GSE: S6E3</div>
+                <p><strong>S6E3. Obtain, evaluate, and communicate information to recognize the significant role of water in Earth processes.</strong></p>
+                <ul>
+                    <li><strong>S6E3.a</strong> - Determine where water is located on Earth's surface</li>
+                    <li><strong>S6E3.b</strong> - Investigate water cycle components</li>
+                    <li><strong>S6E3.c</strong> - Explain how ocean physical features affect life</li>
+                    <li><strong>S6E3.d</strong> - Model ocean circulation patterns and effects on climate</li>
+                </ul>
+            </div>
+            <h3 class="unit-header space">🌙 Unit 4: Space Systems</h3>
+            <div class="content-box box-purple">
+                <div class="box-title">Georgia GSE: S6E1 & S6E2</div>
+                <p><strong>S6E1. Obtain, evaluate, and communicate information about current scientific views of the universe.</strong></p>
+                <ul>
+                    <li><strong>S6E1.a</strong> - Compare and contrast planets in our solar system</li>
+                    <li><strong>S6E1.b</strong> - Model Earth and solar system position in the Milky Way</li>
+                </ul>
+                <p><strong>S6E2. Obtain, evaluate, and communicate information about the effects of the relative positions of the sun, Earth, and moon.</strong></p>
+                <ul>
+                    <li><strong>S6E2.a</strong> - Model effects of sun, Earth, and moon positions</li>
+                    <li><strong>S6E2.b</strong> - Explain causes of solar and lunar eclipses</li>
+                    <li><strong>S6E2.c</strong> - Relate tides to the gravitational pull of the moon</li>
+                </ul>
+            </div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4);">🔧 Science & Engineering Practices (SEPs)</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">Asking Questions</div><p>Students formulate testable questions about Earth processes, weather patterns, ocean systems, and space phenomena.</p></div>
+                <div class="card"><div class="card-title">Developing Models</div><p>Create physical and conceptual models of plate tectonics, the water cycle, Earth-Moon-Sun relationships.</p></div>
+                <div class="card"><div class="card-title">Planning Investigations</div><p>Design fair tests to explore convection, density, pressure, and rock formation processes.</p></div>
+                <div class="card"><div class="card-title">Analyzing Data</div><p>Interpret weather maps, seismic data, ocean current charts, and astronomical observations.</p></div>
+                <div class="card"><div class="card-title">Constructing Explanations</div><p>Use evidence to explain geological events, weather patterns, tides, and lunar phases using CER.</p></div>
+                <div class="card"><div class="card-title">Engaging in Argument</div><p>Support claims about Earth processes using evidence from investigations and observations.</p></div>
+            </div>
+            <h3 class="unit-header weather" style="background: linear-gradient(135deg, #667eea, #764ba2);">🔗 Cross-Cutting Concepts (CCCs)</h3>
+            <table class="data-table">
+                <thead><tr><th>Concept</th><th>Application in Earth & Space Science</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Patterns</strong></td><td>Weather patterns, plate boundary distributions, lunar phase cycles, tidal patterns</td></tr>
+                    <tr><td><strong>Cause and Effect</strong></td><td>Plate movement causes earthquakes; Moon's gravity causes tides; unequal heating causes wind</td></tr>
+                    <tr><td><strong>Scale, Proportion, Quantity</strong></td><td>Distances in space, geologic time, atmospheric layer heights, ocean depths</td></tr>
+                    <tr><td><strong>Systems and Models</strong></td><td>Earth as a system, water cycle, Earth-Moon-Sun system, rock cycle</td></tr>
+                    <tr><td><strong>Energy and Matter</strong></td><td>Convection in mantle, heat transfer in atmosphere, energy from sun driving weather</td></tr>
+                    <tr><td><strong>Structure and Function</strong></td><td>Earth's layers, atmospheric layers, ocean zones, types of plate boundaries</td></tr>
+                </tbody>
+            </table>
+            
+            <h3 class="unit-header" style="background: linear-gradient(135deg, #10b981, #059669);">📋 AKS Standards (Gwinnett County Academic Knowledge and Skills)</h3>
+            <div class="content-box box-green">
+                <p>Gwinnett County AKS standards for 6th Grade Earth & Space Science align with GSE standards:</p>
+                <ul>
+                    <li><strong>S6E5:</strong> Earth's Surface Formation - crust, mantle, core, minerals, rocks, plate tectonics</li>
+                    <li><strong>S6E4:</strong> Weather & Climate - atmosphere, temperature, pressure, air masses, fronts</li>
+                    <li><strong>S6E3:</strong> Water in Earth Processes - water cycle, watersheds, ocean currents, tides</li>
+                    <li><strong>S6E1:</strong> Earth, Moon, Sun System - rotation, revolution, phases, eclipses, seasons</li>
+                </ul>
+            </div>
+        </section>
+        <!-- TAB 2: TEACHER BACKGROUND -->
+        <section id="background" class="tab-content">
+            <h2 class="section-header">📚 Teacher Background Knowledge</h2>
+            <div class="content-box box-blue"><div class="box-title">💡 Purpose</div><p>This section provides essential content knowledge for each unit to help teachers confidently deliver instruction and answer student questions.</p></div>
+            <h3 class="unit-header earth">🌋 Unit 1: Earth's Structure & Plate Tectonics</h3>
+            <button class="collapsible">Earth's Internal Structure</button>
+            <div class="collapsible-content">
+                <h4>The Four Main Layers:</h4>
+                <p><strong>Inner Core:</strong> Approximately 1,220 km radius. Solid iron and nickel. Temperatures 5,000-6,000°C. Generates Earth's magnetic field.</p>
+                <p><strong>Outer Core:</strong> Liquid layer about 2,180 km thick. Molten iron and nickel at 4,000-5,000°C. Creates the magnetic field through convection.</p>
+                <p><strong>Mantle:</strong> Thickest layer at about 2,900 km. Contains the asthenosphere—a partially molten layer that allows plates to move.</p>
+                <p><strong>Crust:</strong> Thin outer shell (5-70 km). Two types: oceanic (thinner, denser) and continental (thicker, less dense).</p>
+                <p><strong>Key Teaching Point:</strong> Use the peach analogy: skin = crust, flesh = mantle, pit = core.</p>
+            </div>
+            <button class="collapsible">Plate Tectonics Theory</button>
+            <div class="collapsible-content">
+                <h4>Historical Development:</h4>
+                <p>Alfred Wegener proposed continental drift in 1912. He was rejected because he couldn't explain HOW continents moved. In the 1960s, seafloor spreading provided the mechanism.</p>
+                <h4>Three Types of Plate Boundaries:</h4>
+                <p><strong>Divergent:</strong> Plates move apart. Mid-ocean ridges, rift valleys. Example: Mid-Atlantic Ridge.</p>
+                <p><strong>Convergent:</strong> Plates collide. Subduction zones, mountains, volcanic arcs. Example: Himalayas, Andes.</p>
+                <p><strong>Transform:</strong> Plates slide past each other. Earthquakes, no volcanoes. Example: San Andreas Fault.</p>
+            </div>
+            <button class="collapsible">Rock Cycle & Minerals</button>
+            <div class="collapsible-content">
+                <h4>Three Rock Types:</h4>
+                <p><strong>Igneous:</strong> Formed from cooled magma/lava. Intrusive (granite) or extrusive (basalt).</p>
+                <p><strong>Sedimentary:</strong> Formed from weathered fragments. Deposited in layers. Often contains fossils.</p>
+                <p><strong>Metamorphic:</strong> Transformed by heat and pressure without melting. Marble from limestone, slate from shale.</p>
+            </div>
+            <h3 class="unit-header weather">☁️ Unit 2: Weather & Climate</h3>
+            <button class="collapsible">Atmospheric Layers</button>
+            <div class="collapsible-content">
+                <p><strong>Troposphere (0-12 km):</strong> Where weather occurs. Contains 75% of atmospheric mass. Temperature decreases with altitude.</p>
+                <p><strong>Stratosphere (12-50 km):</strong> Contains the ozone layer. Temperature increases due to UV absorption.</p>
+                <p><strong>Mesosphere (50-80 km):</strong> Temperature decreases. Meteors burn up here. Coldest layer.</p>
+                <p><strong>Thermosphere (80-700 km):</strong> Temperature increases dramatically. Aurora occurs here. ISS orbits here.</p>
+            </div>
+            <button class="collapsible">Weather vs. Climate</button>
+            <div class="collapsible-content">
+                <p><strong>Weather:</strong> Short-term atmospheric conditions at a specific time and place.</p>
+                <p><strong>Climate:</strong> Long-term average weather patterns for a region over 30+ years.</p>
+                <p><strong>Memory Aid:</strong> "Climate is what you expect; weather is what you get."</p>
+                <h4>Air Pressure and Weather:</h4>
+                <p><strong>High Pressure:</strong> Sinking air = clear skies, fair weather.</p>
+                <p><strong>Low Pressure:</strong> Rising air = clouds, precipitation.</p>
+            </div>
+            <h3 class="unit-header ocean">🌊 Unit 3: Oceanography</h3>
+            <button class="collapsible">Ocean Structure & Currents</button>
+            <div class="collapsible-content">
+                <h4>Ocean Zones by Depth:</h4>
+                <p><strong>Epipelagic/Sunlight Zone (0-200m):</strong> Light penetrates, photosynthesis occurs.</p>
+                <p><strong>Mesopelagic/Twilight Zone (200-1000m):</strong> Dim light, bioluminescent organisms.</p>
+                <p><strong>Bathypelagic/Midnight Zone (1000-4000m):</strong> No light, cold, high pressure.</p>
+                <h4>Ocean Currents:</h4>
+                <p><strong>Surface Currents:</strong> Driven by wind and Coriolis effect. Example: Gulf Stream.</p>
+                <p><strong>Deep Currents:</strong> Driven by density (temperature and salinity). Called "global conveyor belt."</p>
+            </div>
+            <button class="collapsible">Tides</button>
+            <div class="collapsible-content">
+                <p><strong>Causes:</strong> Gravitational pull of Moon (primary) and Sun on Earth's waters.</p>
+                <p><strong>Spring Tides:</strong> Sun, Moon, Earth aligned (new/full moon). Highest highs, lowest lows.</p>
+                <p><strong>Neap Tides:</strong> Sun and Moon at right angles (quarter moons). Moderate tides.</p>
+                <p><strong>Why Two High Tides Daily?</strong> One bulge faces the Moon (gravity pull), another on opposite side (inertia).</p>
+            </div>
+            <h3 class="unit-header space">🌙 Unit 4: Space Systems</h3>
+            <button class="collapsible">Earth-Moon-Sun System</button>
+            <div class="collapsible-content">
+                <h4>Lunar Phases:</h4>
+                <p>The Moon takes ~29.5 days to complete one cycle. We see different amounts of the sunlit half.</p>
+                <p><strong>Phase Sequence:</strong> New Moon → Waxing Crescent → First Quarter → Waxing Gibbous → Full Moon → Waning Gibbous → Third Quarter → Waning Crescent</p>
+                <h4>Eclipses:</h4>
+                <p><strong>Solar Eclipse:</strong> Moon between Sun and Earth. Occurs only during New Moon.</p>
+                <p><strong>Lunar Eclipse:</strong> Earth between Sun and Moon. Occurs only during Full Moon.</p>
+                <p><strong>Why Not Every Month?</strong> Moon's orbit is tilted ~5°. Eclipses only occur when Moon crosses the orbital plane.</p>
+            </div>
+        </section>
+        <!-- TAB 3: LABS & CER -->
+        <section id="labs" class="tab-content">
+            <h2 class="section-header">🔬 Labs & CER Investigations</h2>
+            <div class="content-box box-yellow">
+                <div class="box-title">📝 CER Framework Overview</div>
+                <p><strong>Claim:</strong> A statement that answers the scientific question.</p>
+                <p><strong>Evidence:</strong> Scientific data that supports the claim.</p>
+                <p><strong>Reasoning:</strong> Explains WHY the evidence supports the claim using scientific principles.</p>
+            </div>
+            <h3 class="unit-header earth">🌋 Lab 1: Plate Boundary Modeling</h3>
+            <div class="content-box box-blue"><div class="box-title">🎯 Objectives</div><ul><li>Model the three types of plate boundaries</li><li>Predict geological features formed at each boundary type</li><li>Connect plate movement to real-world geological events</li></ul></div>
+            <div class="content-box box-green"><div class="box-title">📦 Materials (per group)</div><ul><li>4 graham cracker halves</li><li>1 cup vanilla frosting (represents asthenosphere)</li><li>Small cup of water</li><li>Paper plate, plastic knife</li></ul></div>
+            <div class="content-box box-purple"><div class="box-title">📋 Procedure</div>
+                <div class="procedure-step"><span class="step-number">1</span><span>Spread thick frosting on paper plate (asthenosphere).</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span><strong>Divergent:</strong> Push two crackers apart. Observe frosting "oozing" up (seafloor spreading).</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span><strong>Convergent (Ocean-Continental):</strong> Dip one cracker in water (denser). Push together. Wet slides under (subduction).</span></div>
+                <div class="procedure-step"><span class="step-number">4</span><span><strong>Convergent (Continental):</strong> Push two dry crackers together. Observe crumpling (mountain building).</span></div>
+                <div class="procedure-step"><span class="step-number">5</span><span><strong>Transform:</strong> Slide two crackers past each other (San Andreas Fault).</span></div>
+            </div>
+            <div class="content-box box-yellow"><div class="box-title">📝 CER Prompt</div>
+                <p><strong>Question:</strong> How do plate movements at different boundary types create different geological features?</p>
+                <div class="cer-box"><div class="cer-label cer-claim">CLAIM</div><div class="cer-content claim-border">Different plate boundary types create distinct geological features based on how plates move.</div></div>
+                <div class="cer-box"><div class="cer-label cer-evidence">EVIDENCE</div><div class="cer-content evidence-border">At divergent boundaries, frosting oozed up. At convergent boundaries, wet cracker subducted or dry crackers crumpled. At transform, crackers scraped.</div></div>
+                <div class="cer-box"><div class="cer-label cer-reasoning">REASONING</div><div class="cer-content reasoning-border">The frosting models magma rising at ridges. Subduction occurs because oceanic crust is denser. Continental collision creates mountains. Transform causes earthquakes.</div></div>
+            </div>
+            <h3 class="unit-header earth">🖍️ Lab 2: Rock Cycle Crayon Lab</h3>
+            <div class="content-box box-green"><div class="box-title">📦 Materials</div><ul><li>3 different colored crayons (paper removed)</li><li>Pencil sharpener or plastic knife</li><li>Aluminum foil, heavy book</li><li>Cup of hot water, safety goggles</li></ul></div>
+            <div class="content-box box-purple"><div class="box-title">📋 Procedure</div>
+                <div class="procedure-step"><span class="step-number">1</span><span><strong>Create "Sediments":</strong> Shave crayons into small pieces. Mix colors.</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span><strong>"Sedimentary Rock":</strong> Press shavings in foil with book. Colors still visible!</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span><strong>"Metamorphic Rock":</strong> Place on hot water, apply pressure. Colors begin blending.</span></div>
+                <div class="procedure-step"><span class="step-number">4</span><span><strong>"Igneous Rock":</strong> Teacher melts completely. Solid rock with fully blended colors.</span></div>
+            </div>
+            <h3 class="unit-header weather">🎈 Lab 3: Air Pressure Demonstrations</h3>
+            <div class="content-box box-purple"><div class="box-title">📋 Demo 1: Crushing Can</div>
+                <div class="procedure-step"><span class="step-number">1</span><span>Add 1-2 tbsp water to empty soda can.</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span>Heat until steam escapes (2 minutes).</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span>Using tongs, flip into ice water. Can crushes instantly!</span></div>
+            </div>
+            <h3 class="unit-header ocean">🌊 Lab 4: Ocean Current Simulation</h3>
+            <div class="content-box box-green"><div class="box-title">📦 Materials</div><ul><li>Clear rectangular container</li><li>Room temperature water</li><li>Red and blue food coloring</li><li>Hot water with red dye, ice water with blue dye</li></ul></div>
+            <div class="content-box box-purple"><div class="box-title">📋 Procedure</div>
+                <div class="procedure-step"><span class="step-number">1</span><span>Fill container with room temperature water. Let settle.</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span>Add cold blue water at one end near bottom with dropper.</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span>Add hot red water at opposite end near surface.</span></div>
+                <div class="procedure-step"><span class="step-number">4</span><span>Observe: Cold sinks and spreads; hot rises and spreads. Convection!</span></div>
+            </div>
+            <h3 class="unit-header space">🌙 Lab 5: Moon Phases with Oreos</h3>
+            <div class="content-box box-green"><div class="box-title">📦 Materials (per student)</div><ul><li>8 Oreo cookies</li><li>Plastic knife, paper plate</li><li>Moon phases diagram</li></ul></div>
+            <div class="content-box box-purple"><div class="box-title">📋 Procedure</div>
+                <div class="procedure-step"><span class="step-number">1</span><span>Twist apart each Oreo so cream stays on one side.</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span>Shape cream to match each phase: New (no cream), crescent, quarter (half), gibbous, full.</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span>Arrange in circle in correct order. Label each phase.</span></div>
+            </div>
+            <h3 class="unit-header weather">🧪 Lab 6: Density Layers</h3>
+            <div class="content-box box-green"><div class="box-title">📦 Materials</div><ul><li>Tall clear glass</li><li>Honey, corn syrup, dish soap, water, vegetable oil, rubbing alcohol</li><li>Small objects: grape, cork, bolt</li></ul></div>
+            <div class="content-box box-purple"><div class="box-title">📋 Procedure</div>
+                <div class="procedure-step"><span class="step-number">1</span><span>Slowly pour each liquid in order: honey, corn syrup, soap, water, oil, alcohol.</span></div>
+                <div class="procedure-step"><span class="step-number">2</span><span>Allow layers to settle (2-3 minutes).</span></div>
+                <div class="procedure-step"><span class="step-number">3</span><span>Drop small objects. Observe where each settles.</span></div>
+                <div class="procedure-step"><span class="step-number">4</span><span>Connect to atmospheric and ocean layers.</span></div>
+            </div>
+        </section>
+        <!-- TAB 4: 5E LESSONS -->
+        <section id="lessons" class="tab-content">
+            <h2 class="section-header">📝 5E Model Lesson Plans</h2>
+            <div class="content-box box-blue"><div class="box-title">ℹ️ About the 5E Model</div><p>The 5E instructional model promotes active learning: Engage, Explore, Explain, Elaborate, Evaluate.</p></div>
+            <h3 class="unit-header earth">🌋 Lesson 1: Plate Tectonics & Continental Drift</h3>
+            <div class="card"><div class="card-title">📅 Lesson Overview</div><p><strong>Duration:</strong> 3-4 class periods | <strong>Standards:</strong> S6E5.e, MS-ESS2-3</p><p><strong>Essential Question:</strong> What evidence supports the theory that Earth's continents have moved over time?</p></div>
+            <div class="content-box box-orange"><span class="phase-tag engage">ENGAGE</span><div class="box-title">⏱️ 15 minutes</div><p>Show world map and Pangaea image. Ask: "How could scientists from 100 years ago know continents were once connected?"</p></div>
+            <div class="content-box box-green"><span class="phase-tag explore">EXPLORE</span><div class="box-title">⏱️ 45 minutes</div><p><strong>Fossil Evidence Puzzle:</strong> Groups receive continent cutouts with fossil symbols. Match fossils across continents, reconstruct Pangaea.</p></div>
+            <div class="content-box box-blue"><span class="phase-tag explain">EXPLAIN</span><div class="box-title">⏱️ 30 minutes</div><p>Cover: Wegener's hypothesis, four types of evidence, why rejected initially, seafloor spreading discovery, modern plate tectonics.</p></div>
+            <div class="content-box box-purple"><span class="phase-tag elaborate">ELABORATE</span><div class="box-title">⏱️ 50 minutes</div><p>Complete Graham Cracker Plate Boundary Lab. Connect movements to geological features. Complete CER response.</p></div>
+            <div class="content-box box-red"><span class="phase-tag evaluate">EVALUATE</span><div class="box-title">⏱️ 20 minutes</div><p><strong>Exit Ticket:</strong> Draw and label three boundary types with one geological feature each.</p></div>
+            <h3 class="unit-header weather">☁️ Lesson 2: Air Pressure & Weather Systems</h3>
+            <div class="card"><div class="card-title">📅 Lesson Overview</div><p><strong>Duration:</strong> 2-3 class periods | <strong>Standards:</strong> S6E4.b, S6E4.d, MS-ESS2-5</p><p><strong>Essential Question:</strong> How does air pressure create weather patterns?</p></div>
+            <div class="content-box box-orange"><span class="phase-tag engage">ENGAGE</span><div class="box-title">⏱️ 10 minutes</div><p>Show crushing can demonstration. Ask: "What invisible force crushed this can?"</p></div>
+            <div class="content-box box-green"><span class="phase-tag explore">EXPLORE</span><div class="box-title">⏱️ 40 minutes</div><p><strong>Station Rotation:</strong> 1) Egg in bottle observation 2) Barometer exploration 3) Suction cup investigations 4) Weather map analysis</p></div>
+            <div class="content-box box-blue"><span class="phase-tag explain">EXPLAIN</span><div class="box-title">⏱️ 25 minutes</div><p>Cover: Air has mass, warm air rises/cool air sinks, high pressure = fair weather, low pressure = storms, wind from high to low.</p></div>
+            <div class="content-box box-purple"><span class="phase-tag elaborate">ELABORATE</span><div class="box-title">⏱️ 45 minutes</div><p><strong>Weather Forecasting Challenge:</strong> Groups receive 3-day weather maps, track pressure systems, predict Day 4 weather.</p></div>
+            <h3 class="unit-header ocean">🌊 Lesson 3: Ocean Currents & Climate</h3>
+            <div class="card"><div class="card-title">📅 Lesson Overview</div><p><strong>Duration:</strong> 2-3 class periods | <strong>Standards:</strong> S6E3.d, MS-ESS2-6</p><p><strong>Essential Question:</strong> How do ocean currents affect weather and climate around the world?</p></div>
+            <div class="content-box box-orange"><span class="phase-tag engage">ENGAGE</span><div class="box-title">⏱️ 15 minutes</div><p><strong>Mystery:</strong> London and Calgary are at similar latitudes, but London is much warmer in winter. Why?</p></div>
+            <div class="content-box box-green"><span class="phase-tag explore">EXPLORE</span><div class="box-title">⏱️ 45 minutes</div><p>Complete Ocean Current Simulation Lab. Record observations of hot (red) and cold (blue) water movement.</p></div>
+            <div class="content-box box-blue"><span class="phase-tag explain">EXPLAIN</span><div class="box-title">⏱️ 30 minutes</div><p>Cover: Surface currents (wind, Coriolis), deep currents (thermohaline), global conveyor belt, Gulf Stream warms Europe.</p></div>
+            <h3 class="unit-header space">🌙 Lesson 4: Moon Phases & Eclipses</h3>
+            <div class="card"><div class="card-title">📅 Lesson Overview</div><p><strong>Duration:</strong> 3-4 class periods | <strong>Standards:</strong> S6E2.a, S6E2.b, MS-ESS1-1</p><p><strong>Essential Question:</strong> What causes the changing appearance of the Moon and why don't eclipses happen every month?</p></div>
+            <div class="content-box box-orange"><span class="phase-tag engage">ENGAGE</span><div class="box-title">⏱️ 15 minutes</div><p>Show time-lapse of moon phases. Display eclipse photos. Questions: Why does Moon change shape? Why not eclipses every month?</p></div>
+            <div class="content-box box-green"><span class="phase-tag explore">EXPLORE</span><div class="box-title">⏱️ 50 minutes</div><p><strong>Activity 1:</strong> Moon Phase Modeling with styrofoam ball and light source. <strong>Activity 2:</strong> Oreo Moon Phases lab.</p></div>
+            <div class="content-box box-blue"><span class="phase-tag explain">EXPLAIN</span><div class="box-title">⏱️ 30 minutes</div><p>Cover: Moon orbits 29.5 days, we see different amounts of sunlit half, 8 phases, eclipses need perfect alignment, Moon's orbit tilted 5°.</p></div>
+            <div class="content-box box-purple"><span class="phase-tag elaborate">ELABORATE</span><div class="box-title">⏱️ 45 minutes</div><p><strong>Eclipse Investigation:</strong> Model solar and lunar eclipses with flashlight and balls. Research upcoming eclipses.</p></div>
+        </section>
+        <!-- TAB 5: VIDEOS -->
+        <section id="videos" class="tab-content">
+            <h2 class="section-header">🎬 Curated Video Resources</h2>
+            <div class="content-box box-blue"><div class="box-title">📺 Usage Tips</div><p>Preview all videos before showing. Use EdPuzzle for embedded questions. Pause frequently for discussion.</p></div>
+            <h3 class="unit-header earth">🌋 Earth's Structure & Plate Tectonics</h3>
+            <div class="video-card"><div class="video-title">1. Layers of the Earth - Dr. Binocs Show</div><div class="video-meta">📺 YouTube | ⏱️ 4:13</div><p><a href="https://www.youtube.com/watch?v=eXiVGEEPQ6c" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What makes each layer different? Why is the inner core solid?</p></div>
+            <div class="video-card"><div class="video-title">2. Plate Tectonics Explained - National Geographic</div><div class="video-meta">📺 YouTube | ⏱️ 4:45</div><p><a href="https://www.youtube.com/watch?v=ryrXAGY1dmE" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What evidence convinced scientists? How fast do plates move?</p></div>
+            <div class="video-card"><div class="video-title">3. The Rock Cycle - Crash Course Kids</div><div class="video-meta">📺 YouTube | ⏱️ 4:18</div><p><a href="https://www.youtube.com/watch?v=hIwlVqj_dUs" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What forces change rock types? Why is it called a "cycle"?</p></div>
+            <h3 class="unit-header weather">☁️ Weather & Climate</h3>
+            <div class="video-card"><div class="video-title">4. Layers of the Atmosphere - MooMooMath</div><div class="video-meta">📺 YouTube | ⏱️ 3:47</div><p><a href="https://www.youtube.com/watch?v=2bYLb3wKHac" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> Which layer do we live in? Why is ozone important?</p></div>
+            <div class="video-card"><div class="video-title">5. Weather vs. Climate - NASA</div><div class="video-meta">📺 YouTube | ⏱️ 2:31</div><p><a href="https://www.youtube.com/watch?v=vH298zSCQzY" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> How long to observe weather to define climate? Give examples.</p></div>
+            <div class="video-card"><div class="video-title">6. How Tornadoes Form - National Geographic</div><div class="video-meta">📺 YouTube | ⏱️ 3:45</div><p><a href="https://www.youtube.com/watch?v=aacHWoB7cmY" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What conditions needed? Why "Tornado Alley"?</p></div>
+            <h3 class="unit-header ocean">🌊 Oceanography</h3>
+            <div class="video-card"><div class="video-title">7. Ocean Currents - National Geographic</div><div class="video-meta">📺 YouTube | ⏱️ 3:12</div><p><a href="https://www.youtube.com/watch?v=p4pWafuvdrY" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What drives surface vs. deep currents? How do currents affect climate?</p></div>
+            <div class="video-card"><div class="video-title">8. How Do Tides Work? - NOAA</div><div class="video-meta">📺 YouTube | ⏱️ 4:15</div><p><a href="https://www.youtube.com/watch?v=3RdkXs8BibE" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> Why two high tides daily? Difference between spring and neap?</p></div>
+            <h3 class="unit-header space">🌙 Space Systems</h3>
+            <div class="video-card"><div class="video-title">9. Moon Phases - Crash Course Kids</div><div class="video-meta">📺 YouTube | ⏱️ 5:21</div><p><a href="https://www.youtube.com/watch?v=f4ZHdzl6ZWg" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> Does the Moon make its own light? Why same side always visible?</p></div>
+            <div class="video-card"><div class="video-title">10. Solar and Lunar Eclipses - TED-Ed</div><div class="video-meta">📺 YouTube | ⏱️ 5:02</div><p><a href="https://www.youtube.com/watch?v=VW2xRR75lKE" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> Why not eclipses every month? Why is solar eclipse dangerous to view?</p></div>
+            <div class="video-card"><div class="video-title">11. The Solar System - Crash Course Astronomy</div><div class="video-meta">📺 YouTube | ⏱️ 10:42</div><p><a href="https://www.youtube.com/watch?v=MhIq7Gp78Gw" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> What separates inner and outer planets? Why isn't Pluto a planet?</p></div>
+            <div class="video-card"><div class="video-title">12. Scale of the Universe - Kurzgesagt</div><div class="video-meta">📺 YouTube | ⏱️ 6:45</div><p><a href="https://www.youtube.com/watch?v=GoW8Tf7hTGA" target="_blank">Watch Video →</a></p><p><strong>Discussion:</strong> How does Earth compare to Sun? Why is scale hard to understand?</p></div>
+        </section>
+        <!-- TAB 6: STUDENT ARTICLES -->
+        <section id="articles" class="tab-content">
+            <h2 class="section-header">📰 Student Reading Passages</h2>
+            <div class="content-box box-blue"><div class="box-title">📖 Reading Level</div><p>Passages written at approximately Lexile 900-1000. Vocabulary terms are <span class="highlight">highlighted</span>. Use for close reading, homework, or stations.</p></div>
+            <h3 class="unit-header earth">🌋 Article 1: The Puzzle of Moving Continents</h3>
+            <div class="card">
+                <p><strong>Lexile:</strong> 920L | <strong>Word Count:</strong> 425</p>
+                <p>In 1912, Alfred Wegener noticed South America and Africa fit together like puzzle pieces. He proposed <span class="highlight">continental drift</span>—that continents were once joined in <span class="highlight">Pangaea</span>. Evidence included matching <span class="highlight">fossils</span>, matching rocks, and ancient climate clues. Scientists rejected him because he couldn't explain HOW continents moved. In the 1960s, <span class="highlight">seafloor spreading</span> provided the answer. Today we know Wegener was right—continents move several centimeters per year.</p>
+                <div class="content-box box-yellow"><div class="box-title">📝 Comprehension Questions</div><ol><li>What evidence did Wegener use?</li><li>Why was his theory rejected at first?</li><li>What discovery explained how continents move?</li><li><strong>CER:</strong> Explain why Mesosaurus fossils on two continents supports continental drift.</li></ol></div>
+            </div>
+            <h3 class="unit-header weather">☁️ Article 2: Under Pressure - How Air Creates Weather</h3>
+            <div class="card">
+                <p><strong>Lexile:</strong> 950L | <strong>Word Count:</strong> 410</p>
+                <p><span class="highlight">Air pressure</span> is the weight of air pressing down—14.7 pounds per square inch at sea level. Warm air rises (less dense, creates <span class="highlight">low pressure</span>), cool air sinks (more dense, creates <span class="highlight">high pressure</span>). Air flows from high to low pressure—this is wind. High pressure = clear skies; low pressure = clouds and rain. A <span class="highlight">barometer</span> measures pressure to predict weather.</p>
+                <div class="content-box box-yellow"><div class="box-title">📝 Comprehension Questions</div><ol><li>Why don't we feel air pressure crushing us?</li><li>What happens to air molecules when heated?</li><li>Why does low pressure bring clouds?</li><li><strong>CER:</strong> Explain why wind blows from high to low pressure areas.</li></ol></div>
+            </div>
+            <h3 class="unit-header ocean">🌊 Article 3: The Ocean's Hidden Rivers</h3>
+            <div class="card">
+                <p><strong>Lexile:</strong> 940L | <strong>Word Count:</strong> 395</p>
+                <p><span class="highlight">Ocean currents</span> are massive streams of water traveling around the globe. <span class="highlight">Surface currents</span> are driven by wind and the <span class="highlight">Coriolis effect</span>. <span class="highlight">Deep currents</span> (thermohaline circulation) are driven by density differences from temperature and salinity. The "global conveyor belt" redistributes heat worldwide. The <span class="highlight">Gulf Stream</span> carries warm water to Europe, keeping it warmer than expected.</p>
+                <div class="content-box box-yellow"><div class="box-title">📝 Comprehension Questions</div><ol><li>What drives surface currents? Deep currents?</li><li>Why does cold, salty water sink?</li><li>How does the Gulf Stream affect Europe?</li><li><strong>CER:</strong> Explain how ocean currents moderate Earth's temperature.</li></ol></div>
+            </div>
+            <h3 class="unit-header space">🌙 Article 4: Why the Moon Changes Shape</h3>
+            <div class="card">
+                <p><strong>Lexile:</strong> 910L | <strong>Word Count:</strong> 380</p>
+                <p>The Moon doesn't produce its own light—"moonlight" is sunlight reflecting off its surface. As the Moon orbits Earth (~29.5 days), we see different amounts of the lit half. At <span class="highlight">new moon</span>, the lit half faces away. At <span class="highlight">full moon</span>, we see the entire lit half. <span class="highlight">Waxing</span> means growing (right side lit); <span class="highlight">waning</span> means shrinking (left side lit). The Moon is tidally locked—we always see the same face.</p>
+                <div class="content-box box-yellow"><div class="box-title">📝 Comprehension Questions</div><ol><li>Where does moonlight come from?</li><li>How long is one lunar cycle?</li><li>What's the difference between waxing and waning?</li><li><strong>CER:</strong> Explain why we see different moon phases throughout the month.</li></ol></div>
+            </div>
+        </section>
+        <!-- TAB 7: ASSESSMENTS -->
+        <section id="assessments" class="tab-content">
+            <h2 class="section-header">✅ Assessments</h2>
+            <div class="content-box box-blue"><div class="box-title">📊 Assessment Overview</div><p>Includes pre-assessments, exit tickets, and summative unit tests aligned to Georgia GSE and NGSS standards.</p></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #667eea, #764ba2);">📋 CER Rubric</h3>
+            <table class="data-table">
+                <thead><tr><th>Component</th><th>4 - Exceeds</th><th>3 - Meets</th><th>2 - Approaching</th><th>1 - Beginning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Claim</strong></td><td>Clear, specific, uses scientific vocabulary</td><td>Clear statement answering question</td><td>Partially answers or vague</td><td>Missing or inaccurate</td></tr>
+                    <tr><td><strong>Evidence</strong></td><td>Multiple specific data points, accurate</td><td>Two specific data points</td><td>One piece or vague evidence</td><td>No evidence or irrelevant</td></tr>
+                    <tr><td><strong>Reasoning</strong></td><td>Clearly explains WHY, shows deep understanding</td><td>Explains connection using science</td><td>Incomplete reasoning</td><td>No connection made</td></tr>
+                </tbody>
+            </table>
+            <h3 class="unit-header earth">🌋 Unit 1: Earth's Structure Test</h3>
+            <button class="collapsible">Sample Test Questions (10 Questions)</button>
+            <div class="collapsible-content">
+                <div class="question"><span class="question-number">1</span><span>Which layer of Earth is liquid?</span><div class="answer-choices"><div>A. Inner core</div><div>B. Outer core ✓</div><div>C. Mantle</div><div>D. Crust</div></div></div>
+                <div class="question"><span class="question-number">2</span><span>Pangaea was:</span><div class="answer-choices"><div>A. An asteroid</div><div>B. A supercontinent ✓</div><div>C. A tectonic plate</div><div>D. An ocean</div></div></div>
+                <div class="question"><span class="question-number">3</span><span>What type of boundary is formed when plates move apart?</span><div class="answer-choices"><div>A. Convergent</div><div>B. Transform</div><div>C. Divergent ✓</div><div>D. Subduction</div></div></div>
+                <div class="question"><span class="question-number">4</span><span>The Himalayas formed when:</span><div class="answer-choices"><div>A. Oceanic plate subducted</div><div>B. Two continental plates collided ✓</div><div>C. Plates moved apart</div><div>D. Plates slid past each other</div></div></div>
+                <div class="question"><span class="question-number">5</span><span>Which rock type forms from cooled magma?</span><div class="answer-choices"><div>A. Sedimentary</div><div>B. Metamorphic</div><div>C. Igneous ✓</div><div>D. Fossil</div></div></div>
+                <div class="content-box box-yellow"><div class="box-title">📝 CER Question</div><p>A scientist finds fossils of the same tropical plant in Antarctica and South America. Use CER to explain how this is possible.</p></div>
+            </div>
+            <h3 class="unit-header weather">☁️ Unit 2: Weather & Climate Test</h3>
+            <button class="collapsible">Sample Test Questions (10 Questions)</button>
+            <div class="collapsible-content">
+                <div class="question"><span class="question-number">1</span><span>Which layer contains the ozone layer?</span><div class="answer-choices"><div>A. Troposphere</div><div>B. Stratosphere ✓</div><div>C. Mesosphere</div><div>D. Thermosphere</div></div></div>
+                <div class="question"><span class="question-number">2</span><span>Air moves from areas of _____ pressure to _____ pressure.</span><div class="answer-choices"><div>A. Low, high</div><div>B. High, low ✓</div><div>C. Equal, equal</div><div>D. Cold, warm</div></div></div>
+                <div class="question"><span class="question-number">3</span><span>Low pressure systems bring:</span><div class="answer-choices"><div>A. Clear, sunny weather</div><div>B. Cloudy, rainy weather ✓</div><div>C. Cold, dry weather</div><div>D. Hot, humid weather</div></div></div>
+                <div class="question"><span class="question-number">4</span><span>Climate is:</span><div class="answer-choices"><div>A. Today's weather</div><div>B. Average weather over 30+ years ✓</div><div>C. Tomorrow's forecast</div><div>D. Same as weather</div></div></div>
+            </div>
+            <h3 class="unit-header space">🌙 Unit 4: Space Systems Test</h3>
+            <button class="collapsible">Sample Test Questions (10 Questions)</button>
+            <div class="collapsible-content">
+                <div class="question"><span class="question-number">1</span><span>Moon phases are caused by:</span><div class="answer-choices"><div>A. Earth's shadow</div><div>B. Clouds covering Moon</div><div>C. Moon's changing position ✓</div><div>D. Moon's own light</div></div></div>
+                <div class="question"><span class="question-number">2</span><span>A solar eclipse can only occur during:</span><div class="answer-choices"><div>A. Full moon</div><div>B. New moon ✓</div><div>C. First quarter</div><div>D. Third quarter</div></div></div>
+                <div class="question"><span class="question-number">3</span><span>We don't have eclipses every month because:</span><div class="answer-choices"><div>A. Moon is too small</div><div>B. Moon's orbit is tilted ✓</div><div>C. Sun is too far</div><div>D. Earth spins too fast</div></div></div>
+                <div class="question"><span class="question-number">4</span><span>Moonlight is actually:</span><div class="answer-choices"><div>A. Light from the Moon</div><div>B. Sunlight reflected off Moon ✓</div><div>C. Starlight</div><div>D. Heat from Moon's core</div></div></div>
+            </div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #667eea, #764ba2);">🎫 Exit Tickets</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">🌋 Earth Exit Ticket 1</div><p>Draw and label the four layers of Earth with one fact about each.</p></div>
+                <div class="card"><div class="card-title">🌋 Earth Exit Ticket 2</div><p>Sketch the three boundary types with one geological feature for each.</p></div>
+                <div class="card"><div class="card-title">☁️ Weather Exit Ticket</div><p>If barometer shows falling pressure, what weather should you expect? Why?</p></div>
+                <div class="card"><div class="card-title">🌙 Space Exit Ticket</div><p>Draw the Moon phase one week after full moon. Name this phase.</p></div>
+            </div>
+        </section>
+        <!-- TAB 8: PRINTABLES -->
+        <section id="printables" class="tab-content">
+            <h2 class="section-header">🖨️ Printable Resources</h2>
+            <div class="content-box box-blue"><div class="box-title">📄 Print Instructions</div><p>Use Ctrl+P to print. Landscape mode for graphic organizers. Cardstock for vocabulary cards.</p></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #667eea, #764ba2);">📝 CER Recording Sheet</h3>
+            <div class="printable">
+                <div class="printable-title">CER Response Framework</div>
+                <p><strong>Name:</strong> _________________________ <strong>Date:</strong> _____________</p>
+                <p><strong>Question:</strong></p><div style="border: 1px solid #ccc; min-height: 50px; margin: 10px 0; padding: 10px;"></div>
+                <div class="cer-box"><div class="cer-label cer-claim">CLAIM</div><div class="cer-content claim-border" style="min-height: 60px;"><p style="color: #999;">Write a statement answering the question.</p></div></div>
+                <div class="cer-box"><div class="cer-label cer-evidence">EVIDENCE</div><div class="cer-content evidence-border" style="min-height: 80px;"><p style="color: #999;">Include specific data from your investigation.</p></div></div>
+                <div class="cer-box"><div class="cer-label cer-reasoning">REASONING</div><div class="cer-content reasoning-border" style="min-height: 80px;"><p style="color: #999;">Explain WHY your evidence supports your claim using science concepts.</p></div></div>
+            </div>
+            <h3 class="unit-header earth">🌋 Plate Tectonics Graphic Organizer</h3>
+            <div class="printable">
+                <div class="printable-title">Types of Plate Boundaries</div>
+                <table class="data-table">
+                    <thead><tr><th>Boundary Type</th><th>Plate Movement</th><th>Features Formed</th><th>Example</th></tr></thead>
+                    <tbody>
+                        <tr><td>DIVERGENT</td><td style="min-height: 50px;"></td><td></td><td></td></tr>
+                        <tr><td>CONVERGENT (Ocean-Continental)</td><td></td><td></td><td></td></tr>
+                        <tr><td>CONVERGENT (Continental)</td><td></td><td></td><td></td></tr>
+                        <tr><td>TRANSFORM</td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3 class="unit-header space">🌙 Moon Phase Recording Sheet</h3>
+            <div class="printable">
+                <div class="printable-title">Moon Phase Observation Log</div>
+                <p><strong>Name:</strong> _________________________ <strong>Date Range:</strong> _____________</p>
+                <table class="data-table">
+                    <thead><tr><th>Date</th><th>Time</th><th>Draw the Moon</th><th>Phase Name</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td style="height: 50px;"></td><td></td></tr>
+                        <tr><td></td><td></td><td style="height: 50px;"></td><td></td></tr>
+                        <tr><td></td><td></td><td style="height: 50px;"></td><td></td></tr>
+                        <tr><td></td><td></td><td style="height: 50px;"></td><td></td></tr>
+                        <tr><td></td><td></td><td style="height: 50px;"></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- TAB 9: VOCABULARY -->
+        <section id="vocabulary" class="tab-content">
+            <h2 class="section-header">📖 Vocabulary by Unit</h2>
+            <div class="content-box box-blue"><div class="box-title">📚 Teaching Tips</div><ul><li>Introduce 5-7 terms per week</li><li>Use Frayer Models for complex concepts</li><li>Include visuals and real-world examples</li><li>Practice with games (Kahoot, Quizlet)</li></ul></div>
+            <h3 class="unit-header earth">🌋 Unit 1: Earth's Structure & Plate Tectonics</h3>
+            <div class="cards-grid">
+                <div class="card"><span class="vocab-term">Crust</span><p>The thin, rocky outer layer of Earth. Contains continents and ocean floors.</p></div>
+                <div class="card"><span class="vocab-term">Mantle</span><p>Thick layer between crust and core. Hot, slowly-flowing rock drives plate movement.</p></div>
+                <div class="card"><span class="vocab-term">Outer Core</span><p>Liquid layer of melted iron and nickel. Creates Earth's magnetic field.</p></div>
+                <div class="card"><span class="vocab-term">Inner Core</span><p>Solid ball of iron and nickel at Earth's center. Solid despite extreme heat due to pressure.</p></div>
+                <div class="card"><span class="vocab-term">Tectonic Plates</span><p>Large pieces of Earth's crust that float on the asthenosphere and move slowly.</p></div>
+                <div class="card"><span class="vocab-term">Pangaea</span><p>Supercontinent from 250 million years ago when all landmasses were joined.</p></div>
+                <div class="card"><span class="vocab-term">Convection Current</span><p>Circular movement of material caused by heating and cooling.</p></div>
+                <div class="card"><span class="vocab-term">Divergent Boundary</span><p>Where plates move apart. New crust forms (mid-ocean ridges).</p></div>
+                <div class="card"><span class="vocab-term">Convergent Boundary</span><p>Where plates collide. Creates mountains, volcanoes, or subduction zones.</p></div>
+                <div class="card"><span class="vocab-term">Transform Boundary</span><p>Where plates slide past each other horizontally. Causes earthquakes.</p></div>
+                <div class="card"><span class="vocab-term">Subduction</span><p>When one plate slides beneath another, usually oceanic under continental.</p></div>
+                <div class="card"><span class="vocab-term">Igneous Rock</span><p>"Fire rock" formed when magma/lava cools. Examples: granite, basalt.</p></div>
+                <div class="card"><span class="vocab-term">Sedimentary Rock</span><p>Formed when sediments are compacted and cemented. Often has fossils.</p></div>
+                <div class="card"><span class="vocab-term">Metamorphic Rock</span><p>Changed by heat and pressure without melting. Example: marble from limestone.</p></div>
+            </div>
+            <h3 class="unit-header weather">☁️ Unit 2: Weather & Climate</h3>
+            <div class="cards-grid">
+                <div class="card"><span class="vocab-term">Atmosphere</span><p>Layer of gases surrounding Earth. Mostly nitrogen (78%) and oxygen (21%).</p></div>
+                <div class="card"><span class="vocab-term">Troposphere</span><p>Lowest layer where all weather occurs. We live here!</p></div>
+                <div class="card"><span class="vocab-term">Stratosphere</span><p>Second layer containing the ozone layer. Jets fly here to avoid weather.</p></div>
+                <div class="card"><span class="vocab-term">Air Pressure</span><p>Weight of air pushing down on Earth's surface. Measured with barometer.</p></div>
+                <div class="card"><span class="vocab-term">Weather</span><p>Atmospheric conditions at a specific time and place. Changes daily.</p></div>
+                <div class="card"><span class="vocab-term">Climate</span><p>Average weather conditions over 30+ years. "What you expect."</p></div>
+                <div class="card"><span class="vocab-term">High Pressure</span><p>Cool, dense air sinks. Usually brings clear, calm weather.</p></div>
+                <div class="card"><span class="vocab-term">Low Pressure</span><p>Warm air rises. Usually brings clouds and precipitation.</p></div>
+                <div class="card"><span class="vocab-term">Front</span><p>Boundary between two different air masses. Cold, warm, or stationary.</p></div>
+            </div>
+            <h3 class="unit-header ocean">🌊 Unit 3: Oceanography</h3>
+            <div class="cards-grid">
+                <div class="card"><span class="vocab-term">Surface Current</span><p>Ocean current in top 400m driven by wind. Moves warm/cold water globally.</p></div>
+                <div class="card"><span class="vocab-term">Deep Current</span><p>Ocean current along floor driven by density differences.</p></div>
+                <div class="card"><span class="vocab-term">Thermohaline Circulation</span><p>Deep circulation driven by temperature and salinity. "Global conveyor belt."</p></div>
+                <div class="card"><span class="vocab-term">Coriolis Effect</span><p>Curving of moving objects due to Earth's rotation.</p></div>
+                <div class="card"><span class="vocab-term">Tide</span><p>Regular rise and fall of ocean water from Moon and Sun's gravity.</p></div>
+                <div class="card"><span class="vocab-term">Spring Tide</span><p>Extra-high/low tides during new and full moons when Sun and Moon align.</p></div>
+                <div class="card"><span class="vocab-term">Neap Tide</span><p>Moderate tides during quarter moons when Sun and Moon pull at right angles.</p></div>
+            </div>
+            <h3 class="unit-header space">🌙 Unit 4: Space Systems</h3>
+            <div class="cards-grid">
+                <div class="card"><span class="vocab-term">Lunar Phase</span><p>Changing appearance of Moon during its 29.5-day cycle.</p></div>
+                <div class="card"><span class="vocab-term">New Moon</span><p>Phase when lit side faces away. Moon invisible.</p></div>
+                <div class="card"><span class="vocab-term">Full Moon</span><p>Phase when we see the entire lit half of Moon.</p></div>
+                <div class="card"><span class="vocab-term">Waxing</span><p>Moon's visible portion increasing (right side lit).</p></div>
+                <div class="card"><span class="vocab-term">Waning</span><p>Moon's visible portion decreasing (left side lit).</p></div>
+                <div class="card"><span class="vocab-term">Solar Eclipse</span><p>Moon passes between Sun and Earth, blocking sunlight. During new moon.</p></div>
+                <div class="card"><span class="vocab-term">Lunar Eclipse</span><p>Earth between Sun and Moon, shadow on Moon. During full moon.</p></div>
+                <div class="card"><span class="vocab-term">Gravity</span><p>Force of attraction between objects with mass. Causes tides and orbits.</p></div>
+                <div class="card"><span class="vocab-term">Orbit</span><p>Curved path an object takes around another due to gravity.</p></div>
+                <div class="card"><span class="vocab-term">Rotation</span><p>Spinning on axis. Earth rotates once every 24 hours (day/night).</p></div>
+                <div class="card"><span class="vocab-term">Revolution</span><p>Movement of one object around another. Earth revolves around Sun in 365.25 days.</p></div>
+            </div>
+        </section>
+        <!-- TAB 10: GAMES -->
+        <section id="games" class="tab-content">
+            <h2 class="section-header">🎮 Games & Activities</h2>
+            <div class="content-box box-blue"><div class="box-title">🎯 Game-Based Learning</div><p>Games increase engagement and provide immediate feedback. Mix digital and hands-on activities for variety!</p></div>
+            <h3 class="unit-header earth">🌋 Plate Tectonics Activities</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">🎲 Plate Boundary Charades</div><p><strong>Materials:</strong> Index cards with boundary types</p><p><strong>How to Play:</strong> Students act out plate movements (divergent = arms apart, convergent = hands pushing, transform = sliding). Teams guess!</p></div>
+                <div class="card"><div class="card-title">🗺️ Earthquake Detectives</div><p><strong>Materials:</strong> World map, earthquake data</p><p><strong>How to Play:</strong> Groups plot earthquake locations. Discover "Ring of Fire" through pattern recognition.</p></div>
+                <div class="card"><div class="card-title">🎯 Rock Cycle Board Game</div><p><strong>Materials:</strong> Game board, dice, question cards</p><p><strong>How to Play:</strong> Move around rock cycle board. Answer questions about rock transformations. First to complete wins!</p></div>
+                <div class="card"><div class="card-title">💻 PhET Plate Tectonics</div><p><a href="https://phet.colorado.edu/en/simulations/plate-tectonics" target="_blank">phet.colorado.edu →</a></p><p>Interactive simulation exploring Earth's layers and plate movements over millions of years.</p></div>
+            </div>
+            <h3 class="unit-header weather">☁️ Weather & Climate Activities</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">🌡️ Weather Map Challenge</div><p><strong>Materials:</strong> Blank maps, weather symbols, dice</p><p><strong>How to Play:</strong> Teams roll dice to determine conditions. Draw symbols and predict resulting weather.</p></div>
+                <div class="card"><div class="card-title">☁️ Cloud ID Scavenger Hunt</div><p><strong>Materials:</strong> Cloud cards, clipboards</p><p><strong>How to Play:</strong> Go outside on a cloudy day. Teams compete to identify and photograph cloud types.</p></div>
+                <div class="card"><div class="card-title">📊 Weather Forecast Competition</div><p><strong>Materials:</strong> Weather data, scoring sheets</p><p><strong>How to Play:</strong> Students predict week's weather. Points for accuracy. Discuss why some forecasts worked better.</p></div>
+                <div class="card"><div class="card-title">💻 Weather Wiz Kids</div><p><a href="https://www.weatherwizkids.com/weather-games.htm" target="_blank">weatherwizkids.com →</a></p><p>Collection of weather-themed games, puzzles, and experiments.</p></div>
+            </div>
+            <h3 class="unit-header ocean">🌊 Oceanography Activities</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">🌊 Current Relay Race</div><p><strong>Materials:</strong> Blue/red beanbags, cones</p><p><strong>How to Play:</strong> Students represent warm (red) and cold (blue) currents. Move through "ocean" following conveyor belt pattern.</p></div>
+                <div class="card"><div class="card-title">🌙 Tide Prediction Game</div><p><strong>Materials:</strong> Moon phase cards, tide charts</p><p><strong>How to Play:</strong> Show moon phases, students predict spring or neap tide. Explain reasoning for points!</p></div>
+                <div class="card"><div class="card-title">💻 NOAA Ocean Explorer</div><p><a href="https://oceanexplorer.noaa.gov/edu/games/games.html" target="_blank">oceanexplorer.noaa.gov →</a></p><p>Educational games about ocean exploration from NOAA.</p></div>
+            </div>
+            <h3 class="unit-header space">🌙 Space Systems Activities</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">🌙 Moon Phase Line-Up</div><p><strong>Materials:</strong> Moon phase cards (8 per set)</p><p><strong>How to Play:</strong> Groups race to arrange shuffled moon phase cards in correct order. First correct sequence wins!</p></div>
+                <div class="card"><div class="card-title">☀️ Eclipse Modeling Race</div><p><strong>Materials:</strong> Styrofoam balls, flashlights</p><p><strong>How to Play:</strong> Call "solar eclipse!" or "lunar eclipse!" Teams arrange models correctly.</p></div>
+                <div class="card"><div class="card-title">🪐 Planet Speed Dating</div><p><strong>Materials:</strong> Planet fact cards</p><p><strong>How to Play:</strong> Each student "becomes" a planet and introduces themselves using facts. Others guess which planet.</p></div>
+                <div class="card"><div class="card-title">💻 NASA Space Place</div><p><a href="https://spaceplace.nasa.gov/menu/play/" target="_blank">spaceplace.nasa.gov →</a></p><p>NASA's collection of space-themed educational games.</p></div>
+            </div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #667eea, #764ba2);">🎮 Digital Resources</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">📱 Kahoot!</div><p><a href="https://kahoot.com" target="_blank">kahoot.com</a> - Create or find ready-made quizzes. Great for review!</p></div>
+                <div class="card"><div class="card-title">🃏 Quizlet</div><p><a href="https://quizlet.com" target="_blank">quizlet.com</a> - Flashcard sets with multiple game modes.</p></div>
+                <div class="card"><div class="card-title">🧩 Quizizz</div><p><a href="https://quizizz.com" target="_blank">quizizz.com</a> - Self-paced quiz games with memes and power-ups!</p></div>
+                <div class="card"><div class="card-title">🔬 PhET Simulations</div><p><a href="https://phet.colorado.edu" target="_blank">phet.colorado.edu</a> - Free interactive science simulations.</p></div>
+            </div>
+        </section>
+        <!-- TAB 11: SAFETY -->
+        <section id="safety" class="tab-content">
+            <h2 class="section-header">⚠️ Lab Safety Guidelines</h2>
+            <div class="content-box box-red"><div class="box-title">🚨 Critical Safety Reminders</div><p>Safety is #1 priority. Review rules before EVERY lab. Post rules visibly. Know location of all safety equipment.</p></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #E74C3C, #C0392B);">🔬 General Lab Safety</h3>
+            <div class="content-box box-yellow"><div class="box-title">👀 Personal Protection</div><ul><li>Wear safety goggles when required - no exceptions</li><li>Tie back long hair and remove dangling jewelry</li><li>Wear closed-toe shoes on lab days</li><li>Know location of eye wash, fire extinguisher, first aid</li><li>Report ALL injuries immediately</li></ul></div>
+            <div class="content-box box-green"><div class="box-title">🧪 General Procedures</div><ul><li>Never eat, drink, or taste anything in the lab</li><li>Read all instructions BEFORE starting</li><li>Never conduct unauthorized experiments</li><li>Walk - never run - in the laboratory</li><li>Wash hands thoroughly after all activities</li><li>Clean up station before leaving</li></ul></div>
+            <h3 class="unit-header weather">🔥 Heat Source Safety</h3>
+            <div class="content-box box-red"><div class="box-title">Working with Heat</div><p><em>Applies to: Rock Cycle Lab, Air Pressure Demos, Convection Labs</em></p><ul><li><strong>Teacher supervises all heat activities</strong></li><li>Keep flammables away from heat sources</li><li>Use tongs or hot mitts for hot items</li><li>Point test tubes away from people</li><li>Never leave heat sources unattended</li><li>Allow items to cool completely before touching</li><li>Hair tied back; loose sleeves rolled up</li></ul></div>
+            <h3 class="unit-header ocean">💧 Water Activity Safety</h3>
+            <div class="content-box box-teal"><div class="box-title">Working with Water</div><p><em>Applies to: Ocean Current Lab, Density Labs</em></p><ul><li>Clean up spills immediately to prevent slipping</li><li>Keep electrical equipment away from water</li><li>Use plastic containers when possible</li><li>Hot water requires teacher supervision</li><li>Do not drink lab water</li></ul></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #F39C12, #E67E22);">🍪 Food in Lab Safety</h3>
+            <div class="content-box box-orange"><div class="box-title">Edible Lab Materials</div><p><em>Applies to: Graham Cracker Lab, Oreo Moon Phases</em></p><ul><li><strong>Check for food allergies BEFORE lab day!</strong></li><li>Common allergens: wheat, dairy</li><li>Have alternatives for students with allergies</li><li>Distinguish "lab food" from "eating food"</li><li>Students don't eat until teacher approval</li><li>Wash hands before handling food items</li></ul></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #1ABC9C, #16A085);">📋 Pre-Lab Safety Checklist</h3>
+            <div class="printable">
+                <div class="printable-title">Teacher Pre-Lab Safety Check</div>
+                <table class="data-table">
+                    <tr><td>☐</td><td>Reviewed procedure for potential hazards</td></tr>
+                    <tr><td>☐</td><td>Checked for student allergies</td></tr>
+                    <tr><td>☐</td><td>Safety equipment accessible and functional</td></tr>
+                    <tr><td>☐</td><td>Materials inspected for damage</td></tr>
+                    <tr><td>☐</td><td>Reviewed safety procedures with students</td></tr>
+                    <tr><td>☐</td><td>Adequate supervision for all groups</td></tr>
+                    <tr><td>☐</td><td>Clean-up supplies ready</td></tr>
+                    <tr><td>☐</td><td>Emergency procedures posted</td></tr>
+                </table>
+            </div>
+        </section>
+        <!-- TAB 12: DIFFERENTIATION -->
+        <section id="differentiation" class="tab-content">
+            <h2 class="section-header">🎯 Differentiation Strategies</h2>
+            <div class="content-box box-blue"><div class="box-title">📊 Universal Design for Learning</div><p>Effective differentiation provides multiple means of engagement, representation, and expression. Plan for diverse learners from the start.</p></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #3498DB, #2980B9);">📉 Below Grade Level / Struggling Learners</h3>
+            <div class="content-box box-green"><div class="box-title">✅ Strategies</div><ul><li><strong>Pre-teach vocabulary</strong> - Introduce key terms 1-2 days before with visuals</li><li><strong>Chunking</strong> - Break content into smaller pieces with frequent checks</li><li><strong>Graphic organizers</strong> - Provide partially completed organizers as scaffolds</li><li><strong>Visual supports</strong> - Use diagrams, videos, and models heavily</li><li><strong>Sentence starters</strong> - CER frames: "My claim is... My evidence shows... This supports because..."</li><li><strong>Peer support</strong> - Strategic grouping with supportive partners</li><li><strong>Extended time</strong> - Allow additional processing time</li><li><strong>Reduced quantity</strong> - Focus on essential questions</li></ul></div>
+            <h3 class="unit-header weather" style="background: linear-gradient(135deg, #9B59B6, #8E44AD);">📈 Above Grade Level / Advanced Learners</h3>
+            <div class="content-box box-purple"><div class="box-title">✅ Strategies</div><ul><li><strong>Depth over breadth</strong> - Explore topics more deeply rather than moving ahead</li><li><strong>Open-ended investigations</strong> - Allow students to design own experiments</li><li><strong>Real-world connections</strong> - Analyze actual seismic data, weather maps, NASA images</li><li><strong>Research extensions</strong> - Independent study on advanced topics</li><li><strong>Teaching opportunities</strong> - Have advanced students explain to peers</li><li><strong>Complex CER</strong> - Require multiple evidence and counterarguments</li><li><strong>Cross-curricular</strong> - Link to math, history, current events</li></ul></div>
+            <h3 class="unit-header ocean" style="background: linear-gradient(135deg, #E74C3C, #C0392B);">🌍 English Language Learners (ELL)</h3>
+            <div class="content-box box-teal"><div class="box-title">✅ Strategies</div><ul><li><strong>Visual vocabulary</strong> - Word walls with images and translations</li><li><strong>Cognates</strong> - Highlight Spanish-English cognates (volcano/volcán, atmosphere/atmósfera)</li><li><strong>Realia</strong> - Use real objects and hands-on materials</li><li><strong>Simplified text</strong> - Passages at lower Lexile levels</li><li><strong>Native language support</strong> - Allow dictionaries; pair with bilingual peers</li><li><strong>Multiple modalities</strong> - Say it, show it, write it, demonstrate it</li><li><strong>Scaffolded writing</strong> - Sentence frames and word banks for CER</li></ul></div>
+            <div class="content-box box-yellow"><div class="box-title">📝 Key Cognates</div><ul><li>Plate/Placa, Continent/Continente, Ocean/Océano</li><li>Atmosphere/Atmósfera, Temperature/Temperatura</li><li>Eclipse/Eclipse, Orbit/Órbita, Lunar/Lunar</li></ul></div>
+            <h3 class="unit-header space" style="background: linear-gradient(135deg, #F39C12, #E67E22);">📋 IEP/504 Accommodations</h3>
+            <div class="content-box box-orange"><div class="box-title">✅ Common Accommodations</div><ul><li><strong>Extended time</strong> - 1.5x or 2x time on tests</li><li><strong>Preferential seating</strong> - Near teacher, away from distractions</li><li><strong>Frequent breaks</strong> - Allow movement breaks</li><li><strong>Reduced assignments</strong> - Quality over quantity</li><li><strong>Read aloud</strong> - Tests and instructions</li><li><strong>Separate setting</strong> - Quiet location for testing</li><li><strong>Visual schedules</strong> - Post daily agenda; transition warnings</li><li><strong>Fidget tools</strong> - Discrete items for focus</li><li><strong>Copies of notes</strong> - Teacher or peer notes</li></ul></div>
+            <h3 class="unit-header earth" style="background: linear-gradient(135deg, #1ABC9C, #16A085);">🎨 Learning Styles</h3>
+            <div class="cards-grid">
+                <div class="card"><div class="card-title">👁️ Visual Learners</div><ul><li>Diagrams, charts, graphic organizers</li><li>Color-coded notes</li><li>Videos and animations</li><li>Mind maps</li></ul></div>
+                <div class="card"><div class="card-title">👂 Auditory Learners</div><ul><li>Verbal explanations and discussions</li><li>Read-alouds</li><li>Educational songs/rhymes</li><li>Peer teaching opportunities</li></ul></div>
+                <div class="card"><div class="card-title">✋ Kinesthetic Learners</div><ul><li>Hands-on labs and models</li><li>Movement activities</li><li>Role-playing (act out plate movements)</li><li>Building and creating</li></ul></div>
+                <div class="card"><div class="card-title">📖 Reading/Writing Learners</div><ul><li>Written instructions and notes</li><li>Journaling and reflection</li><li>Reading passages and articles</li><li>Written explanations (CER)</li></ul></div>
+            </div>
+        </section>
+        <!-- TAB 13: MISCONCEPTIONS -->
+        <section id="misconceptions" class="tab-content">
+            <h2 class="section-header">❌ Common Misconceptions</h2>
+            <div class="content-box box-blue"><div class="box-title">🧠 Why Address Misconceptions?</div><p>Students bring pre-existing ideas that may conflict with science. Simply teaching correct information isn't enough—we must directly confront misconceptions. Use these as discussion starters or formative assessments.</p></div>
+            <h3 class="unit-header earth">🌋 Earth's Structure & Plate Tectonics</h3>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Continents don't move" or "The ground is completely solid."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Continents move several centimeters per year—as fast as fingernails grow. Over millions of years, movement has rearranged Earth's surface. GPS confirms ongoing movement.</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Earth's core is made of hot lava."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> The core is iron and nickel, not lava (molten rock). Outer core is liquid iron; inner core is solid iron. Magma comes from partial melting of mantle, not core.</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "All rocks are the same" or "Rocks don't change."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Three rock types (igneous, sedimentary, metamorphic) form differently. Through the rock cycle, any rock can transform into any other type over geological time.</div></div>
+            <h3 class="unit-header weather">☁️ Weather & Climate</h3>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Weather and climate are the same thing."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Weather is day-to-day conditions at specific time/place. Climate is average pattern over 30+ years. "Climate is what you expect; weather is what you get."</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Seasons are caused by Earth's distance from the Sun."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Seasons are caused by Earth's 23.5° axial tilt, not distance. Earth is actually CLOSEST to Sun in January (Northern Hemisphere winter)!</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Cold air rises and warm air sinks."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> WARM air rises (less dense). COLD air sinks (more dense). This is why hot air balloons rise and cold air stays near floor.</div></div>
+            <h3 class="unit-header ocean">🌊 Oceanography</h3>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "The ocean is the same temperature throughout."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Temperature varies dramatically. Surface can be warm (20-30°C tropical), deep ocean is cold (~4°C). Temperature drops rapidly through thermocline.</div></div>
+            <h3 class="unit-header space">🌙 Space Systems</h3>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "The Moon makes its own light."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> The Moon has no light source. "Moonlight" is sunlight reflecting off Moon's surface. Half always lit by Sun; phases occur because we see different amounts of lit half.</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "Moon phases are caused by Earth's shadow."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Earth's shadow only falls on Moon during lunar eclipses (few times/year). Daily phases occur because we see different portions of sunlit half as Moon orbits.</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "There is a permanent 'dark side' of the Moon."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> All parts receive sunlight. The "far side" (not "dark side") is never visible from Earth due to tidal locking. Far side has same day/night cycle as near side.</div></div>
+            <div class="misconception-card"><div class="misconception-wrong"><strong>❌ MISCONCEPTION:</strong> "We have eclipses every month."</div><div class="misconception-right"><strong>✓ SCIENTIFIC UNDERSTANDING:</strong> Moon's orbit is tilted ~5° relative to Earth's orbit. Moon usually passes above/below alignment. Eclipses only when Moon crosses orbital plane during new/full moon.</div></div>
+            <div class="content-box box-yellow"><div class="box-title">💡 Teaching Tips for Misconceptions</div><ol><li><strong>Elicit first:</strong> Have students write initial ideas before teaching</li><li><strong>Create cognitive conflict:</strong> Present evidence contradicting misconception</li><li><strong>Provide correct explanation:</strong> Clearly explain scientific concept</li><li><strong>Apply new understanding:</strong> Give opportunities to use correct concept</li><li><strong>Revisit regularly:</strong> Misconceptions are persistent—return throughout unit</li></ol></div>
+        </section>
+        <!-- TAB 14: CULTURAL CONNECTIONS -->
+        <section id="cultural" class="tab-content">
+            <h2 class="section-header">🌐 Cultural Connections</h2>
+            <div class="content-box box-blue"><div class="box-title">🎯 Why Cultural Connections Matter</div><p>Science is a human endeavor conducted by diverse people throughout history. Highlighting diverse scientists helps all students see themselves in STEM careers. Indigenous knowledge offers valuable perspectives that complement Western science.</p></div>
+            <h3 class="unit-header earth">🔬 Diverse Scientists in Earth & Space Science</h3>
+            <div class="scientist-card"><div class="scientist-avatar">🧔</div><div class="scientist-info"><h4>Alfred Wegener</h4><p class="dates">1880-1930 | German</p><p>Proposed continental drift in 1912. Initially rejected, his ideas formed the foundation for plate tectonics. A meteorologist and polar explorer who noticed continents fit like puzzle pieces.</p><span class="badge badge-earth">Plate Tectonics Pioneer</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👩</div><div class="scientist-info"><h4>Marie Tharp</h4><p class="dates">1920-2006 | American</p><p>Created the first comprehensive ocean floor map, revealing the Mid-Atlantic Ridge and supporting seafloor spreading. As a woman in the 1950s, she wasn't allowed on research ships, so she mapped from others' data. Her work was initially dismissed as "girl talk."</p><span class="badge badge-ocean">Ocean Floor Mapper</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👩</div><div class="scientist-info"><h4>Inge Lehmann</h4><p class="dates">1888-1993 | Danish</p><p>Discovered Earth's solid inner core in 1936 by analyzing seismic waves. She noticed waves that shouldn't exist if the core was entirely liquid. Worked until age 99!</p><span class="badge badge-earth">Inner Core Discoverer</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👨</div><div class="scientist-info"><h4>Warren Washington</h4><p class="dates">1936-present | American</p><p>Pioneering African American atmospheric scientist who developed computer models to study climate change. Received National Medal of Science in 2010.</p><span class="badge badge-weather">Climate Modeling Pioneer</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👩</div><div class="scientist-info"><h4>Sylvia Earle</h4><p class="dates">1935-present | American</p><p>"Her Deepness" - legendary oceanographer. First female NOAA chief scientist. Set solo diving depth records. Over 7,000 hours underwater. Advocates for ocean conservation.</p><span class="badge badge-ocean">Ocean Explorer</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👨</div><div class="scientist-info"><h4>Neil deGrasse Tyson</h4><p class="dates">1958-present | American</p><p>Astrophysicist and science communicator. Director of Hayden Planetarium. Host of Cosmos and StarTalk. Makes science accessible to all backgrounds.</p><span class="badge badge-space">Science Communicator</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👩</div><div class="scientist-info"><h4>Mae Jemison</h4><p class="dates">1956-present | American</p><p>First African American woman in space (1992). Also a physician, engineer, and dancer. Encourages students, especially girls and minorities, to pursue STEM.</p><span class="badge badge-space">Astronaut & Physician</span></div></div>
+            <div class="scientist-card"><div class="scientist-avatar">👨</div><div class="scientist-info"><h4>Tetsuya "Ted" Fujita</h4><p class="dates">1920-1998 | Japanese-American</p><p>"Mr. Tornado" - Created the Fujita Scale for rating tornado intensity. Discovered microbursts that had caused plane crashes. His work has saved countless lives.</p><span class="badge badge-weather">Severe Weather Expert</span></div></div>
+            <h3 class="unit-header space" style="background: linear-gradient(135deg, #8E44AD, #9B59B6);">🌍 Indigenous Knowledge Systems</h3>
+            <div class="content-box box-purple"><div class="box-title">🌙 Indigenous Astronomy</div><ul><li><strong>Aboriginal Australian:</strong> Star maps passed down 50,000+ years. The Emu in the Sky tracks seasons.</li><li><strong>Polynesian navigation:</strong> Voyagers used stars, currents, wildlife to navigate thousands of miles without instruments.</li><li><strong>Mayan astronomy:</strong> Accurate calendars based on Venus cycles, eclipse prediction. Chichen Itza aligns with equinox.</li><li><strong>Lakota star knowledge:</strong> "Racetrack" constellation marked ceremony timing and agriculture.</li></ul></div>
+            <div class="content-box box-green"><div class="box-title">🌋 Indigenous Earth Knowledge</div><ul><li><strong>Oral histories:</strong> Indigenous peoples preserved accurate accounts of earthquakes, eruptions, tsunamis—verified by geology.</li><li><strong>Hawaiian volcanism:</strong> Native Hawaiians understood volcanic island creation long before Western hotspot theory.</li><li><strong>Pacific Northwest:</strong> Tribal stories of "thunderbird and whale" now understood as accounts of 1700 Cascadia earthquake.</li></ul></div>
+            <div class="content-box box-teal"><div class="box-title">🌊 Ocean & Weather Knowledge</div><ul><li><strong>Polynesian wave reading:</strong> Detecting islands beyond horizon by wave patterns—knowledge Western science still studies.</li><li><strong>Inuit weather prediction:</strong> Observations of snow, wind, animal behavior complement modern forecasting.</li><li><strong>Coastal tidal knowledge:</strong> Deep understanding of tides essential for fishing and navigation.</li></ul></div>
+            <h3 class="unit-header ocean" style="background: linear-gradient(135deg, #E67E22, #F39C12);">📚 Discussion Questions</h3>
+            <div class="content-box box-orange"><div class="box-title">💭 For Class Discussion</div><ol><li>Why was Marie Tharp's work initially dismissed? How has science become more inclusive?</li><li>How might indigenous knowledge and modern science work together on climate change?</li><li>Why is it important to see scientists who look like you?</li><li>What barriers exist for people wanting to become scientists? How can we address them?</li><li>How did star navigation require detailed astronomy knowledge?</li></ol></div>
+            <div class="content-box box-blue"><div class="box-title">📖 Resources for Further Exploration</div><ul><li><strong>Book:</strong> "Hidden Figures" by Margot Lee Shetterly</li><li><strong>Book:</strong> "Soundings: The Story of the Remarkable Woman Who Mapped the Ocean Floor" by Hali Felt</li><li><strong>Website:</strong> <a href="https://www.if-then.org" target="_blank">IF/THEN Initiative</a> - Women in STEM role models</li><li><strong>Video:</strong> Cosmos: A Spacetime Odyssey</li></ul></div>
+        </section>
+    </main>
+    <footer>
+        <p style="font-family: 'Fredoka One', cursive; font-size: 1.2rem;">Grade 6 Earth & Space Science Teacher Resource Hub</p>
+        <p>Aligned to Georgia GSE & NGSS Standards</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">© 2024 | Created for Educational Use</p>
+    </footer>
+    <script>
+        function openTab(evt, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        }
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>

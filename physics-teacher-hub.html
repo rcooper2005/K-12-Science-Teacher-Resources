@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 11 Physics Teacher Resource Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2196F3;
+            --primary-purple: #9C27B0;
+            --primary-green: #4CAF50;
+            --primary-orange: #FF9800;
+            --primary-red: #F44336;
+            --primary-teal: #009688;
+            --box-blue: #E3F2FD;
+            --box-yellow: #FFF9C4;
+            --box-green: #E8F5E9;
+            --box-purple: #F3E5F5;
+            --box-red: #FFEBEE;
+            --unit1-color: #1976D2;
+            --unit2-color: #7B1FA2;
+            --unit3-color: #388E3C;
+            --unit4-color: #F57C00;
+            --unit5-color: #00796B;
+            --unit6-color: #C62828;
+            --text-dark: #212121;
+            --text-medium: #424242;
+            --text-light: #757575;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Fredoka One', cursive; font-weight: 400; }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            padding: 40px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+            pointer-events: none;
+        }
+        .header-content { position: relative; z-index: 1; }
+        .header h1 { color: var(--white); font-size: 2.8rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); margin-bottom: 10px; }
+        .header-subtitle { color: rgba(255,255,255,0.95); font-size: 1.3rem; font-weight: 600; }
+        .physics-icons { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+        .physics-icon { position: absolute; font-size: 2rem; opacity: 0.3; animation: float 6s ease-in-out infinite; }
+        .physics-icon:nth-child(1) { top: 10%; left: 5%; }
+        .physics-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; }
+        .physics-icon:nth-child(3) { top: 60%; left: 10%; animation-delay: 2s; }
+        .physics-icon:nth-child(4) { top: 70%; right: 5%; animation-delay: 3s; }
+        .physics-icon:nth-child(5) { top: 40%; left: 3%; animation-delay: 4s; }
+        .physics-icon:nth-child(6) { bottom: 15%; right: 12%; animation-delay: 5s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
+        .tab-nav { background: var(--white); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 100; padding: 10px 0; }
+        .tab-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 1400px; margin: 0 auto; padding: 0 15px; }
+        .tab-btn {
+            font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; padding: 8px 12px;
+            border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.3s ease;
+            background: #f0f0f0; color: var(--text-medium);
+        }
+        .tab-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .tab-btn.active { background: linear-gradient(135deg, #667eea, #764ba2); color: var(--white); }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 25px 20px; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .content-box { background: var(--white); border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+        .box-blue { background: var(--box-blue); border-left: 5px solid var(--primary-blue); }
+        .box-yellow { background: var(--box-yellow); border-left: 5px solid var(--primary-orange); }
+        .box-green { background: var(--box-green); border-left: 5px solid var(--primary-green); }
+        .box-purple { background: var(--box-purple); border-left: 5px solid var(--primary-purple); }
+        .box-red { background: var(--box-red); border-left: 5px solid var(--primary-red); }
+        .section-title { font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid; border-image: linear-gradient(90deg, #667eea, #764ba2, #f093fb) 1; }
+        .subsection-title { font-size: 1.3rem; color: var(--text-dark); margin: 15px 0 12px; }
+        .collapsible {
+            background: linear-gradient(135deg, #667eea, #764ba2); color: var(--white); cursor: pointer;
+            padding: 15px 20px; width: 100%; border: none; text-align: left;
+            font-family: 'Fredoka One', cursive; font-size: 1.1rem; border-radius: var(--radius-md);
+            margin-bottom: 5px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;
+        }
+        .collapsible:hover { transform: translateX(5px); box-shadow: var(--shadow-md); }
+        .collapsible::after { content: '+'; font-size: 1.4rem; font-weight: bold; transition: transform 0.3s ease; }
+        .collapsible.active::after { transform: rotate(45deg); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--white); border-radius: 0 0 var(--radius-md) var(--radius-md); margin-bottom: 12px; }
+        .collapsible-content.show { max-height: 8000px; padding: 20px; }
+        .unit1 .collapsible { background: linear-gradient(135deg, var(--unit1-color), #42A5F5); }
+        .unit2 .collapsible { background: linear-gradient(135deg, var(--unit2-color), #AB47BC); }
+        .unit3 .collapsible { background: linear-gradient(135deg, var(--unit3-color), #66BB6A); }
+        .unit4 .collapsible { background: linear-gradient(135deg, var(--unit4-color), #FFA726); }
+        .unit5 .collapsible { background: linear-gradient(135deg, var(--unit5-color), #26A69A); }
+        .unit6 .collapsible { background: linear-gradient(135deg, var(--unit6-color), #EF5350); }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .card { background: var(--white); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-sm); transition: all 0.3s ease; border-top: 4px solid var(--primary-purple); }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .card h4 { color: var(--primary-purple); margin-bottom: 8px; font-size: 1.1rem; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 12px 0; background: var(--white); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .data-table th { background: linear-gradient(135deg, #667eea, #764ba2); color: var(--white); padding: 12px; text-align: left; font-family: 'Fredoka One', cursive; font-weight: 400; }
+        .data-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        .data-table tr:nth-child(even) { background: #f8f9fa; }
+        .data-table tr:hover { background: #e3f2fd; }
+        .video-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.3s ease; }
+        .video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .video-thumbnail { background: linear-gradient(135deg, #667eea, #764ba2); height: 100px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--white); }
+        .video-info { padding: 12px; }
+        .video-info h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 0.95rem; }
+        .video-meta { font-size: 0.8rem; color: var(--text-light); margin-bottom: 8px; }
+        .video-link { display: inline-block; background: var(--primary-red); color: var(--white); padding: 6px 12px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.8rem; transition: all 0.3s ease; }
+        .video-link:hover { background: #d32f2f; }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+        .vocab-item { background: var(--white); border-radius: var(--radius-sm); padding: 12px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-purple); }
+        .vocab-term { font-family: 'Fredoka One', cursive; color: var(--primary-purple); font-size: 1rem; margin-bottom: 4px; }
+        .vocab-def { color: var(--text-medium); font-size: 0.9rem; }
+        .formula { font-family: 'Courier New', monospace; background: #263238; color: #80CBC4; padding: 12px 15px; border-radius: var(--radius-sm); margin: 8px 0; font-size: 1rem; overflow-x: auto; }
+        .highlight { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); border-radius: var(--radius-sm); padding: 12px; margin: 12px 0; }
+        .safety-warning { background: linear-gradient(135deg, #ffebee, #fff3e0); border: 2px solid var(--primary-red); border-radius: var(--radius-md); padding: 15px; margin: 12px 0; }
+        .safety-warning h4 { color: var(--primary-red); margin-bottom: 8px; }
+        .misconception { background: var(--white); border-radius: var(--radius-md); padding: 15px; margin: 12px 0; box-shadow: var(--shadow-sm); border-left: 5px solid var(--primary-red); }
+        .misconception-wrong { color: var(--primary-red); font-weight: 700; margin-bottom: 8px; }
+        .misconception-right { color: var(--primary-green); font-weight: 700; }
+        .scientist-card { background: var(--white); border-radius: var(--radius-md); padding: 15px; box-shadow: var(--shadow-sm); text-align: center; transition: all 0.3s ease; }
+        .scientist-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .scientist-avatar { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); }
+        .scientist-card h4 { color: var(--text-dark); margin-bottom: 4px; font-size: 1rem; }
+        .scientist-dates { color: var(--text-light); font-size: 0.8rem; margin-bottom: 8px; }
+        .five-e-section { margin: 12px 0; padding: 15px; border-radius: var(--radius-md); }
+        .engage { background: #E3F2FD; border-left: 5px solid #1976D2; }
+        .explore { background: #E8F5E9; border-left: 5px solid #388E3C; }
+        .explain { background: #FFF3E0; border-left: 5px solid #F57C00; }
+        .elaborate { background: #F3E5F5; border-left: 5px solid #7B1FA2; }
+        .evaluate { background: #FFEBEE; border-left: 5px solid #C62828; }
+        .five-e-section h4 { margin-bottom: 8px; }
+        .engage h4 { color: #1976D2; } .explore h4 { color: #388E3C; } .explain h4 { color: #F57C00; } .elaborate h4 { color: #7B1FA2; } .evaluate h4 { color: #C62828; }
+        .printable-item { background: var(--white); border-radius: var(--radius-md); padding: 15px; box-shadow: var(--shadow-sm); text-align: center; transition: all 0.3s ease; }
+        .printable-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .printable-icon { font-size: 2.5rem; margin-bottom: 8px; }
+        .print-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: var(--white); border: none; padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; transition: all 0.3s ease; }
+        .print-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        ul, ol { margin-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 6px; }
+        .game-card { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); border-radius: var(--radius-md); padding: 15px; margin-bottom: 12px; border: 2px solid transparent; transition: all 0.3s ease; }
+        .game-card:hover { border-color: var(--primary-purple); transform: translateX(5px); }
+        .game-card h4 { color: var(--primary-purple); margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .tab-btn { font-size: 0.7rem; padding: 6px 10px; }
+            .cards-grid, .vocab-grid { grid-template-columns: 1fr; }
+        }
+        @media print {
+            .tab-nav, .header { display: none; }
+            .tab-content { display: block !important; }
+            .collapsible-content { max-height: none !important; padding: 15px !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="physics-icons">
+            <span class="physics-icon">🚀</span>
+            <span class="physics-icon">🌊</span>
+            <span class="physics-icon">🧲</span>
+            <span class="physics-icon">⚡</span>
+            <span class="physics-icon">🔭</span>
+            <span class="physics-icon">💡</span>
+        </div>
+        <div class="header-content">
+            <h1>🔬 Grade 11 Physics</h1>
+            <p class="header-subtitle">Complete Teacher Resource Hub</p>
+        </div>
+    </header>
+    
+    <nav class="tab-nav">
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="openTab(event, 'standards')">📋 Standards</button>
+            <button class="tab-btn" onclick="openTab(event, 'background')">📚 Background</button>
+            <button class="tab-btn" onclick="openTab(event, 'labs')">🧪 Labs & CER</button>
+            <button class="tab-btn" onclick="openTab(event, 'lessons')">📝 5E Lessons</button>
+            <button class="tab-btn" onclick="openTab(event, 'videos')">🎬 Videos</button>
+            <button class="tab-btn" onclick="openTab(event, 'articles')">📖 Articles</button>
+            <button class="tab-btn" onclick="openTab(event, 'assessments')">✅ Assessments</button>
+            <button class="tab-btn" onclick="openTab(event, 'printables')">🖨️ Printables</button>
+            <button class="tab-btn" onclick="openTab(event, 'vocabulary')">📝 Vocabulary</button>
+            <button class="tab-btn" onclick="openTab(event, 'games')">🎮 Games</button>
+            <button class="tab-btn" onclick="openTab(event, 'safety')">⚠️ Safety</button>
+            <button class="tab-btn" onclick="openTab(event, 'differentiation')">🎯 Differentiation</button>
+            <button class="tab-btn" onclick="openTab(event, 'misconceptions')">❌ Misconceptions</button>
+            <button class="tab-btn" onclick="openTab(event, 'cultural')">🌍 Cultural</button>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <!-- Tab 1: Standards -->
+        <section id="standards" class="tab-content active">
+            <h2 class="section-title">📋 Standards Alignment</h2>
+            <div style="margin-bottom:20px;padding:15px;background:linear-gradient(135deg,#f0f9ff,#ecfdf5);border-radius:10px;border-left:5px solid #3b82f6;">
+                <p style="margin:0;"><strong style="color:#1E40AF;">NGSS</strong> (Next Generation Science Standards) • <strong style="color:#991B1B;">GSE</strong> (Georgia Standards of Excellence) • <strong style="color:#065F46;">AKS</strong> (Gwinnett County Academic Knowledge and Skills)</p>
+            </div>
+            <h3 class="section-title" style="color:#991B1B;">📋 Georgia Standards of Excellence (GSE) - Physics</h3>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">Georgia Physics Standards Overview</h3>
+                <p>The Georgia Standards of Excellence for Physics provide a rigorous framework for understanding the physical world through mathematical analysis and scientific inquiry. These standards prepare students for college-level physics and STEM careers.</p>
+            </div>
+            
+            <div class="unit1">
+                <button class="collapsible">SP1: Kinematics</button>
+                <div class="collapsible-content">
+                    <h4>Standard Description</h4>
+                    <p><strong>SP1:</strong> Obtain, evaluate, and communicate information about the relationship between distance, displacement, speed, velocity, and acceleration as functions of time.</p>
+                    <h4 style="margin-top: 15px;">Learning Targets</h4>
+                    <ul>
+                        <li><strong>SP1.a:</strong> Plan and carry out an investigation of one-dimensional motion to calculate average and instantaneous speed and velocity.</li>
+                        <li><strong>SP1.b:</strong> Analyze position vs. time, velocity vs. time, and acceleration vs. time graphs and use them to solve problems.</li>
+                        <li><strong>SP1.c:</strong> Compare and contrast scalar and vector quantities.</li>
+                        <li><strong>SP1.d:</strong> Understand vectors and vector addition.</li>
+                        <li><strong>SP1.e:</strong> Analyze free-fall problems algebraically and graphically.</li>
+                        <li><strong>SP1.f:</strong> Distinguish between average and instantaneous velocity.</li>
+                        <li><strong>SP1.g:</strong> Investigate two-dimensional projectile motion.</li>
+                        <li><strong>SP1.h:</strong> Understand relative motion.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Position, displacement, velocity, acceleration, vectors, motion graphs, projectile motion, free fall</div>
+                </div>
+            </div>
+            
+            <div class="unit2">
+                <button class="collapsible">SP2: Dynamics (Forces & Newton's Laws)</button>
+                <div class="collapsible-content">
+                    <h4>Standard Description</h4>
+                    <p><strong>SP2:</strong> Obtain, evaluate, and communicate information about how forces affect the motion of objects.</p>
+                    <h4 style="margin-top: 15px;">Learning Targets</h4>
+                    <ul>
+                        <li><strong>SP2.a:</strong> Construct free-body diagrams to identify forces on an object.</li>
+                        <li><strong>SP2.b:</strong> Model object interactions based on Newton's third law.</li>
+                        <li><strong>SP2.c:</strong> Analyze motion using Newton's second law.</li>
+                        <li><strong>SP2.d:</strong> Calculate static and kinetic frictional forces.</li>
+                        <li><strong>SP2.e:</strong> Analyze mass and gravitational force relationships.</li>
+                        <li><strong>SP2.f:</strong> Describe gravitational attraction using Newton's Law of Universal Gravitation.</li>
+                        <li><strong>SP2.g:</strong> Analyze motion on an incline.</li>
+                        <li><strong>SP2.h:</strong> Apply Newton's laws to circular motion.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Force, Newton's Laws, free-body diagrams, friction, normal force, weight, inclined planes, circular motion, universal gravitation</div>
+                </div>
+            </div>
+            
+            <div class="unit3">
+                <button class="collapsible">SP3: Work, Energy & Power</button>
+                <div class="collapsible-content">
+                    <h4>Standard Description</h4>
+                    <p><strong>SP3:</strong> Obtain, evaluate, and communicate information about the importance of conservation laws for mechanical energy and linear momentum.</p>
+                    <h4 style="margin-top: 15px;">Learning Targets</h4>
+                    <ul>
+                        <li><strong>SP3.a:</strong> Analyze the relationship between work and mechanical energy change.</li>
+                        <li><strong>SP3.b:</strong> Explain mechanical energy conservation when no friction is present.</li>
+                        <li><strong>SP3.c:</strong> Calculate work by a constant force and relate to kinetic energy change.</li>
+                        <li><strong>SP3.d:</strong> Model kinetic and potential energy transformations.</li>
+                        <li><strong>SP3.e:</strong> Calculate power.</li>
+                        <li><strong>SP3.f:</strong> Understand simple machines.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Work, kinetic energy, potential energy, mechanical energy, conservation of energy, power, simple machines</div>
+                </div>
+            </div>
+            
+            <div class="unit4">
+                <button class="collapsible">SP4: Momentum & Collisions</button>
+                <div class="collapsible-content">
+                    <h4>Standard Description</h4>
+                    <p><strong>SP4:</strong> Obtain, evaluate, and communicate information about momentum conservation.</p>
+                    <h4 style="margin-top: 15px;">Learning Targets</h4>
+                    <ul>
+                        <li><strong>SP4.a:</strong> Demonstrate conservation of momentum in collisions.</li>
+                        <li><strong>SP4.b:</strong> Calculate momentum and impulse.</li>
+                        <li><strong>SP4.c:</strong> Explain the relationship between impulse and momentum change.</li>
+                        <li><strong>SP4.d:</strong> Calculate momentum before/after collisions and classify as elastic/inelastic.</li>
+                        <li><strong>SP4.e:</strong> Analyze two-dimensional collisions.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Momentum, impulse, impulse-momentum theorem, conservation of momentum, elastic/inelastic collisions</div>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">SP5: Waves, Sound & Light</button>
+                <div class="collapsible-content">
+                    <h4>Standard Description</h4>
+                    <p><strong>SP5:</strong> Obtain, evaluate, and communicate information about the nature and properties of waves.</p>
+                    <h4 style="margin-top: 15px;">Learning Targets</h4>
+                    <ul>
+                        <li><strong>SP5.a:</strong> Explain mechanical waves as disturbance propagation.</li>
+                        <li><strong>SP5.b:</strong> Relate frequency, wavelength, and speed.</li>
+                        <li><strong>SP5.c:</strong> Investigate reflection, refraction, diffraction, interference.</li>
+                        <li><strong>SP5.d:</strong> Calculate sound wave properties.</li>
+                        <li><strong>SP5.e:</strong> Understand the Doppler effect.</li>
+                        <li><strong>SP5.f:</strong> Explain standing waves, resonance, beats.</li>
+                        <li><strong>SP5.g:</strong> Describe the electromagnetic spectrum.</li>
+                        <li><strong>SP5.h:</strong> Analyze reflection and refraction of light.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Wave properties, transverse/longitudinal waves, reflection, refraction, diffraction, interference, standing waves, Doppler effect, EM spectrum</div>
+                </div>
+            </div>
+            
+            <div class="unit6">
+                <button class="collapsible">SP6 & SP7: Electricity & Magnetism</button>
+                <div class="collapsible-content">
+                    <h4>SP6: Electrostatics</h4>
+                    <ul>
+                        <li><strong>SP6.a:</strong> Analyze interactions between charged objects.</li>
+                        <li><strong>SP6.b:</strong> Model electric charge attraction and repulsion.</li>
+                        <li><strong>SP6.c:</strong> Calculate electric force using Coulomb's Law.</li>
+                        <li><strong>SP6.d:</strong> Describe and calculate electric fields.</li>
+                        <li><strong>SP6.e:</strong> Explain electric potential energy and potential.</li>
+                    </ul>
+                    <h4 style="margin-top: 15px;">SP7: Circuits & Magnetism</h4>
+                    <ul>
+                        <li><strong>SP7.a:</strong> Explain current, voltage, resistance using Ohm's Law.</li>
+                        <li><strong>SP7.b:</strong> Calculate values in series and parallel circuits.</li>
+                        <li><strong>SP7.c:</strong> Calculate electric power and energy.</li>
+                        <li><strong>SP7.d:</strong> Explain magnetic fields from currents and magnets.</li>
+                        <li><strong>SP7.e:</strong> Understand electromagnetic induction.</li>
+                    </ul>
+                    <div class="highlight"><strong>Key Concepts:</strong> Electric charge, Coulomb's Law, electric fields, current, voltage, resistance, Ohm's Law, circuits, magnetic fields, induction</div>
+                </div>
+            </div>
+            
+            <div class="content-box box-green" style="margin-top: 25px;">
+                <h3 class="subsection-title">NGSS Alignment</h3>
+                <table class="data-table">
+                    <thead><tr><th>Georgia Standard</th><th>NGSS Standards</th><th>Topic Area</th></tr></thead>
+                    <tbody>
+                        <tr><td>SP1</td><td>HS-PS2-1</td><td>Motion & Forces</td></tr>
+                        <tr><td>SP2</td><td>HS-PS2-1, HS-PS2-2, HS-PS2-3</td><td>Forces and Motion</td></tr>
+                        <tr><td>SP3</td><td>HS-PS3-1, HS-PS3-2, HS-PS3-3</td><td>Energy</td></tr>
+                        <tr><td>SP4</td><td>HS-PS2-2, HS-PS2-3</td><td>Momentum</td></tr>
+                        <tr><td>SP5</td><td>HS-PS4-1, HS-PS4-2, HS-PS4-3</td><td>Waves</td></tr>
+                        <tr><td>SP6, SP7</td><td>HS-PS2-4, HS-PS3-5</td><td>Electricity & Magnetism</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">Science & Engineering Practices</h3>
+                <div class="cards-grid">
+                    <div class="card"><h4>Asking Questions</h4><p>Formulating empirically answerable questions about physics phenomena.</p></div>
+                    <div class="card"><h4>Developing Models</h4><p>Creating mathematical and conceptual models to describe and predict.</p></div>
+                    <div class="card"><h4>Planning Investigations</h4><p>Designing controlled experiments with variables and measurements.</p></div>
+                    <div class="card"><h4>Analyzing Data</h4><p>Using mathematical tools to analyze data and identify patterns.</p></div>
+                    <div class="card"><h4>Using Mathematics</h4><p>Applying mathematical reasoning to solve physics problems.</p></div>
+                    <div class="card"><h4>Constructing Explanations</h4><p>Developing evidence-based explanations using physics principles.</p></div>
+                </div>
+            </div>
+
+            <div class="content-box" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-left:5px solid #10b981;">
+                <h3 class="subsection-title" style="color:#065F46;">📋 AKS Standards (Gwinnett County Academic Knowledge and Skills)</h3>
+                <p>Gwinnett County AKS standards for Physics align with GSE standards:</p>
+                <ul>
+                    <li><strong>SP1:</strong> Kinematics - motion graphs, displacement, velocity, acceleration, projectile motion</li>
+                    <li><strong>SP2:</strong> Dynamics - Newton's Laws, forces, friction, tension, equilibrium</li>
+                    <li><strong>SP3:</strong> Work & Energy - work-energy theorem, kinetic/potential energy, conservation of energy</li>
+                    <li><strong>SP4:</strong> Momentum & Collisions - impulse, conservation of momentum, elastic/inelastic collisions</li>
+                    <li><strong>SP5:</strong> Waves & Sound - wave properties, interference, Doppler effect, standing waves</li>
+                    <li><strong>SP6:</strong> Electricity & Magnetism - electric forces, circuits, Ohm's Law, magnetic fields</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Tab 2: Teacher Background -->
+        <section id="background" class="tab-content">
+            <h2 class="section-title">📚 Teacher Background Information</h2>
+            
+            <div class="content-box">Click each topic to expand detailed background information with key equations and teaching tips.</div>
+            
+            <div class="unit1">
+                <button class="collapsible">Unit 1: Kinematics</button>
+                <div class="collapsible-content">
+                    <h4>Core Concepts</h4>
+                    <p>Kinematics describes motion without considering forces. Key distinction: scalar quantities (distance, speed) vs. vector quantities (displacement, velocity, acceleration).</p>
+                    <h4 style="margin-top: 15px;">Key Equations</h4>
+                    <div class="formula">v = Δx/Δt (average velocity)</div>
+                    <div class="formula">a = Δv/Δt (acceleration)</div>
+                    <div class="formula">v = v₀ + at</div>
+                    <div class="formula">x = x₀ + v₀t + ½at²</div>
+                    <div class="formula">v² = v₀² + 2a(x - x₀)</div>
+                    <div class="formula">Free fall: g = 9.8 m/s² downward</div>
+                    <h4 style="margin-top: 15px;">Motion Graphs</h4>
+                    <p><strong>Position vs Time:</strong> Slope = velocity<br><strong>Velocity vs Time:</strong> Slope = acceleration, Area = displacement</p>
+                    <h4 style="margin-top: 15px;">Projectile Motion</h4>
+                    <div class="formula">Horizontal: x = v₀cosθ × t (constant velocity)</div>
+                    <div class="formula">Vertical: y = v₀sinθ × t - ½gt² (accelerated)</div>
+                    <div class="formula">Range: R = (v₀²sin2θ)/g</div>
+                </div>
+            </div>
+            
+            <div class="unit2">
+                <button class="collapsible">Unit 2: Dynamics (Newton's Laws)</button>
+                <div class="collapsible-content">
+                    <h4>Newton's Three Laws</h4>
+                    <p><strong>1st Law (Inertia):</strong> Objects maintain their motion state unless acted upon by net external force.</p>
+                    <p><strong>2nd Law:</strong> ΣF = ma (net force causes acceleration)</p>
+                    <p><strong>3rd Law:</strong> Action-reaction pairs are equal, opposite, on different objects.</p>
+                    <div class="formula">Weight: W = mg</div>
+                    <div class="formula">Friction: f = μN (static: f ≤ μₛN, kinetic: f = μₖN)</div>
+                    <div class="formula">Incline components: mg sinθ (parallel), mg cosθ (perpendicular)</div>
+                    <h4 style="margin-top: 15px;">Circular Motion</h4>
+                    <div class="formula">Centripetal acceleration: aᵨ = v²/r</div>
+                    <div class="formula">Centripetal force: Fᵨ = mv²/r</div>
+                    <h4 style="margin-top: 15px;">Universal Gravitation</h4>
+                    <div class="formula">F = Gm₁m₂/r² where G = 6.67 × 10⁻¹¹ N·m²/kg²</div>
+                </div>
+            </div>
+            
+            <div class="unit3">
+                <button class="collapsible">Unit 3: Work, Energy & Power</button>
+                <div class="collapsible-content">
+                    <h4>Work</h4>
+                    <div class="formula">W = Fd cosθ (work done by force)</div>
+                    <p>Work is positive when force and displacement are in same direction, negative when opposite, zero when perpendicular.</p>
+                    <h4 style="margin-top: 15px;">Energy</h4>
+                    <div class="formula">Kinetic Energy: KE = ½mv²</div>
+                    <div class="formula">Gravitational PE: PE = mgh</div>
+                    <div class="formula">Elastic PE: PE = ½kx²</div>
+                    <h4 style="margin-top: 15px;">Conservation of Energy</h4>
+                    <div class="formula">KE₁ + PE₁ = KE₂ + PE₂ (no friction)</div>
+                    <div class="formula">Work-Energy Theorem: W_net = ΔKE</div>
+                    <h4 style="margin-top: 15px;">Power</h4>
+                    <div class="formula">P = W/t = Fv (Watts = J/s)</div>
+                </div>
+            </div>
+            
+            <div class="unit4">
+                <button class="collapsible">Unit 4: Momentum & Collisions</button>
+                <div class="collapsible-content">
+                    <h4>Momentum & Impulse</h4>
+                    <div class="formula">Momentum: p = mv (kg·m/s)</div>
+                    <div class="formula">Impulse: J = FΔt = Δp</div>
+                    <h4 style="margin-top: 15px;">Conservation of Momentum</h4>
+                    <div class="formula">m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁f + m₂v₂f</div>
+                    <h4 style="margin-top: 15px;">Collision Types</h4>
+                    <table class="data-table">
+                        <tr><th>Type</th><th>Momentum</th><th>KE</th></tr>
+                        <tr><td>Elastic</td><td>Conserved</td><td>Conserved</td></tr>
+                        <tr><td>Inelastic</td><td>Conserved</td><td>Not conserved</td></tr>
+                        <tr><td>Perfectly Inelastic</td><td>Conserved</td><td>Maximum loss (objects stick)</td></tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">Unit 5: Waves, Sound & Light</button>
+                <div class="collapsible-content">
+                    <h4>Wave Properties</h4>
+                    <div class="formula">v = fλ (wave speed)</div>
+                    <div class="formula">T = 1/f (period)</div>
+                    <p><strong>Transverse:</strong> Oscillation perpendicular to direction (light, water surface)<br>
+                    <strong>Longitudinal:</strong> Oscillation parallel to direction (sound)</p>
+                    <h4 style="margin-top: 15px;">Wave Behaviors</h4>
+                    <p><strong>Reflection:</strong> θᵢ = θᵣ<br>
+                    <strong>Refraction:</strong> Snell's Law: n₁sinθ₁ = n₂sinθ₂<br>
+                    <strong>Interference:</strong> Constructive (in phase) or destructive (out of phase)</p>
+                    <h4 style="margin-top: 15px;">Sound</h4>
+                    <div class="formula">Speed of sound in air: v ≈ 343 m/s (at 20°C)</div>
+                    <h4 style="margin-top: 15px;">Light</h4>
+                    <div class="formula">Speed of light: c = 3 × 10⁸ m/s</div>
+                    <div class="formula">Index of refraction: n = c/v</div>
+                </div>
+            </div>
+            
+            <div class="unit6">
+                <button class="collapsible">Unit 6: Electricity & Magnetism</button>
+                <div class="collapsible-content">
+                    <h4>Electrostatics</h4>
+                    <div class="formula">Coulomb's Law: F = kq₁q₂/r² where k = 8.99 × 10⁹ N·m²/C²</div>
+                    <div class="formula">Electric field: E = F/q = kQ/r²</div>
+                    <div class="formula">Electric potential: V = kQ/r</div>
+                    <h4 style="margin-top: 15px;">Circuits</h4>
+                    <div class="formula">Ohm's Law: V = IR</div>
+                    <div class="formula">Power: P = IV = I²R = V²/R</div>
+                    <table class="data-table">
+                        <tr><th>Property</th><th>Series</th><th>Parallel</th></tr>
+                        <tr><td>Current</td><td>Same: I = I₁ = I₂</td><td>Splits: I = I₁ + I₂</td></tr>
+                        <tr><td>Voltage</td><td>Splits: V = V₁ + V₂</td><td>Same: V = V₁ = V₂</td></tr>
+                        <tr><td>Resistance</td><td>R = R₁ + R₂</td><td>1/R = 1/R₁ + 1/R₂</td></tr>
+                    </table>
+                    <h4 style="margin-top: 15px;">Magnetism</h4>
+                    <p>Current produces magnetic field (right-hand rule). Changing magnetic flux induces EMF (Faraday's Law).</p>
+                </div>
+            </div>
+        </section>
+        <!-- Tab 3: Labs & CER -->
+        <section id="labs" class="tab-content">
+            <h2 class="section-title">🧪 Laboratory Investigations & CER</h2>
+            
+            <div class="content-box box-yellow">
+                <h3 class="subsection-title">About CER (Claim-Evidence-Reasoning)</h3>
+                <p>Students make a <strong>Claim</strong> answering the question, provide <strong>Evidence</strong> from data, and explain <strong>Reasoning</strong> connecting evidence to claim using scientific principles.</p>
+            </div>
+            
+            <div class="unit1">
+                <button class="collapsible">Lab 1: Free Fall Acceleration</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Determine acceleration due to gravity experimentally</li><li>Analyze position-time and velocity-time data</li><li>Compare results to accepted value of g = 9.8 m/s²</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>Picket fence, photogate, computer with data software, meter stick, clamp stand</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Set up photogate with picket fence positioned to fall through</li><li>Connect photogate to computer and open data collection software</li><li>Drop picket fence through photogate (straight, no rotation)</li><li>Record position-time data; repeat 5 times</li><li>Create position vs. time and velocity vs. time graphs</li><li>Determine acceleration from v-t slope; calculate percent error</li></ol></div>
+                    <div class="content-box box-yellow"><h4>📝 CER Framework</h4><p><strong>Question:</strong> What is the acceleration of a freely falling object?</p><p><strong>Sample Claim:</strong> The acceleration is approximately 9.8 m/s².</p><p><strong>Evidence:</strong> Use velocity-time graph slope and calculated average values.</p><p><strong>Reasoning:</strong> Connect to Galileo's work and Newton's universal gravitation.</p></div>
+                </div>
+            </div>
+            
+            <div class="unit2">
+                <button class="collapsible">Lab 2: Coefficient of Friction</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Determine static and kinetic friction coefficients</li><li>Analyze normal force vs friction force relationship</li><li>Compare μₛ and μₖ values</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>Wooden block with hook, spring scale, various surfaces, masses, inclined plane</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Measure block mass</li><li>Pull block with spring scale; record force when it just starts moving (static)</li><li>Pull at constant velocity; record force (kinetic)</li><li>Add mass and repeat</li><li>Graph friction force vs. normal force; slope = μ</li></ol></div>
+                    <div class="content-box box-yellow"><h4>📝 CER Framework</h4><p><strong>Question:</strong> How do static and kinetic friction compare?</p><p><strong>Claim:</strong> μₛ > μₖ for the same surfaces.</p></div>
+                </div>
+            </div>
+            
+            <div class="unit4">
+                <button class="collapsible">Lab 3: Conservation of Momentum</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Verify conservation of momentum in collisions</li><li>Distinguish elastic from inelastic collisions</li><li>Analyze momentum and KE before/after</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>Dynamics carts (2), low-friction track, motion sensors, velcro strips, magnetic bumpers, balance</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Measure cart masses</li><li>Elastic: Push cart 1 toward stationary cart 2 (magnetic bumpers); record velocities</li><li>Inelastic: Attach velcro; push cart 1 toward cart 2 so they stick; record velocities</li><li>Calculate momentum before and after</li><li>Calculate KE to classify collision type</li></ol></div>
+                    <div class="content-box box-yellow"><h4>📝 CER Framework</h4><p><strong>Question:</strong> Is momentum conserved in both collision types?</p><p><strong>Claim:</strong> Total momentum is conserved; KE only conserved in elastic collisions.</p></div>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">Lab 4: Simple Pendulum Period</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Investigate factors affecting pendulum period</li><li>Verify period equation T = 2π√(L/g)</li><li>Calculate g from pendulum data</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>String (1.5m), various masses, stopwatch, meter stick, protractor, support stand</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Test effect of mass (constant length/angle)</li><li>Test effect of amplitude (constant length/mass)</li><li>Test effect of length (constant mass/angle)</li><li>Time 10 oscillations; divide by 10</li><li>Plot T² vs. L; use slope to calculate g</li></ol></div>
+                    <div class="content-box box-yellow"><h4>📝 CER Framework</h4><p><strong>Question:</strong> What factors affect pendulum period?</p><p><strong>Claim:</strong> Period depends only on length and g, not mass or small-angle amplitude.</p></div>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">Lab 5: Standing Waves on a String</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Create standing waves and identify nodes/antinodes</li><li>Investigate frequency, wavelength, tension relationships</li><li>Verify v = √(T/μ)</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>String vibrator, string, pulley with masses, frequency generator, meter stick</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Set up vibrator and pulley system</li><li>Find fundamental frequency (n=1)</li><li>Find 2nd through 5th harmonics</li><li>Calculate wavelength and wave speed</li><li>Verify with v = √(T/μ)</li></ol></div>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">Lab 6: Reflection and Refraction of Light</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Verify law of reflection</li><li>Verify Snell's Law</li><li>Determine index of refraction</li><li>Observe total internal reflection</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>Ray box/laser, plane mirror, semicircular acrylic block, protractor, white paper</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Reflection: Shine light at various angles; measure incident and reflected angles</li><li>Refraction: Shine light through curved side of block at various angles</li><li>Measure incident and refracted angles</li><li>Plot sinθ₁ vs sinθ₂; slope = n</li><li>Find critical angle for total internal reflection</li></ol></div>
+                </div>
+            </div>
+            
+            <div class="unit6">
+                <button class="collapsible">Lab 7: Ohm's Law and Circuits</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Verify Ohm's Law experimentally</li><li>Analyze series and parallel circuits</li><li>Calculate equivalent resistance</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>DC power supply, resistors (100Ω, 220Ω, 330Ω), multimeters, wires, breadboard</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Connect single resistor; vary voltage; measure current</li><li>Plot V vs I; slope = R</li><li>Connect resistors in series; measure total R</li><li>Connect in parallel; measure total R</li><li>Compare to calculated predictions</li></ol></div>
+                </div>
+            </div>
+            
+            <div class="unit6">
+                <button class="collapsible">Lab 8: Magnetic Field Mapping</button>
+                <div class="collapsible-content">
+                    <div class="content-box box-blue"><h4>🎯 Objectives</h4><ul><li>Map magnetic field lines around magnets</li><li>Investigate field around current-carrying wire</li><li>Explore electromagnet field strength factors</li></ul></div>
+                    <div class="content-box box-green"><h4>📦 Materials</h4><p>Bar magnets, iron filings, compasses, insulated wire, DC power supply, cardboard</p></div>
+                    <div class="content-box box-purple"><h4>📋 Procedure</h4><ol><li>Place magnet under paper; sprinkle iron filings; sketch pattern</li><li>Use compasses to determine field direction</li><li>Repeat for two magnets (like and opposite poles)</li><li>Pass current through wire; map field with compasses</li><li>Apply right-hand rule to predict direction</li></ol></div>
+                </div>
+            </div>
+        </section>
+        <!-- Tab 4: 5E Lessons -->
+        <section id="lessons" class="tab-content">
+            <h2 class="section-title">📝 5E Model Lesson Plans</h2>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">About the 5E Model</h3>
+                <p>The 5E instructional model (Engage, Explore, Explain, Elaborate, Evaluate) is a research-based framework for inquiry-based science instruction.</p>
+            </div>
+            
+            <div class="unit1">
+                <button class="collapsible">Lesson 1: Projectile Motion (SP1)</button>
+                <div class="collapsible-content">
+                    <h3>🎯 Objectives: Analyze 2D projectile motion; predict range, height, flight time</h3>
+                    <div class="five-e-section engage"><h4>🔥 ENGAGE (10-15 min)</h4><p>Show slow-motion video of basketball free throw. Demonstrate: drop one ball while launching another horizontally - both hit ground at same time. Discussion: Why? What forces act after release?</p></div>
+                    <div class="five-e-section explore"><h4>🔍 EXPLORE (25-30 min)</h4><p>Groups use projectile launchers to investigate range vs. launch angle (15°, 30°, 45°, 60°, 75°) and range vs. initial speed. Create graphs and identify patterns.</p></div>
+                    <div class="five-e-section explain"><h4>📖 EXPLAIN (20-25 min)</h4><p>Develop concepts: horizontal (constant v) and vertical (constant a) components are independent. Range equation: R = (v₀²sin2θ)/g. Work through example problems.</p></div>
+                    <div class="five-e-section elaborate"><h4>🚀 ELABORATE (20-25 min)</h4><p>Challenge: Calculate where to place target so projectile lands on it. Test predictions. Extension: elevated targets, launching down slopes.</p></div>
+                    <div class="five-e-section evaluate"><h4>✅ EVALUATE</h4><p>Exit ticket: Find max height and range for v₀=20m/s at 30°. Lab report with CER. Video analysis project.</p></div>
+                </div>
+            </div>
+            
+            <div class="unit2">
+                <button class="collapsible">Lesson 2: Newton's Laws of Motion (SP2)</button>
+                <div class="collapsible-content">
+                    <h3>🎯 Objectives: Apply Newton's laws; construct free-body diagrams; solve force problems</h3>
+                    <div class="five-e-section engage"><h4>🔥 ENGAGE (10-15 min)</h4><p>Demo: Tablecloth pull (inertia). Push heavy vs light box with same force. Think-pair-share: Why do you keep moving forward when car stops suddenly?</p></div>
+                    <div class="five-e-section explore"><h4>🔍 EXPLORE (30-35 min)</h4><p>Station rotation: (1) First Law - cart motion with/without friction, (2) Second Law - force sensors with different masses, (3) Third Law - spring scales pulling each other, (4) Free Body Diagram practice.</p></div>
+                    <div class="five-e-section explain"><h4>📖 EXPLAIN (25-30 min)</h4><p>Formal introduction of three laws. Free-body diagram protocol: isolate object, identify forces ON it, draw arrows from center, label each. Worked examples with multiple forces.</p></div>
+                    <div class="five-e-section elaborate"><h4>🚀 ELABORATE (25-30 min)</h4><p>Challenge problems: Atwood machine, inclined plane with friction, connected objects, elevator problems. Real-world: forces in car crashes, airbag physics.</p></div>
+                    <div class="five-e-section evaluate"><h4>✅ EVALUATE</h4><p>Create video explaining one law with demos. Problem-solving assessment with FBDs. Conceptual: why don't action-reaction forces cancel?</p></div>
+                </div>
+            </div>
+            
+            <div class="unit3">
+                <button class="collapsible">Lesson 3: Conservation of Energy (SP3)</button>
+                <div class="collapsible-content">
+                    <h3>🎯 Objectives: Calculate KE and PE; apply energy conservation; analyze transformations</h3>
+                    <div class="five-e-section engage"><h4>🔥 ENGAGE (10-15 min)</h4><p>Demo: Release pendulum from marked height; observe it returns to (almost) same height. Video: Roller coaster POV. Question: How does coaster complete loop without motor?</p></div>
+                    <div class="five-e-section explore"><h4>🔍 EXPLORE (30-35 min)</h4><p>PhET "Energy Skate Park" or foam tube roller coasters. Release from different heights; observe speed at bottom. Add friction - where does energy go? Create energy bar charts for different positions.</p></div>
+                    <div class="five-e-section explain"><h4>📖 EXPLAIN (20-25 min)</h4><p>KE = ½mv², PE = mgh, PE_spring = ½kx². Conservation: KE₁ + PE₁ = KE₂ + PE₂. Problem-solving strategy: identify states, draw energy bar charts, set up equation.</p></div>
+                    <div class="five-e-section elaborate"><h4>🚀 ELABORATE (25-30 min)</h4><p>Engineering challenge: Design roller coaster with loop and hill. Calculate minimum heights for marble to complete track. Build and test. Add friction considerations.</p></div>
+                    <div class="five-e-section evaluate"><h4>✅ EVALUATE</h4><p>Lab report with CER. Problem set with KE, gravitational PE, elastic PE combinations. Conceptual: Why does ball bounce lower each time?</p></div>
+                </div>
+            </div>
+            
+            <div class="unit5">
+                <button class="collapsible">Lesson 4: Wave Properties and Behavior (SP5)</button>
+                <div class="collapsible-content">
+                    <h3>🎯 Objectives: Describe wave properties; distinguish wave types; analyze wave behaviors</h3>
+                    <div class="five-e-section engage"><h4>🔥 ENGAGE (10-15 min)</h4><p>Demo: Create waves in slinky (transverse and longitudinal). Stadium wave with students. Video: Noise-cancelling headphones. How can adding sounds create silence?</p></div>
+                    <div class="five-e-section explore"><h4>🔍 EXPLORE (30-35 min)</h4><p>Stations: (1) PhET "Wave on a String" - vary frequency, amplitude, tension, (2) Create transverse/longitudinal waves in materials, (3) Ripple tank reflection, (4) Two-source interference patterns.</p></div>
+                    <div class="five-e-section explain"><h4>📖 EXPLAIN (20-25 min)</h4><p>Properties: amplitude, wavelength, frequency, period, speed. v = fλ. Behaviors: reflection (θᵢ = θᵣ), refraction (Snell's Law), diffraction, interference. Standing waves: nodes and antinodes.</p></div>
+                    <div class="five-e-section elaborate"><h4>🚀 ELABORATE (25-30 min)</h4><p>Musical instrument project: Design simple instrument, predict how to change pitch, measure frequencies with phone app, explain physics behind sound production.</p></div>
+                    <div class="five-e-section evaluate"><h4>✅ EVALUATE</h4><p>Wave diagram analysis. Concept map connecting all properties/behaviors. CER: What conditions produce loud vs quiet, high vs low pitch? Instrument presentation.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tab 5: Videos -->
+        <section id="videos" class="tab-content">
+            <h2 class="section-title">🎬 Curated Educational Videos</h2>
+            
+            <h3 class="subsection-title">Unit 1: Kinematics</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Motion in a Straight Line</h4><p class="video-meta">Crash Course Physics #1 | 10:39</p><a href="https://www.youtube.com/watch?v=ZM8ECpBuQYE" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Kinematic Equations</h4><p class="video-meta">Flipping Physics | 8:24</p><a href="https://www.youtube.com/watch?v=S3fcfz0ZNEU" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Projectile Motion</h4><p class="video-meta">Professor Dave Explains | 11:42</p><a href="https://www.youtube.com/watch?v=aY8z2qO44AM" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <h3 class="subsection-title">Unit 2: Dynamics</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Newton's Laws of Motion</h4><p class="video-meta">Crash Course Physics #5 | 11:02</p><a href="https://www.youtube.com/watch?v=kKKM8Y-u7ds" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Free Body Diagrams</h4><p class="video-meta">Flipping Physics | 7:56</p><a href="https://www.youtube.com/watch?v=oFl99Be-5Cc" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Friction</h4><p class="video-meta">Crash Course Physics #6 | 9:27</p><a href="https://www.youtube.com/watch?v=fo_pmp5rtzo" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <h3 class="subsection-title">Unit 3: Energy</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Work, Energy, and Power</h4><p class="video-meta">Crash Course Physics #9 | 10:47</p><a href="https://www.youtube.com/watch?v=w4QFJb9a8vo" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Conservation of Energy</h4><p class="video-meta">Veritasium | 6:18</p><a href="https://www.youtube.com/watch?v=Xo232kyTsO0" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <h3 class="subsection-title">Unit 4: Momentum</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Collisions</h4><p class="video-meta">Crash Course Physics #10 | 9:21</p><a href="https://www.youtube.com/watch?v=Y-QOfc2XqOk" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Impulse and Momentum</h4><p class="video-meta">Professor Dave Explains | 14:03</p><a href="https://www.youtube.com/watch?v=Fp7D5Q8bSxA" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <h3 class="subsection-title">Unit 5: Waves</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Wave Basics</h4><p class="video-meta">Crash Course Physics #17 | 9:32</p><a href="https://www.youtube.com/watch?v=TfYCnOvNnFU" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>The Doppler Effect</h4><p class="video-meta">MinutePhysics | 3:18</p><a href="https://www.youtube.com/watch?v=h4OnBYrbCjY" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Light: Reflection & Refraction</h4><p class="video-meta">Crash Course Physics #30 | 10:15</p><a href="https://www.youtube.com/watch?v=-ob7foUzXaY" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <h3 class="subsection-title">Unit 6: Electricity & Magnetism</h3>
+            <div class="cards-grid">
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Electric Charge & Force</h4><p class="video-meta">Crash Course Physics #25 | 8:16</p><a href="https://www.youtube.com/watch?v=TFlVWf8JX4A" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Circuits & Ohm's Law</h4><p class="video-meta">Crash Course Physics #27 | 9:34</p><a href="https://www.youtube.com/watch?v=-mHLvtGjum4" target="_blank" class="video-link">Watch Video</a></div></div>
+                <div class="video-card"><div class="video-thumbnail">🎥</div><div class="video-info"><h4>Magnetism</h4><p class="video-meta">Veritasium | 12:42</p><a href="https://www.youtube.com/watch?v=hFAOXdXZ5TM" target="_blank" class="video-link">Watch Video</a></div></div>
+            </div>
+            
+            <div class="content-box box-yellow" style="margin-top: 25px;">
+                <h3 class="subsection-title">📋 Video Discussion Questions</h3>
+                <ol><li>What is the main concept explained?</li><li>What real-world examples were used?</li><li>What equations are related to this topic?</li><li>What questions do you still have?</li><li>How does this connect to previous learning?</li></ol>
+            </div>
+        </section>
+        <!-- Tab 6: Articles -->
+        <section id="articles" class="tab-content">
+            <h2 class="section-title">📖 Student Reading Articles</h2>
+            <p class="content-box">Articles at Lexile 1100-1200 level with highlighted vocabulary and comprehension questions.</p>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-blue);">🚗 The Physics of Car Safety</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1140 | Topics: Newton's Laws, Momentum, Impulse</p>
+                <p>Car crashes demonstrate Newton's first law dramatically—passengers continue forward when the car stops. Seatbelts provide the external force to decelerate passengers safely. The key concept is <strong>impulse</strong>: J = FΔt = Δp. For a given momentum change, increasing time reduces force. Modern seatbelts stretch slightly, airbags deploy, and crumple zones crush—all extending collision time to reduce peak forces on passengers.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) Why do passengers keep moving forward in a crash? 2) How does increasing collision time reduce force? 3) Calculate impulse for a 70kg person decelerating from 25 m/s to 0.</div>
+            </div>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-green);">🎢 The Science Behind Roller Coasters</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1120 | Topics: Energy Conservation, PE and KE</p>
+                <p>Roller coasters demonstrate <strong>energy conservation</strong>. The chain lift converts electrical energy to gravitational PE (mgh). As the train descends, PE transforms to KE (½mv²). The first hill is always highest because the coaster needs enough initial PE for the entire ride. At the bottom, speed is maximum; at the top, PE is maximum. KE₁ + PE₁ = KE₂ + PE₂ explains every twist and loop.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) Why is the first hill always highest? 2) Where is KE maximum? PE maximum? 3) A 500kg coaster at 40m height: calculate PE and speed at bottom.</div>
+            </div>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-purple);">🔊 How Musical Instruments Create Sound</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1160 | Topics: Waves, Standing Waves, Resonance</p>
+                <p>All sound begins with <strong>vibration</strong>. Guitar strings create <strong>standing waves</strong> with nodes and antinodes. String frequency depends on length, tension, and mass per length: f = (1/2L)√(T/μ). Pressing a fret shortens the string (higher pitch); tightening increases tension (higher pitch). Wind instruments use vibrating <strong>air columns</strong>. The unique mix of harmonics gives each instrument its characteristic timbre.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) What determines pitch in a vibrating string? 2) A guitar string has f₁ = 330Hz. What is f₃? 3) Why do different instruments playing the same note sound different?</div>
+            </div>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-orange);">⚡ Understanding Lightning</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1150 | Topics: Electrostatics, Electric Fields</p>
+                <p>Lightning demonstrates <strong>electrostatics</strong>. In thunderclouds, collisions separate charge—positive rises, negative sinks. This creates huge <strong>electric potential differences</strong> (hundreds of millions of volts). The negative cloud base induces positive charge on the ground through <strong>electrostatic induction</strong>. When the electric field exceeds ~3 MV/m, air ionizes, creating the stepped leader. A return stroke surges upward at 1/3 light speed, creating the flash.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) How does charge separate in clouds? 2) What is electrostatic induction? 3) If flash-to-thunder time is 9 seconds, how far away was the strike?</div>
+            </div>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-teal);">📡 How Does GPS Know Where You Are?</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1130 | Topics: Waves, Wave Speed, d = vt</p>
+                <p>GPS uses the simple equation <strong>d = vt</strong>. Satellites broadcast signals traveling at c = 3×10⁸ m/s. Your receiver calculates distance from signal travel time. One satellite puts you on a sphere; two narrow it to a circle; three give two points; four fix timing errors. Since light travels 30 cm/nanosecond, timing must be precise to nanoseconds—hence atomic clocks on satellites.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) What basic equation is central to GPS? 2) Why are multiple satellites needed? 3) A signal takes 0.068s to arrive—how far is the satellite?</div>
+            </div>
+            
+            <div class="content-box">
+                <h3 style="color: var(--primary-red);">🏀 The Physics of the Perfect Free Throw</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Lexile: 1100 | Topics: Projectile Motion, Kinematics</p>
+                <p>Free throws follow <strong>parabolic trajectories</strong>. Success requires entry angles of 38-45° from horizontal. At steeper angles, the target appears larger—optimal release angle is ~52°. Studies show elite shooters vary release angle by only ±2° and speed by <3%. Higher arcs are more forgiving; that's why Stephen Curry's high-arcing shots are so effective.</p>
+                <div class="highlight"><strong>Questions:</strong> 1) What determines basketball trajectory? 2) Why is higher arc advantageous? 3) For v₀ = 7.5 m/s at 52°, find horizontal and vertical velocity components.</div>
+            </div>
+        </section>
+        
+        <!-- Tab 7: Assessments -->
+        <section id="assessments" class="tab-content">
+            <h2 class="section-title">✅ Assessment Resources</h2>
+            
+            <div class="content-box box-yellow">
+                <h3 class="subsection-title">CER Writing Rubric (4-Point Scale)</h3>
+                <table class="data-table">
+                    <thead><tr><th>Component</th><th>4 - Exceeds</th><th>3 - Meets</th><th>2 - Approaching</th><th>1 - Beginning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Claim</strong></td><td>Clear, precise, uses physics terminology</td><td>Accurate, appropriate terminology</td><td>Partially correct or incomplete</td><td>Missing or inaccurate</td></tr>
+                        <tr><td><strong>Evidence</strong></td><td>Multiple relevant data with units/uncertainty</td><td>Sufficient data with units</td><td>Limited evidence, missing units</td><td>No evidence or irrelevant</td></tr>
+                        <tr><td><strong>Reasoning</strong></td><td>Thorough explanation, addresses limitations</td><td>Clear connection using physics concepts</td><td>Incomplete connection</td><td>Missing or shows misconceptions</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">Sample Pre-Assessment Questions</h3>
+                <h4 style="color: var(--unit1-color);">Kinematics</h4>
+                <ol><li>A car travels 100 km north, then 100 km south. Displacement? Distance?</li><li>Difference between speed and velocity?</li><li>Sketch velocity vs time for a dropped ball</li></ol>
+                <h4 style="color: var(--unit2-color);">Dynamics</h4>
+                <ol><li>You push a box at constant velocity. How does applied force compare to friction?</li><li>Name all forces on a book sitting on a table</li><li>Draw FBD for a ball rolling down a ramp</li></ol>
+                <h4 style="color: var(--unit3-color);">Energy</h4>
+                <ol><li>Define energy. Give three examples of different forms</li><li>Thrown upward: where is KE max? PE max?</li><li>Lift 10 kg to 2 m height. How much work?</li></ol>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">Sample Test Questions</h3>
+                <p><strong>1.</strong> A ball is thrown horizontally from a cliff at 15 m/s. After 2 seconds, vertical velocity is? <span style="color: var(--primary-green);">Answer: 20 m/s (v = gt = 10×2)</span></p>
+                <p><strong>2.</strong> Mass m moving at v collides with stationary mass 2m; they stick. Final velocity? <span style="color: var(--primary-green);">Answer: v/3 (mv = 3m×v_f)</span></p>
+                <p><strong>3.</strong> Wave: f = 500 Hz, λ = 0.68 m. Speed? <span style="color: var(--primary-green);">Answer: 340 m/s (v = fλ)</span></p>
+                <p><strong>4.</strong> 2000 kg car: 0 to 20 m/s in 10 s. Find: a) acceleration, b) net force, c) engine force if friction = 1000 N</p>
+                <p style="color: var(--primary-green);">Answer: a) 2 m/s², b) 4000 N, c) 5000 N</p>
+            </div>
+            
+            <div class="content-box box-green">
+                <h3 class="subsection-title">Exit Ticket Prompts</h3>
+                <div class="cards-grid">
+                    <div class="card" style="border-color: var(--unit1-color);"><h4>Kinematics</h4><p>Sketch v-t graph for ball thrown upward. Find max height given v₀ = 30 m/s.</p></div>
+                    <div class="card" style="border-color: var(--unit2-color);"><h4>Dynamics</h4><p>Draw FBD for person in accelerating elevator. What does scale read?</p></div>
+                    <div class="card" style="border-color: var(--unit3-color);"><h4>Energy</h4><p>5 kg object at 10 m height. Find PE, KE at bottom, and speed.</p></div>
+                    <div class="card" style="border-color: var(--unit4-color);"><h4>Momentum</h4><p>1000 kg car at 20 m/s hits stationary 2000 kg truck. Final speed if they stick?</p></div>
+                    <div class="card" style="border-color: var(--unit5-color);"><h4>Waves</h4><p>Wave on string: f = 400 Hz, v = 320 m/s. Find wavelength.</p></div>
+                    <div class="card" style="border-color: var(--unit6-color);"><h4>Circuits</h4><p>Two 100Ω resistors: find equivalent R in series and parallel.</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- Tab 8: Printables -->
+        <section id="printables" class="tab-content">
+            <h2 class="section-title">🖨️ Printable Resources</h2>
+            
+            <div class="cards-grid">
+                <div class="printable-item"><div class="printable-icon">📝</div><h4>CER Recording Sheet</h4><p>Structured template for Claim-Evidence-Reasoning responses</p><button class="print-btn" onclick="window.print()">Print Template</button></div>
+                <div class="printable-item"><div class="printable-icon">📐</div><h4>Physics Formula Sheet</h4><p>Comprehensive reference with all major equations</p><button class="print-btn" onclick="window.print()">Print Sheet</button></div>
+                <div class="printable-item"><div class="printable-icon">🔄</div><h4>Unit Conversion Chart</h4><p>SI units and common conversions</p><button class="print-btn" onclick="window.print()">Print Chart</button></div>
+                <div class="printable-item"><div class="printable-icon">⬆️</div><h4>Free Body Diagram Templates</h4><p>Practice templates for force diagrams</p><button class="print-btn" onclick="window.print()">Print Templates</button></div>
+                <div class="printable-item"><div class="printable-icon">⚡</div><h4>Circuit Diagram Symbols</h4><p>Standard symbols for circuit schematics</p><button class="print-btn" onclick="window.print()">Print Symbols</button></div>
+                <div class="printable-item"><div class="printable-icon">🌊</div><h4>Wave Diagram Templates</h4><p>Templates for wave analysis</p><button class="print-btn" onclick="window.print()">Print Templates</button></div>
+                <div class="printable-item"><div class="printable-icon">📊</div><h4>Kinematic Equation Flowchart</h4><p>Decision tree for equation selection</p><button class="print-btn" onclick="window.print()">Print Flowchart</button></div>
+                <div class="printable-item"><div class="printable-icon">📋</div><h4>Lab Report Template</h4><p>Standard format for lab write-ups</p><button class="print-btn" onclick="window.print()">Print Template</button></div>
+            </div>
+            
+            <div class="content-box box-blue" style="margin-top: 25px;">
+                <h3 class="subsection-title">📐 Essential Physics Formulas</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                    <div><h4>Kinematics</h4><div class="formula">v = v₀ + at<br>x = x₀ + v₀t + ½at²<br>v² = v₀² + 2a(x-x₀)</div></div>
+                    <div><h4>Dynamics</h4><div class="formula">F = ma<br>W = mg<br>f = μN<br>F_c = mv²/r</div></div>
+                    <div><h4>Energy</h4><div class="formula">KE = ½mv²<br>PE = mgh<br>W = Fd cosθ<br>P = W/t</div></div>
+                    <div><h4>Momentum</h4><div class="formula">p = mv<br>J = FΔt = Δp<br>m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</div></div>
+                    <div><h4>Waves</h4><div class="formula">v = fλ<br>T = 1/f<br>n₁sinθ₁ = n₂sinθ₂</div></div>
+                    <div><h4>Electricity</h4><div class="formula">V = IR<br>P = IV<br>F = kq₁q₂/r²</div></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tab 9: Vocabulary -->
+        <section id="vocabulary" class="tab-content">
+            <h2 class="section-title">📝 Physics Vocabulary</h2>
+            
+            <h3 class="subsection-title" style="color: var(--unit1-color);">Unit 1: Kinematics</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Displacement</div><div class="vocab-def">Change in position; a vector quantity with magnitude and direction</div></div>
+                <div class="vocab-item"><div class="vocab-term">Velocity</div><div class="vocab-def">Rate of change of displacement; vector quantity (m/s)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Acceleration</div><div class="vocab-def">Rate of change of velocity (m/s²)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Free Fall</div><div class="vocab-def">Motion under gravity only, a = g = 9.8 m/s²</div></div>
+                <div class="vocab-item"><div class="vocab-term">Projectile</div><div class="vocab-def">Object moving in 2D under gravity alone</div></div>
+                <div class="vocab-item"><div class="vocab-term">Vector</div><div class="vocab-def">Quantity with both magnitude and direction</div></div>
+                <div class="vocab-item"><div class="vocab-term">Scalar</div><div class="vocab-def">Quantity with magnitude only (no direction)</div></div>
+            </div>
+            
+            <h3 class="subsection-title" style="color: var(--unit2-color);">Unit 2: Dynamics</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Force</div><div class="vocab-def">Push or pull that can change motion; measured in Newtons</div></div>
+                <div class="vocab-item"><div class="vocab-term">Net Force</div><div class="vocab-def">Vector sum of all forces on an object</div></div>
+                <div class="vocab-item"><div class="vocab-term">Inertia</div><div class="vocab-def">Tendency of object to resist changes in motion</div></div>
+                <div class="vocab-item"><div class="vocab-term">Friction</div><div class="vocab-def">Force opposing relative motion between surfaces</div></div>
+                <div class="vocab-item"><div class="vocab-term">Normal Force</div><div class="vocab-def">Force perpendicular to contact surface</div></div>
+                <div class="vocab-item"><div class="vocab-term">Equilibrium</div><div class="vocab-def">State where net force is zero</div></div>
+                <div class="vocab-item"><div class="vocab-term">Centripetal Force</div><div class="vocab-def">Net force directed toward center of circular path</div></div>
+            </div>
+            
+            <h3 class="subsection-title" style="color: var(--unit3-color);">Unit 3: Energy</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Work</div><div class="vocab-def">Energy transfer by force over distance; W = Fd cosθ</div></div>
+                <div class="vocab-item"><div class="vocab-term">Kinetic Energy</div><div class="vocab-def">Energy of motion; KE = ½mv²</div></div>
+                <div class="vocab-item"><div class="vocab-term">Potential Energy</div><div class="vocab-def">Stored energy due to position or configuration</div></div>
+                <div class="vocab-item"><div class="vocab-term">Power</div><div class="vocab-def">Rate of energy transfer; P = W/t (Watts)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Conservation</div><div class="vocab-def">Total energy remains constant in isolated system</div></div>
+            </div>
+            
+            <h3 class="subsection-title" style="color: var(--unit4-color);">Unit 4: Momentum</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Momentum</div><div class="vocab-def">Mass times velocity; p = mv (kg·m/s)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Impulse</div><div class="vocab-def">Change in momentum; J = FΔt</div></div>
+                <div class="vocab-item"><div class="vocab-term">Elastic Collision</div><div class="vocab-def">Collision where KE is conserved</div></div>
+                <div class="vocab-item"><div class="vocab-term">Inelastic Collision</div><div class="vocab-def">Collision where KE is not conserved</div></div>
+            </div>
+            
+            <h3 class="subsection-title" style="color: var(--unit5-color);">Unit 5: Waves</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Wavelength (λ)</div><div class="vocab-def">Distance for one complete wave cycle</div></div>
+                <div class="vocab-item"><div class="vocab-term">Frequency (f)</div><div class="vocab-def">Number of cycles per second (Hz)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Amplitude</div><div class="vocab-def">Maximum displacement from equilibrium</div></div>
+                <div class="vocab-item"><div class="vocab-term">Reflection</div><div class="vocab-def">Wave bouncing off a surface</div></div>
+                <div class="vocab-item"><div class="vocab-term">Refraction</div><div class="vocab-def">Wave bending when entering new medium</div></div>
+                <div class="vocab-item"><div class="vocab-term">Diffraction</div><div class="vocab-def">Wave spreading around obstacles/openings</div></div>
+                <div class="vocab-item"><div class="vocab-term">Interference</div><div class="vocab-def">Combination of waves; constructive or destructive</div></div>
+                <div class="vocab-item"><div class="vocab-term">Standing Wave</div><div class="vocab-def">Pattern from superposition of traveling waves</div></div>
+            </div>
+            
+            <h3 class="subsection-title" style="color: var(--unit6-color);">Unit 6: Electricity & Magnetism</h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><div class="vocab-term">Electric Charge</div><div class="vocab-def">Fundamental property; positive or negative (Coulombs)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Current (I)</div><div class="vocab-def">Flow of electric charge; I = Q/t (Amperes)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Voltage (V)</div><div class="vocab-def">Electric potential difference (Volts)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Resistance (R)</div><div class="vocab-def">Opposition to current flow (Ohms)</div></div>
+                <div class="vocab-item"><div class="vocab-term">Electric Field</div><div class="vocab-def">Force per unit charge at a point</div></div>
+                <div class="vocab-item"><div class="vocab-term">Magnetic Field</div><div class="vocab-def">Region where magnetic forces act</div></div>
+                <div class="vocab-item"><div class="vocab-term">Electromagnetic Induction</div><div class="vocab-def">Voltage induced by changing magnetic flux</div></div>
+            </div>
+        </section>
+        
+        <!-- Tab 10: Games -->
+        <section id="games" class="tab-content">
+            <h2 class="section-title">🎮 Games & Interactive Activities</h2>
+            
+            <div class="content-box box-green">
+                <h3 class="subsection-title">🖥️ PhET Simulations (University of Colorado)</h3>
+                <div class="cards-grid">
+                    <div class="game-card"><h4>Forces and Motion: Basics</h4><p>Explore forces, motion, and friction with interactive tug-of-war and friction lab.</p><a href="https://phet.colorado.edu/en/simulations/forces-and-motion-basics" target="_blank" class="video-link">Open Simulation</a></div>
+                    <div class="game-card"><h4>Projectile Motion</h4><p>Launch objects and explore trajectory, range, and height factors.</p><a href="https://phet.colorado.edu/en/simulations/projectile-motion" target="_blank" class="video-link">Open Simulation</a></div>
+                    <div class="game-card"><h4>Energy Skate Park</h4><p>Explore energy conservation with a skateboarding simulation.</p><a href="https://phet.colorado.edu/en/simulations/energy-skate-park-basics" target="_blank" class="video-link">Open Simulation</a></div>
+                    <div class="game-card"><h4>Wave on a String</h4><p>Create waves and explore frequency, amplitude, and wavelength.</p><a href="https://phet.colorado.edu/en/simulations/wave-on-a-string" target="_blank" class="video-link">Open Simulation</a></div>
+                    <div class="game-card"><h4>Circuit Construction Kit</h4><p>Build circuits and explore voltage, current, and resistance.</p><a href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" class="video-link">Open Simulation</a></div>
+                </div>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">🏆 Hands-On Challenges</h3>
+                <div class="game-card"><h4>🥚 Egg Drop Competition</h4><p>Design a container to protect an egg from a 3-meter drop. Apply impulse-momentum concepts. Constraints: Limited materials, maximum dimensions, no parachutes.</p></div>
+                <div class="game-card"><h4>🔧 Rube Goldberg Machine</h4><p>Create a complex machine using simple machines to complete a simple task. Must include: lever, pulley, inclined plane. Energy transformations must be documented.</p></div>
+                <div class="game-card"><h4>🚀 Balloon Car Races</h4><p>Design a balloon-powered car for maximum distance. Explore Newton's third law and momentum.</p></div>
+                <div class="game-card"><h4>🎯 Projectile Challenge</h4><p>Use calculations to predict where a launched ball will land. Teams earn points for accuracy.</p></div>
+                <div class="game-card"><h4>🔌 Circuit Challenge</h4><p>Given components, build a circuit to light bulbs at specified brightness levels.</p></div>
+            </div>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">📱 Online Review Games</h3>
+                <div class="cards-grid">
+                    <div class="card"><h4>Kahoot!</h4><p>Create competitive quiz games for review. Search "physics" for pre-made quizzes.</p><a href="https://kahoot.com" target="_blank" class="video-link">Visit Kahoot</a></div>
+                    <div class="card"><h4>Quizlet</h4><p>Flashcard sets for vocabulary review with games like Match and Gravity.</p><a href="https://quizlet.com" target="_blank" class="video-link">Visit Quizlet</a></div>
+                    <div class="card"><h4>Blooket</h4><p>Game-based learning with various game modes for physics review.</p><a href="https://blooket.com" target="_blank" class="video-link">Visit Blooket</a></div>
+                    <div class="card"><h4>Gimkit</h4><p>Live learning games where students earn in-game currency.</p><a href="https://gimkit.com" target="_blank" class="video-link">Visit Gimkit</a></div>
+                </div>
+            </div>
+        </section>
+        <!-- Tab 11: Safety -->
+        <section id="safety" class="tab-content">
+            <h2 class="section-title">⚠️ Laboratory Safety Guidelines</h2>
+            
+            <div class="safety-warning">
+                <h4>⚠️ General Lab Safety Rules</h4>
+                <ul>
+                    <li>Always wear appropriate safety equipment (goggles, closed-toe shoes)</li>
+                    <li>Know the location of safety equipment (fire extinguisher, eyewash, first aid)</li>
+                    <li>Never eat, drink, or apply cosmetics in the lab</li>
+                    <li>Report all accidents, injuries, and broken equipment immediately</li>
+                    <li>Follow all written and verbal instructions carefully</li>
+                    <li>Keep work areas clean and organized</li>
+                    <li>Dispose of materials properly</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-red">
+                <h3 class="subsection-title">🎯 Projectile & Motion Safety</h3>
+                <ul>
+                    <li>Never aim projectile launchers at people</li>
+                    <li>Clear the area in the trajectory path before launching</li>
+                    <li>Use soft projectiles when possible</li>
+                    <li>Wear safety goggles during projectile experiments</li>
+                    <li>Secure dynamics tracks to prevent sliding</li>
+                    <li>Use cart stops at track ends</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-yellow">
+                <h3 class="subsection-title">⚡ Electrical Safety</h3>
+                <ul>
+                    <li>Never work with circuits while power is on</li>
+                    <li>Check all connections before applying power</li>
+                    <li>Use appropriate voltage levels (typically ≤12V DC in student labs)</li>
+                    <li>Never touch bare wires or terminals</li>
+                    <li>Disconnect power immediately if you smell burning</li>
+                    <li>Keep water away from electrical equipment</li>
+                    <li>Report any shocks, no matter how small</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">👁️ Optics Safety</h3>
+                <ul>
+                    <li>NEVER look directly at the sun or any bright light source</li>
+                    <li>Never point lasers at eyes—even reflections can cause damage</li>
+                    <li>Use Class 1 or Class 2 lasers only in student labs</li>
+                    <li>Handle mirrors and lenses carefully—edges can be sharp</li>
+                    <li>Report broken glass immediately</li>
+                    <li>Remove reflective jewelry during laser activities</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">🏋️ Mass & Weight Handling</h3>
+                <ul>
+                    <li>Use proper lifting techniques (bend knees, keep back straight)</li>
+                    <li>Don't exceed your lifting capacity—ask for help</li>
+                    <li>Secure masses on tables so they don't roll off</li>
+                    <li>Keep feet clear when dropping masses for experiments</li>
+                    <li>Wear closed-toe shoes at all times</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-green">
+                <h3 class="subsection-title">🧲 Magnetism Safety</h3>
+                <ul>
+                    <li>Keep magnets away from electronic devices and credit cards</li>
+                    <li>Handle strong magnets with care—they can pinch fingers</li>
+                    <li>Students with pacemakers should not handle strong magnets</li>
+                    <li>Store magnets properly to prevent demagnetization</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Tab 12: Differentiation -->
+        <section id="differentiation" class="tab-content">
+            <h2 class="section-title">🎯 Differentiation Strategies</h2>
+            
+            <div class="content-box box-blue">
+                <h3 class="subsection-title">📉 Below Grade Level Learners</h3>
+                <ul>
+                    <li><strong>Scaffolded Notes:</strong> Provide partially completed notes with key terms and equations</li>
+                    <li><strong>Visual Supports:</strong> Use diagrams, animations, and color-coding extensively</li>
+                    <li><strong>Concrete Examples:</strong> Start with everyday examples before abstract concepts</li>
+                    <li><strong>Chunked Content:</strong> Break complex problems into smaller steps</li>
+                    <li><strong>Formula Cards:</strong> Allow reference sheets during practice</li>
+                    <li><strong>Peer Tutoring:</strong> Pair with supportive classmates</li>
+                    <li><strong>Extended Time:</strong> Allow additional time for assessments</li>
+                    <li><strong>Reduced Problems:</strong> Focus on quality over quantity</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">📈 Above Grade Level Learners</h3>
+                <ul>
+                    <li><strong>Extension Problems:</strong> Provide more complex, multi-step challenges</li>
+                    <li><strong>Research Projects:</strong> Independent exploration of advanced topics</li>
+                    <li><strong>Calculus Connections:</strong> Introduce calculus-based derivations</li>
+                    <li><strong>Real-World Applications:</strong> Engineering design challenges</li>
+                    <li><strong>Peer Teaching:</strong> Have students explain concepts to others</li>
+                    <li><strong>Competition Prep:</strong> Physics Olympiad practice problems</li>
+                    <li><strong>Independent Labs:</strong> Design their own investigations</li>
+                    <li><strong>Cross-curricular:</strong> Connect to chemistry, math, engineering</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-green">
+                <h3 class="subsection-title">🌍 English Language Learners (ELL)</h3>
+                <ul>
+                    <li><strong>Visual Dictionary:</strong> Create physics vocabulary with pictures</li>
+                    <li><strong>Sentence Frames:</strong> Provide structures for scientific writing</li>
+                    <li><strong>Native Language Support:</strong> Allow bilingual resources when available</li>
+                    <li><strong>Hands-On Learning:</strong> Emphasize labs and demonstrations</li>
+                    <li><strong>Word Walls:</strong> Display key terms with definitions and visuals</li>
+                    <li><strong>Graphic Organizers:</strong> Use concept maps and diagrams</li>
+                    <li><strong>Partner Work:</strong> Pair with English-proficient students</li>
+                    <li><strong>Simplified Instructions:</strong> Use clear, concise language</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-yellow">
+                <h3 class="subsection-title">📋 IEP/504 Accommodations</h3>
+                <ul>
+                    <li><strong>Extended Time:</strong> Additional time for tests and assignments</li>
+                    <li><strong>Preferential Seating:</strong> Near teacher, away from distractions</li>
+                    <li><strong>Reduced Assignment Length:</strong> Focus on essential problems</li>
+                    <li><strong>Copies of Notes:</strong> Provide teacher notes or peer notes</li>
+                    <li><strong>Calculator Use:</strong> Allow calculators for all work</li>
+                    <li><strong>Read-Aloud:</strong> For test questions if specified</li>
+                    <li><strong>Alternative Assessments:</strong> Oral exams, projects, demonstrations</li>
+                    <li><strong>Frequent Breaks:</strong> Allow movement breaks as needed</li>
+                    <li><strong>Organizational Support:</strong> Check-ins, assignment trackers</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-red">
+                <h3 class="subsection-title">🎨 Learning Style Accommodations</h3>
+                <div class="cards-grid">
+                    <div class="card"><h4>Visual Learners</h4><p>Diagrams, animations, color-coding, graphic organizers, videos, demonstrations</p></div>
+                    <div class="card"><h4>Auditory Learners</h4><p>Discussion, verbal explanations, podcasts, peer teaching, think-alouds</p></div>
+                    <div class="card"><h4>Kinesthetic Learners</h4><p>Hands-on labs, manipulatives, movement activities, building models</p></div>
+                    <div class="card"><h4>Reading/Writing</h4><p>Detailed notes, written summaries, journaling, reading assignments</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tab 13: Misconceptions -->
+        <section id="misconceptions" class="tab-content">
+            <h2 class="section-title">❌ Common Physics Misconceptions</h2>
+            <p class="content-box">Research shows these misconceptions are deeply held and resistant to change. Address them directly through demonstration, discussion, and conceptual conflict.</p>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Heavier objects fall faster than lighter objects</div>
+                <div class="misconception-right">✅ CORRECT: In the absence of air resistance, all objects fall at the same rate (g = 9.8 m/s²). Galileo demonstrated this at the Tower of Pisa. Mass does not affect free-fall acceleration.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Force is required to keep an object moving</div>
+                <div class="misconception-right">✅ CORRECT: Newton's First Law states that objects in motion stay in motion at constant velocity unless acted upon by a net force. Force is needed to change motion, not maintain it.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Current gets "used up" in a circuit</div>
+                <div class="misconception-right">✅ CORRECT: Current is the same throughout a series circuit. Charge is conserved—electrons are not consumed. Energy is transferred to components, but current remains constant.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Cold flows into warm objects</div>
+                <div class="misconception-right">✅ CORRECT: Heat (thermal energy) flows from hot to cold objects. Cold is not a substance that flows—it's simply the absence of heat energy.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Centrifugal force is a real force</div>
+                <div class="misconception-right">✅ CORRECT: Centrifugal force is a fictitious force that appears in rotating reference frames. The real force is centripetal force, directed toward the center of the circle.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Action-reaction forces cancel out</div>
+                <div class="misconception-right">✅ CORRECT: Action-reaction pairs act on DIFFERENT objects, so they cannot cancel. Forces only cancel when they act on the same object.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: In space, there is no gravity</div>
+                <div class="misconception-right">✅ CORRECT: Gravity exists everywhere. Astronauts float because they're in free fall—they and their spacecraft are falling around Earth together. Gravity keeps them in orbit!</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Velocity and acceleration are always in the same direction</div>
+                <div class="misconception-right">✅ CORRECT: When an object slows down, velocity and acceleration are in opposite directions. Example: A ball thrown upward has upward velocity but downward acceleration.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: The bigger object exerts more force in a collision</div>
+                <div class="misconception-right">✅ CORRECT: Newton's Third Law: Forces are always equal and opposite. A truck hitting a car exerts the same force as the car exerts on the truck. The car accelerates more because F = ma and it has less mass.</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Light waves need a medium to travel</div>
+                <div class="misconception-right">✅ CORRECT: Light is an electromagnetic wave that can travel through vacuum. Sound needs a medium, but light does not. That's how sunlight reaches Earth through space!</div>
+            </div>
+            
+            <div class="misconception">
+                <div class="misconception-wrong">❌ MISCONCEPTION: Electricity flows at the speed of light</div>
+                <div class="misconception-right">✅ CORRECT: The electric field propagates near light speed, but electrons drift very slowly (mm/s). It's like a pipe filled with marbles—push one in, and one comes out the other end instantly, but individual marbles move slowly.</div>
+            </div>
+        </section>
+        
+        <!-- Tab 14: Cultural Connections -->
+        <section id="cultural" class="tab-content">
+            <h2 class="section-title">🌍 Cultural Connections in Physics</h2>
+            <p class="content-box">Physics knowledge has been developed by diverse cultures throughout history. Celebrating these contributions helps all students see themselves in science.</p>
+            
+            <h3 class="subsection-title">Notable Physicists from Around the World</h3>
+            <div class="cards-grid">
+                <div class="scientist-card"><div class="scientist-avatar">🔬</div><h4>Isaac Newton</h4><p class="scientist-dates">1643-1727 | England</p><p>Laws of motion, universal gravitation, calculus, optics. Laid foundations of classical mechanics.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">💡</div><h4>Albert Einstein</h4><p class="scientist-dates">1879-1955 | Germany/USA</p><p>Special and general relativity, photoelectric effect (Nobel Prize), E = mc².</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">⚛️</div><h4>Marie Curie</h4><p class="scientist-dates">1867-1934 | Poland/France</p><p>Pioneered radioactivity research. First woman to win Nobel Prize; only person to win in two sciences.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🔭</div><h4>Galileo Galilei</h4><p class="scientist-dates">1564-1642 | Italy</p><p>Father of modern physics. Improved telescope, discovered Jupiter's moons, studied falling objects.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🧪</div><h4>Chien-Shiung Wu</h4><p class="scientist-dates">1912-1997 | China/USA</p><p>Disproved conservation of parity. "First Lady of Physics." Pioneered beta decay experiments.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">⚡</div><h4>Nikola Tesla</h4><p class="scientist-dates">1856-1943 | Serbia/USA</p><p>AC electrical system, Tesla coil, rotating magnetic field. Over 300 patents.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🧲</div><h4>Michael Faraday</h4><p class="scientist-dates">1791-1867 | England</p><p>Electromagnetic induction, electrolysis, Faraday cage. Self-taught scientist.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🚀</div><h4>Mae Jemison</h4><p class="scientist-dates">1956-present | USA</p><p>First African American woman in space. Engineer, physician, and NASA astronaut.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🌟</div><h4>Abdus Salam</h4><p class="scientist-dates">1926-1996 | Pakistan</p><p>Electroweak unification theory. First Pakistani and first Muslim Nobel laureate in science.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">☢️</div><h4>Lise Meitner</h4><p class="scientist-dates">1878-1968 | Austria/Sweden</p><p>Discovered nuclear fission. Collaborated with Otto Hahn but was overlooked for Nobel Prize.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">🌌</div><h4>Vera Rubin</h4><p class="scientist-dates">1928-2016 | USA</p><p>Discovered evidence for dark matter through galaxy rotation curves.</p></div>
+                <div class="scientist-card"><div class="scientist-avatar">📡</div><h4>S. Chandrasekhar</h4><p class="scientist-dates">1910-1995 | India/USA</p><p>Chandrasekhar limit for white dwarf stars. Nobel Prize in Physics 1983.</p></div>
+            </div>
+            
+            <div class="content-box box-green" style="margin-top: 25px;">
+                <h3 class="subsection-title">🌐 Physics Contributions from Various Cultures</h3>
+                <ul>
+                    <li><strong>Ancient Greece:</strong> Archimedes (buoyancy, levers), Aristotle (early motion theories)</li>
+                    <li><strong>Islamic Golden Age:</strong> Ibn al-Haytham (optics, scientific method), Al-Khwarizmi (algebra for physics)</li>
+                    <li><strong>Ancient China:</strong> Magnetism (compass), seismograph invention</li>
+                    <li><strong>India:</strong> Early atomic theory (Vaisheshika school), astronomical calculations</li>
+                    <li><strong>Mesoamerica:</strong> Advanced astronomical observations, calendar systems</li>
+                    <li><strong>Africa:</strong> Ancient Egyptian engineering, astronomical alignments</li>
+                </ul>
+            </div>
+            
+            <div class="content-box box-purple">
+                <h3 class="subsection-title">💡 Discussion Questions</h3>
+                <ol>
+                    <li>Why were some scientists overlooked for recognition despite major contributions?</li>
+                    <li>How has the diversity of scientists changed over time?</li>
+                    <li>What barriers have historically existed for underrepresented groups in physics?</li>
+                    <li>How can we make physics more inclusive today?</li>
+                    <li>What physics concepts were developed independently by different cultures?</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function openTab(evt, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+        
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 2 Science Teacher Resource Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matter-primary: #E91E63;
+            --matter-secondary: #FCE4EC;
+            --plants-primary: #4CAF50;
+            --plants-secondary: #E8F5E9;
+            --earth-primary: #2196F3;
+            --earth-secondary: #E3F2FD;
+            --objectives-blue: #1976D2;
+            --cer-yellow: #FFC107;
+            --materials-green: #43A047;
+            --procedures-purple: #7B1FA2;
+            --assessments-red: #D32F2F;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        header { background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%); padding: 40px; text-align: center; }
+        h1 { font-family: 'Fredoka One', cursive; font-size: 3em; color: white; text-shadow: 3px 3px 0 rgba(0,0,0,0.2); }
+        .subtitle { font-size: 1.3em; color: white; font-weight: 600; margin-top: 10px; }
+        .unit-badges { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+        .unit-badge { padding: 10px 25px; border-radius: 25px; font-weight: 700; color: white; }
+        .badge-matter { background: var(--matter-primary); }
+        .badge-plants { background: var(--plants-primary); }
+        .badge-earth { background: var(--earth-primary); }
+        .tab-navigation { display: flex; flex-wrap: wrap; background: #2C3E50; padding: 15px; gap: 8px; justify-content: center; }
+        .tab-btn { padding: 12px 18px; border: none; background: rgba(255,255,255,0.1); color: white; border-radius: 10px; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 0.9em; transition: all 0.3s ease; }
+        .tab-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .tab-btn.active { background: linear-gradient(135deg, #FF6B6B, #FFE66D); color: #2C3E50; }
+        .tab-content { display: none; padding: 40px; }
+        .tab-content.active { display: block; }
+        .section-title { font-family: 'Fredoka One', cursive; font-size: 2em; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 4px solid; border-image: linear-gradient(90deg, #FF6B6B, #FFE66D, #4ECDC4) 1; }
+        .unit-header { padding: 20px 25px; border-radius: 15px; margin-bottom: 25px; color: white; font-family: 'Fredoka One', cursive; font-size: 1.5em; }
+        .unit-matter { background: linear-gradient(135deg, #E91E63, #F06292); }
+        .unit-plants { background: linear-gradient(135deg, #4CAF50, #81C784); }
+        .unit-earth { background: linear-gradient(135deg, #2196F3, #64B5F6); }
+        .objectives-box { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); border-left: 6px solid var(--objectives-blue); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px; }
+        .objectives-box h4 { color: var(--objectives-blue); font-size: 1.1em; margin-bottom: 10px; }
+        .cer-box { background: linear-gradient(135deg, #FFF8E1, #FFECB3); border-left: 6px solid var(--cer-yellow); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px; }
+        .cer-box h4 { color: #F57F17; font-size: 1.1em; margin-bottom: 10px; }
+        .materials-box { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border-left: 6px solid var(--materials-green); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px; }
+        .materials-box h4 { color: var(--materials-green); font-size: 1.1em; margin-bottom: 10px; }
+        .procedures-box { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); border-left: 6px solid var(--procedures-purple); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px; }
+        .procedures-box h4 { color: var(--procedures-purple); font-size: 1.1em; margin-bottom: 10px; }
+        .assessment-box { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); border-left: 6px solid var(--assessments-red); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px; }
+        .assessment-box h4 { color: var(--assessments-red); font-size: 1.1em; margin-bottom: 10px; }
+        .standards-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 700; margin: 3px; }
+        .badge-ngss { background: #3F51B5; color: white; }
+        .badge-aks { background: #FF5722; color: white; }
+        .badge-gse { background: #009688; color: white; }
+        .standards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .standard-card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid; }
+        .standard-card.ngss { border-color: #3F51B5; }
+        .standard-card.state { border-color: #009688; }
+        .standard-card h4 { margin-bottom: 12px; }
+        .standard-detail { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 8px; font-size: 0.95em; }
+        .standard-detail strong { color: #666; display: block; margin-bottom: 5px; }
+        .lab-card { background: white; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .lab-header { padding: 20px 25px; color: white; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .lab-header h3 { font-family: 'Fredoka One', cursive; font-size: 1.4em; }
+        .time-badge { background: rgba(255,255,255,0.25); padding: 8px 15px; border-radius: 20px; font-weight: 700; }
+        .lab-body { padding: 25px; }
+        .lesson-card { background: white; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .lesson-header { padding: 25px; color: white; }
+        .lesson-header h3 { font-family: 'Fredoka One', cursive; font-size: 1.5em; margin-bottom: 10px; }
+        .essential-question { font-style: italic; background: rgba(255,255,255,0.2); padding: 12px 18px; border-radius: 10px; margin-top: 15px; }
+        .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 25px; }
+        .phase-card { border-radius: 15px; padding: 20px; border: 3px solid; }
+        .phase-engage { background: #FFF3E0; border-color: #FF9800; }
+        .phase-explore { background: #E8F5E9; border-color: #4CAF50; }
+        .phase-explain { background: #E3F2FD; border-color: #2196F3; }
+        .phase-elaborate { background: #F3E5F5; border-color: #9C27B0; }
+        .phase-evaluate { background: #FFEBEE; border-color: #F44336; }
+        .phase-card h4 { font-family: 'Fredoka One', cursive; margin-bottom: 15px; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .video-card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .video-link { display: inline-block; background: #FF0000; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; margin: 10px 0; }
+        .article-card { background: white; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .article-content { background: #FFFDE7; padding: 20px; border-radius: 10px; margin: 15px 0; line-height: 1.8; }
+        .vocab-highlight { background: #FFEB3B; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+        .comprehension-questions { background: #E8EAF6; padding: 15px 20px; border-radius: 10px; }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .vocab-card { background: white; border-radius: 12px; padding: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid; }
+        .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .game-card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .safety-card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #FF5722; }
+        .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .diff-card { border-radius: 15px; padding: 25px; }
+        .diff-below { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); }
+        .diff-advanced { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+        .diff-ell { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+        .diff-iep { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+        .misconception-card { background: white; border-radius: 15px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .misconception-wrong { background: #FFEBEE; padding: 15px; border-radius: 10px; border-left: 5px solid #F44336; margin-bottom: 15px; }
+        .misconception-right { background: #E8F5E9; padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50; margin-bottom: 15px; }
+        .misconception-address { background: #E3F2FD; padding: 15px; border-radius: 10px; border-left: 5px solid #2196F3; }
+        .cultural-card { background: white; border-radius: 15px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .book-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .book-item { background: #FFF8E1; padding: 15px; border-radius: 10px; }
+        .printable-section { background: white; border-radius: 15px; padding: 30px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .print-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-family: 'Nunito', sans-serif; font-weight: 700; cursor: pointer; margin-top: 15px; }
+        .test-question { background: #f8f9fa; padding: 18px; border-radius: 12px; margin-bottom: 15px; }
+        .rubric-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .rubric-table th, .rubric-table td { border: 2px solid #ddd; padding: 12px; text-align: left; }
+        .rubric-table th { background: #667eea; color: white; }
+        ul, ol { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; line-height: 1.6; }
+        @media print { body { background: white; padding: 0; } .container { box-shadow: none; } .tab-navigation { display: none; } .tab-content { display: block !important; page-break-after: always; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 Grade 2 Science Resource Hub</h1>
+            <p class="subtitle">Complete Teaching Resources for Second Grade Scientists</p>
+            <div class="unit-badges">
+                <span class="unit-badge badge-matter">🧪 Properties of Matter</span>
+                <span class="unit-badge badge-plants">🌱 Plant Life Cycles</span>
+                <span class="unit-badge badge-earth">🌍 Earth's Land & Water</span>
+            </div>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" onclick="openTab(event, 'standards')">📋 Standards</button>
+            <button class="tab-btn" onclick="openTab(event, 'background')">👩‍🏫 Background</button>
+            <button class="tab-btn" onclick="openTab(event, 'labs')">🧪 Labs & CER</button>
+            <button class="tab-btn" onclick="openTab(event, 'lessons')">📚 5E Lessons</button>
+            <button class="tab-btn" onclick="openTab(event, 'videos')">🎬 Videos</button>
+            <button class="tab-btn" onclick="openTab(event, 'articles')">📖 Articles</button>
+            <button class="tab-btn" onclick="openTab(event, 'assessments')">📝 Assessments</button>
+            <button class="tab-btn" onclick="openTab(event, 'printables')">🖨️ Printables</button>
+            <button class="tab-btn" onclick="openTab(event, 'vocabulary')">📖 Vocabulary</button>
+            <button class="tab-btn" onclick="openTab(event, 'games')">🎮 Games</button>
+            <button class="tab-btn" onclick="openTab(event, 'safety')">⚠️ Safety</button>
+            <button class="tab-btn" onclick="openTab(event, 'differentiation')">👥 Differentiation</button>
+            <button class="tab-btn" onclick="openTab(event, 'misconceptions')">💭 Misconceptions</button>
+            <button class="tab-btn" onclick="openTab(event, 'cultural')">🌍 Cultural</button>
+        </nav>
+
+        <!-- STANDARDS TAB -->
+        <div id="standards" class="tab-content active">
+            <h2 class="section-title">📋 Standards Alignment</h2>
+            <p style="margin-bottom:20px;padding:15px;background:#f0f9ff;border-radius:10px;">Grade 2 Science aligns with <strong style="color:#1E40AF;">NGSS</strong> (Next Generation Science Standards), <strong style="color:#991B1B;">GSE</strong> (Georgia Standards of Excellence), and <strong style="color:#065F46;">AKS</strong> (Gwinnett County Academic Knowledge and Skills).</p>
+            <h3 style="color:#1E40AF;background:#DBEAFE;padding:12px 20px;border-radius:10px;margin:20px 0 15px;">🎯 NGSS Standards (Next Generation Science Standards)</h3>
+            
+            <div class="unit-header unit-matter">🧪 Unit 1: Properties of Matter</div>
+            <div class="standards-grid">
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-PS1-1</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Plan and conduct an investigation to describe and classify different kinds of materials by their observable properties.</div>
+                    <div class="standard-detail"><strong>DCI (PS1.A):</strong> Different kinds of matter exist and many of them can be either solid or liquid, depending on temperature. Matter can be described and classified by its observable properties.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Planning and Carrying Out Investigations</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Patterns - Patterns in the natural and human designed world can be observed.</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-PS1-2</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Analyze data obtained from testing different materials to determine which materials have properties best suited for an intended purpose.</div>
+                    <div class="standard-detail"><strong>DCI (PS1.A):</strong> Different properties are suited to different purposes.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Analyzing and Interpreting Data</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Cause and Effect - Simple tests can be designed to gather evidence.</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-PS1-3</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Make observations to construct an evidence-based account of how an object made of a small set of pieces can be disassembled and made into a new object.</div>
+                    <div class="standard-detail"><strong>DCI (PS1.A):</strong> A great variety of objects can be built from a small set of pieces.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Constructing Explanations</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Energy and Matter - Objects may break into smaller pieces and be put together.</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-PS1-4</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Construct an argument with evidence that some changes caused by heating or cooling can be reversed and some cannot.</div>
+                    <div class="standard-detail"><strong>DCI (PS1.B):</strong> Heating or cooling a substance may cause changes. Sometimes these changes are reversible, sometimes not.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Engaging in Argument from Evidence</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Cause and Effect - Events have causes that generate observable patterns.</div>
+                </div>
+                <h3 style="color:#991B1B;background:#FEE2E2;padding:12px 20px;border-radius:10px;margin:20px 0 15px;">📋 GSE &amp; AKS Standards (Georgia &amp; Gwinnett)</h3>
+                <div class="standard-card state">
+                    <h4><span class="standards-badge badge-aks">Gwinnett AKS S2P1</span> <span class="standards-badge badge-gse">GSE S2P1</span></h4>
+                    <div class="standard-detail"><strong>Standard:</strong> Obtain, evaluate, and communicate information about the properties of matter and changes that occur in objects.</div>
+                    <div class="standard-detail"><strong>Element a:</strong> Ask questions to classify matter as a solid, liquid, or gas according to observable physical properties.</div>
+                    <div class="standard-detail"><strong>Element b:</strong> Construct an explanation for how structures made from small pieces can be disassembled and rearranged to make new structures.</div>
+                    <div class="standard-detail"><strong>Element c:</strong> Provide evidence that some changes in matter caused by heating or cooling can be reversed and some cannot.</div>
+                </div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Unit 2: Plant Life Cycles</div>
+            <div class="standards-grid">
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-LS2-1</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Plan and conduct an investigation to determine if plants need sunlight and water to grow.</div>
+                    <div class="standard-detail"><strong>DCI (LS2.A):</strong> Plants depend on water and light to grow.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Planning and Carrying Out Investigations</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Cause and Effect - Events have causes that generate observable patterns.</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-LS2-2</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Develop a simple model that mimics the function of an animal in dispersing seeds or pollinating plants.</div>
+                    <div class="standard-detail"><strong>DCI (LS2.A):</strong> Plants depend on animals for pollination or to move their seeds around.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Developing and Using Models</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Structure and Function</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-LS4-1</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Make observations of plants and animals to compare the diversity of life in different habitats.</div>
+                    <div class="standard-detail"><strong>DCI (LS4.D):</strong> There are many different kinds of living things in any area, existing in different places on land and in water.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Making Observations</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Patterns</div>
+                </div>
+                <h3 style="color:#991B1B;background:#FEE2E2;padding:12px 20px;border-radius:10px;margin:20px 0 15px;">📋 GSE &amp; AKS Standards (Georgia &amp; Gwinnett)</h3>
+                <div class="standard-card state">
+                    <h4><span class="standards-badge badge-aks">Gwinnett AKS S2L1</span> <span class="standards-badge badge-gse">GSE S2L1</span></h4>
+                    <div class="standard-detail"><strong>Standard:</strong> Obtain, evaluate, and communicate information about the life cycles of different living organisms.</div>
+                    <div class="standard-detail"><strong>Element a:</strong> Ask questions to determine the sequence of the life cycle of common animals.</div>
+                    <div class="standard-detail"><strong>Element b:</strong> Plan and carry out an investigation of the life cycle of a plant by growing a plant from a seed.</div>
+                    <div class="standard-detail"><strong>Element c:</strong> Construct an explanation of an animal's role in dispersing seeds or pollinating plants.</div>
+                </div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Unit 3: Earth's Land & Water</div>
+            <div class="standards-grid">
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-ESS1-1</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Use information from several sources to provide evidence that Earth events can occur quickly or slowly.</div>
+                    <div class="standard-detail"><strong>DCI (ESS1.C):</strong> Some events happen very quickly; others occur very slowly.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Constructing Explanations</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Stability and Change</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-ESS2-1</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Compare multiple solutions designed to slow or prevent wind or water from changing the shape of the land.</div>
+                    <div class="standard-detail"><strong>DCI (ESS2.A):</strong> Wind and water can change the shape of the land.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Comparing Solutions</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Stability and Change</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-ESS2-2</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Develop a model to represent the shapes and kinds of land and bodies of water in an area.</div>
+                    <div class="standard-detail"><strong>DCI (ESS2.B):</strong> Maps show where things are located.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Developing and Using Models</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Patterns</div>
+                </div>
+                <div class="standard-card ngss">
+                    <h4><span class="standards-badge badge-ngss">NGSS 2-ESS2-3</span></h4>
+                    <div class="standard-detail"><strong>Performance Expectation:</strong> Obtain information to identify where water is found on Earth and that it can be solid or liquid.</div>
+                    <div class="standard-detail"><strong>DCI (ESS2.C):</strong> Water is found in the ocean, rivers, lakes, and ponds. Water exists as solid ice and in liquid form.</div>
+                    <div class="standard-detail"><strong>SEP:</strong> Obtaining Information</div>
+                    <div class="standard-detail"><strong>CCC:</strong> Patterns</div>
+                </div>
+                <h3 style="color:#991B1B;background:#FEE2E2;padding:12px 20px;border-radius:10px;margin:20px 0 15px;">📋 GSE &amp; AKS Standards (Georgia &amp; Gwinnett)</h3>
+                <div class="standard-card state">
+                    <h4><span class="standards-badge badge-aks">Gwinnett AKS S2E1</span> <span class="standards-badge badge-gse">GSE S2E1</span></h4>
+                    <div class="standard-detail"><strong>Standard:</strong> Obtain, evaluate, and communicate information about weather and seasonal changes.</div>
+                    <div class="standard-detail"><strong>Element a:</strong> Plan and carry out an investigation to observe and record daily weather.</div>
+                    <div class="standard-detail"><strong>Element b:</strong> Analyze data to identify patterns in weather from season to season.</div>
+                </div>
+                <h3 style="color:#991B1B;background:#FEE2E2;padding:12px 20px;border-radius:10px;margin:20px 0 15px;">📋 GSE &amp; AKS Standards (Georgia &amp; Gwinnett)</h3>
+                <div class="standard-card state">
+                    <h4><span class="standards-badge badge-aks">Gwinnett AKS S2E2</span> <span class="standards-badge badge-gse">GSE S2E2</span></h4>
+                    <div class="standard-detail"><strong>Standard:</strong> Obtain, evaluate, and communicate information about Earth's surface.</div>
+                    <div class="standard-detail"><strong>Element a:</strong> Construct an argument supported by evidence for how natural processes change Earth's surface.</div>
+                    <div class="standard-detail"><strong>Element b:</strong> Develop a model to represent types of land and bodies of water.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACHER BACKGROUND TAB -->
+        <div id="background" class="tab-content">
+            <h2 class="section-title">👩‍🏫 Teacher Background Knowledge</h2>
+
+            <div class="unit-header unit-matter">🧪 Unit 1: Properties of Matter</div>
+            <div class="objectives-box">
+                <h4>📚 Key Content Knowledge</h4>
+                <p><strong>Matter</strong> is anything that has mass and takes up space. At the second-grade level, students explore matter through observable properties.</p>
+                <p style="margin-top: 15px;"><strong>Three States of Matter:</strong></p>
+                <ul>
+                    <li><strong>Solids</strong> have a definite shape and volume. Particles are tightly packed. Examples: rocks, ice, wood</li>
+                    <li><strong>Liquids</strong> have a definite volume but take the shape of their container. Examples: water, milk, juice</li>
+                    <li><strong>Gases</strong> have no definite shape or volume; they spread out to fill any container. Examples: air, helium</li>
+                </ul>
+            </div>
+            <div class="materials-box">
+                <h4>🔑 Key Concepts to Emphasize</h4>
+                <ul>
+                    <li>Matter can change from one state to another through heating or cooling</li>
+                    <li>Some changes are <strong>reversible</strong> (ice to water to ice)</li>
+                    <li>Some changes are <strong>irreversible</strong> (cooking an egg, burning paper)</li>
+                    <li>Different materials have different properties useful for different purposes</li>
+                </ul>
+            </div>
+            <div class="cer-box">
+                <h4>❓ Common Student Questions</h4>
+                <ul>
+                    <li><strong>"Is air matter?"</strong> Yes! Air has mass and takes up space.</li>
+                    <li><strong>"Why does ice float?"</strong> Ice is less dense than liquid water.</li>
+                    <li><strong>"Can I see gas?"</strong> Most gases are invisible, but you can see their effects.</li>
+                </ul>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Unit 2: Plant Life Cycles</div>
+            <div class="objectives-box">
+                <h4>📚 Key Content Knowledge</h4>
+                <p><strong>Plant Life Cycle Stages:</strong></p>
+                <ol>
+                    <li><strong>Seed:</strong> Contains a baby plant (embryo) and stored food</li>
+                    <li><strong>Germination:</strong> Seed sprouts when it has water, warmth</li>
+                    <li><strong>Seedling:</strong> Young plant with first leaves</li>
+                    <li><strong>Adult Plant:</strong> Has roots, stem, leaves, flowers</li>
+                    <li><strong>Flowering & Pollination:</strong> Pollen transfers for fertilization</li>
+                    <li><strong>Seed Production & Dispersal:</strong> Seeds spread to new places</li>
+                </ol>
+            </div>
+            <div class="materials-box">
+                <h4>🔑 Key Concepts to Emphasize</h4>
+                <ul>
+                    <li>Plants need <strong>sunlight, water, air, and nutrients</strong> to grow</li>
+                    <li>Different plant parts have different functions</li>
+                    <li>Animals help plants by <strong>pollinating</strong> and <strong>dispersing seeds</strong></li>
+                </ul>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Unit 3: Earth's Land & Water</div>
+            <div class="objectives-box">
+                <h4>📚 Key Content Knowledge</h4>
+                <p><strong>Types of Landforms:</strong> Mountains, Hills, Valleys, Plains, Plateaus, Islands</p>
+                <p style="margin-top: 15px;"><strong>Types of Water Bodies:</strong> Oceans, Lakes, Rivers, Ponds, Glaciers</p>
+            </div>
+            <div class="materials-box">
+                <h4>🔑 Key Concepts to Emphasize</h4>
+                <ul>
+                    <li><strong>Erosion:</strong> Wind and water can wear away and move rock and soil</li>
+                    <li><strong>Weathering:</strong> Breaking down of rocks by weather, water, ice</li>
+                    <li>Earth changes happen at different speeds - fast and slow</li>
+                    <li>Water exists on Earth in different forms - liquid and solid</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LABS & CER TAB -->
+        <div id="labs" class="tab-content">
+            <h2 class="section-title">🧪 Hands-On Labs with CER</h2>
+
+            <div class="lab-card">
+                <div class="lab-header unit-matter">
+                    <h3>🧊 Lab 1: States of Matter Sorting</h3>
+                    <span class="time-badge">⏱️ 45 minutes</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-PS1-1</span>
+                        <span class="standards-badge badge-aks">S2P1.a</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to classify matter as solid, liquid, or gas based on observable properties.</li>
+                            <li>Students will be able to describe characteristics of each state of matter.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials (per group)</h4>
+                        <ul>
+                            <li>Rock, wooden block, ice cube, rubber ball</li>
+                            <li>Clear cups with water, milk, oil</li>
+                            <li>Balloon (inflated), ziplock bag of air</li>
+                            <li>Sorting mat with 3 columns, Recording sheet</li>
+                        </ul>
+                    </div>
+                    <div class="procedures-box">
+                        <h4>📋 Step-by-Step Procedure</h4>
+                        <ol>
+                            <li>Gather students in groups of 3-4 and distribute materials.</li>
+                            <li>Review the three states of matter using anchor chart.</li>
+                            <li>Have students observe each object - feel it, describe its shape.</li>
+                            <li>Ask: "Does this have its own shape? Does it flow?"</li>
+                            <li>Students sort objects onto the sorting mat.</li>
+                            <li>Groups discuss why they placed each item in that category.</li>
+                            <li>Complete the CER recording sheet together.</li>
+                        </ol>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> How can we tell if something is a solid, liquid, or gas?</p>
+                        <p><strong>Claim (Example):</strong> Matter can be classified into three states based on shape and volume.</p>
+                        <p><strong>Evidence (Examples):</strong></p>
+                        <ul>
+                            <li>The rock kept its shape when moved - it's a solid.</li>
+                            <li>The water changed shape to match the cup - it's a liquid.</li>
+                            <li>The air spread out to fill the balloon - it's a gas.</li>
+                        </ul>
+                        <p><strong>Reasoning:</strong> Solids keep their shape. Liquids take container shape. Gases fill any space.</p>
+                    </div>
+                    <div class="assessment-box">
+                        <h4>✅ Assessment Checklist</h4>
+                        <ul>
+                            <li>□ Student correctly sorted at least 5/6 objects</li>
+                            <li>□ Claim answers the question</li>
+                            <li>□ Evidence includes specific observations</li>
+                            <li>□ Reasoning connects evidence to claim</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-header unit-matter">
+                    <h3>🔥 Lab 2: Reversible vs. Irreversible Changes</h3>
+                    <span class="time-badge">⏱️ 50 minutes</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-PS1-4</span>
+                        <span class="standards-badge badge-aks">S2P1.c</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to identify changes caused by heating or cooling.</li>
+                            <li>Students will be able to classify changes as reversible or irreversible.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials</h4>
+                        <ul>
+                            <li>Ice cubes and cups</li>
+                            <li>Chocolate chips and microwave-safe bowl</li>
+                            <li>Hard-boiled eggs (before/after comparison)</li>
+                            <li>Bread for toasting, Butter</li>
+                        </ul>
+                    </div>
+                    <div class="procedures-box">
+                        <h4>📋 Step-by-Step Procedure</h4>
+                        <ol>
+                            <li>Station 1: Observe ice melting. Can we get ice back?</li>
+                            <li>Station 2: Watch chocolate melt. Let it cool. What happens?</li>
+                            <li>Station 3: Compare raw egg to hard-boiled egg. Can we uncook it?</li>
+                            <li>Station 4: Observe bread before and after toasting.</li>
+                            <li>Students draw before/after pictures and classify each change.</li>
+                        </ol>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> Which changes caused by heating or cooling can be reversed?</p>
+                        <p><strong>Claim:</strong> Some changes can be reversed, but some cannot be undone.</p>
+                        <p><strong>Evidence:</strong> Ice melted and can freeze back. Toast cannot become bread again.</p>
+                        <p><strong>Reasoning:</strong> Melting only changes form, not the material. Cooking changes the material itself.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-header unit-plants">
+                    <h3>🌱 Lab 3: Plant Growth Investigation</h3>
+                    <span class="time-badge">⏱️ 3 weeks (10 min/day)</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-LS2-1</span>
+                        <span class="standards-badge badge-aks">S2L1.b</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to investigate what plants need to grow.</li>
+                            <li>Students will be able to record observations over time.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials (per group)</h4>
+                        <ul>
+                            <li>4 clear plastic cups</li>
+                            <li>Lima bean or radish seeds</li>
+                            <li>Potting soil, Water spray bottle</li>
+                            <li>Ruler, Plant journal</li>
+                        </ul>
+                    </div>
+                    <div class="procedures-box">
+                        <h4>📋 Procedure</h4>
+                        <ol>
+                            <li>Cup 1 (Normal): Water regularly, place in sunlight</li>
+                            <li>Cup 2 (No Water): Do not water, place in sunlight</li>
+                            <li>Cup 3 (No Light): Water regularly, place in dark closet</li>
+                            <li>Cup 4 (No Soil): Seed on wet paper towel, sunlight</li>
+                            <li>Observe and draw plants every 2-3 days for 3 weeks.</li>
+                        </ol>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> What do plants need to grow healthy and strong?</p>
+                        <p><strong>Claim:</strong> Plants need water, sunlight, and soil to grow healthy.</p>
+                        <p><strong>Evidence:</strong> Normal plant grew to 8 cm. No-water plant died. No-light plant was yellow.</p>
+                        <p><strong>Reasoning:</strong> Plants need water for nutrients, sunlight to make food, soil for support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-header unit-plants">
+                    <h3>🐝 Lab 4: Seed Dispersal Simulation</h3>
+                    <span class="time-badge">⏱️ 40 minutes</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-LS2-2</span>
+                        <span class="standards-badge badge-aks">S2L1.c</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to explain how animals help disperse seeds.</li>
+                            <li>Students will be able to model seed dispersal methods.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials</h4>
+                        <ul>
+                            <li>Velcro balls, Fake fur pieces</li>
+                            <li>Paper helicopter seeds, Small fan</li>
+                            <li>"Berry" beads and bird puppet</li>
+                            <li>Dandelion puffs</li>
+                        </ul>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> How do animals help plants spread their seeds?</p>
+                        <p><strong>Claim:</strong> Animals help spread seeds by carrying them on fur or eating fruits.</p>
+                        <p><strong>Evidence:</strong> Velcro burrs stuck to fur. Bird "dropped" berry seeds 3 feet away.</p>
+                        <p><strong>Reasoning:</strong> Plants can't move, so they need help spreading seeds to new places.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-header unit-earth">
+                    <h3>🌊 Lab 5: Erosion Exploration</h3>
+                    <span class="time-badge">⏱️ 45 minutes</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-ESS2-1</span>
+                        <span class="standards-badge badge-aks">S2E2.a</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to describe how water and wind change land.</li>
+                            <li>Students will be able to compare erosion prevention methods.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials</h4>
+                        <ul>
+                            <li>Aluminum foil pan (stream table)</li>
+                            <li>Sand and soil mixture</li>
+                            <li>Small rocks, Craft sticks</li>
+                            <li>Grass plugs or fake moss</li>
+                            <li>Watering can</li>
+                        </ul>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> What can slow down water erosion?</p>
+                        <p><strong>Claim:</strong> Plants and barriers can slow erosion and keep soil in place.</p>
+                        <p><strong>Evidence:</strong> Bare soil washed away. Plants held soil together.</p>
+                        <p><strong>Reasoning:</strong> Plant roots hold soil like a net, slowing water flow.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-header unit-earth">
+                    <h3>🗺️ Lab 6: Landform Model Builders</h3>
+                    <span class="time-badge">⏱️ 60 minutes</span>
+                </div>
+                <div class="lab-body">
+                    <div style="margin-bottom: 15px;">
+                        <span class="standards-badge badge-ngss">2-ESS2-2</span>
+                        <span class="standards-badge badge-aks">S2E2.b</span>
+                    </div>
+                    <div class="objectives-box">
+                        <h4>🎯 Learning Objectives</h4>
+                        <ul>
+                            <li>Students will be able to identify different landforms and water bodies.</li>
+                            <li>Students will be able to create a model showing land and water features.</li>
+                        </ul>
+                    </div>
+                    <div class="materials-box">
+                        <h4>📦 Materials</h4>
+                        <ul>
+                            <li>Paper plate or shallow box lid</li>
+                            <li>Play-doh or modeling clay</li>
+                            <li>Blue paint for water</li>
+                            <li>Landform reference cards</li>
+                            <li>Map key template, Toothpick flags</li>
+                        </ul>
+                    </div>
+                    <div class="cer-box">
+                        <h4>📝 CER Framework</h4>
+                        <p><strong>Question:</strong> What kinds of land and water are found on Earth?</p>
+                        <p><strong>Claim:</strong> Earth has many landforms (mountains, plains) and water bodies (oceans, lakes).</p>
+                        <p><strong>Evidence:</strong> My model shows a mountain, plain, river, and lake.</p>
+                        <p><strong>Reasoning:</strong> Earth's surface varies - high and low areas, with water filling low spots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5E LESSONS TAB -->
+        <div id="lessons" class="tab-content">
+            <h2 class="section-title">📚 Complete 5E Lesson Plans</h2>
+
+            <div class="lesson-card">
+                <div class="lesson-header unit-matter">
+                    <h3>🧊 Lesson 1: What is Matter?</h3>
+                    <div class="essential-question">❓ Essential Question: What makes something matter?</div>
+                </div>
+                <div class="objectives-box" style="margin: 20px;">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to define matter as anything that has mass and takes up space.</li>
+                        <li>Students will be able to identify examples and non-examples of matter.</li>
+                    </ul>
+                </div>
+                <div class="phase-grid">
+                    <div class="phase-card phase-engage">
+                        <h4>🎣 ENGAGE (10 min)</h4>
+                        <p><strong>Activity:</strong> Mystery Box - students feel objects without looking.</p>
+                        <p><strong>Materials:</strong> Shoe box with hole, various objects</p>
+                        <p><strong>Assessment:</strong> Listen for students describing that objects take up space.</p>
+                    </div>
+                    <div class="phase-card phase-explore">
+                        <h4>🔍 EXPLORE (15 min)</h4>
+                        <p><strong>Activity:</strong> "Is It Matter?" sort with picture cards including air, shadows, light.</p>
+                        <p><strong>Materials:</strong> Sorting mats, picture cards</p>
+                        <p><strong>Teacher Role:</strong> Ask: "Can you touch it? Does it take up space?"</p>
+                    </div>
+                    <div class="phase-card phase-explain">
+                        <h4>📖 EXPLAIN (15 min)</h4>
+                        <p><strong>Vocabulary:</strong> matter, mass, volume, property</p>
+                        <p><strong>Key Concepts:</strong> Matter has mass and volume. Light, sound, shadows are NOT matter.</p>
+                        <p><strong>Anchor Chart:</strong> "Matter vs. Not Matter" T-chart</p>
+                    </div>
+                    <div class="phase-card phase-elaborate">
+                        <h4>🚀 ELABORATE (15 min)</h4>
+                        <p><strong>Extension:</strong> "Prove It's Matter" challenge - find 5 objects and explain how you know each is matter.</p>
+                    </div>
+                    <div class="phase-card phase-evaluate">
+                        <h4>✅ EVALUATE (5 min)</h4>
+                        <p><strong>Exit Ticket:</strong> Draw 2 examples of matter and 2 non-examples. Explain choices.</p>
+                        <p><strong>Success Criteria:</strong> Correctly identifies examples and references mass or volume.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <div class="lesson-header unit-matter">
+                    <h3>🔬 Lesson 2: Properties of Materials</h3>
+                    <div class="essential-question">❓ Essential Question: Why do we use different materials for different things?</div>
+                </div>
+                <div class="objectives-box" style="margin: 20px;">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to describe observable properties (hardness, texture, flexibility).</li>
+                        <li>Students will be able to select the best material for a given purpose.</li>
+                    </ul>
+                </div>
+                <div class="phase-grid">
+                    <div class="phase-card phase-engage">
+                        <h4>🎣 ENGAGE (10 min)</h4>
+                        <p><strong>Activity:</strong> Compare paper plate vs. ceramic plate. "Why don't we use paper for soup?"</p>
+                    </div>
+                    <div class="phase-card phase-explore">
+                        <h4>🔍 EXPLORE (20 min)</h4>
+                        <p><strong>Activity:</strong> Property Testing Stations - hardness, flexibility, absorbency, texture tests.</p>
+                    </div>
+                    <div class="phase-card phase-explain">
+                        <h4>📖 EXPLAIN (12 min)</h4>
+                        <p><strong>Vocabulary:</strong> property, hardness, flexibility, absorbency, texture, transparent</p>
+                        <p><strong>Anchor Chart:</strong> Properties chart with definitions and examples</p>
+                    </div>
+                    <div class="phase-card phase-elaborate">
+                        <h4>🚀 ELABORATE (12 min)</h4>
+                        <p><strong>Design Challenge:</strong> Choose the best material to wrap a birthday present and explain why.</p>
+                    </div>
+                    <div class="phase-card phase-evaluate">
+                        <h4>✅ EVALUATE (6 min)</h4>
+                        <p><strong>Exit Ticket:</strong> Why is a sponge good for cleaning spills? Name the property.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <div class="lesson-header unit-plants">
+                    <h3>🌱 Lesson 3: The Life Cycle of a Plant</h3>
+                    <div class="essential-question">❓ Essential Question: How does a tiny seed become a plant that makes more seeds?</div>
+                </div>
+                <div class="objectives-box" style="margin: 20px;">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to sequence the stages of a plant life cycle.</li>
+                        <li>Students will be able to explain that the life cycle repeats.</li>
+                    </ul>
+                </div>
+                <div class="phase-grid">
+                    <div class="phase-card phase-engage">
+                        <h4>🎣 ENGAGE (8 min)</h4>
+                        <p><strong>Activity:</strong> Show seed, seedling, and mature sunflower. "Are these related?"</p>
+                    </div>
+                    <div class="phase-card phase-explore">
+                        <h4>🔍 EXPLORE (18 min)</h4>
+                        <p><strong>Activity:</strong> Life Cycle Sequencing - put 6 pictures in order and explain reasoning.</p>
+                    </div>
+                    <div class="phase-card phase-explain">
+                        <h4>📖 EXPLAIN (15 min)</h4>
+                        <p><strong>Vocabulary:</strong> life cycle, germination, seedling, mature, pollination, fruit</p>
+                        <p><strong>Anchor Chart:</strong> Circular life cycle diagram with arrows</p>
+                    </div>
+                    <div class="phase-card phase-elaborate">
+                        <h4>🚀 ELABORATE (12 min)</h4>
+                        <p><strong>Extension:</strong> Create a life cycle wheel using paper plates and brass fastener.</p>
+                    </div>
+                    <div class="phase-card phase-evaluate">
+                        <h4>✅ EVALUATE (7 min)</h4>
+                        <p><strong>Exit Ticket:</strong> What comes after flowers? Why is it called a "cycle"?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <div class="lesson-header unit-earth">
+                    <h3>🌍 Lesson 4: How Earth Changes</h3>
+                    <div class="essential-question">❓ Essential Question: Does Earth always look the same, or does it change?</div>
+                </div>
+                <div class="objectives-box" style="margin: 20px;">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Students will be able to describe ways Earth's surface can change.</li>
+                        <li>Students will be able to compare fast and slow changes to Earth.</li>
+                    </ul>
+                </div>
+                <div class="phase-grid">
+                    <div class="phase-card phase-engage">
+                        <h4>🎣 ENGAGE (10 min)</h4>
+                        <p><strong>Activity:</strong> Show before/after photos of Grand Canyon and volcanic eruption.</p>
+                    </div>
+                    <div class="phase-card phase-explore">
+                        <h4>🔍 EXPLORE (20 min)</h4>
+                        <p><strong>Activity:</strong> Fast vs. Slow sorting with video clips of earthquakes, erosion, floods.</p>
+                    </div>
+                    <div class="phase-card phase-explain">
+                        <h4>📖 EXPLAIN (12 min)</h4>
+                        <p><strong>Vocabulary:</strong> erosion, weathering, earthquake, volcano, landslide, flood</p>
+                        <p><strong>Anchor Chart:</strong> Two-column chart comparing fast and slow changes</p>
+                    </div>
+                    <div class="phase-card phase-elaborate">
+                        <h4>🚀 ELABORATE (12 min)</h4>
+                        <p><strong>Extension:</strong> "Earth Change Detectives" - find evidence of changes in local photos.</p>
+                    </div>
+                    <div class="phase-card phase-evaluate">
+                        <h4>✅ EVALUATE (6 min)</h4>
+                        <p><strong>Exit Ticket:</strong> Name one fast and one slow change. How long does each take?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEOS TAB -->
+        <div id="videos" class="tab-content">
+            <h2 class="section-title">🎬 Educational Videos</h2>
+
+            <div class="unit-header unit-matter">🧪 Properties of Matter Videos</div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <h4>📺 What is Matter? - Crash Course Kids</h4>
+                    <p><strong>Duration:</strong> 4:32</p>
+                    <a href="https://www.youtube.com/watch?v=ELchwUIlWa8" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Introduction to matter and its states.</p>
+                    <p><strong>Questions:</strong> What are the three states? How did they show gases are matter?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 Solid, Liquid, Gas - SciShow Kids</h4>
+                    <p><strong>Duration:</strong> 3:55</p>
+                    <a href="https://www.youtube.com/watch?v=jHjz8KhHN9U" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Kid-friendly explanation with real examples.</p>
+                    <p><strong>Questions:</strong> What happens to particles in each state?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 Changes in Matter - Peekaboo Kids</h4>
+                    <p><strong>Duration:</strong> 5:21</p>
+                    <a href="https://www.youtube.com/watch?v=gDY2zGMICIg" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Shows reversible and irreversible changes.</p>
+                    <p><strong>Questions:</strong> Which change could be reversed? Why can't you uncook an egg?</p>
+                </div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Plant Life Cycles Videos</div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <h4>📺 The Life Cycle of a Plant - Homeschool Pop</h4>
+                    <p><strong>Duration:</strong> 4:15</p>
+                    <a href="https://www.youtube.com/watch?v=tkFPyue5X3Q" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Clear overview of plant life cycle stages.</p>
+                    <p><strong>Questions:</strong> What does a seed need to start growing?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 How Seeds Travel - SciShow Kids</h4>
+                    <p><strong>Duration:</strong> 3:42</p>
+                    <a href="https://www.youtube.com/watch?v=gJCxYYCDz0s" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Explains seed dispersal methods.</p>
+                    <p><strong>Questions:</strong> How do animals help plants spread seeds?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 What Do Plants Need? - Kids Academy</h4>
+                    <p><strong>Duration:</strong> 4:08</p>
+                    <a href="https://www.youtube.com/watch?v=p3St51F4kE8" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Demonstrates plant needs through experiments.</p>
+                    <p><strong>Questions:</strong> What happens without sunlight?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 Pollination for Kids - Learning Junction</h4>
+                    <p><strong>Duration:</strong> 3:28</p>
+                    <a href="https://www.youtube.com/watch?v=dV5vX1gMqbk" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Shows how pollinators help plants.</p>
+                    <p><strong>Questions:</strong> What is pollen? How do bees help flowers?</p>
+                </div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Earth's Land & Water Videos</div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <h4>📺 Landforms for Kids - Homeschool Pop</h4>
+                    <p><strong>Duration:</strong> 5:12</p>
+                    <a href="https://www.youtube.com/watch?v=CSXCWOgM_FA" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Introduces mountains, valleys, plains.</p>
+                    <p><strong>Questions:</strong> What landforms did you see?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 Erosion and Weathering - Generation Genius</h4>
+                    <p><strong>Duration:</strong> 4:45</p>
+                    <a href="https://www.youtube.com/watch?v=R-Iak3Wvh9c" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Shows how water and wind change Earth.</p>
+                    <p><strong>Questions:</strong> What is erosion? Fast or slow?</p>
+                </div>
+                <div class="video-card">
+                    <h4>📺 Bodies of Water - Kids Academy</h4>
+                    <p><strong>Duration:</strong> 3:55</p>
+                    <a href="https://www.youtube.com/watch?v=wQGBqvXTcLU" target="_blank" class="video-link">▶️ Watch Video</a>
+                    <p><strong>Purpose:</strong> Explains oceans, lakes, rivers.</p>
+                    <p><strong>Questions:</strong> What's the biggest body of water?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLES TAB -->
+        <div id="articles" class="tab-content">
+            <h2 class="section-title">📖 Student Reading Articles</h2>
+
+            <div class="article-card">
+                <h3 style="color: var(--matter-primary);">📄 Article 1: All About Matter</h3>
+                <div class="article-content">
+                    <p>Look around you! Everything you can see and touch is made of <span class="vocab-highlight">matter</span>. Matter is anything that takes up space and has weight. Your desk is matter. The air you breathe is matter. Even YOU are made of matter!</p>
+                    <p>Matter comes in three forms called <span class="vocab-highlight">states</span>. <span class="vocab-highlight">Solids</span> keep their shape. A rock is a solid. <span class="vocab-highlight">Liquids</span> take the shape of their container. Water is a liquid. <span class="vocab-highlight">Gases</span> spread out to fill any space. Air is a gas.</p>
+                    <p>Matter can change! When you freeze water, it becomes ice. When you melt ice, it becomes water again. Isn't that amazing?</p>
+                </div>
+                <div class="comprehension-questions">
+                    <strong>📝 Questions:</strong>
+                    <ol>
+                        <li>What are the three states of matter?</li>
+                        <li>Why does water change shape in different containers?</li>
+                        <li>Give an example of each state from your home.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3 style="color: var(--matter-primary);">📄 Article 2: Materials and Their Properties</h3>
+                <div class="article-content">
+                    <p>Have you wondered why we use different materials for different things? A window is made of glass because glass is <span class="vocab-highlight">transparent</span> - you can see through it! A pillow is soft so it's comfortable.</p>
+                    <p>Every material has <span class="vocab-highlight">properties</span>. Properties describe what something is like: hard or soft, rough or smooth, shiny or dull.</p>
+                    <p>A sponge is <span class="vocab-highlight">absorbent</span>. It soaks up water. That's why we use sponges for cleaning! Engineers think about properties when they make things.</p>
+                </div>
+                <div class="comprehension-questions">
+                    <strong>📝 Questions:</strong>
+                    <ol>
+                        <li>What does "transparent" mean?</li>
+                        <li>Why is a sponge good for cleaning spills?</li>
+                        <li>What property would you want in a winter coat?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3 style="color: var(--plants-primary);">📄 Article 3: From Seed to Plant</h3>
+                <div class="article-content">
+                    <p>Every big tree started as a tiny <span class="vocab-highlight">seed</span>! Seeds are like little packages that hold a baby plant inside. When a seed gets water and warmth, it starts to grow!</p>
+                    <p>First, the seed <span class="vocab-highlight">germinates</span> - it cracks open and a tiny root pokes out. The root grows down to find water. Then a stem grows up toward the light.</p>
+                    <p>The young plant is called a <span class="vocab-highlight">seedling</span>. As it grows, it makes flowers. Bees help move <span class="vocab-highlight">pollen</span> between flowers. Then seeds grow inside, and the <span class="vocab-highlight">life cycle</span> starts again!</p>
+                </div>
+                <div class="comprehension-questions">
+                    <strong>📝 Questions:</strong>
+                    <ol>
+                        <li>What is inside a seed?</li>
+                        <li>What does a plant need to make food?</li>
+                        <li>How do bees help plants make seeds?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3 style="color: var(--earth-primary);">📄 Article 4: Earth's Amazing Landforms</h3>
+                <div class="article-content">
+                    <p>Earth's surface has many different shapes called <span class="vocab-highlight">landforms</span>!</p>
+                    <p><span class="vocab-highlight">Mountains</span> are the tallest landforms. They rise high into the sky. <span class="vocab-highlight">Valleys</span> are low areas between mountains. <span class="vocab-highlight">Plains</span> are large, flat areas.</p>
+                    <p>Some landforms are made by water! Rivers can cut through rock to make <span class="vocab-highlight">canyons</span>. The Grand Canyon was carved over millions of years!</p>
+                </div>
+                <div class="comprehension-questions">
+                    <strong>📝 Questions:</strong>
+                    <ol>
+                        <li>What is a landform?</li>
+                        <li>How is a mountain different from a hill?</li>
+                        <li>How was the Grand Canyon formed?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3 style="color: var(--earth-primary);">📄 Article 5: Water on Earth</h3>
+                <div class="article-content">
+                    <p>Water, water everywhere! Earth has lots of water in many different places.</p>
+                    <p>The biggest bodies of water are <span class="vocab-highlight">oceans</span>. Ocean water is salty. <span class="vocab-highlight">Lakes</span> are bodies of water surrounded by land. Most lakes have fresh water. <span class="vocab-highlight">Rivers</span> are moving water that flows downhill.</p>
+                    <p>Water can be solid too! <span class="vocab-highlight">Glaciers</span> are huge masses of ice. They are found in very cold places. Water is very important - all living things need it!</p>
+                </div>
+                <div class="comprehension-questions">
+                    <strong>📝 Questions:</strong>
+                    <ol>
+                        <li>Why can't we drink ocean water?</li>
+                        <li>What is the difference between a river and a lake?</li>
+                        <li>What is a glacier?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASSESSMENTS TAB -->
+        <div id="assessments" class="tab-content">
+            <h2 class="section-title">📝 Assessments & Rubrics</h2>
+
+            <div class="unit-header unit-matter">🧪 Properties of Matter Assessments</div>
+            
+            <div class="assessment-box">
+                <h4>📋 Pre-Assessment Questions</h4>
+                <div class="test-question"><strong>1.</strong> What is matter? Draw or write your answer.</div>
+                <div class="test-question"><strong>2.</strong> Name something that is a solid. How do you know?</div>
+                <div class="test-question"><strong>3.</strong> What happens to ice when it gets warm?</div>
+                <div class="test-question"><strong>4.</strong> Is air matter? Why or why not?</div>
+            </div>
+
+            <div class="materials-box">
+                <h4>📄 Unit Test - Properties of Matter (10 Questions)</h4>
+                <div class="test-question"><strong>1.</strong> Matter is anything that: A) Is colored B) Takes up space and has weight C) Is living D) You can see</div>
+                <div class="test-question"><strong>2.</strong> Which is a LIQUID? A) Ice cube B) Milk C) Air D) Rock</div>
+                <div class="test-question"><strong>3.</strong> What happens to water when it freezes? A) Becomes gas B) Disappears C) Becomes solid D) Stays same</div>
+                <div class="test-question"><strong>4.</strong> Which material would be BEST for a towel? A) Plastic B) Glass C) Cotton D) Metal</div>
+                <div class="test-question"><strong>5.</strong> Cooking an egg is: A) Reversible B) Irreversible C) No change D) Melting</div>
+                <div class="test-question"><strong>6.</strong> A gas: A) Keeps its shape B) Takes container shape C) Cannot move D) Is always visible</div>
+                <div class="test-question"><strong>7.</strong> "Transparent" means: A) Hard B) Flexible C) See-through D) Soft</div>
+                <div class="test-question"><strong>8.</strong> When you heat chocolate: A) It disappears B) It melts C) It becomes gas D) Nothing happens</div>
+                <div class="test-question"><strong>9.</strong> Which is NOT matter? A) Air B) Water C) Shadow D) Sand</div>
+                <div class="test-question"><strong>10.</strong> Short Answer: Why do we use glass for windows instead of wood?</div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Plant Life Cycles Test</div>
+            <div class="materials-box">
+                <div class="test-question"><strong>1.</strong> Correct life cycle order: A) Flower→Seed→Adult B) Seed→Seedling→Adult→Flower C) Adult→Seed D) Seedling→Seed</div>
+                <div class="test-question"><strong>2.</strong> What does a seed need to germinate? A) Only sunlight B) Water and warmth C) Flowers D) Other plants</div>
+                <div class="test-question"><strong>3.</strong> What do roots do? A) Make seeds B) Absorb water C) Make food D) Attract bees</div>
+                <div class="test-question"><strong>4.</strong> How do bees help plants? A) Eat leaves B) Spread pollen C) Water plants D) Plant seeds</div>
+                <div class="test-question"><strong>5.</strong> Without sunlight, a plant: A) Grows faster B) Can't make food C) Makes more flowers D) Needs more water</div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Earth's Land & Water Test</div>
+            <div class="materials-box">
+                <div class="test-question"><strong>1.</strong> A mountain is: A) Low, flat area B) Tall landform C) Body of water D) Type of plant</div>
+                <div class="test-question"><strong>2.</strong> Erosion is: A) Land building up B) Water/wind wearing away land C) Plants growing D) Earthquake</div>
+                <div class="test-question"><strong>3.</strong> Which is SLOW? A) Earthquake B) Volcano C) River carving canyon D) Flood</div>
+                <div class="test-question"><strong>4.</strong> Ocean water is: A) Fresh B) Salt C) Frozen D) Empty</div>
+                <div class="test-question"><strong>5.</strong> What slows erosion? A) More water B) Strong wind C) Plants D) Heat</div>
+            </div>
+
+            <h3 style="margin: 30px 0 20px;">📊 CER Rubric</h3>
+            <table class="rubric-table">
+                <tr><th>Component</th><th>4 - Exceeds</th><th>3 - Meets</th><th>2 - Approaching</th><th>1 - Beginning</th></tr>
+                <tr><td><strong>Claim</strong></td><td>Clear claim with scientific vocabulary</td><td>Clear claim answers question</td><td>Partial answer</td><td>Missing or wrong</td></tr>
+                <tr><td><strong>Evidence</strong></td><td>3+ specific pieces</td><td>2 specific pieces</td><td>1 piece</td><td>No evidence</td></tr>
+                <tr><td><strong>Reasoning</strong></td><td>Explains WHY with science concepts</td><td>Connects evidence to claim</td><td>Attempts connection</td><td>No reasoning</td></tr>
+            </table>
+        </div>
+
+        <!-- PRINTABLES TAB -->
+        <div id="printables" class="tab-content">
+            <h2 class="section-title">🖨️ Printable Resources</h2>
+
+            <div class="printable-section">
+                <h3>📝 CER Recording Sheet</h3>
+                <div style="border: 3px solid #333; padding: 25px; background: white; margin: 20px 0;">
+                    <h4 style="text-align: center; font-family: 'Fredoka One', cursive;">My CER Response</h4>
+                    <p><strong>Name:</strong> _________________________ <strong>Date:</strong> _____________</p>
+                    <div style="border: 2px solid var(--objectives-blue); padding: 15px; margin: 15px 0; border-radius: 10px;">
+                        <h5 style="color: var(--objectives-blue);">❓ QUESTION</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                    <div style="border: 2px solid var(--cer-yellow); padding: 15px; margin: 15px 0; border-radius: 10px;">
+                        <h5 style="color: #F57F17;">💡 CLAIM</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                    <div style="border: 2px solid var(--materials-green); padding: 15px; margin: 15px 0; border-radius: 10px;">
+                        <h5 style="color: var(--materials-green);">🔍 EVIDENCE</h5>
+                        <p>1. _________________________________________________</p>
+                        <p>2. _________________________________________________</p>
+                        <p>3. _________________________________________________</p>
+                    </div>
+                    <div style="border: 2px solid var(--procedures-purple); padding: 15px; margin: 15px 0; border-radius: 10px;">
+                        <h5 style="color: var(--procedures-purple);">🧠 REASONING</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print CER Sheet</button>
+            </div>
+
+            <div class="printable-section">
+                <h3>🧪 Lab Recording Sheet</h3>
+                <div style="border: 3px solid #333; padding: 25px; background: white; margin: 20px 0;">
+                    <h4 style="text-align: center; font-family: 'Fredoka One', cursive;">Science Lab Report</h4>
+                    <p><strong>Scientist:</strong> _________________________ <strong>Date:</strong> _____________</p>
+                    <div style="border: 2px dashed #666; padding: 15px; margin: 15px 0;">
+                        <h5>🎯 What I am trying to find out:</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                    <div style="border: 2px dashed #666; padding: 15px; margin: 15px 0;">
+                        <h5>🔮 My Prediction:</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                    <div style="border: 2px dashed #666; padding: 15px; margin: 15px 0;">
+                        <h5>👀 What I Observed (Draw or Write):</h5>
+                        <div style="height: 150px; border: 1px solid #ccc;"></div>
+                    </div>
+                    <div style="border: 2px dashed #666; padding: 15px; margin: 15px 0;">
+                        <h5>💭 What I Learned:</h5>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                        <p style="border-bottom: 1px solid #ccc; height: 30px;"></p>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print Lab Sheet</button>
+            </div>
+
+            <div class="printable-section">
+                <h3>📦 Materials Checklist - Matter Unit</h3>
+                <div style="columns: 2; column-gap: 30px;">
+                    <p>□ Rocks (various sizes)</p>
+                    <p>□ Wooden blocks</p>
+                    <p>□ Ice cubes / ice trays</p>
+                    <p>□ Clear plastic cups (30+)</p>
+                    <p>□ Water pitchers</p>
+                    <p>□ Milk (small amount)</p>
+                    <p>□ Cooking oil</p>
+                    <p>□ Balloons</p>
+                    <p>□ Ziplock bags</p>
+                    <p>□ Chocolate chips</p>
+                    <p>□ Hard-boiled eggs</p>
+                    <p>□ Bread for toasting</p>
+                    <p>□ Butter</p>
+                    <p>□ Sponges</p>
+                    <p>□ Fabric samples</p>
+                    <p>□ Aluminum foil</p>
+                    <p>□ Sorting mats</p>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print Checklist</button>
+            </div>
+
+            <div class="printable-section">
+                <h3>🏷️ Vocabulary Cards Template</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+                    <div style="border: 3px solid var(--matter-primary); padding: 20px; text-align: center; border-radius: 10px;">
+                        <h4 style="border-bottom: 2px dashed #ccc; padding-bottom: 10px;">WORD</h4>
+                        <p style="margin: 15px 0;"><strong>Definition:</strong></p>
+                        <p style="border-bottom: 1px solid #ccc; height: 40px;"></p>
+                        <p style="margin: 15px 0;"><strong>Draw It:</strong></p>
+                        <div style="border: 1px dashed #ccc; height: 80px;"></div>
+                    </div>
+                    <div style="border: 3px solid var(--plants-primary); padding: 20px; text-align: center; border-radius: 10px;">
+                        <h4 style="border-bottom: 2px dashed #ccc; padding-bottom: 10px;">WORD</h4>
+                        <p style="margin: 15px 0;"><strong>Definition:</strong></p>
+                        <p style="border-bottom: 1px solid #ccc; height: 40px;"></p>
+                        <p style="margin: 15px 0;"><strong>Draw It:</strong></p>
+                        <div style="border: 1px dashed #ccc; height: 80px;"></div>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print Vocabulary Cards</button>
+            </div>
+        </div>
+
+        <!-- VOCABULARY TAB -->
+        <div id="vocabulary" class="tab-content">
+            <h2 class="section-title">📖 Science Vocabulary</h2>
+
+            <div class="unit-header unit-matter">🧪 Properties of Matter Vocabulary</div>
+            <div class="vocab-grid">
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Matter</h4><p>Anything that takes up space and has mass.</p><p style="color: #888; font-style: italic;">💡 Your desk, air, and YOU are all matter!</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Solid</h4><p>A state of matter that keeps its shape.</p><p style="color: #888; font-style: italic;">💡 A rock keeps its shape no matter where you put it.</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Liquid</h4><p>A state of matter that takes the shape of its container.</p><p style="color: #888; font-style: italic;">💡 Water takes the shape of any cup.</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Gas</h4><p>A state of matter that spreads out to fill any space.</p><p style="color: #888; font-style: italic;">💡 Air fills the whole room.</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Property</h4><p>A quality that describes something.</p><p style="color: #888; font-style: italic;">💡 Soft, hard, shiny, rough are properties.</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Reversible</h4><p>A change that can be undone.</p><p style="color: #888; font-style: italic;">💡 Ice melts, then can freeze back.</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Irreversible</h4><p>A change that cannot be undone.</p><p style="color: #888; font-style: italic;">💡 You can't untoast bread!</p></div>
+                <div class="vocab-card" style="border-color: var(--matter-primary);"><h4>Transparent</h4><p>A property meaning you can see through it.</p><p style="color: #888; font-style: italic;">💡 Glass is transparent - that's why we use it for windows!</p></div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Plant Life Cycle Vocabulary</div>
+            <div class="vocab-grid">
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Seed</h4><p>A tiny package containing a baby plant.</p><p style="color: #888; font-style: italic;">💡 An apple seed can grow into a tree!</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Germination</h4><p>When a seed starts to sprout and grow.</p><p style="color: #888; font-style: italic;">💡 Add water to a seed and it germinates.</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Seedling</h4><p>A young, small plant.</p><p style="color: #888; font-style: italic;">💡 The tiny plant with first leaves.</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Life Cycle</h4><p>Stages a living thing goes through that repeat.</p><p style="color: #888; font-style: italic;">💡 Seed → Seedling → Adult → Flower → Seeds!</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Pollination</h4><p>When pollen moves between flowers to make seeds.</p><p style="color: #888; font-style: italic;">💡 Bees carry pollen from flower to flower.</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Pollen</h4><p>Yellow powder made by flowers.</p><p style="color: #888; font-style: italic;">💡 The yellow stuff that gets on your nose!</p></div>
+                <div class="vocab-card" style="border-color: var(--plants-primary);"><h4>Seed Dispersal</h4><p>How seeds travel to new places.</p><p style="color: #888; font-style: italic;">💡 Dandelion seeds blow in the wind!</p></div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Earth's Land & Water Vocabulary</div>
+            <div class="vocab-grid">
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Landform</h4><p>A natural shape on Earth's surface.</p><p style="color: #888; font-style: italic;">💡 Mountains, valleys, plains are landforms.</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Mountain</h4><p>A very tall landform.</p><p style="color: #888; font-style: italic;">💡 Mount Everest is the tallest mountain!</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Valley</h4><p>A low area between mountains or hills.</p><p style="color: #888; font-style: italic;">💡 Rivers often flow through valleys.</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Erosion</h4><p>When water or wind wears away and moves rock and soil.</p><p style="color: #888; font-style: italic;">💡 The Grand Canyon was carved by erosion!</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Weathering</h4><p>The breaking down of rocks by weather.</p><p style="color: #888; font-style: italic;">💡 Freezing water in cracks breaks rocks.</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Ocean</h4><p>A huge body of salt water.</p><p style="color: #888; font-style: italic;">💡 The Pacific Ocean is the largest!</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Glacier</h4><p>A large mass of ice on land.</p><p style="color: #888; font-style: italic;">💡 Glaciers are in very cold places like Alaska.</p></div>
+                <div class="vocab-card" style="border-color: var(--earth-primary);"><h4>Island</h4><p>Land completely surrounded by water.</p><p style="color: #888; font-style: italic;">💡 Hawaii is made of islands!</p></div>
+            </div>
+        </div>
+
+        <!-- GAMES TAB -->
+        <div id="games" class="tab-content">
+            <h2 class="section-title">🎮 Games & Activities</h2>
+
+            <div class="unit-header unit-matter">🧪 Properties of Matter Games</div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h4>🎯 Matter Scavenger Hunt</h4>
+                    <p><strong>Type:</strong> Hands-on / Movement</p>
+                    <p>Students search classroom to find examples of solids, liquids, and gases. Record and classify each item found.</p>
+                    <p><strong>Skills:</strong> Classification, observation</p>
+                </div>
+                <div class="game-card">
+                    <h4>🧊 Freeze Dance - States of Matter</h4>
+                    <p><strong>Type:</strong> Movement / Kinesthetic</p>
+                    <p>Play music. "SOLID!" = freeze. "LIQUID!" = flow slowly. "GAS!" = spread out fast. Last to change is out!</p>
+                    <p><strong>Skills:</strong> State properties, listening</p>
+                </div>
+                <div class="game-card">
+                    <h4>🎲 Property Bingo</h4>
+                    <p><strong>Type:</strong> Whole class</p>
+                    <p>Teacher shows items. Students mark properties on bingo card (soft, hard, transparent). First to get 5 wins!</p>
+                    <p><strong>Skills:</strong> Property identification</p>
+                </div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Plant Life Cycle Games</div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h4>🌻 Life Cycle Relay Race</h4>
+                    <p><strong>Type:</strong> Team game / Movement</p>
+                    <p>Teams race relay-style. Each runner grabs one life cycle card and places it in order. Must be correct to win!</p>
+                    <p><strong>Skills:</strong> Sequencing, teamwork</p>
+                </div>
+                <div class="game-card">
+                    <h4>🐝 Pollinator Tag</h4>
+                    <p><strong>Type:</strong> Outdoor game</p>
+                    <p>Some students are "flowers," others are "bees." Bees collect yellow pompoms (pollen) and deliver to flowers.</p>
+                    <p><strong>Skills:</strong> Understanding pollination</p>
+                </div>
+                <div class="game-card">
+                    <h4>🎴 Plant Parts Memory Match</h4>
+                    <p><strong>Type:</strong> Pairs or small group</p>
+                    <p>Match plant part cards (root, stem, leaf) with function cards (absorbs water, supports plant, makes food).</p>
+                    <p><strong>Skills:</strong> Plant part functions</p>
+                </div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Earth's Land & Water Games</div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h4>🗺️ Landform Charades</h4>
+                    <p><strong>Type:</strong> Whole class</p>
+                    <p>Students act out landforms without speaking. For "mountain" reach arms high. Class guesses!</p>
+                    <p><strong>Skills:</strong> Landform identification</p>
+                </div>
+                <div class="game-card">
+                    <h4>⚡ Fast vs. Slow Sorting Challenge</h4>
+                    <p><strong>Type:</strong> Team competition</p>
+                    <p>Teams race to sort Earth change cards into "Fast" or "Slow" pockets. Most correct wins!</p>
+                    <p><strong>Skills:</strong> Categorization</p>
+                </div>
+                <div class="game-card">
+                    <h4>💧 Water Detective</h4>
+                    <p><strong>Type:</strong> Research / Discovery</p>
+                    <p>Give clues about water bodies. Students place dots on world map. Build a class geography map!</p>
+                    <p><strong>Skills:</strong> Geography, map skills</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 30px 0 20px;">🖥️ Online Resources</h3>
+            <div class="game-grid">
+                <div class="game-card" style="background: linear-gradient(135deg, #E3F2FD, #BBDEFB);">
+                    <h4>🌐 BrainPOP Jr.</h4>
+                    <p>Animated videos and quizzes on all topics.</p>
+                    <p><a href="https://jr.brainpop.com/science/" target="_blank">Visit BrainPOP Jr. →</a></p>
+                </div>
+                <div class="game-card" style="background: linear-gradient(135deg, #E8F5E9, #C8E6C9);">
+                    <h4>🌐 PBS LearningMedia</h4>
+                    <p>Free videos and interactives aligned to standards.</p>
+                    <p><a href="https://www.pbslearningmedia.org/" target="_blank">Visit PBS →</a></p>
+                </div>
+                <div class="game-card" style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2);">
+                    <h4>🌐 National Geographic Kids</h4>
+                    <p>Articles, videos, and games about nature.</p>
+                    <p><a href="https://kids.nationalgeographic.com/" target="_blank">Visit NatGeo Kids →</a></p>
+                </div>
+                <div class="game-card" style="background: linear-gradient(135deg, #F3E5F5, #E1BEE7);">
+                    <h4>🌐 Generation Genius</h4>
+                    <p>NGSS-aligned videos with activities.</p>
+                    <p><a href="https://www.generationgenius.com/" target="_blank">Visit Generation Genius →</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAFETY TAB -->
+        <div id="safety" class="tab-content">
+            <h2 class="section-title">⚠️ Safety Guidelines</h2>
+
+            <div class="safety-grid">
+                <div class="safety-card">
+                    <h4>🧪 General Lab Safety Rules</h4>
+                    <ul>
+                        <li>Always listen to teacher's instructions before starting</li>
+                        <li>Keep hands to yourself - don't touch other groups' materials</li>
+                        <li>Walk, don't run, in the science area</li>
+                        <li>Never taste anything unless teacher says okay</li>
+                        <li>Keep materials on table, not near face</li>
+                        <li>Clean up your area when finished</li>
+                        <li>Wash hands after science activities</li>
+                        <li>Tell teacher immediately if something spills or breaks</li>
+                    </ul>
+                </div>
+                <div class="safety-card">
+                    <h4>🧊 Properties of Matter Safety</h4>
+                    <ul>
+                        <li><strong>Hot/Cold:</strong> Only teacher handles hot items. Don't hold ice too long!</li>
+                        <li><strong>Food Items:</strong> Check for allergies. No eating lab materials!</li>
+                        <li><strong>Liquids:</strong> Pour carefully. Wipe spills to prevent slipping</li>
+                        <li><strong>Small Objects:</strong> Don't put in mouth, nose, or ears</li>
+                    </ul>
+                </div>
+                <div class="safety-card">
+                    <h4>🌱 Plant Investigation Safety</h4>
+                    <ul>
+                        <li><strong>Allergies:</strong> Check for plant and seed allergies</li>
+                        <li><strong>Soil:</strong> Don't eat soil. Wash hands after handling</li>
+                        <li><strong>Seeds:</strong> Don't put in mouth, nose, or ears</li>
+                        <li><strong>Water:</strong> Wipe up spills immediately</li>
+                        <li><strong>Insects:</strong> Watch for bees if growing plants outdoors</li>
+                    </ul>
+                </div>
+                <div class="safety-card">
+                    <h4>🌍 Earth Science Safety</h4>
+                    <ul>
+                        <li><strong>Water Tables:</strong> Keep water in container. Floor spills are slip hazards</li>
+                        <li><strong>Sand/Soil:</strong> Don't throw. Keep away from eyes</li>
+                        <li><strong>Rocks:</strong> Handle carefully - some have sharp edges. Don't throw</li>
+                        <li><strong>Outdoor Explorations:</strong> Stay with group. Watch where you walk</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objectives-box" style="margin-top: 30px;">
+                <h4>👀 Safety Symbols to Teach</h4>
+                <div style="display: flex; gap: 30px; flex-wrap: wrap; margin-top: 15px;">
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">👓</span><p>Wear goggles</p></div>
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">🧤</span><p>Wear gloves</p></div>
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">🚫👅</span><p>Do not taste</p></div>
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">🔥</span><p>Hot - careful!</p></div>
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">🧼</span><p>Wash hands</p></div>
+                    <div style="text-align: center;"><span style="font-size: 2.5em;">👨‍🏫</span><p>Teacher only</p></div>
+                </div>
+            </div>
+
+            <div class="assessment-box" style="margin-top: 30px;">
+                <h4>🚨 Emergency Procedures</h4>
+                <ul>
+                    <li><strong>Spill:</strong> Alert teacher immediately. Don't clean broken glass yourself</li>
+                    <li><strong>Something in Eye:</strong> Tell teacher. Rinse eye with water at sink</li>
+                    <li><strong>Cut or Scrape:</strong> Tell teacher. Get bandage from first aid kit</li>
+                    <li><strong>Allergic Reaction:</strong> Tell teacher immediately if feeling unwell</li>
+                    <li><strong>Fire Alarm:</strong> Stop, leave all materials, line up and exit quietly</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DIFFERENTIATION TAB -->
+        <div id="differentiation" class="tab-content">
+            <h2 class="section-title">👥 Differentiation Strategies</h2>
+
+            <div class="diff-grid">
+                <div class="diff-card diff-below">
+                    <h4 style="color: #C62828;">📉 Below Level Support</h4>
+                    <ul>
+                        <li><strong>Vocabulary:</strong> Pre-teach key words with picture cards</li>
+                        <li><strong>Reading:</strong> Audio recordings; partner reading</li>
+                        <li><strong>Writing:</strong> Sentence starters and word banks for CER</li>
+                        <li><strong>Lab Work:</strong> Peer buddy; step-by-step picture directions</li>
+                        <li><strong>Assessments:</strong> Read aloud; reduce choices; oral responses</li>
+                        <li><strong>Time:</strong> Extended time; break into smaller chunks</li>
+                        <li><strong>Visual Supports:</strong> Graphic organizers, anchor charts, manipulatives</li>
+                    </ul>
+                </div>
+                <div class="diff-card diff-advanced">
+                    <h4 style="color: #2E7D32;">📈 Advanced Learners</h4>
+                    <ul>
+                        <li><strong>Extension Questions:</strong> "What would happen if...?" challenges</li>
+                        <li><strong>Research Projects:</strong> Independent research on related topics</li>
+                        <li><strong>Leadership:</strong> Peer tutoring; group leader roles</li>
+                        <li><strong>Design Challenges:</strong> Create their own experiments</li>
+                        <li><strong>Writing:</strong> More detailed CER with multiple evidence</li>
+                        <li><strong>Connections:</strong> Relate to current events or real problems</li>
+                        <li><strong>Vocabulary:</strong> Introduce advanced terminology</li>
+                    </ul>
+                </div>
+                <div class="diff-card diff-ell">
+                    <h4 style="color: #1565C0;">🌍 English Language Learners</h4>
+                    <ul>
+                        <li><strong>Visual Supports:</strong> Label everything with pictures AND words</li>
+                        <li><strong>Word Walls:</strong> Bilingual word walls</li>
+                        <li><strong>Sentence Frames:</strong> "I observed ____." "The evidence shows ____."</li>
+                        <li><strong>Gestures/TPR:</strong> Hand motions for concepts (solid = fist)</li>
+                        <li><strong>Partner Work:</strong> Pair with supportive partner</li>
+                        <li><strong>Simplified Text:</strong> Modified reading passages</li>
+                        <li><strong>Preview/Review:</strong> Preview vocabulary before; review after</li>
+                        <li><strong>Home Connection:</strong> Send vocabulary home in native language</li>
+                    </ul>
+                </div>
+                <div class="diff-card diff-iep">
+                    <h4 style="color: #EF6C00;">📋 IEP Accommodations</h4>
+                    <ul>
+                        <li><strong>Seating:</strong> Preferential seating near teacher</li>
+                        <li><strong>Directions:</strong> One step at a time; check understanding</li>
+                        <li><strong>Sensory:</strong> Fidgets or movement breaks</li>
+                        <li><strong>Written Work:</strong> Allow typing, voice recording, dictation</li>
+                        <li><strong>Testing:</strong> Follow IEP accommodations</li>
+                        <li><strong>Behavior:</strong> Positive reinforcement; behavior charts</li>
+                        <li><strong>Fine Motor:</strong> Larger manipulatives; pre-cut materials</li>
+                        <li><strong>Attention:</strong> Chunk activities; frequent check-ins; visual timers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="materials-box" style="margin-top: 30px;">
+                <h4>📝 Sentence Starters for CER (All Levels)</h4>
+                <p><strong>Claim:</strong> "I think that..." | "My claim is..." | "Based on my observations..."</p>
+                <p><strong>Evidence:</strong> "I observed..." | "The data shows..." | "I noticed that..." | "My evidence is..."</p>
+                <p><strong>Reasoning:</strong> "This supports my claim because..." | "This proves that..." | "This is important because..."</p>
+            </div>
+        </div>
+
+        <!-- MISCONCEPTIONS TAB -->
+        <div id="misconceptions" class="tab-content">
+            <h2 class="section-title">💭 Common Misconceptions</h2>
+
+            <div class="unit-header unit-matter">🧪 Properties of Matter Misconceptions</div>
+            
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Air is not matter because you can't see it."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Air IS matter! It has mass and takes up space. You can feel wind and trap air in a balloon.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Weigh inflated vs. deflated balloon. Feel air from a balloon.</div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Solids are always heavy and hard."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Solids can be light (feather) and soft (pillow). What makes something solid is that it keeps its shape.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Sort various solids by weight and hardness. Show a pillow and rock are both solids.</div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "When ice melts, water disappears or gets smaller."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> The amount of matter stays the same - it just changes form.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Melt ice in sealed container - water level is the same!</div>
+            </div>
+
+            <div class="unit-header unit-plants">🌱 Plant Life Cycle Misconceptions</div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Plants get their food from the soil."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Plants MAKE their own food using sunlight, water, and air. Soil provides nutrients, not food.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Compare to humans - we eat food. Plants use sunlight as energy to make food in leaves!</div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Seeds need sunlight to start growing."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Seeds need water and warmth to germinate. Light is needed after leaves appear.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Germinate seeds in dark vs. light - both sprout! Seeds have stored food inside.</div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Flowers are just for decoration."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Flowers are essential for making seeds! Pretty colors attract pollinators.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Dissect a flower and show the parts. Discuss how bees help move pollen.</div>
+            </div>
+
+            <div class="unit-header unit-earth">🌍 Earth's Land & Water Misconceptions</div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "Mountains and valleys never change."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Earth's surface is constantly changing! Mountains erode, valleys get carved deeper - just very slowly.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Show time-lapse videos. Compare old and new photos of landforms.</div>
+            </div>
+
+            <div class="misconception-card">
+                <div class="misconception-wrong"><strong>❌ Misconception:</strong> "All rivers flow south."</div>
+                <div class="misconception-right"><strong>✅ Reality:</strong> Rivers flow DOWNHILL, regardless of direction. Some flow north, east, west - depends on the land.</div>
+                <div class="misconception-address"><strong>💡 How to Address:</strong> Pour water on tilted pan - it flows downhill, not a compass direction.</div>
+            </div>
+        </div>
+
+        <!-- CULTURAL TAB -->
+        <div id="cultural" class="tab-content">
+            <h2 class="section-title">🌍 Cultural Connections</h2>
+
+            <div class="cultural-card">
+                <h3>🌏 Global Connections to Science Topics</h3>
+                <div class="materials-box">
+                    <h4>🧪 Matter Around the World</h4>
+                    <ul>
+                        <li><strong>Japan:</strong> Traditional paper-making (plant materials → paper)</li>
+                        <li><strong>India:</strong> Glassblowing traditions (sand → glass)</li>
+                        <li><strong>Mexico:</strong> Chocolate-making from cacao (reversible melting)</li>
+                        <li><strong>Ghana:</strong> Kente cloth weaving (fabric properties)</li>
+                        <li><strong>Inuit:</strong> Using ice properties for igloos</li>
+                    </ul>
+                </div>
+                <div class="objectives-box">
+                    <h4>🌱 Plants in Different Cultures</h4>
+                    <ul>
+                        <li><strong>China:</strong> Rice farming - life cycle of rice plants</li>
+                        <li><strong>Native American:</strong> Three Sisters planting (corn, beans, squash)</li>
+                        <li><strong>Japan:</strong> Cherry blossom festivals celebrating plant cycles</li>
+                        <li><strong>Netherlands:</strong> Tulip growing traditions</li>
+                    </ul>
+                </div>
+                <div class="cer-box">
+                    <h4>🌍 Earth Features Around the World</h4>
+                    <ul>
+                        <li><strong>Peru:</strong> The Andes Mountains and Machu Picchu</li>
+                        <li><strong>Australia:</strong> Uluru and Aboriginal connection to landforms</li>
+                        <li><strong>Africa:</strong> Sahara Desert - shaped by wind erosion</li>
+                        <li><strong>Amazon:</strong> World's largest river system</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cultural-card">
+                <h3>📚 Diverse Books for Read-Alouds</h3>
+                <div class="book-list">
+                    <div class="book-item"><strong>🧪 "Ada Twist, Scientist"</strong> by Andrea Beaty<br>Curious Black girl who loves science experiments.</div>
+                    <div class="book-item"><strong>🌱 "Planting a Rainbow"</strong> by Lois Ehlert<br>Vibrant illustrations of plant life cycles.</div>
+                    <div class="book-item"><strong>🌱 "The Ugly Vegetables"</strong> by Grace Lin<br>Chinese American girl grows traditional vegetables.</div>
+                    <div class="book-item"><strong>🌍 "Mama Miti"</strong> by Donna Jo Napoli<br>Kenyan Nobel Prize winner who planted millions of trees.</div>
+                    <div class="book-item"><strong>🌍 "The Water Princess"</strong> by Susan Verde<br>African girl's journey to get water.</div>
+                    <div class="book-item"><strong>🧪 "Rosie Revere, Engineer"</strong> by Andrea Beaty<br>Girl designs and tests materials.</div>
+                </div>
+            </div>
+
+            <div class="cultural-card">
+                <h3>👨‍🔬 Diverse Scientists to Highlight</h3>
+                <div class="game-grid">
+                    <div class="game-card">
+                        <h4>🌱 George Washington Carver</h4>
+                        <p><strong>Field:</strong> Agricultural Science</p>
+                        <p>Discovered hundreds of uses for peanuts. Taught about crop rotation.</p>
+                    </div>
+                    <div class="game-card">
+                        <h4>🧪 Marie Maynard Daly</h4>
+                        <p><strong>Field:</strong> Chemistry</p>
+                        <p>First African American woman to earn a Ph.D. in chemistry in the U.S.</p>
+                    </div>
+                    <div class="game-card">
+                        <h4>🌍 Wangari Maathai</h4>
+                        <p><strong>Field:</strong> Environmental Science</p>
+                        <p>Kenyan Nobel winner who planted over 51 million trees!</p>
+                    </div>
+                    <div class="game-card">
+                        <h4>🌊 Sylvia Earle</h4>
+                        <p><strong>Field:</strong> Marine Biology</p>
+                        <p>American oceanographer who spent 7,000+ hours underwater.</p>
+                    </div>
+                    <div class="game-card">
+                        <h4>🌱 Ynes Mexia</h4>
+                        <p><strong>Field:</strong> Botany</p>
+                        <p>Mexican-American botanist who discovered 500 new plant species!</p>
+                    </div>
+                    <div class="game-card">
+                        <h4>🌍 Luis Alvarez</h4>
+                        <p><strong>Field:</strong> Physics/Geology</p>
+                        <p>Hispanic physicist who helped discover asteroid caused dinosaur extinction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="procedures-box" style="margin-top: 20px;">
+                <h4>💡 Inclusive Teaching Tips</h4>
+                <ul>
+                    <li><strong>Diverse Examples:</strong> Include foods, materials, and contexts from various cultures</li>
+                    <li><strong>Family Connections:</strong> Survey about cultural practices related to topics</li>
+                    <li><strong>Visual Representation:</strong> Display posters of scientists from diverse backgrounds</li>
+                    <li><strong>Language Support:</strong> Provide vocabulary in students' home languages</li>
+                    <li><strong>Celebrate Contributions:</strong> Highlight scientific contributions from all cultures</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('standards').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
