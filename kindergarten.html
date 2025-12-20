@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindergarten Science Resources - Complete Teacher Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); min-height: 100vh; padding: 20px; line-height: 1.6; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 30px; padding: 40px; box-shadow: 0 25px 80px rgba(0,0,0,0.2); }
+        h1 { color: #e056fd; font-size: 2.8em; margin-bottom: 10px; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .subtitle { text-align: center; color: #666; font-size: 1.3em; margin-bottom: 30px; }
+        .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; justify-content: center; border-bottom: 4px solid #e056fd; padding-bottom: 15px; }
+        .tab-btn { background: linear-gradient(135deg, #f5f5f5, #e0e0e0); border: none; padding: 14px 28px; border-radius: 12px 12px 0 0; cursor: pointer; font-size: 1em; font-weight: 700; transition: all 0.3s; color: #555; }
+        .tab-btn:hover { background: linear-gradient(135deg, #e056fd, #c44ce0); color: white; transform: translateY(-3px); }
+        .tab-btn.active { background: linear-gradient(135deg, #e056fd, #c44ce0); color: white; box-shadow: 0 4px 15px rgba(224,86,253,0.4); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Standards Styling */
+        .standard-box { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); padding: 25px; border-radius: 20px; margin-bottom: 25px; color: white; box-shadow: 0 8px 25px rgba(108,92,231,0.3); }
+        .standard-box h3 { color: white; margin-bottom: 15px; font-size: 1.4em; }
+        .standard-item { background: rgba(255,255,255,0.95); padding: 20px; border-radius: 15px; margin-bottom: 15px; color: #333; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .standard-item strong { color: #6c5ce7; }
+        .standard-code { background: #6c5ce7; color: white; padding: 5px 12px; border-radius: 8px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+        
+        /* Lab Cards */
+        .lab-card { background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%); padding: 30px; border-radius: 20px; margin-bottom: 30px; color: white; box-shadow: 0 10px 30px rgba(232,67,147,0.3); }
+        .lab-card h3 { color: white; margin-bottom: 15px; font-size: 1.6em; }
+        .lab-card h4 { color: #fff; margin: 15px 0 10px 0; font-size: 1.2em; }
+        .lab-info { background: rgba(255,255,255,0.2); padding: 10px 15px; border-radius: 10px; margin-bottom: 15px; }
+        .cer-framework { background: white; padding: 25px; border-radius: 15px; margin-top: 20px; color: #333; }
+        .cer-framework h4 { color: #e84393; margin-bottom: 15px; font-size: 1.3em; }
+        .cer-section { background: #ffeef5; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #e84393; }
+        .cer-section h5 { color: #e84393; margin-bottom: 8px; }
+        
+        /* Lesson Plans */
+        .lesson-plan { background: linear-gradient(135deg, #00b894 0%, #00a085 100%); padding: 30px; border-radius: 20px; margin-bottom: 30px; color: white; box-shadow: 0 10px 30px rgba(0,184,148,0.3); }
+        .lesson-plan h3 { color: white; margin-bottom: 15px; font-size: 1.6em; }
+        .five-e-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; color: #333; }
+        .five-e-section h4 { color: #00b894; margin-bottom: 12px; font-size: 1.2em; display: flex; align-items: center; gap: 10px; }
+        .time-badge { display: inline-block; background: linear-gradient(135deg, #fdcb6e, #f39c12); color: #2d3436; padding: 8px 20px; border-radius: 25px; font-weight: 700; margin: 10px 0; box-shadow: 0 3px 10px rgba(243,156,18,0.3); }
+        .phase-time { background: #00b894; color: white; padding: 3px 10px; border-radius: 15px; font-size: 0.85em; font-weight: 600; }
+        
+        /* Vocabulary */
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 25px; }
+        .vocab-card { background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%); padding: 22px; border-radius: 15px; box-shadow: 0 5px 15px rgba(243,156,18,0.3); }
+        .vocab-card h4 { color: #2d3436; margin-bottom: 10px; font-size: 1.3em; }
+        .vocab-card p { color: #2d3436; margin-bottom: 8px; }
+        .vocab-example { background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; font-style: italic; }
+        
+        /* Games */
+        .game-card { background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(9,132,227,0.3); }
+        .game-card h4 { margin-bottom: 12px; font-size: 1.3em; }
+        .game-card ul { margin-left: 20px; }
+        .online-resources { background: linear-gradient(135deg, #00cec9 0%, #81ecec 100%); padding: 25px; border-radius: 15px; margin-top: 30px; }
+        .online-resources h3 { color: #2d3436; margin-bottom: 15px; }
+        .resource-link { background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; display: block; text-decoration: none; color: #333; transition: transform 0.3s; }
+        .resource-link:hover { transform: translateX(10px); }
+        
+        /* Safety, Differentiation, Misconceptions, Cultural */
+        .safety-box { background: linear-gradient(135deg, #ff7675 0%, #d63031 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(214,48,49,0.3); }
+        .safety-box h4 { color: white; margin-bottom: 12px; font-size: 1.2em; }
+        .safety-box ul { margin-left: 20px; }
+        
+        .differentiation-box { background: linear-gradient(135deg, #00b894 0%, #55efc4 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(0,184,148,0.3); }
+        .differentiation-box h4 { color: white; margin-bottom: 12px; font-size: 1.2em; }
+        
+        .misconception-box { background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(225,112,85,0.3); }
+        .misconception-box h4 { color: white; margin-bottom: 12px; font-size: 1.2em; }
+        .misconception-content { background: rgba(255,255,255,0.95); color: #333; padding: 15px; border-radius: 10px; margin-top: 10px; }
+        
+        .cultural-box { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(162,155,254,0.3); }
+        .cultural-box h4 { color: white; margin-bottom: 12px; font-size: 1.2em; }
+        
+        /* Lists and general */
+        ul { margin-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 10px; }
+        .materials-list { background: rgba(255,255,255,0.9); padding: 20px; border-radius: 12px; margin-top: 15px; color: #333; }
+        .materials-list h5 { color: #e84393; margin-bottom: 10px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2em; }
+            .tab-btn { padding: 10px 15px; font-size: 0.9em; }
+            .vocab-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌈 Kindergarten Science Resources</h1>
+        <p class="subtitle">Pushes & Pulls • Living Things & Their Needs • Weather & Seasons</p>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('standards')">📋 Standards</button>
+            <button class="tab-btn" onclick="showTab('background')">👩‍🏫 Teacher Background</button>
+            <button class="tab-btn" onclick="showTab('labs')">🧪 Labs & CER</button>
+            <button class="tab-btn" onclick="showTab('lessons')">📚 5E Lessons</button>
+            <button class="tab-btn" onclick="showTab('videos')">🎬 Videos</button>
+            <button class="tab-btn" onclick="showTab('articles')">📖 Student Articles</button>
+            <button class="tab-btn" onclick="showTab('assessments')">📝 Assessments</button>
+            <button class="tab-btn" onclick="showTab('printables')">🖨️ Printables</button>
+            <button class="tab-btn" onclick="showTab('vocabulary')">📖 Vocabulary</button>
+            <button class="tab-btn" onclick="showTab('games')">🎮 Games</button>
+            <button class="tab-btn" onclick="showTab('safety')">⚠️ Safety</button>
+            <button class="tab-btn" onclick="showTab('differentiation')">👥 Differentiation</button>
+            <button class="tab-btn" onclick="showTab('misconceptions')">💭 Misconceptions</button>
+            <button class="tab-btn" onclick="showTab('cultural')">🌍 Cultural Connections</button>
+            <button class="tab-btn" onclick="showTab('ai-teachers')">🤖 AI for Teachers</button>
+            <button class="tab-btn" onclick="showTab('ai-students')">🎓 AI for Students</button>
+        </div>
+
+        <!-- ========== STANDARDS TAB ========== -->
+        <div id="standards" class="tab-content active">
+            <h2 style="color: #6c5ce7; margin-bottom: 25px; font-size: 1.8em;">📋 Complete Standards Alignment</h2>
+            
+            <!-- NGSS STANDARDS -->
+            <div class="standard-box">
+                <h3>🎯 NGSS Standards for Kindergarten</h3>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-PS2-1</span>
+                    <p><strong>Standard:</strong> Plan and conduct an investigation to compare the effects of different strengths or different directions of pushes and pulls on the motion of an object.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can plan and conduct an investigation to compare the effects of different strengths or different directions of pushes and pulls on the motion of an object.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> PS2.A Forces and Motion - Pushes and pulls can have different strengths and directions. Pushing or pulling on an object can change the speed or direction of its motion and can start or stop it.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Planning and Carrying Out Investigations - With guidance, plan and conduct an investigation in collaboration with peers.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Cause and Effect - Simple tests can be designed to gather evidence to support or refute student ideas about causes.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-PS2-2</span>
+                    <p><strong>Standard:</strong> Analyze data to determine if a design solution works as intended to change the speed or direction of an object with a push or a pull.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can analyze data to determine if a design solution works as intended to change the speed or direction of an object with a push or a pull.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> PS2.A Forces and Motion - Pushes and pulls can have different strengths and directions. PS2.B Types of Interactions - When objects touch or collide, they push on one another and can change motion. ETS1.A Defining Engineering Problems - A situation that people want to change or create can be approached as a problem to be solved through engineering.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Analyzing and Interpreting Data - Analyze data from tests of an object or tool to determine if it works as intended.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Cause and Effect - Simple tests can be designed to gather evidence to support or refute student ideas about causes.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-LS1-1</span>
+                    <p><strong>Standard:</strong> Use observations to describe patterns of what plants and animals (including humans) need to survive.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can use observations to describe patterns of what plants and animals (including humans) need to survive.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> LS1.C Organization for Matter and Energy Flow in Organisms - All animals need food in order to live and grow. They obtain their food from plants or from other animals. Plants need water and light to live and grow.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Analyzing and Interpreting Data - Use observations (firsthand or from media) to describe patterns in the natural world in order to answer scientific questions.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Patterns - Patterns in the natural world can be observed and used as evidence.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-ESS2-1</span>
+                    <p><strong>Standard:</strong> Use and share observations of local weather conditions to describe patterns over time.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can use and share observations of local weather conditions to describe patterns over time.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> ESS2.D Weather and Climate - Weather is the combination of sunlight, wind, snow or rain, and temperature in a particular region at a particular time. People measure these conditions to describe and record the weather and to notice patterns over time.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Analyzing and Interpreting Data - Use observations (firsthand or from media) to describe patterns in the natural world in order to answer scientific questions.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Patterns - Patterns in the natural world can be observed and used as evidence.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-ESS3-1</span>
+                    <p><strong>Standard:</strong> Use a model to represent the relationship between the needs of different plants or animals (including humans) and the places they live.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can use a model to represent the relationship between the needs of different plants and animals (including humans) and the places they live.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> ESS3.A Natural Resources - Living things need water, air, and resources from the land, and they live in places that have the things they need. Humans use natural resources for everything they do.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Developing and Using Models - Use a model to represent relationships in the natural world.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Systems and System Models - Systems in the natural and designed world have parts that work together.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-ESS3-2</span>
+                    <p><strong>Standard:</strong> Ask questions to obtain information about the purpose of weather forecasting to prepare for, and respond to, severe weather.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students who demonstrate understanding can ask questions to obtain information about the purpose of weather forecasting to prepare for, and respond to, severe weather.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> ESS3.B Natural Hazards - Some kinds of severe weather are more likely than others in a given region. Weather scientists forecast severe weather so that the communities can prepare for and respond to these events.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Asking Questions and Defining Problems - Ask questions based on observations to find more information about the natural and/or designed world(s).</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Cause and Effect - Events have causes that generate observable patterns.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code">K-2-ETS1-1</span>
+                    <p><strong>Standard:</strong> Ask questions, make observations, and gather information about a situation people want to change to define a simple problem that can be solved through the development of a new or improved object or tool.</p>
+                    <br>
+                    <p><strong>Performance Expectation (PE):</strong> Students define problems by asking questions, making observations, and gathering information.</p>
+                    <br>
+                    <p><strong>Disciplinary Core Idea (DCI):</strong> ETS1.A Defining and Delimiting Engineering Problems - A situation that people want to change or create can be approached as a problem to be solved through engineering. Asking questions, making observations, and gathering information are helpful in thinking about problems.</p>
+                    <br>
+                    <p><strong>Science & Engineering Practice (SEP):</strong> Asking Questions and Defining Problems - Define a simple problem that can be solved through the development of a new or improved object or tool.</p>
+                    <br>
+                    <p><strong>Crosscutting Concept (CCC):</strong> Structure and Function - The shape and stability of structures of natural and designed objects are related to their function(s).</p>
+                </div>
+            </div>
+            
+            <!-- GWINNETT COUNTY AKS -->
+            <div class="standard-box" style="background: linear-gradient(135deg, #00b894 0%, #00a085 100%);">
+                <h3>🏫 Gwinnett County AKS Standards</h3>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKP1</span>
+                    <p><strong>Standard:</strong> Students will describe objects in terms of the materials they are made of and their physical properties.</p>
+                    <br>
+                    <p><strong>a.</strong> Compare and sort objects according to their size, shape, color, and texture.</p>
+                    <p><strong>b.</strong> Identify materials such as paper, wood, metal, cloth, plastic, glass, and rubber.</p>
+                    <p><strong>c.</strong> Compare physical properties of different materials (flexibility, hardness, texture, sinking/floating, absorbency).</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKP2</span>
+                    <p><strong>Standard:</strong> Students will investigate different types of motion.</p>
+                    <br>
+                    <p><strong>a.</strong> Sort objects into groups based on their motion: straight line, zigzag, round and round, back and forth, fast and slow.</p>
+                    <p><strong>b.</strong> Push and pull an object and observe the effect of the force on the object's motion.</p>
+                    <p><strong>c.</strong> Demonstrate how the direction of an object can be changed by pushing or pulling it.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKL1</span>
+                    <p><strong>Standard:</strong> Students will sort living organisms and non-living materials into groups by observable physical attributes.</p>
+                    <br>
+                    <p><strong>a.</strong> Recognize the difference between living organisms and non-living materials.</p>
+                    <p><strong>b.</strong> Group animals according to their observable features such as appearance, size, motion, where they live, etc.</p>
+                    <p><strong>c.</strong> Group plants according to their observable features such as appearance, size, where they grow, etc.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKL2</span>
+                    <p><strong>Standard:</strong> Students will compare the similarities and differences in groups of organisms.</p>
+                    <br>
+                    <p><strong>a.</strong> Explain the similarities and differences between animals (number of legs, body covering, size, where it lives, how it moves).</p>
+                    <p><strong>b.</strong> Explain the similarities and differences between plants (size, appearance, where it grows).</p>
+                    <p><strong>c.</strong> Recognize that all living things need food, water, and air to survive.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKE1</span>
+                    <p><strong>Standard:</strong> Students will describe time patterns (day to night and night to day) and objects (sun, moon) in the day and night sky.</p>
+                    <br>
+                    <p><strong>a.</strong> Describe changes that occur in the sky during the day (location of sun) and during the night (location of moon, stars).</p>
+                    <p><strong>b.</strong> Classify objects in the sky as sun, moon, or stars.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #00b894;">SKE2</span>
+                    <p><strong>Standard:</strong> Students will describe the physical attributes of rocks and soils.</p>
+                    <br>
+                    <p><strong>a.</strong> Use senses to observe and group rocks by physical attributes (size, shape, color, texture).</p>
+                    <p><strong>b.</strong> Use senses to observe and group soils by physical attributes (color, texture, particle size).</p>
+                </div>
+            </div>
+            
+            <!-- GEORGIA GSE -->
+            <div class="standard-box" style="background: linear-gradient(135deg, #e17055 0%, #d63031 100%);">
+                <h3>🍑 Georgia Science GSE Standards</h3>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKP1</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate information to describe objects in terms of the materials they are made of and their physical properties.</p>
+                    <br>
+                    <p><strong>a.</strong> Ask questions to identify and compare objects according to their physical properties (size, shape, color, texture, and weight).</p>
+                    <p><strong>b.</strong> Use senses and science tools to classify common objects, such as buttons or rocks, according to their physical attributes.</p>
+                    <p><strong>c.</strong> Plan and carry out investigations to compare the physical attributes of different materials (paper, wood, metal, cloth, plastic, glass, and rubber) using simple tools.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKP2</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate information to compare the effects of different strengths or different directions of pushes and pulls on the motion of an object.</p>
+                    <br>
+                    <p><strong>a.</strong> Plan and carry out an investigation to demonstrate the effect of a push or pull on the motion of an object.</p>
+                    <p><strong>b.</strong> Design a device that uses a push or pull to solve a simple problem.</p>
+                    <p><strong>c.</strong> Communicate with pictures, numbers, and/or words the effect of pushes and pulls on objects.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKL1</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate information about how organisms (alive and not alive) and non-living objects are grouped.</p>
+                    <br>
+                    <p><strong>a.</strong> Construct an argument supported by evidence for how animals can be grouped according to their features.</p>
+                    <p><strong>b.</strong> Construct an argument supported by evidence for how plants can be grouped according to their features.</p>
+                    <p><strong>c.</strong> Ask questions to differentiate between living organisms and non-living materials.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKL2</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate information to compare the similarities and differences in groups of organisms.</p>
+                    <br>
+                    <p><strong>a.</strong> Construct an explanation of the similarities and differences between organisms and non-living objects.</p>
+                    <p><strong>b.</strong> Develop a model to represent how animals obtain their food from plants or other animals.</p>
+                    <p><strong>c.</strong> Ask questions and explain the basic needs of organisms (air, water, food, and shelter) for energy and growth.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKE1</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate weather data to identify weather patterns.</p>
+                    <br>
+                    <p><strong>a.</strong> Ask questions and use observations to identify and compare weather patterns that occur from day to day and from season to season.</p>
+                    <p><strong>b.</strong> Plan and carry out investigations on current weather conditions by observing, measuring with simple tools, and recording weather data in a chart or graph.</p>
+                    <p><strong>c.</strong> Analyze data to identify the connection between weather and the activities and clothing choices of people during different times of year.</p>
+                </div>
+                
+                <div class="standard-item">
+                    <span class="standard-code" style="background: #e17055;">SKE2</span>
+                    <p><strong>Standard:</strong> Obtain, evaluate, and communicate information to describe the physical attributes of earth materials (rocks, soils, and water).</p>
+                    <br>
+                    <p><strong>a.</strong> Ask questions to identify and describe earth materials—rocks, soils, and water—based on physical attributes (size, shape, color, texture).</p>
+                    <p><strong>b.</strong> Construct an argument supported by evidence for how rocks can be grouped by physical attributes (size, shape, color, texture).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TEACHER BACKGROUND TAB ========== -->
+        <div id="background" class="tab-content">
+            <h2 style="color: #6c5ce7; margin-bottom: 25px; font-size: 1.8em;">👩‍🏫 Teacher Background Knowledge</h2>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);">
+                <h3>🚗 Unit 1: Pushes & Pulls (Forces and Motion)</h3>
+                <div class="standard-item">
+                    <h4 style="color: #0984e3;">Key Concepts for Teachers</h4>
+                    <p><strong>Force:</strong> A force is a push or pull that can change the motion of an object. Forces have both strength (magnitude) and direction.</p>
+                    <br>
+                    <p><strong>Motion:</strong> Motion is when an object changes position over time. Forces can start motion, stop motion, speed up motion, slow down motion, or change the direction of motion.</p>
+                    <br>
+                    <p><strong>Push:</strong> A push is a force that moves an object away from the source of the force. Examples: pushing a shopping cart, throwing a ball, closing a door.</p>
+                    <br>
+                    <p><strong>Pull:</strong> A pull is a force that moves an object toward the source of the force. Examples: pulling a wagon, opening a drawer, tug-of-war.</p>
+                    <br>
+                    <p><strong>Strength of Forces:</strong> Stronger forces cause greater changes in motion. A hard push moves an object farther/faster than a soft push.</p>
+                    <br>
+                    <p><strong>Direction:</strong> The direction of a force affects the direction of motion. Pushing left makes an object move left.</p>
+                </div>
+                <div class="standard-item">
+                    <h4 style="color: #0984e3;">Common Terminology</h4>
+                    <ul>
+                        <li><strong>Force:</strong> A push or pull on an object</li>
+                        <li><strong>Motion:</strong> A change in position</li>
+                        <li><strong>Speed:</strong> How fast something moves</li>
+                        <li><strong>Direction:</strong> The way something is moving or facing</li>
+                        <li><strong>Rest:</strong> When an object is not moving (staying still)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);">
+                <h3>🌱 Unit 2: Living Things & Their Needs</h3>
+                <div class="standard-item">
+                    <h4 style="color: #00b894;">Key Concepts for Teachers</h4>
+                    <p><strong>Living vs. Non-Living:</strong> Living things grow, need food/water, reproduce, and respond to their environment. Non-living things do not have these characteristics.</p>
+                    <br>
+                    <p><strong>Basic Needs of Animals:</strong> All animals need food, water, air (oxygen), and shelter to survive. Different animals meet these needs in different ways based on their habitats.</p>
+                    <br>
+                    <p><strong>Basic Needs of Plants:</strong> All plants need water, light, air, and nutrients (from soil) to survive and grow. Plants make their own food through photosynthesis using light.</p>
+                    <br>
+                    <p><strong>Habitats:</strong> A habitat is where a living thing naturally lives. Habitats provide animals and plants with everything they need to survive.</p>
+                    <br>
+                    <p><strong>Interdependence:</strong> Living things depend on each other and their environment. Animals may eat plants; plants provide oxygen; decomposers break down dead organisms.</p>
+                </div>
+                <div class="standard-item">
+                    <h4 style="color: #00b894;">Common Terminology</h4>
+                    <ul>
+                        <li><strong>Living:</strong> Things that grow, need food and water, and can reproduce</li>
+                        <li><strong>Non-living:</strong> Things that do not grow, eat, or reproduce</li>
+                        <li><strong>Habitat:</strong> The natural home of a plant or animal</li>
+                        <li><strong>Shelter:</strong> A place that protects from weather and predators</li>
+                        <li><strong>Nutrients:</strong> Substances in food/soil that help living things grow</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);">
+                <h3>🌤️ Unit 3: Weather & Seasons</h3>
+                <div class="standard-item">
+                    <h4 style="color: #e17055;">Key Concepts for Teachers</h4>
+                    <p><strong>Weather:</strong> Weather describes the conditions of the atmosphere at a specific time and place, including temperature, precipitation, cloud cover, and wind.</p>
+                    <br>
+                    <p><strong>Weather Patterns:</strong> Weather follows predictable patterns that can be observed and recorded. Patterns help us forecast what weather might come next.</p>
+                    <br>
+                    <p><strong>Seasons:</strong> Seasons are periods of the year characterized by particular weather patterns. The four seasons are spring, summer, fall (autumn), and winter.</p>
+                    <br>
+                    <p><strong>Temperature:</strong> Temperature measures how hot or cold something is. Temperature changes throughout the day and across seasons.</p>
+                    <br>
+                    <p><strong>Precipitation:</strong> Precipitation is water that falls from clouds in the form of rain, snow, sleet, or hail.</p>
+                </div>
+                <div class="standard-item">
+                    <h4 style="color: #e17055;">Common Terminology</h4>
+                    <ul>
+                        <li><strong>Weather:</strong> What it's like outside (sunny, cloudy, rainy, etc.)</li>
+                        <li><strong>Temperature:</strong> How hot or cold it is</li>
+                        <li><strong>Precipitation:</strong> Water falling from the sky (rain, snow, etc.)</li>
+                        <li><strong>Season:</strong> A time of year with typical weather (spring, summer, fall, winter)</li>
+                        <li><strong>Thermometer:</strong> A tool that measures temperature</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== LABS TAB ========== -->
+        <div id="labs" class="tab-content">
+            <h2 style="color: #e84393; margin-bottom: 25px; font-size: 1.8em;">🧪 Complete Labs with CER Frameworks</h2>
+            
+            <!-- LAB 1 -->
+            <div class="lab-card">
+                <h3>🚗 Lab 1: Push and Pull Ramp Races</h3>
+                <div class="lab-info">
+                    <strong>Topic:</strong> Forces and Motion (Pushes & Pulls) | <strong>Duration:</strong> 45 minutes | <strong>Standards:</strong> K-PS2-1, K-PS2-2, SKP2
+                </div>
+                
+                <h4>🎯 Objective:</h4>
+                <p>Students will investigate how different strengths of pushes affect how far objects travel down a ramp.</p>
+                
+                <h4>📦 Materials:</h4>
+                <div class="materials-list">
+                    <ul>
+                        <li>Cardboard or wooden ramps (one per group)</li>
+                        <li>Books or blocks to adjust ramp height</li>
+                        <li>Toy cars (different sizes/weights)</li>
+                        <li>Ruler or measuring tape</li>
+                        <li>Masking tape for marking distances</li>
+                        <li>Recording sheets with pictures</li>
+                        <li>Crayons/markers</li>
+                    </ul>
+                </div>
+                
+                <h4>📋 Procedure:</h4>
+                <ol>
+                    <li><strong>Setup (5 min):</strong> Create ramps using cardboard propped on books. Place masking tape markers at intervals to measure distance.</li>
+                    <li><strong>Demonstrate (5 min):</strong> Teacher shows "gentle push" vs "strong push" on car down ramp. Ask: "What do you notice?"</li>
+                    <li><strong>Predict (5 min):</strong> Students draw predictions on recording sheet - Which push will make car go farther?</li>
+                    <li><strong>Investigate (20 min):</strong> Groups take turns:
+                        <ul>
+                            <li>Give car a GENTLE push - mark where it stops</li>
+                            <li>Give car a STRONG push - mark where it stops</li>
+                            <li>Repeat 3 times for each</li>
+                            <li>Record results by coloring how far car traveled</li>
+                        </ul>
+                    </li>
+                    <li><strong>Compare (5 min):</strong> Try different cars - do heavier/lighter cars travel differently?</li>
+                    <li><strong>Share & Discuss (5 min):</strong> Groups share findings with class</li>
+                </ol>
+                
+                <div class="cer-framework">
+                    <h4>📝 CER Framework: Push and Pull Investigation</h4>
+                    
+                    <div class="cer-section">
+                        <h5>❓ QUESTION:</h5>
+                        <p>How does the strength of a push affect how far a car travels?</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📢 CLAIM (What I discovered):</h5>
+                        <p><em>Example claim:</em> A stronger push makes the car go farther than a gentle push.</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📊 EVIDENCE (What I observed):</h5>
+                        <ul>
+                            <li>When I gave a gentle push, the car stopped at the 2nd tape mark</li>
+                            <li>When I gave a strong push, the car went past the 5th tape mark</li>
+                            <li>Every time I pushed harder, the car went farther</li>
+                            <li>The strong push made the car move faster too</li>
+                            <li>My partner got the same results</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>🧠 REASONING (Why this evidence supports my claim):</h5>
+                        <ul>
+                            <li>A stronger push gives the car more energy to move</li>
+                            <li>More energy = faster speed = farther distance</li>
+                            <li>The pattern was the same every time: stronger push = farther distance</li>
+                            <li>This is like when I push a ball hard vs. soft - hard push goes farther</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>✅ CONCLUSION:</h5>
+                        <p>The strength of a push affects how far objects move. Stronger pushes give objects more energy, making them travel faster and farther. This shows that forces (pushes and pulls) control how objects move.</p>
+                    </div>
+                </div>
+                
+                <h4>✓ Assessment Checklist:</h4>
+                <ul>
+                    <li>□ Student can describe difference between gentle and strong push</li>
+                    <li>□ Student accurately records observations</li>
+                    <li>□ Student can state claim about push strength and distance</li>
+                    <li>□ Student uses evidence from investigation to support claim</li>
+                </ul>
+            </div>
+            
+            <!-- LAB 2 -->
+            <div class="lab-card">
+                <h3>🌱 Lab 2: What Do Plants Need to Grow?</h3>
+                <div class="lab-info">
+                    <strong>Topic:</strong> Living Things & Their Needs | <strong>Duration:</strong> 40 minutes setup + 2 weeks observation | <strong>Standards:</strong> K-LS1-1, SKL2, SKL1
+                </div>
+                
+                <h4>🎯 Objective:</h4>
+                <p>Students will investigate what plants need to survive by growing plants under different conditions.</p>
+                
+                <h4>📦 Materials:</h4>
+                <div class="materials-list">
+                    <ul>
+                        <li>Clear plastic cups (4 per group)</li>
+                        <li>Potting soil</li>
+                        <li>Fast-growing seeds (beans or grass seeds)</li>
+                        <li>Water in spray bottles</li>
+                        <li>Cardboard box (to block light)</li>
+                        <li>Labels/stickers</li>
+                        <li>Plant observation journal</li>
+                        <li>Rulers</li>
+                        <li>Crayons for recording</li>
+                    </ul>
+                </div>
+                
+                <h4>📋 Procedure:</h4>
+                <ol>
+                    <li><strong>Introduction (10 min):</strong> Ask students: "What do you think plants need to grow?" Record predictions on chart paper.</li>
+                    <li><strong>Setup 4 Plant Conditions (20 min):</strong>
+                        <ul>
+                            <li><strong>Plant A:</strong> Water + Light + Soil (control - gets everything)</li>
+                            <li><strong>Plant B:</strong> Light + Soil, NO water</li>
+                            <li><strong>Plant C:</strong> Water + Soil, NO light (covered with box)</li>
+                            <li><strong>Plant D:</strong> Water + Light, NO soil (seeds on wet paper towel)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Label & Place (5 min):</strong> Label each cup clearly. Place in designated spots.</li>
+                    <li><strong>Daily Observations (5 min/day for 2 weeks):</strong>
+                        <ul>
+                            <li>Water Plants A, C, D (not B)</li>
+                            <li>Draw observations in journal</li>
+                            <li>Measure growth with ruler</li>
+                            <li>Note color changes</li>
+                        </ul>
+                    </li>
+                    <li><strong>Final Comparison (10 min):</strong> Compare all plants after 2 weeks. Discuss results.</li>
+                </ol>
+                
+                <div class="cer-framework">
+                    <h4>📝 CER Framework: Plant Needs Investigation</h4>
+                    
+                    <div class="cer-section">
+                        <h5>❓ QUESTION:</h5>
+                        <p>What do plants need to survive and grow healthy?</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📢 CLAIM (What I discovered):</h5>
+                        <p><em>Example claim:</em> Plants need water, light, and soil to grow healthy and strong.</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📊 EVIDENCE (What I observed):</h5>
+                        <ul>
+                            <li>Plant A (water + light + soil) grew tall (6 inches), green, and healthy</li>
+                            <li>Plant B (no water) dried up and died after 5 days - leaves turned brown and crispy</li>
+                            <li>Plant C (no light) grew but was yellow and droopy, stems were thin and weak</li>
+                            <li>Plant D (no soil) sprouted but then stopped growing after 1 week - roots had nowhere to go</li>
+                            <li>Only Plant A looked healthy like plants outside</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>🧠 REASONING (Why this evidence supports my claim):</h5>
+                        <ul>
+                            <li>When we took away water (Plant B), the plant couldn't survive - water is necessary</li>
+                            <li>When we took away light (Plant C), the plant couldn't make food and turned yellow - light is necessary</li>
+                            <li>When we took away soil (Plant D), the plant couldn't get nutrients or anchor roots - soil is necessary</li>
+                            <li>Only the plant with ALL three things (A) grew healthy - so plants need all three</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>✅ CONCLUSION:</h5>
+                        <p>Plants need water, light, and soil (nutrients) to survive and grow. Without any ONE of these things, plants cannot grow healthy. This is why we water plants, put them near windows, and plant them in good soil.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LAB 3 -->
+            <div class="lab-card">
+                <h3>🌡️ Lab 3: Weather Watchers - Daily Weather Tracking</h3>
+                <div class="lab-info">
+                    <strong>Topic:</strong> Weather & Seasons | <strong>Duration:</strong> 15 min/day for 4 weeks | <strong>Standards:</strong> K-ESS2-1, K-ESS3-2, SKE1
+                </div>
+                
+                <h4>🎯 Objective:</h4>
+                <p>Students will observe, measure, and record daily weather to identify patterns over time.</p>
+                
+                <h4>📦 Materials:</h4>
+                <div class="materials-list">
+                    <ul>
+                        <li>Large class weather chart (poster board)</li>
+                        <li>Weather symbols cards (sunny, cloudy, rainy, windy, snowy)</li>
+                        <li>Outdoor thermometer (or digital thermometer)</li>
+                        <li>Rain gauge</li>
+                        <li>Wind sock or ribbons on stick</li>
+                        <li>Individual weather journals</li>
+                        <li>Weather word cards with pictures</li>
+                        <li>Calendar</li>
+                    </ul>
+                </div>
+                
+                <h4>📋 Daily Procedure:</h4>
+                <ol>
+                    <li><strong>Morning Observation (5 min):</strong> Look out window or go outside briefly. Observe: Is it sunny/cloudy/rainy? Is it windy? Hot/cold?</li>
+                    <li><strong>Measure Temperature (3 min):</strong> Weather helper reads thermometer. Record on chart. Is it warmer or colder than yesterday?</li>
+                    <li><strong>Record Data (5 min):</strong> Add weather symbol to class chart. Students draw in personal weather journals.</li>
+                    <li><strong>Discuss (2 min):</strong> "What should we wear today? Why?" "How does this weather affect our recess?"</li>
+                </ol>
+                
+                <h4>📋 Weekly/End of Month Analysis:</h4>
+                <ol>
+                    <li>Count how many sunny, cloudy, rainy days</li>
+                    <li>Create simple bar graph of weather types</li>
+                    <li>Discuss patterns: "What weather did we have most?"</li>
+                    <li>Compare to previous weeks/months</li>
+                </ol>
+                
+                <div class="cer-framework">
+                    <h4>📝 CER Framework: Weather Patterns</h4>
+                    
+                    <div class="cer-section">
+                        <h5>❓ QUESTION:</h5>
+                        <p>What weather patterns can we observe over time?</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📢 CLAIM (What I discovered):</h5>
+                        <p><em>Example claim:</em> Weather follows patterns - some types of weather happen more often during certain times, and weather conditions are often similar from day to day.</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📊 EVIDENCE (What I observed):</h5>
+                        <ul>
+                            <li>In September, we had 18 sunny days, 8 cloudy days, and 4 rainy days</li>
+                            <li>The temperature was usually between 70-80 degrees</li>
+                            <li>When it was cloudy one day, it often rained the next day</li>
+                            <li>Morning was usually cooler than afternoon</li>
+                            <li>When it was windy, leaves were falling</li>
+                            <li>Our graph shows sunny days are most common in fall</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>🧠 REASONING (Why this evidence supports my claim):</h5>
+                        <ul>
+                            <li>We saw the same types of weather repeat many times</li>
+                            <li>The temperature stayed in a similar range most days</li>
+                            <li>We could often predict tomorrow's weather based on today's weather</li>
+                            <li>Weather scientists use these patterns to make weather forecasts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>✅ CONCLUSION:</h5>
+                        <p>Weather has patterns that repeat over time. By observing weather every day, we can see what weather is most common and sometimes predict what might come next. This is how weather forecasters help us prepare for the weather.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LAB 4 -->
+            <div class="lab-card">
+                <h3>🔄 Lab 4: Direction of Force Investigation</h3>
+                <div class="lab-info">
+                    <strong>Topic:</strong> Forces and Motion | <strong>Duration:</strong> 40 minutes | <strong>Standards:</strong> K-PS2-1, K-PS2-2, SKP2
+                </div>
+                
+                <h4>🎯 Objective:</h4>
+                <p>Students will investigate how the direction of a push or pull affects the direction an object moves.</p>
+                
+                <h4>📦 Materials:</h4>
+                <div class="materials-list">
+                    <ul>
+                        <li>Large rubber balls</li>
+                        <li>Beanbags</li>
+                        <li>Small wheeled toys</li>
+                        <li>Rope or string for pulling</li>
+                        <li>Masking tape for paths</li>
+                        <li>Arrow direction cards</li>
+                        <li>Recording sheets with arrows</li>
+                    </ul>
+                </div>
+                
+                <h4>📋 Procedure:</h4>
+                <ol>
+                    <li><strong>Warm-up (5 min):</strong> Review pushes and pulls. Demonstrate pushing ball different directions.</li>
+                    <li><strong>Station 1 - Ball Pushes (10 min):</strong> Push ball forward, backward, left, right. Draw arrow showing direction ball moved.</li>
+                    <li><strong>Station 2 - Pulling Practice (10 min):</strong> Use string to pull toy. Pull different directions. Record which way toy moved.</li>
+                    <li><strong>Station 3 - Partner Push (10 min):</strong> Partners roll ball back and forth. Change positions - notice ball always goes away from pusher.</li>
+                    <li><strong>Discussion (5 min):</strong> "What pattern did you notice about direction?"</li>
+                </ol>
+                
+                <div class="cer-framework">
+                    <h4>📝 CER Framework: Force Direction</h4>
+                    
+                    <div class="cer-section">
+                        <h5>❓ QUESTION:</h5>
+                        <p>How does the direction of a push or pull affect which way an object moves?</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📢 CLAIM:</h5>
+                        <p>Objects move in the same direction they are pushed or pulled.</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📊 EVIDENCE:</h5>
+                        <ul>
+                            <li>When I pushed the ball forward, it rolled forward</li>
+                            <li>When I pushed the ball to the left, it went left</li>
+                            <li>When I pulled the string toward me, the toy came toward me</li>
+                            <li>When I pulled the string sideways, the toy moved sideways</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>🧠 REASONING:</h5>
+                        <p>Every time I pushed or pulled in a direction, the object went that same direction. The force (push/pull) controls which way things move. This is how we can aim where we want things to go.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LAB 5 -->
+            <div class="lab-card">
+                <h3>🦋 Lab 5: Living vs. Non-Living Sorting Investigation</h3>
+                <div class="lab-info">
+                    <strong>Topic:</strong> Living Things | <strong>Duration:</strong> 35 minutes | <strong>Standards:</strong> K-LS1-1, SKL1, SKL2
+                </div>
+                
+                <h4>🎯 Objective:</h4>
+                <p>Students will observe and classify objects as living or non-living based on observable characteristics.</p>
+                
+                <h4>📦 Materials:</h4>
+                <div class="materials-list">
+                    <ul>
+                        <li>Collection of objects: rocks, shells, pinecones, toy animals, real plants, pictures of animals</li>
+                        <li>Magnifying glasses</li>
+                        <li>Sorting mats (Living / Non-Living)</li>
+                        <li>Picture cards of various things</li>
+                        <li>Class chart: "What Makes Something Living?"</li>
+                    </ul>
+                </div>
+                
+                <h4>📋 Procedure:</h4>
+                <ol>
+                    <li><strong>Discussion (10 min):</strong> "What does it mean to be alive?" Create class chart: Living things GROW, NEED food/water/air, can MOVE on their own, can have BABIES</li>
+                    <li><strong>Model Sorting (5 min):</strong> Teacher sorts a few items, thinking aloud: "Does a rock grow? No. Does it need food? No. It's non-living."</li>
+                    <li><strong>Station Sorting (15 min):</strong> Groups sort objects onto mats. Must explain WHY for each item.</li>
+                    <li><strong>Challenge Items (5 min):</strong> Discuss tricky items - Is a dead leaf living or non-living? (Was living, now non-living)</li>
+                </ol>
+                
+                <div class="cer-framework">
+                    <h4>📝 CER Framework: Living vs. Non-Living</h4>
+                    
+                    <div class="cer-section">
+                        <h5>❓ QUESTION:</h5>
+                        <p>How can we tell if something is living or non-living?</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📢 CLAIM:</h5>
+                        <p>Living things grow, need food/water/air, move on their own, and can have babies. Non-living things don't do these things.</p>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>📊 EVIDENCE:</h5>
+                        <ul>
+                            <li>The plant is living because it grows bigger, needs water and sunlight, and can make seeds</li>
+                            <li>The rock is non-living because it doesn't grow, doesn't need food or water, and can't move by itself</li>
+                            <li>The caterpillar is living because it moves, eats leaves, grows, and will become a butterfly</li>
+                            <li>The toy car is non-living because it only moves when I push it and doesn't need anything to survive</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cer-section">
+                        <h5>🧠 REASONING:</h5>
+                        <p>Living things share special characteristics that non-living things don't have. By checking if something grows, needs resources, moves on its own, and reproduces, we can classify it correctly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 5E LESSONS TAB ========== -->
+        <div id="lessons" class="tab-content">
+            <h2 style="color: #00b894; margin-bottom: 25px; font-size: 1.8em;">📚 Complete 5E Lesson Plans</h2>
+            
+            <!-- LESSON 1 -->
+            <div class="lesson-plan">
+                <h3>📖 5E Lesson 1: Pushes and Pulls All Around Us</h3>
+                <p><strong>Topic:</strong> Forces and Motion | <strong>Standards:</strong> K-PS2-1, K-PS2-2, SKP2</p>
+                <div class="time-badge">⏰ Total Time: 55 minutes</div>
+                
+                <div class="five-e-section">
+                    <h4>🔍 ENGAGE <span class="phase-time">10 minutes</span></h4>
+                    <p><strong>Hook Activity: "Forces in Action Video"</strong></p>
+                    <ul>
+                        <li>Show short video of playground activities - swinging, sliding, pushing merry-go-round</li>
+                        <li>Ask: "What do you see happening? What makes things move?"</li>
+                        <li>Introduce vocabulary: PUSH (move away from you) and PULL (move toward you)</li>
+                        <li>Students act out pushes and pulls with partner (push hands together, pull hands apart)</li>
+                    </ul>
+                    <p><strong>Guiding Question:</strong> "How do pushes and pulls make things move?"</p>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔬 EXPLORE <span class="phase-time">15 minutes</span></h4>
+                    <p><strong>Investigation: Push and Pull Sort</strong></p>
+                    <ul>
+                        <li><strong>Materials:</strong> Various objects - toy cars, balls, blocks, toy wagon, doors (model), drawers (model)</li>
+                        <li>Students work in pairs to test each object</li>
+                        <li>Sort objects into: "Push to Move" and "Pull to Move" (some go in both!)</li>
+                        <li><strong>Recording:</strong> Draw pictures of objects in correct category</li>
+                        <li>Try pushing/pulling with different strengths - what happens?</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>💡 EXPLAIN <span class="phase-time">12 minutes</span></h4>
+                    <p><strong>Teacher-Led Discussion:</strong></p>
+                    <ul>
+                        <li><strong>Key Vocabulary:</strong>
+                            <ul>
+                                <li><strong>Force:</strong> A push or pull on an object</li>
+                                <li><strong>Push:</strong> A force that moves something away from you</li>
+                                <li><strong>Pull:</strong> A force that moves something toward you</li>
+                                <li><strong>Motion:</strong> When something moves or changes position</li>
+                            </ul>
+                        </li>
+                        <li><strong>Key Concepts:</strong>
+                            <ul>
+                                <li>Pushes and pulls are forces that make things move</li>
+                                <li>Stronger pushes/pulls = faster movement, farther distance</li>
+                                <li>Direction of push/pull = direction object moves</li>
+                                <li>We use pushes and pulls every day!</li>
+                            </ul>
+                        </li>
+                        <li>Students share examples from their sort</li>
+                        <li>Create class anchor chart with examples</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔧 ELABORATE <span class="phase-time">13 minutes</span></h4>
+                    <p><strong>Application Activity: "Forces Scavenger Hunt"</strong></p>
+                    <ul>
+                        <li>Students walk around classroom looking for things that need pushes or pulls</li>
+                        <li>Examples: door (push/pull), chair (push/pull), drawer (pull), light switch (push), zipper (pull)</li>
+                        <li>Record findings on picture checklist</li>
+                        <li><strong>Extension:</strong> Design challenge - Can you move a ball without touching it? (blow on it = push with air!)</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>📝 EVALUATE <span class="phase-time">5 minutes</span></h4>
+                    <p><strong>Assessment: "Show What You Know"</strong></p>
+                    <ul>
+                        <li>Exit ticket with 4 pictures - students circle if each shows a PUSH or PULL</li>
+                        <li>Draw one example of a push and one example of a pull from home</li>
+                        <li>Oral assessment: "Tell me one thing you push and one thing you pull"</li>
+                    </ul>
+                    <p><strong>Success Criteria:</strong> Student correctly identifies 3/4 pictures and can give verbal examples</p>
+                </div>
+            </div>
+            
+            <!-- LESSON 2 -->
+            <div class="lesson-plan">
+                <h3>📖 5E Lesson 2: What Do Living Things Need?</h3>
+                <p><strong>Topic:</strong> Living Things & Their Needs | <strong>Standards:</strong> K-LS1-1, K-ESS3-1, SKL2</p>
+                <div class="time-badge">⏰ Total Time: 50 minutes</div>
+                
+                <div class="five-e-section">
+                    <h4>🔍 ENGAGE <span class="phase-time">8 minutes</span></h4>
+                    <p><strong>Hook Activity: "Taking Care of Our Class Pet"</strong></p>
+                    <ul>
+                        <li>Show class pet (real or stuffed animal/picture if no real pet)</li>
+                        <li>Ask: "What does [pet name] need to stay alive and healthy?"</li>
+                        <li>Students share ideas - chart responses</li>
+                        <li>Show two pictures: healthy plant vs. wilting plant. "What happened? Why?"</li>
+                    </ul>
+                    <p><strong>Guiding Question:</strong> "What do all living things need to survive?"</p>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔬 EXPLORE <span class="phase-time">15 minutes</span></h4>
+                    <p><strong>Investigation: Basic Needs Stations</strong></p>
+                    <ul>
+                        <li><strong>Station 1 - Water:</strong> Observe plant that was watered vs. one that wasn't. Touch soil. Draw observations.</li>
+                        <li><strong>Station 2 - Food:</strong> Sort pictures of what animals eat. Match animals to their food.</li>
+                        <li><strong>Station 3 - Air:</strong> Blow bubbles underwater (fish tank or bowl). Discuss how fish breathe. Feel own breath.</li>
+                        <li><strong>Station 4 - Shelter:</strong> Match animal to its home (bird/nest, bear/cave, fish/water, etc.)</li>
+                        <li>Students rotate through stations, recording one observation per station</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>💡 EXPLAIN <span class="phase-time">12 minutes</span></h4>
+                    <p><strong>Teacher-Led Discussion:</strong></p>
+                    <ul>
+                        <li><strong>Key Vocabulary:</strong>
+                            <ul>
+                                <li><strong>Basic Needs:</strong> Things all living things must have to survive</li>
+                                <li><strong>Water:</strong> Liquid that all living things need to drink or absorb</li>
+                                <li><strong>Food:</strong> What gives living things energy to grow</li>
+                                <li><strong>Air:</strong> What living things breathe (oxygen)</li>
+                                <li><strong>Shelter:</strong> A safe place to live</li>
+                            </ul>
+                        </li>
+                        <li>Create anchor chart: "All Living Things Need: Food, Water, Air, Shelter"</li>
+                        <li>Discuss: Plants get food from sunlight (special!), but still need water and air</li>
+                        <li>Connect to students: "What do YOU need to survive?"</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔧 ELABORATE <span class="phase-time">10 minutes</span></h4>
+                    <p><strong>Application: "Design an Animal Home"</strong></p>
+                    <ul>
+                        <li>Students choose an animal (from picture cards)</li>
+                        <li>Draw a habitat that provides all four basic needs</li>
+                        <li>Label: Where does it get water? Food? Air? Where is shelter?</li>
+                        <li>Share with partner and explain choices</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>📝 EVALUATE <span class="phase-time">5 minutes</span></h4>
+                    <p><strong>Assessment:</strong></p>
+                    <ul>
+                        <li>Matching worksheet: Draw lines connecting basic need words to pictures</li>
+                        <li>Complete the sentence: "Living things need _____, _____, _____, and _____ to survive."</li>
+                        <li>Oral check: Point to picture, "Does this animal need water to live? Why?"</li>
+                    </ul>
+                    <p><strong>Success Criteria:</strong> Student names all 4 basic needs and explains why at least one is important</p>
+                </div>
+            </div>
+            
+            <!-- LESSON 3 -->
+            <div class="lesson-plan">
+                <h3>📖 5E Lesson 3: Weather and Seasons</h3>
+                <p><strong>Topic:</strong> Weather Patterns | <strong>Standards:</strong> K-ESS2-1, K-ESS3-2, SKE1</p>
+                <div class="time-badge">⏰ Total Time: 50 minutes</div>
+                
+                <div class="five-e-section">
+                    <h4>🔍 ENGAGE <span class="phase-time">8 minutes</span></h4>
+                    <p><strong>Hook Activity: "Dress the Weather Bear"</strong></p>
+                    <ul>
+                        <li>Show large paper bear cutout and various paper clothing items</li>
+                        <li>Ask: "What should Weather Bear wear today? Why?"</li>
+                        <li>Students suggest clothing based on current weather</li>
+                        <li>Show pictures of different weather - discuss how clothing would change</li>
+                    </ul>
+                    <p><strong>Guiding Question:</strong> "How does weather change and how do we prepare for different weather?"</p>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔬 EXPLORE <span class="phase-time">15 minutes</span></h4>
+                    <p><strong>Investigation: Weather Exploration Stations</strong></p>
+                    <ul>
+                        <li><strong>Station 1 - Temperature:</strong> Use thermometers to measure different water temperatures (cold, room temp, warm). Record which feels like summer/winter.</li>
+                        <li><strong>Station 2 - Wind:</strong> Use paper fans and pinwheels. Create wind - observe what it moves. Draw observations.</li>
+                        <li><strong>Station 3 - Precipitation:</strong> Spray bottle "rain" on different materials. Which stays dry? Which gets wet? (like real rain)</li>
+                        <li><strong>Station 4 - Seasons Sort:</strong> Sort pictures into 4 seasons based on weather clues</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>💡 EXPLAIN <span class="phase-time">12 minutes</span></h4>
+                    <p><strong>Teacher-Led Discussion:</strong></p>
+                    <ul>
+                        <li><strong>Key Vocabulary:</strong>
+                            <ul>
+                                <li><strong>Weather:</strong> What it's like outside (sunny, rainy, cloudy, windy, snowy)</li>
+                                <li><strong>Temperature:</strong> How hot or cold it is</li>
+                                <li><strong>Precipitation:</strong> Water falling from sky (rain, snow, sleet, hail)</li>
+                                <li><strong>Season:</strong> Time of year (spring, summer, fall, winter)</li>
+                            </ul>
+                        </li>
+                        <li>Create anchor chart with weather words and pictures</li>
+                        <li>Discuss patterns: "In winter it's usually ___. In summer it's usually ___."</li>
+                        <li>Introduce weather forecasting: "Scientists help us know what weather is coming!"</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔧 ELABORATE <span class="phase-time">10 minutes</span></h4>
+                    <p><strong>Application: "My Favorite Season Book"</strong></p>
+                    <ul>
+                        <li>Students create mini-book with 4 pages (one per season)</li>
+                        <li>Draw weather for each season</li>
+                        <li>Draw appropriate clothing/activities for each</li>
+                        <li>Circle their favorite season and tell a partner why</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>📝 EVALUATE <span class="phase-time">5 minutes</span></h4>
+                    <p><strong>Assessment:</strong></p>
+                    <ul>
+                        <li>Weather matching: Connect weather word to correct picture</li>
+                        <li>Season sort: Place 4 pictures in correct season</li>
+                        <li>Draw today's weather and what you wore because of it</li>
+                    </ul>
+                    <p><strong>Success Criteria:</strong> Student correctly identifies 4/5 weather types and can explain clothing choice for one type of weather</p>
+                </div>
+            </div>
+            
+            <!-- LESSON 4 -->
+            <div class="lesson-plan">
+                <h3>📖 5E Lesson 4: Animal Groups and Features</h3>
+                <p><strong>Topic:</strong> Living Things | <strong>Standards:</strong> K-LS1-1, SKL1, SKL2</p>
+                <div class="time-badge">⏰ Total Time: 45 minutes</div>
+                
+                <div class="five-e-section">
+                    <h4>🔍 ENGAGE <span class="phase-time">7 minutes</span></h4>
+                    <p><strong>Hook: "Mystery Animal Clues"</strong></p>
+                    <ul>
+                        <li>Give clues about an animal: "It has fur, four legs, a tail, and says 'woof'"</li>
+                        <li>Students guess the animal (dog)</li>
+                        <li>Play 2-3 more rounds with different animals</li>
+                        <li>Discuss: "How did the features help you guess?"</li>
+                    </ul>
+                    <p><strong>Guiding Question:</strong> "How can we group animals by how they look?"</p>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔬 EXPLORE <span class="phase-time">12 minutes</span></h4>
+                    <p><strong>Investigation: Animal Feature Sort</strong></p>
+                    <ul>
+                        <li><strong>Materials:</strong> Animal picture cards (20+ animals), sorting mats</li>
+                        <li>Round 1: Sort by number of legs (0, 2, 4, 6+)</li>
+                        <li>Round 2: Sort by body covering (fur, feathers, scales, skin)</li>
+                        <li>Round 3: Sort by where they live (land, water, air)</li>
+                        <li>Record one sort by drawing in science journal</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>💡 EXPLAIN <span class="phase-time">10 minutes</span></h4>
+                    <p><strong>Key Vocabulary & Concepts:</strong></p>
+                    <ul>
+                        <li><strong>Features:</strong> Parts of an animal's body (legs, wings, tail, fur, scales)</li>
+                        <li><strong>Mammals:</strong> Animals with fur that drink mother's milk (dog, cat, whale)</li>
+                        <li><strong>Birds:</strong> Animals with feathers, wings, beaks, lay eggs</li>
+                        <li><strong>Fish:</strong> Animals with scales, fins, gills, live in water</li>
+                        <li><strong>Reptiles:</strong> Animals with scales, cold-blooded (snake, lizard, turtle)</li>
+                        <li><strong>Insects:</strong> Animals with 6 legs, antennae (ant, butterfly, bee)</li>
+                    </ul>
+                    <li>Create picture chart showing animal groups with examples</li>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>🔧 ELABORATE <span class="phase-time">10 minutes</span></h4>
+                    <p><strong>Application: "Create an Animal"</strong></p>
+                    <ul>
+                        <li>Students draw a made-up animal</li>
+                        <li>Must include and label: type of body covering, number of legs, special features</li>
+                        <li>Answer: "What group would your animal belong to? Why?"</li>
+                    </ul>
+                </div>
+                
+                <div class="five-e-section">
+                    <h4>📝 EVALUATE <span class="phase-time">6 minutes</span></h4>
+                    <p><strong>Assessment:</strong></p>
+                    <ul>
+                        <li>Sort 6 animal cards into correct groups</li>
+                        <li>Circle the animal that doesn't belong and explain why</li>
+                        <li>Name one feature of a mammal, bird, and fish</li>
+                    </ul>
+                    <p><strong>Success Criteria:</strong> Student correctly sorts 5/6 animals and explains one grouping choice</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== VIDEOS TAB ========== -->
+        <div id="videos" class="tab-content">
+            <h2 style="color: #e84393; margin-bottom: 25px; font-size: 1.8em;">🎬 Educational Videos</h2>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);">
+                <h3>🚗 Unit 1: Pushes & Pulls Videos</h3>
+                <div class="standard-item">
+                    <h4>📺 Recommended Videos</h4>
+                    <ul>
+                        <li><strong>SciShow Kids - Pushes and Pulls:</strong> <a href="https://www.youtube.com/watch?v=dVMHk_dLs94" target="_blank">Watch on YouTube</a> (4 min) - Introduces forces in kid-friendly terms</li>
+                        <li><strong>PBS Kids - Sid the Science Kid - Forces:</strong> <a href="https://pbslearningmedia.org/subjects/science/physical-science/motion-and-forces/" target="_blank">PBS Learning Media</a> - Motion exploration</li>
+                        <li><strong>Mystery Doug - What Makes Things Move?:</strong> <a href="https://mysteryscience.com/forces/mystery-1/pushes-pulls-forces-motion" target="_blank">Mystery Science</a> - Interactive video lesson</li>
+                        <li><strong>BrainPOP Jr. - Pushes and Pulls:</strong> <a href="https://jr.brainpop.com/science/forces/pushesandpulls/" target="_blank">BrainPOP Jr.</a> - Animated explanation with quiz</li>
+                        <li><strong>National Geographic Kids - Motion:</strong> <a href="https://kids.nationalgeographic.com" target="_blank">NatGeo Kids</a> - Real-world force examples</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);">
+                <h3>🌱 Unit 2: Living Things Videos</h3>
+                <div class="standard-item">
+                    <h4>📺 Recommended Videos</h4>
+                    <ul>
+                        <li><strong>SciShow Kids - What Do Animals Need?:</strong> <a href="https://www.youtube.com/watch?v=3hRkGYRGKqM" target="_blank">Watch on YouTube</a> (4 min) - Basic needs of animals</li>
+                        <li><strong>SciShow Kids - What Do Plants Need?:</strong> <a href="https://www.youtube.com/watch?v=p3St51F4kE8" target="_blank">Watch on YouTube</a> (4 min) - Basic needs of plants</li>
+                        <li><strong>PBS Nature Cat - Living vs Non-Living:</strong> <a href="https://pbslearningmedia.org/subjects/science/life-science/organisms-and-their-environments/" target="_blank">PBS Learning Media</a></li>
+                        <li><strong>National Geographic Kids - Animal Habitats:</strong> <a href="https://kids.nationalgeographic.com/animals" target="_blank">NatGeo Kids Animals</a></li>
+                        <li><strong>Mystery Doug - Living Things:</strong> <a href="https://mysteryscience.com/life/mystery-1/living-things-basic-needs" target="_blank">Mystery Science</a> - What makes something alive?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);">
+                <h3>🌤️ Unit 3: Weather & Seasons Videos</h3>
+                <div class="standard-item">
+                    <h4>📺 Recommended Videos</h4>
+                    <ul>
+                        <li><strong>SciShow Kids - Weather:</strong> <a href="https://www.youtube.com/watch?v=Uo8lbeVVb4M" target="_blank">Watch on YouTube</a> (4 min) - Types of weather</li>
+                        <li><strong>StoryBots - Weather Song:</strong> <a href="https://www.youtube.com/watch?v=Dv0rINYpUP4" target="_blank">Watch on YouTube</a> (3 min) - Fun weather song</li>
+                        <li><strong>PBS Kids - Wild Kratts Weather:</strong> <a href="https://pbslearningmedia.org/subjects/science/earth-and-space-science/weather-and-climate/" target="_blank">PBS Learning Media</a></li>
+                        <li><strong>National Geographic Kids - Seasons:</strong> <a href="https://kids.nationalgeographic.com" target="_blank">NatGeo Kids</a> - Why we have seasons</li>
+                        <li><strong>BrainPOP Jr. - Seasons:</strong> <a href="https://jr.brainpop.com/science/weather/seasons/" target="_blank">BrainPOP Jr.</a> - Animated seasons explanation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ARTICLES TAB ========== -->
+        <div id="articles" class="tab-content">
+            <h2 style="color: #6c5ce7; margin-bottom: 25px; font-size: 1.8em;">📖 Student Articles & Reading Materials</h2>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);">
+                <h3>🚗 Forces & Motion Reading</h3>
+                <div class="standard-item">
+                    <h4>📚 Read-Aloud Suggestions</h4>
+                    <ul>
+                        <li><strong>"Forces Make Things Move"</strong> by Kimberly Brubaker Bradley - Perfect intro to pushes and pulls</li>
+                        <li><strong>"Motion: Push and Pull, Fast and Slow"</strong> by Darlene Stille - Simple explanations with photos</li>
+                        <li><strong>"And Everyone Shouted, Pull!"</strong> by Claire Llewellyn - Story about pulling together</li>
+                        <li><strong>"I Fall Down"</strong> by Vicki Cobb - Introduces gravity in simple terms</li>
+                        <li><strong>"Move It! Motion, Forces and You"</strong> by Adrienne Mason - Hands-on science book</li>
+                    </ul>
+                </div>
+                <div class="standard-item">
+                    <h4>🌐 Online Reading Resources</h4>
+                    <ul>
+                        <li><a href="https://www.readworks.org" target="_blank">ReadWorks</a> - Free leveled passages on forces</li>
+                        <li><a href="https://newsela.com" target="_blank">Newsela</a> - Adaptable reading levels</li>
+                        <li><a href="https://www.getepic.com" target="_blank">Epic! Books</a> - Digital library with science books</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);">
+                <h3>🌱 Living Things Reading</h3>
+                <div class="standard-item">
+                    <h4>📚 Read-Aloud Suggestions</h4>
+                    <ul>
+                        <li><strong>"What Do Living Things Need?"</strong> by Elizabeth Austen - Direct standards connection</li>
+                        <li><strong>"A House for Hermit Crab"</strong> by Eric Carle - Habitat and needs</li>
+                        <li><strong>"The Tiny Seed"</strong> by Eric Carle - Plant needs and life cycle</li>
+                        <li><strong>"From Seed to Plant"</strong> by Gail Gibbons - Plant growth basics</li>
+                        <li><strong>"Animal Babies in Grasslands"</strong> by Jennifer Schofield - Animal needs in habitats</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);">
+                <h3>🌤️ Weather & Seasons Reading</h3>
+                <div class="standard-item">
+                    <h4>📚 Read-Aloud Suggestions</h4>
+                    <ul>
+                        <li><strong>"What Will the Weather Be?"</strong> by Lynda DeWitt - Weather prediction basics</li>
+                        <li><strong>"The Reasons for Seasons"</strong> by Gail Gibbons - Seasonal changes</li>
+                        <li><strong>"Weather Words and What They Mean"</strong> by Gail Gibbons - Vocabulary builder</li>
+                        <li><strong>"Cloudy With a Chance of Meatballs"</strong> by Judi Barrett - Fun weather fiction</li>
+                        <li><strong>"The Snowy Day"</strong> by Ezra Jack Keats - Winter weather exploration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ASSESSMENTS TAB ========== -->
+        <div id="assessments" class="tab-content">
+            <h2 style="color: #e17055; margin-bottom: 25px; font-size: 1.8em;">📝 Assessments & Rubrics</h2>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);">
+                <h3>🎯 Assessment Overview</h3>
+                <div class="standard-item">
+                    <h4>Types of Kindergarten Science Assessments</h4>
+                    <ul>
+                        <li><strong>Observation Checklists:</strong> Watch students during activities and check off skills demonstrated</li>
+                        <li><strong>Picture Sorts:</strong> Students sort pictures into categories (living/non-living, push/pull, etc.)</li>
+                        <li><strong>Drawing Responses:</strong> Students draw to show understanding (label parts, show motion, etc.)</li>
+                        <li><strong>Verbal Explanations:</strong> Students explain their thinking out loud to the teacher</li>
+                        <li><strong>Science Journals:</strong> Pictures and simple sentences showing learning over time</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);">
+                <h3>🚗 Forces & Motion Assessments</h3>
+                <div class="standard-item">
+                    <h4>Performance Task: Push/Pull Investigation</h4>
+                    <p><strong>Task:</strong> Students demonstrate pushes and pulls with classroom objects and explain what happens.</p>
+                    <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                        <tr style="background: #0984e3; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">Criteria</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">3 - Exceeds</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">2 - Meets</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">1 - Approaching</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Identifies Forces</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Correctly identifies all pushes/pulls and explains why</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Correctly identifies most pushes/pulls</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Needs help identifying pushes/pulls</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Describes Motion</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Describes direction and speed changes</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Describes that object moved</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Points to movement without description</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Compares Forces</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Explains how hard/soft pushes make different results</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Shows that forces can be different strengths</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Needs prompting to compare</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);">
+                <h3>🌱 Living Things Assessments</h3>
+                <div class="standard-item">
+                    <h4>Picture Sort Assessment</h4>
+                    <p><strong>Task:</strong> Students sort pictures of living and non-living things and identify basic needs.</p>
+                    <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                        <tr style="background: #00b894; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">Criteria</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">3 - Exceeds</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">2 - Meets</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">1 - Approaching</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Living/Non-Living Sort</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sorts all correctly and explains criteria</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sorts most correctly (8/10+)</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sorts some correctly (5-7/10)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Basic Needs</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Names 4+ needs and gives examples</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Names 3 basic needs</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Names 1-2 basic needs</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);">
+                <h3>🌤️ Weather & Seasons Assessments</h3>
+                <div class="standard-item">
+                    <h4>Weather Journal Assessment</h4>
+                    <p><strong>Task:</strong> Students record daily weather for one week and identify patterns.</p>
+                    <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                        <tr style="background: #f39c12; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">Criteria</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">3 - Exceeds</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">2 - Meets</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">1 - Approaching</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Weather Recording</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Records all days with multiple weather details</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Records most days with basic weather</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Incomplete recording</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Pattern Recognition</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Identifies patterns and makes predictions</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Identifies at least one pattern</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Needs help finding patterns</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PRINTABLES TAB ========== -->
+        <div id="printables" class="tab-content">
+            <h2 style="color: #0984e3; margin-bottom: 25px; font-size: 1.8em;">🖨️ Printable Resources</h2>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);">
+                <h3>🚗 Forces & Motion Printables</h3>
+                <div class="standard-item">
+                    <h4>Available Resources</h4>
+                    <ul>
+                        <li>✏️ <strong>Push/Pull Sorting Mat</strong> - Two-column mat for sorting pictures</li>
+                        <li>✏️ <strong>Forces Recording Sheet</strong> - Draw and label pushes and pulls observed</li>
+                        <li>✏️ <strong>Ramp Investigation Data Sheet</strong> - Record how far objects roll</li>
+                        <li>✏️ <strong>Force Vocabulary Cards</strong> - Picture cards with words (push, pull, motion, force)</li>
+                        <li>✏️ <strong>Push and Pull Coloring Pages</strong> - Color scenes showing forces in action</li>
+                        <li>✏️ <strong>CER Graphic Organizer</strong> - Kindergarten-friendly claim-evidence-reasoning template</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);">
+                <h3>🌱 Living Things Printables</h3>
+                <div class="standard-item">
+                    <h4>Available Resources</h4>
+                    <ul>
+                        <li>✏️ <strong>Living/Non-Living Sorting Mat</strong> - Picture sort activity</li>
+                        <li>✏️ <strong>Basic Needs Wheel</strong> - Cut-and-paste wheel showing food, water, air, shelter</li>
+                        <li>✏️ <strong>Plant Parts Diagram</strong> - Label roots, stem, leaves, flower</li>
+                        <li>✏️ <strong>Animal Needs Checklist</strong> - Match animals to their needs</li>
+                        <li>✏️ <strong>Habitat Matching Cards</strong> - Match animals to their homes</li>
+                        <li>✏️ <strong>My Plant Observation Journal</strong> - Track plant growth over time</li>
+                        <li>✏️ <strong>Living Things Vocabulary Cards</strong> - Picture cards with key terms</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);">
+                <h3>🌤️ Weather & Seasons Printables</h3>
+                <div class="standard-item">
+                    <h4>Available Resources</h4>
+                    <ul>
+                        <li>✏️ <strong>Daily Weather Chart</strong> - Record temperature, sky, precipitation</li>
+                        <li>✏️ <strong>Weather Symbol Cards</strong> - Sun, clouds, rain, snow, wind symbols</li>
+                        <li>✏️ <strong>Four Seasons Sorting Mat</strong> - Sort pictures by season</li>
+                        <li>✏️ <strong>Dress for the Weather</strong> - Match clothing to weather types</li>
+                        <li>✏️ <strong>Weather Graphing Template</strong> - Simple picture graph for weather data</li>
+                        <li>✏️ <strong>Seasons Wheel</strong> - Cut-and-assemble spinning wheel</li>
+                        <li>✏️ <strong>Weather Vocabulary Cards</strong> - Picture cards with weather words</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="standard-box" style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);">
+                <h3>📋 General Science Printables</h3>
+                <div class="standard-item">
+                    <h4>Available Resources</h4>
+                    <ul>
+                        <li>✏️ <strong>Science Journal Cover</strong> - Personalized journal cover page</li>
+                        <li>✏️ <strong>I Wonder... Sheet</strong> - Record questions about science topics</li>
+                        <li>✏️ <strong>My Observation Page</strong> - Draw and describe what you see</li>
+                        <li>✏️ <strong>Science Word Wall Cards</strong> - Large vocabulary cards for display</li>
+                        <li>✏️ <strong>Scientist of the Day Badge</strong> - Recognition for science helpers</li>
+                        <li>✏️ <strong>Lab Safety Rules Poster</strong> - Visual reminders for safe science</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== VOCABULARY TAB ========== -->
+        <div id="vocabulary" class="tab-content">
+            <h2 style="color: #f39c12; margin-bottom: 25px; font-size: 1.8em;">📖 Complete Kindergarten Science Vocabulary</h2>
+            
+            <div class="vocab-grid">
+                <!-- FORCES & MOTION -->
+                <div class="vocab-card">
+                    <h4>🚗 Push</h4>
+                    <p><strong>Definition:</strong> A force that moves an object away from you.</p>
+                    <div class="vocab-example">Example: Pushing a shopping cart, pushing a door closed, pushing a ball.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🚗 Pull</h4>
+                    <p><strong>Definition:</strong> A force that moves an object toward you.</p>
+                    <div class="vocab-example">Example: Pulling a wagon, pulling open a drawer, pulling up your zipper.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🚗 Force</h4>
+                    <p><strong>Definition:</strong> A push or pull that can make objects move, stop, or change direction.</p>
+                    <div class="vocab-example">Example: Kicking a ball (push force), catching a ball (stopping force).</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🚗 Motion</h4>
+                    <p><strong>Definition:</strong> When something moves from one place to another.</p>
+                    <div class="vocab-example">Example: A car driving down the street, a swing moving back and forth.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🚗 Speed</h4>
+                    <p><strong>Definition:</strong> How fast or slow something moves.</p>
+                    <div class="vocab-example">Example: A cheetah has fast speed. A turtle has slow speed.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🚗 Direction</h4>
+                    <p><strong>Definition:</strong> The way something moves or points (up, down, left, right, forward, backward).</p>
+                    <div class="vocab-example">Example: Push the ball forward. Pull the wagon backward.</div>
+                </div>
+                
+                <!-- LIVING THINGS -->
+                <div class="vocab-card">
+                    <h4>🌱 Living</h4>
+                    <p><strong>Definition:</strong> Something that is alive - it grows, needs food and water, breathes, and can have babies.</p>
+                    <div class="vocab-example">Example: Plants, animals, and people are all living things.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🪨 Non-living</h4>
+                    <p><strong>Definition:</strong> Something that is not alive - it doesn't grow, eat, or breathe.</p>
+                    <div class="vocab-example">Example: Rocks, toys, water, and chairs are non-living things.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌱 Basic Needs</h4>
+                    <p><strong>Definition:</strong> Things all living things must have to survive: food, water, air, and shelter.</p>
+                    <div class="vocab-example">Example: A fish needs water to breathe, food to eat, and a safe place to hide.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🏠 Shelter</h4>
+                    <p><strong>Definition:</strong> A safe place where an animal or person lives and is protected.</p>
+                    <div class="vocab-example">Example: A bird's nest, a bear's cave, your house.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌱 Grow</h4>
+                    <p><strong>Definition:</strong> To get bigger over time.</p>
+                    <div class="vocab-example">Example: A seed grows into a plant. A baby grows into an adult.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🐾 Animal</h4>
+                    <p><strong>Definition:</strong> A living thing that moves, eats food, and breathes.</p>
+                    <div class="vocab-example">Example: Dogs, fish, birds, butterflies, and people are all animals.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌿 Plant</h4>
+                    <p><strong>Definition:</strong> A living thing that usually has roots, stems, and leaves. Makes its own food from sunlight.</p>
+                    <div class="vocab-example">Example: Trees, flowers, grass, and vegetables are plants.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🦁 Mammal</h4>
+                    <p><strong>Definition:</strong> An animal with fur or hair that drinks milk from its mother as a baby.</p>
+                    <div class="vocab-example">Example: Dogs, cats, elephants, whales, and humans are mammals.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🐦 Bird</h4>
+                    <p><strong>Definition:</strong> An animal with feathers, wings, and a beak that lays eggs.</p>
+                    <div class="vocab-example">Example: Eagles, penguins, chickens, and robins are birds.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🐟 Fish</h4>
+                    <p><strong>Definition:</strong> An animal with scales, fins, and gills that lives in water.</p>
+                    <div class="vocab-example">Example: Goldfish, sharks, salmon, and clownfish are fish.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🐛 Insect</h4>
+                    <p><strong>Definition:</strong> A small animal with six legs and a body divided into three parts.</p>
+                    <div class="vocab-example">Example: Ants, butterflies, bees, and ladybugs are insects.</div>
+                </div>
+                
+                <!-- WEATHER -->
+                <div class="vocab-card">
+                    <h4>☀️ Weather</h4>
+                    <p><strong>Definition:</strong> What it is like outside - sunny, rainy, cloudy, windy, hot, or cold.</p>
+                    <div class="vocab-example">Example: Today's weather is sunny and warm.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌡️ Temperature</h4>
+                    <p><strong>Definition:</strong> How hot or cold something is.</p>
+                    <div class="vocab-example">Example: Summer has hot temperatures. Winter has cold temperatures.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌧️ Precipitation</h4>
+                    <p><strong>Definition:</strong> Water that falls from the sky - rain, snow, sleet, or hail.</p>
+                    <div class="vocab-example">Example: Rain is a type of precipitation that makes puddles.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌬️ Wind</h4>
+                    <p><strong>Definition:</strong> Moving air that you can feel but cannot see.</p>
+                    <div class="vocab-example">Example: Wind blows leaves off trees and makes flags wave.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>☀️ Sunny</h4>
+                    <p><strong>Definition:</strong> When the sun is shining and there are few or no clouds.</p>
+                    <div class="vocab-example">Example: It's a sunny day, so we can see our shadows!</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>☁️ Cloudy</h4>
+                    <p><strong>Definition:</strong> When clouds cover most of the sky and block the sun.</p>
+                    <div class="vocab-example">Example: It's cloudy today, so the sky looks gray.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌧️ Rainy</h4>
+                    <p><strong>Definition:</strong> When water drops fall from clouds in the sky.</p>
+                    <div class="vocab-example">Example: On rainy days, we need umbrellas and raincoats.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>❄️ Snowy</h4>
+                    <p><strong>Definition:</strong> When white, frozen water crystals fall from the sky.</p>
+                    <div class="vocab-example">Example: Snowy days are cold enough to make snowmen!</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🍂 Season</h4>
+                    <p><strong>Definition:</strong> One of four parts of the year: spring, summer, fall (autumn), and winter.</p>
+                    <div class="vocab-example">Example: Fall is the season when leaves change colors.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🌸 Spring</h4>
+                    <p><strong>Definition:</strong> The season when plants start growing, flowers bloom, and baby animals are born.</p>
+                    <div class="vocab-example">Example: In spring, we see baby birds and butterflies.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>☀️ Summer</h4>
+                    <p><strong>Definition:</strong> The warmest season with long, sunny days.</p>
+                    <div class="vocab-example">Example: In summer, we go swimming and eat ice cream.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🍂 Fall/Autumn</h4>
+                    <p><strong>Definition:</strong> The season when leaves change color and fall from trees, and weather gets cooler.</p>
+                    <div class="vocab-example">Example: In fall, we see orange and red leaves and pumpkins.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>❄️ Winter</h4>
+                    <p><strong>Definition:</strong> The coldest season with short days, and sometimes snow.</p>
+                    <div class="vocab-example">Example: In winter, we wear warm coats and mittens.</div>
+                </div>
+                
+                <!-- EARTH MATERIALS -->
+                <div class="vocab-card">
+                    <h4>🪨 Rock</h4>
+                    <p><strong>Definition:</strong> A hard, solid piece of Earth made of minerals.</p>
+                    <div class="vocab-example">Example: Mountains are made of rock. We can find rocks on the ground.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🏝️ Soil</h4>
+                    <p><strong>Definition:</strong> The loose top layer of Earth where plants grow; also called dirt.</p>
+                    <div class="vocab-example">Example: We plant seeds in soil so they can grow into plants.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>💧 Water</h4>
+                    <p><strong>Definition:</strong> A clear liquid that all living things need to survive.</p>
+                    <div class="vocab-example">Example: We drink water, and fish live in water.</div>
+                </div>
+                
+                <!-- SCIENCE PRACTICES -->
+                <div class="vocab-card">
+                    <h4>🔬 Observe</h4>
+                    <p><strong>Definition:</strong> To use your senses (see, hear, touch, smell) to notice things carefully.</p>
+                    <div class="vocab-example">Example: I observe that the flower is red and smells sweet.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>📊 Compare</h4>
+                    <p><strong>Definition:</strong> To look at two or more things to see how they are the same or different.</p>
+                    <div class="vocab-example">Example: I compare the two rocks - one is smooth, one is bumpy.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>📁 Sort</h4>
+                    <p><strong>Definition:</strong> To put things into groups based on how they are alike.</p>
+                    <div class="vocab-example">Example: I can sort buttons by color - red buttons in one pile, blue in another.</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <h4>🔮 Predict</h4>
+                    <p><strong>Definition:</strong> To make a good guess about what will happen based on what you know.</p>
+                    <div class="vocab-example">Example: I predict the ball will roll far if I push it hard.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== GAMES TAB ========== -->
+        <div id="games" class="tab-content">
+            <h2 style="color: #0984e3; margin-bottom: 25px; font-size: 1.8em;">🎮 Games & Interactive Activities</h2>
+            
+            <div class="game-card">
+                <h4>🎵 Push/Pull Freeze Dance</h4>
+                <p><strong>Objective:</strong> Identify pushes and pulls in everyday actions</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li>Play music - students move around room</li>
+                    <li>When music stops, teacher calls "FREEZE like a push!" or "FREEZE like a pull!"</li>
+                    <li>Students pose in action positions</li>
+                    <li>Discuss what each frozen position looks like</li>
+                </ul>
+                <p><strong>Skills:</strong> Force identification, listening, creative movement</p>
+            </div>
+            
+            <div class="game-card">
+                <h4>🎲 Basic Needs Bingo</h4>
+                <p><strong>Objective:</strong> Reinforce understanding of what living things need</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li>Bingo cards have pictures: water, food, shelter, air, + various animals/plants</li>
+                    <li>Teacher calls out: "Something all animals need to drink" - students cover WATER</li>
+                    <li>Or: "An animal that lives in a nest" - students cover picture of bird</li>
+                    <li>Five in a row = BINGO!</li>
+                </ul>
+                <p><strong>Skills:</strong> Basic needs, habitats, listening, recognition</p>
+            </div>
+            
+            <div class="game-card">
+                <h4>☀️ Weather Charades</h4>
+                <p><strong>Objective:</strong> Act out different weather types</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li>One student picks a weather card (sunny, rainy, windy, snowy, cloudy)</li>
+                    <li>Student acts out the weather without speaking</li>
+                    <li>Class guesses the weather type</li>
+                    <li>Discuss how we know what weather it is</li>
+                </ul>
+                <p><strong>Skills:</strong> Weather identification, communication, observation</p>
+            </div>
+            
+            <div class="game-card">
+                <h4>🌱 Living/Non-Living Relay Race</h4>
+                <p><strong>Objective:</strong> Practice sorting living and non-living things</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li>Set up two bins: "Living" and "Non-Living"</li>
+                    <li>Picture cards scattered in middle of room</li>
+                    <li>Teams take turns running to grab a card and place in correct bin</li>
+                    <li>Review answers together at the end</li>
+                </ul>
+                <p><strong>Skills:</strong> Classification, living vs. non-living, teamwork</p>
+            </div>
+            
+            <div class="online-resources">
+                <h3>🌐 Online Interactive Games and Simulations</h3>
+                
+                <a href="https://pbskids.org/curiousgeorge/busyday/playground/" class="resource-link" target="_blank">
+                    <strong>PBS Kids - Curious George Playground</strong>
+                    <p>Interactive playground exploring pushes, pulls, and motion</p>
+                </a>
+                
+                <a href="https://www.starfall.com/h/holiday/calendar/" class="resource-link" target="_blank">
+                    <strong>Starfall - Weather and Seasons Calendar</strong>
+                    <p>Daily weather tracking and season exploration</p>
+                </a>
+                
+                <a href="https://www.nationalgeographic.com/animals/" class="resource-link" target="_blank">
+                    <strong>National Geographic Kids - Animals</strong>
+                    <p>Photos, videos, and facts about all kinds of animals</p>
+                </a>
+                
+                <a href="https://jr.brainpop.com/science/" class="resource-link" target="_blank">
+                    <strong>BrainPOP Jr. Science</strong>
+                    <p>Interactive games and quizzes for all kindergarten science topics</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- ========== SAFETY TAB ========== -->
+        <div id="safety" class="tab-content">
+            <h2 style="color: #d63031; margin-bottom: 25px; font-size: 1.8em;">⚠️ Safety Guidelines for Kindergarten Science</h2>
+            
+            <div class="safety-box">
+                <h4>🔬 General Science Lab Safety Rules</h4>
+                <ul>
+                    <li><strong>Listen first, act second:</strong> Always wait for teacher instructions before touching materials</li>
+                    <li><strong>Hands to yourself:</strong> Only touch your own materials unless told to share</li>
+                    <li><strong>Walk, dont run:</strong> Move carefully during science activities</li>
+                    <li><strong>Keep materials on table:</strong> Do not throw, wave, or toss science materials</li>
+                    <li><strong>Clean up when done:</strong> Put materials back where they belong</li>
+                    <li><strong>Tell teacher about spills:</strong> Report any accidents immediately</li>
+                    <li><strong>No eating or tasting:</strong> Never put science materials in your mouth</li>
+                    <li><strong>Wash hands:</strong> Before and after every science activity</li>
+                </ul>
+            </div>
+            
+            <div class="safety-box">
+                <h4>🚗 Forces and Motion Safety</h4>
+                <ul>
+                    <li><strong>Ramp safety:</strong> Keep ramps stable and secure; do not climb on ramps</li>
+                    <li><strong>Rolling objects:</strong> Only roll toward designated areas, not toward other students</li>
+                    <li><strong>Push/pull activities:</strong> Use gentle forces; no pushing other people</li>
+                    <li><strong>Clear pathways:</strong> Make sure rolling areas are clear before testing</li>
+                    <li><strong>Stay seated:</strong> Keep bottom on floor during ramp investigations</li>
+                </ul>
+            </div>
+            
+            <div class="safety-box">
+                <h4>🌱 Living Things Safety</h4>
+                <ul>
+                    <li><strong>Plant allergies:</strong> Check for student allergies before handling plants</li>
+                    <li><strong>Soil handling:</strong> Do not eat soil; do not throw soil; wash hands after touching</li>
+                    <li><strong>Gentle with living things:</strong> Handle plants carefully; do not pull or tear</li>
+                    <li><strong>Animal observations:</strong> Look but do not touch unless teacher says it is okay</li>
+                    <li><strong>Wash after touching:</strong> Always wash hands after touching plants, soil, or animals</li>
+                    <li><strong>No eating plants:</strong> Never taste or eat any part of classroom plants</li>
+                </ul>
+            </div>
+            
+            <div class="safety-box">
+                <h4>🌡️ Weather and Outdoor Safety</h4>
+                <ul>
+                    <li><strong>Sun safety:</strong> Never look directly at the sun; wear hats on sunny days</li>
+                    <li><strong>Rain observations:</strong> Stay under cover during rain activities; dry off if wet</li>
+                    <li><strong>Temperature awareness:</strong> Use thermometers carefully; do not put in mouth</li>
+                    <li><strong>Stay together:</strong> Always stay with the class during outdoor observations</li>
+                    <li><strong>Weather alerts:</strong> Go inside immediately if teacher says weather is dangerous</li>
+                </ul>
+            </div>
+            
+            <div class="safety-box">
+                <h4>👩‍🏫 Teacher Supervision Guidelines</h4>
+                <ul>
+                    <li><strong>Always supervise:</strong> Never leave students unattended during science activities</li>
+                    <li><strong>Pre-check materials:</strong> Test all materials before class for safety hazards</li>
+                    <li><strong>Allergies list:</strong> Keep updated allergy list accessible during all activities</li>
+                    <li><strong>First aid ready:</strong> Know location of first aid kit and procedures</li>
+                    <li><strong>Small group size:</strong> Keep investigation groups small (3-4) for better monitoring</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========== DIFFERENTIATION TAB ========== -->
+        <div id="differentiation" class="tab-content">
+            <h2 style="color: #00b894; margin-bottom: 25px; font-size: 1.8em;">👥 Differentiation Strategies</h2>
+            
+            <div class="differentiation-box">
+                <h4>📚 For Students Reading Below Grade Level</h4>
+                <ul>
+                    <li><strong>Picture supports:</strong> Use photographs and illustrations for all vocabulary words and directions</li>
+                    <li><strong>Verbal instructions:</strong> Read all text aloud; repeat directions multiple times</li>
+                    <li><strong>Picture-based recording:</strong> Allow students to draw observations instead of writing</li>
+                    <li><strong>Word walls:</strong> Display vocabulary with pictures at student eye level</li>
+                    <li><strong>Sentence stems:</strong> Provide oral sentence starters: "I observed..." "The push made it..."</li>
+                    <li><strong>Partner support:</strong> Pair with stronger reader for any text-based activities</li>
+                    <li><strong>Audio support:</strong> Use recorded directions students can replay</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>🚀 For Advanced/Gifted Students</h4>
+                <ul>
+                    <li><strong>Extension questions:</strong> Ask "Why?" and "What if?" questions to deepen thinking</li>
+                    <li><strong>Independent exploration:</strong> Allow time for additional investigations with new variables</li>
+                    <li><strong>Recording:</strong> Encourage written explanations in addition to drawings</li>
+                    <li><strong>Teaching role:</strong> Have advanced students help explain concepts to peers</li>
+                    <li><strong>Research projects:</strong> Simple "expert" projects on topics of interest (specific animal, weather event)</li>
+                    <li><strong>Complex comparisons:</strong> Compare more than 2 items at once</li>
+                    <li><strong>Predictions:</strong> Make and test multiple predictions</li>
+                    <li><strong>Create new experiments:</strong> Design their own simple investigations</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>🌍 For English Language Learners (ELL)</h4>
+                <ul>
+                    <li><strong>Visual vocabulary:</strong> Every science word paired with picture and motion</li>
+                    <li><strong>Bilingual word walls:</strong> Key terms in English and home language when possible</li>
+                    <li><strong>Gestures and actions:</strong> Teach vocabulary with physical movements (push = hands forward)</li>
+                    <li><strong>Realia and manipulatives:</strong> Use real objects whenever possible</li>
+                    <li><strong>Partner with language buddy:</strong> Pair with bilingual or patient peer</li>
+                    <li><strong>Simplified sentence frames:</strong> "This is _____." "I see _____."</li>
+                    <li><strong>Extended wait time:</strong> Allow extra processing time for responses</li>
+                    <li><strong>Non-verbal responses accepted:</strong> Pointing, drawing, acting out</li>
+                    <li><strong>Home language connections:</strong> Encourage using home language for understanding, then translate</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>♿ For Students with IEPs/Special Needs</h4>
+                <ul>
+                    <li><strong>Visual schedules:</strong> Post picture schedule of lesson activities</li>
+                    <li><strong>Sensory considerations:</strong> Prepare alternatives for textures that may be difficult (wet, sticky)</li>
+                    <li><strong>Fidget tools:</strong> Allow appropriate fidgets during listening time</li>
+                    <li><strong>Movement breaks:</strong> Build in physical activity between activities</li>
+                    <li><strong>Reduced stimuli:</strong> Minimize visual clutter; clear workspace</li>
+                    <li><strong>Choice boards:</strong> Offer choices in how to demonstrate understanding</li>
+                    <li><strong>Modified materials:</strong> Larger manipulatives, adaptive tools as needed</li>
+                    <li><strong>One-on-one preview:</strong> Review materials and expectations individually before lesson</li>
+                    <li><strong>Frequent check-ins:</strong> Monitor understanding throughout activity</li>
+                    <li><strong>Positive reinforcement:</strong> Specific praise for effort and participation</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>👁️ For Visual Learners</h4>
+                <ul>
+                    <li>Use colorful charts, diagrams, and pictures</li>
+                    <li>Demonstrate all procedures before having students try</li>
+                    <li>Provide graphic organizers for sorting and comparing</li>
+                    <li>Use videos and animations to show concepts</li>
+                    <li>Color-code materials and categories</li>
+                    <li>Create visual step-by-step instructions</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>👂 For Auditory Learners</h4>
+                <ul>
+                    <li>Use songs, chants, and rhymes to teach concepts</li>
+                    <li>Encourage verbal explanations of observations</li>
+                    <li>Provide opportunities for discussion and think-alouds</li>
+                    <li>Read directions aloud multiple times</li>
+                    <li>Use sound effects and audio clips related to topics</li>
+                    <li>Allow students to record observations verbally</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>✋ For Kinesthetic Learners</h4>
+                <ul>
+                    <li>Maximize hands-on activities and manipulatives</li>
+                    <li>Use body movements to represent concepts (acting out pushes/pulls)</li>
+                    <li>Allow standing or moving while working</li>
+                    <li>Include building, sorting, and physical manipulation in every lesson</li>
+                    <li>Use games that involve movement</li>
+                    <li>Provide stress balls or tactile objects during instruction</li>
+                </ul>
+            </div>
+            
+            <div class="differentiation-box">
+                <h4>⏱️ Flexible Pacing Strategies</h4>
+                <ul>
+                    <li><strong>For students who finish early:</strong>
+                        <ul>
+                            <li>Extension activity cards at each station</li>
+                            <li>Science journaling with drawing prompts</li>
+                            <li>Help prepare materials for next group</li>
+                            <li>Independent reading from science book basket</li>
+                        </ul>
+                    </li>
+                    <li><strong>For students who need more time:</strong>
+                        <ul>
+                            <li>Reduce number of required items to complete</li>
+                            <li>Provide additional adult or peer support</li>
+                            <li>Continue activity during centers or free choice time</li>
+                            <li>Focus on key concepts rather than all components</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- ========== MISCONCEPTIONS TAB ========== -->
+        <div id="misconceptions" class="tab-content">
+            <h2 style="color: #e17055; margin-bottom: 25px; font-size: 1.8em;">💭 Common Misconceptions & How to Address Them</h2>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Objects move on their own</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "The ball rolled by itself" or "The car just moved"</p>
+                    <p><strong>The reality:</strong> All motion requires a force (push or pull). Nothing moves without something causing it to move.</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Ask: "What made it move? Did someone or something push/pull it?"</li>
+                        <li>Demonstrate: Place ball on flat surface - it stays still until pushed</li>
+                        <li>Discuss invisible forces: gravity pulls things down, wind pushes things</li>
+                        <li>Activity: Try to make objects move without touching them (blow air, use magnet)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Bigger push always equals farther/faster</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "If I push really hard, it will go super far no matter what"</p>
+                    <p><strong>The reality:</strong> Other factors matter too - surface friction, object weight, obstacles</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Test same push strength on different surfaces (carpet vs. tile)</li>
+                        <li>Push heavy vs. light objects with same force</li>
+                        <li>Discuss: Why did results differ?</li>
+                        <li>Introduce idea that many things affect motion, not just push strength</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Non-living things that move are alive</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "The car is alive because it moves" or "Fire is alive because it grows"</p>
+                    <p><strong>The reality:</strong> Living things have ALL characteristics: grow, need food/water/air, reproduce, respond to environment</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Create checklist: Does it grow? Need food? Have babies? Breathe?</li>
+                        <li>Compare: Car moves but doesn't eat, grow, or have baby cars</li>
+                        <li>Fire seems alive but can't have baby fires or need food the way animals do</li>
+                        <li>Use multiple criteria, not just one characteristic</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Plants are not living things</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "Plants aren't alive because they don't move or eat"</p>
+                    <p><strong>The reality:</strong> Plants ARE living - they grow, need water/air/light, make seeds (reproduce)</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Time-lapse videos of plants growing</li>
+                        <li>Show plant that wasn't watered - it died (only living things can die)</li>
+                        <li>Plants DO move, just slowly - toward sunlight!</li>
+                        <li>Compare plant checklist to animal checklist - both are living</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Weather and seasons are the same thing</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "It's cold, so it's winter" or confusing daily weather with seasonal patterns</p>
+                    <p><strong>The reality:</strong> Weather is daily conditions; seasons are longer patterns throughout the year</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Track weather daily - show it changes even within same season</li>
+                        <li>Discuss: "Can we have a rainy day in summer? A warm day in winter?"</li>
+                        <li>Seasons are about patterns over months, not single days</li>
+                        <li>Use calendar to show seasons lasting months, weather changing daily</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: The sun goes around the Earth</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "The sun moves across the sky" (because that's what we see)</p>
+                    <p><strong>The reality:</strong> Earth spins (rotates) which makes it LOOK like the sun moves</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>For kindergarten: Focus on observable patterns (sun rises, moves across sky, sets)</li>
+                        <li>Simple demonstration: Spin student in place with flashlight "sun" - sun appears to move but it's you spinning</li>
+                        <li>Acknowledge what we SEE vs. what's actually happening</li>
+                        <li>Don't overcomplicate - just plant seed that Earth moves too</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: All animals eat the same things</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> Overgeneralizing - "Animals eat plants" or "Animals eat meat"</p>
+                    <p><strong>The reality:</strong> Different animals eat different things based on their body structures and habitats</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Compare: rabbit teeth (flat for plants) vs. lion teeth (sharp for meat)</li>
+                        <li>Sort animals by what they eat: plants, meat, or both</li>
+                        <li>Connect body parts to food: long beak = reaches nectar, webbed feet = catches fish</li>
+                        <li>Activity: Match animal to its food with picture cards</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Seeds are not alive</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> "Seeds are just like rocks - not living"</p>
+                    <p><strong>The reality:</strong> Seeds ARE alive - they're baby plants waiting for the right conditions to grow</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Plant seeds and observe them grow - only living things grow!</li>
+                        <li>Compare: Rock in soil stays rock forever. Seed becomes plant.</li>
+                        <li>Discuss: Seeds are "sleeping" plants waiting for water and warmth</li>
+                        <li>Show inside of seed (bean) - tiny plant inside!</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Clouds are made of cotton or smoke</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> Clouds look fluffy like cotton balls or steam</p>
+                    <p><strong>The reality:</strong> Clouds are made of tiny water droplets or ice crystals floating in air</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Breathe on cold window - see your breath (water in air)</li>
+                        <li>Boil water (adult only) - steam is like mini cloud</li>
+                        <li>Discuss: When clouds get too heavy with water, it rains!</li>
+                        <li>Simple explanation: Clouds are water that floated up into the sky</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="misconception-box">
+                <h4>❌ Misconception: Heavy things always sink, light things always float</h4>
+                <div class="misconception-content">
+                    <p><strong>What students think:</strong> Weight alone determines floating/sinking</p>
+                    <p><strong>The reality:</strong> Density (not just weight) determines floating - a heavy boat floats, a small rock sinks</p>
+                    <p><strong>How to address it:</strong></p>
+                    <ul>
+                        <li>Activity: Test objects that surprise - heavy wood floats, small paperclip sinks</li>
+                        <li>Compare same size objects of different materials</li>
+                        <li>For kindergarten: "It's not just about heavy/light - it's about what it's made of"</li>
+                        <li>Ships float because of their shape and the air inside</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== CULTURAL CONNECTIONS TAB ========== -->
+        <div id="cultural" class="tab-content">
+            <h2 style="color: #6c5ce7; margin-bottom: 25px; font-size: 1.8em;">🌍 Cultural Connections & Relevance</h2>
+            
+            <div class="cultural-box">
+                <h4>🌾 Traditional Tools and Forces</h4>
+                <ul>
+                    <li><strong>Mortar and Pestle (Many cultures):</strong> Grinding tools used in African, Asian, Latin American, and Indigenous cultures - demonstrate pushing force to grind spices, corn, or medicine</li>
+                    <li><strong>Fishing Nets (Coastal cultures):</strong> Pulling force used by fishing communities worldwide - Japanese, West African, Pacific Islander traditions</li>
+                    <li><strong>Weaving Looms (Native American, African, Asian):</strong> Push and pull motions create fabric - connect to how forces make things</li>
+                    <li><strong>Farming Tools (Global):</strong> Plows pulled by animals, hoes pushed into soil - how different cultures use forces to grow food</li>
+                    <li><strong>Activity:</strong> Show pictures of tools from different cultures - identify the push or pull involved</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🎎 Games from Around the World</h4>
+                <ul>
+                    <li><strong>Tug-of-War (Global):</strong> Played in Korea (Juldarigi), India, Japan, and worldwide - demonstrates pulling force</li>
+                    <li><strong>Marbles (Global):</strong> Played in Mexico, Middle East, Africa, America - demonstrates pushing force and aim</li>
+                    <li><strong>Kick Games:</strong> Soccer from many countries, Sepak Takraw from Southeast Asia - pushing with feet</li>
+                    <li><strong>Bocce Ball (Italian) / Pétanque (French):</strong> Rolling balls with different push strengths</li>
+                    <li><strong>Activity:</strong> Play simplified versions of games from different cultures, discussing the forces used</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🌱 Plants in Different Cultures</h4>
+                <ul>
+                    <li><strong>Rice (Asian cultures):</strong> Staple crop in China, Japan, India, Philippines - grows in water, needs lots of sun</li>
+                    <li><strong>Corn/Maize (Indigenous Americas):</strong> Sacred crop for Native Americans, Aztecs, Mayans - needs sun, water, soil</li>
+                    <li><strong>Baobab Tree (African):</strong> "Tree of Life" provides water, food, shelter - meeting all needs in one plant!</li>
+                    <li><strong>Cactus (Desert cultures):</strong> Native American, Mexican use - how plants survive with little water</li>
+                    <li><strong>Tea Plants (Asian cultures):</strong> Chinese, Japanese, Indian traditions - plant needs in different climates</li>
+                    <li><strong>Activity:</strong> Grow plants from different cultures (bean sprouts, sunflowers, herbs) and discuss their origins</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🐘 Animals Important to Different Cultures</h4>
+                <ul>
+                    <li><strong>Elephants (Indian/Thai/African):</strong> Sacred in Indian culture, working animals in Thailand - discuss needs and features</li>
+                    <li><strong>Llamas and Alpacas (Andean/South American):</strong> Important to Incan civilization - how their body parts help them in mountains</li>
+                    <li><strong>Dragons (Chinese culture):</strong> While mythical, discuss real animals that inspired dragon legends (komodo dragon, alligators)</li>
+                    <li><strong>Buffalo/Bison (Native American):</strong> Provided food, shelter, clothing - all basic needs from one animal</li>
+                    <li><strong>Reindeer (Arctic cultures):</strong> Sami people of Scandinavia - how animals survive in cold</li>
+                    <li><strong>Activity:</strong> Research an animal important to students' family backgrounds</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🌦️ Weather Traditions and Knowledge</h4>
+                <ul>
+                    <li><strong>Groundhog Day (American):</strong> Folk tradition predicting weather - discuss real weather patterns vs. traditions</li>
+                    <li><strong>Monsoons (South Asian):</strong> Seasonal rains critical to India, Bangladesh - life planned around weather patterns</li>
+                    <li><strong>Indigenous Weather Knowledge:</strong> Native American, Aboriginal Australian traditions reading nature's signs for weather</li>
+                    <li><strong>Farmers' Almanac (American/European):</strong> Traditional weather prediction methods</li>
+                    <li><strong>Rain Dances (Various cultures):</strong> Discuss the importance of rain to farming communities</li>
+                    <li><strong>Activity:</strong> Learn about weather sayings from different cultures ("Red sky at night...")</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🎊 Seasonal Celebrations Around the World</h4>
+                <ul>
+                    <li><strong>Chinese New Year (Spring):</strong> Celebrating new beginnings as weather warms</li>
+                    <li><strong>Holi (Indian - Spring):</strong> Festival of colors welcoming spring</li>
+                    <li><strong>Midsummer (Scandinavian - Summer):</strong> Celebrating longest day of the year</li>
+                    <li><strong>Harvest Festivals (Global - Fall):</strong> Thanksgiving, Sukkot, Chuseok, Pongal - giving thanks for food</li>
+                    <li><strong>Winter Solstice Celebrations (Global):</strong> Diwali, Hanukkah, Christmas, Kwanzaa - light during darkest time</li>
+                    <li><strong>Activity:</strong> Create class calendar marking celebrations from students' various cultural backgrounds</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🏠 Homes and Shelters Around the World</h4>
+                <ul>
+                    <li><strong>Igloos (Inuit):</strong> Using available materials (ice) for shelter in cold climate</li>
+                    <li><strong>Adobe houses (Southwestern US/Mexico):</strong> Clay and straw for hot, dry climate</li>
+                    <li><strong>Stilt houses (Southeast Asia):</strong> Built above water for flood protection</li>
+                    <li><strong>Yurts (Mongolia):</strong> Portable homes for nomadic lifestyle</li>
+                    <li><strong>Thatched roofs (Africa/Pacific Islands):</strong> Using plant materials for shelter</li>
+                    <li><strong>Activity:</strong> Compare how homes in different climates meet basic need for shelter</li>
+                    <li><strong>Connection:</strong> Animals also build different homes based on their environment!</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>👨‍👩‍👧‍👦 Making It Personal - Family Connections</h4>
+                <ul>
+                    <li><strong>Family Survey:</strong> Ask families about traditional tools, foods, animals, or weather knowledge from their culture</li>
+                    <li><strong>Guest Speakers:</strong> Invite family members to share cultural connections to science topics</li>
+                    <li><strong>Heritage Projects:</strong> Students research plants, animals, or traditions from their family's background</li>
+                    <li><strong>Food Connections:</strong> Discuss family meals - where do ingredients come from? What plants and animals?</li>
+                    <li><strong>Language Connections:</strong> Learn science words in different languages spoken by students</li>
+                    <li><strong>Photos from Home:</strong> Students bring pictures of plants, pets, or nature from their homes or family's native countries</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>📚 Diverse Books for Kindergarten Science</h4>
+                <ul>
+                    <li><strong>"The Ugly Vegetables"</strong> by Grace Lin - Chinese American family garden, plant growth</li>
+                    <li><strong>"Mama Miti: Wangari Maathai and the Trees of Kenya"</strong> by Donna Jo Napoli - African environmentalism</li>
+                    <li><strong>"The Snowy Day"</strong> by Ezra Jack Keats - African American child experiencing winter weather</li>
+                    <li><strong>"Bringing the Rain to Kapiti Plain"</strong> by Verna Aardema - African tale about weather</li>
+                    <li><strong>"Thunder Cake"</strong> by Patricia Polacco - Russian grandmother, weather patterns</li>
+                    <li><strong>"The Little Red Fort"</strong> by Brenda Maier - Latina girl using tools (forces) to build</li>
+                    <li><strong>"Anansi the Spider"</strong> by Gerald McDermott - West African tale about animals</li>
+                    <li><strong>"The Very Hungry Caterpillar"</strong> by Eric Carle - Life cycle, basic needs (available in many languages)</li>
+                </ul>
+            </div>
+            
+            <div class="cultural-box">
+                <h4>🤝 Creating an Inclusive Science Classroom</h4>
+                <ul>
+                    <li><strong>Use diverse images:</strong> Scientists, farmers, and families from all backgrounds in materials</li>
+                    <li><strong>Value all knowledge:</strong> Traditional and cultural knowledge is valid science</li>
+                    <li><strong>Multiple languages:</strong> Display vocabulary in languages spoken by students</li>
+                    <li><strong>Diverse names in problems:</strong> Use names from various cultures in examples</li>
+                    <li><strong>Avoid stereotypes:</strong> Don't limit cultural examples to traditional/historical only</li>
+                    <li><strong>All students as scientists:</strong> Emphasize that scientists come from all backgrounds</li>
+                    <li><strong>Honor home knowledge:</strong> What do families already know about plants, animals, weather?</li>
+                </ul>
+            </div>
+        </div>
+        <!-- ========== AI FOR TEACHERS TAB ========== -->
+        <div id="ai-teachers" class="tab-content">
+            <h2 class="section-header" style="color: #667eea;">🤖 AI for Teachers</h2>
+            <p style="font-size: 1.1em; margin-bottom: 25px; color: #555;">Leverage AI tools to enhance your science instruction, save time on planning, and create differentiated materials for all learners.</p>
+            
+            <div class="content-box" style="border-left: 5px solid #667eea; background: linear-gradient(135deg, #f0f4ff, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.4em;">📝 Lesson Planning & Content Creation</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>ChatGPT / Claude:</strong> Generate lesson ideas, lab procedures, discussion questions, and real-world connections</li>
+                    <li><strong>MagicSchool AI:</strong> Education-specific tools for rubrics, IEP goals, and communication</li>
+                    <li><strong>Diffit:</strong> Adapt science texts to different reading levels while maintaining accuracy</li>
+                    <li><strong>Curipod:</strong> Create interactive science presentations with built-in engagement features</li>
+                    <li><strong>Canva AI:</strong> Design visually appealing worksheets, posters, and lab instructions</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #00b894; background: linear-gradient(135deg, #e8f8f0, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #00b894; margin-bottom: 15px; font-size: 1.4em;">🔬 Science-Specific AI Tools</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>AI Image Generators:</strong> Create custom scientific diagrams, cell structures, or process illustrations</li>
+                    <li><strong>PhET Simulations:</strong> Interactive science simulations for virtual experimentation</li>
+                    <li><strong>Biorender:</strong> Professional scientific figure creation</li>
+                    <li><strong>Wolfram Alpha:</strong> Computational knowledge for data analysis and verification</li>
+                    <li><strong>Google AI Tools:</strong> NotebookLM for organizing research, Gemini for content generation</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #e17055; background: linear-gradient(135deg, #ffeaa7, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #d63031; margin-bottom: 15px; font-size: 1.4em;">💡 Example Prompts for Science Teachers</h3>
+                <div style="background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <h4 style="color: #2d3436; margin-bottom: 10px;">Lab Safety Scenarios</h4>
+                    <p style="font-style: italic; background: #f8f9fa; padding: 10px; border-radius: 8px;">"Create 5 lab safety scenarios for Kth grade students that involve [topic]. Include the hazard, proper response, and prevention strategies."</p>
+                </div>
+                <div style="background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <h4 style="color: #2d3436; margin-bottom: 10px;">Differentiated Inquiry Questions</h4>
+                    <p style="font-style: italic; background: #f8f9fa; padding: 10px; border-radius: 8px;">"Generate inquiry questions about [topic] at three levels: approaching, meeting, and exceeding grade level expectations."</p>
+                </div>
+                <div style="background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <h4 style="color: #2d3436; margin-bottom: 10px;">CER Framework Support</h4>
+                    <p style="font-style: italic; background: #f8f9fa; padding: 10px; border-radius: 8px;">"Create a CER (Claim-Evidence-Reasoning) scaffold for [experiment/topic] with sentence starters appropriate for Kth graders."</p>
+                </div>
+                <div style="background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <h4 style="color: #2d3436; margin-bottom: 10px;">Misconception Identification</h4>
+                    <p style="font-style: italic; background: #f8f9fa; padding: 10px; border-radius: 8px;">"What are common student misconceptions about [topic]? Provide strategies to address each one."</p>
+                </div>
+                <div style="background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <h4 style="color: #2d3436; margin-bottom: 10px;">Real-World Connections</h4>
+                    <p style="font-style: italic; background: #f8f9fa; padding: 10px; border-radius: 8px;">"Connect [science concept] to careers and real-world applications that would interest Kth grade students."</p>
+                </div>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #d63031; background: linear-gradient(135deg, #ffebee, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #d63031; margin-bottom: 15px; font-size: 1.4em;">⚠️ Important Considerations</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Always Verify Scientific Accuracy:</strong> AI can generate plausible-sounding but incorrect information. Cross-check facts, especially for safety-critical content.</li>
+                    <li><strong>Review Lab Procedures:</strong> Never use AI-generated lab procedures without thorough safety review by qualified personnel.</li>
+                    <li><strong>Use AI as Starting Point:</strong> Treat AI outputs as rough drafts that need your professional expertise to refine.</li>
+                    <li><strong>Model Critical Evaluation:</strong> Demonstrate to students how to verify AI-generated content.</li>
+                    <li><strong>Protect Student Privacy:</strong> Never input student names, grades, or identifying information into AI tools.</li>
+                    <li><strong>Follow District Policies:</strong> Adhere to your school/district guidelines on AI tool usage.</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #0984e3; background: linear-gradient(135deg, #dfe6e9, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #0984e3; margin-bottom: 15px; font-size: 1.4em;">📚 Recommended AI Resources</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>ISTE AI Resources:</strong> <a href="https://iste.org/ai" target="_blank">iste.org/ai</a> - Standards and guidelines for AI in education</li>
+                    <li><strong>AI for Education:</strong> <a href="https://aiforeducation.io" target="_blank">aiforeducation.io</a> - Free resources for educators</li>
+                    <li><strong>Common Sense Media AI:</strong> Reviews and ratings of AI tools for education</li>
+                    <li><strong>TeachAI:</strong> <a href="https://teachai.org" target="_blank">teachai.org</a> - AI guidance for schools</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========== AI FOR STUDENTS TAB ========== -->
+        <div id="ai-students" class="tab-content">
+            <h2 class="section-header" style="color: #e056fd;">🎓 AI for Students</h2>
+            <p style="font-size: 1.1em; margin-bottom: 25px; color: #555;">Guidelines for age-appropriate AI awareness at the kindergarten through second grade level.</p>
+            
+            <div class="content-box" style="border-left: 5px solid #d63031; background: linear-gradient(135deg, #ffebee, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #d63031; margin-bottom: 15px; font-size: 1.4em;">⚠️ Important Age Guidelines</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Most AI tools require users to be 13+ years old</strong></li>
+                    <li><strong>K-2 Students:</strong> Teacher-led demonstrations ONLY - no direct student use of AI tools</li>
+                    <li><strong>Always follow your school/district AI policies</strong></li>
+                    <li><strong>Parental consent may be required for any AI interaction</strong></li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #00b894; background: linear-gradient(135deg, #e8f8f0, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #00b894; margin-bottom: 15px; font-size: 1.4em;">👩‍🏫 Teacher-Led AI Demonstrations</h3>
+                <p style="margin-bottom: 15px;">At this age level, AI should only be used as a teaching tool controlled by the teacher:</p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Show, Don't Share Access:</strong> Project AI interactions on the screen without giving students device access</li>
+                    <li><strong>Wonder Questions:</strong> Use AI to answer class "I wonder..." questions about science topics</li>
+                    <li><strong>Image Generation:</strong> Create fun scientific illustrations with the class providing ideas</li>
+                    <li><strong>Story Generation:</strong> Create simple science stories featuring class ideas</li>
+                    <li><strong>Virtual Field Trips:</strong> Use AI to describe places students are learning about</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #667eea; background: linear-gradient(135deg, #f0f4ff, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.4em;">🌱 Building AI Awareness</h3>
+                <p style="margin-bottom: 15px;">Help young learners understand AI exists without using it directly:</p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>AI Is a Tool:</strong> Explain that AI is like other tools - it helps people do things</li>
+                    <li><strong>People Make AI:</strong> Scientists and engineers create AI programs</li>
+                    <li><strong>AI Isn't Magic:</strong> Computers follow instructions - they don't think like people</li>
+                    <li><strong>AI Can Make Mistakes:</strong> Just like people, AI isn't always right</li>
+                    <li><strong>AI Can't Do Everything:</strong> AI can't feel, taste, smell, or do science experiments</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #fdcb6e; background: linear-gradient(135deg, #ffeaa7, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #e17055; margin-bottom: 15px; font-size: 1.4em;">🔬 Why Hands-On Science Matters</h3>
+                <p style="margin-bottom: 15px;">Emphasize that real science requires doing, not just asking a computer:</p>
+                <ul style="margin-left: 20px;">
+                    <li>We need to <strong>see, touch, and explore</strong> to learn about the world</li>
+                    <li>Computers can't <strong>smell a flower</strong> or <strong>feel how heavy</strong> something is</li>
+                    <li>Scientists do <strong>experiments</strong> - they don't just ask computers</li>
+                    <li>We learn best when we <strong>try things ourselves</strong></li>
+                    <li>AI can tell us about animals, but we need to <strong>observe them</strong> to really understand</li>
+                </ul>
+            </div>
+            
+            <div class="content-box" style="border-left: 5px solid #a29bfe; background: linear-gradient(135deg, #f3e5f5, white); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3 style="color: #6c5ce7; margin-bottom: 15px; font-size: 1.4em;">📖 Discussion Starters for Young Scientists</h3>
+                <ul style="margin-left: 20px;">
+                    <li>"How do we know if something is true?"</li>
+                    <li>"Can a computer do a science experiment?"</li>
+                    <li>"What can scientists do that computers can't?"</li>
+                    <li>"Why do we need to see and touch things to learn about them?"</li>
+                    <li>"What makes humans special compared to computers?"</li>
+                </ul>
+            </div>
+        </div>
+
+        
+    </div>
+    
+    <!-- JavaScript for Tab Navigation -->
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top of content
+            window.scrollTo({top: 200, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
