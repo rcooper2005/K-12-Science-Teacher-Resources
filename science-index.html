@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔬 K-12 Science Teacher Resource Hubs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #10b981;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 4px solid #10b981;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #10b981;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hub-count {
+            background: #10b981;
+            color: white;
+            font-size: 0.875rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .grade-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #10b981;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .grade-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 8px;
+        }
+
+        .grade-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .standards-tag {
+            font-size: 0.75rem;
+            color: #065f46;
+            font-weight: 600;
+            background: #d1fae5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .features-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .features-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .feature-tag {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        footer p {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.75rem; }
+            .stats-bar { gap: 12px; }
+            .stat-item { padding: 12px 16px; }
+            .grade-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 K-12 Science Teacher Resource Hubs</h1>
+            <p class="subtitle">Comprehensive Teaching Resources Aligned to Georgia Standards of Excellence</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">17</div>
+                <div class="stat-label">Tabs per Hub</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">✓</div>
+                <div class="stat-label">GSE Aligned</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">AI</div>
+                <div class="stat-label">Tools Integrated</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Total Hubs</div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">🌱 Elementary School (K-5) <span class="hub-count">6 Hubs</span></h2>
+            <div class="grade-grid">
+                <a href="kindergarten-science-hub.html" class="grade-card">
+                    <h3>Kindergarten Science</h3>
+                    <p>Weather patterns, plant and animal needs, pushes and pulls, and properties of matter.</p>
+                    <span class="standards-tag">SKE • SKL • SKP</span>
+                </a>
+                <a href="grade1-science-hub.html" class="grade-card">
+                    <h3>1st Grade Science</h3>
+                    <p>Earth materials, living vs. nonliving, light and sound, and physical properties.</p>
+                    <span class="standards-tag">S1E • S1L • S1P</span>
+                </a>
+                <a href="grade2-science-hub.html" class="grade-card">
+                    <h3>2nd Grade Science</h3>
+                    <p>Day and night sky, life cycles, states of matter, and motion concepts.</p>
+                    <span class="standards-tag">S2E • S2L • S2P</span>
+                </a>
+                <a href="grade3-science-hub.html" class="grade-card">
+                    <h3>3rd Grade Science</h3>
+                    <p>Fossils and rocks, habitats and adaptations, heat transfer, and magnetism.</p>
+                    <span class="standards-tag">S3E • S3L • S3P</span>
+                </a>
+                <a href="grade4-science-hub.html" class="grade-card">
+                    <h3>4th Grade Science</h3>
+                    <p>Weather and climate, ecosystems, light and sound waves, and simple machines.</p>
+                    <span class="standards-tag">S4E • S4L • S4P</span>
+                </a>
+                <a href="grade5-science-hub.html" class="grade-card">
+                    <h3>5th Grade Science</h3>
+                    <p>Water cycle, cells and microorganisms, physical and chemical changes, electricity.</p>
+                    <span class="standards-tag">S5E • S5L • S5P</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧬 Middle School (6-8) <span class="hub-count">3 Hubs</span></h2>
+            <div class="grade-grid">
+                <a href="grade6-earth-science-hub.html" class="grade-card">
+                    <h3>6th Grade Earth Science</h3>
+                    <p>Plate tectonics, minerals and rocks, weather systems, oceanography, and astronomy.</p>
+                    <span class="standards-tag">S6E1-6 • Earth Systems</span>
+                </a>
+                <a href="grade7-life-science-hub.html" class="grade-card">
+                    <h3>7th Grade Life Science</h3>
+                    <p>Cells and organisms, genetics, evolution, ecosystems, and human body systems.</p>
+                    <span class="standards-tag">S7L1-5 • Life Science</span>
+                </a>
+                <a href="grade8-physical-science-hub.html" class="grade-card">
+                    <h3>8th Grade Physical Science</h3>
+                    <p>Atoms and elements, chemical reactions, forces and motion, energy transformations.</p>
+                    <span class="standards-tag">S8P1-5 • Physical Science</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🎓 High School (9-12) <span class="hub-count">5 Hubs</span></h2>
+            <div class="grade-grid">
+                <a href="biology-hub.html" class="grade-card">
+                    <h3>Biology</h3>
+                    <p>Cell biology, genetics, evolution, ecology, and human anatomy and physiology.</p>
+                    <span class="standards-tag">SB1-5 • Biology Standards</span>
+                </a>
+                <a href="chemistry-hub.html" class="grade-card">
+                    <h3>Chemistry</h3>
+                    <p>Atomic structure, periodic trends, bonding, reactions, stoichiometry, solutions.</p>
+                    <span class="standards-tag">SC1-6 • Chemistry Standards</span>
+                </a>
+                <a href="physics-hub.html" class="grade-card">
+                    <h3>Physics</h3>
+                    <p>Mechanics, energy, waves, electricity and magnetism, modern physics.</p>
+                    <span class="standards-tag">SP1-7 • Physics Standards</span>
+                </a>
+                <a href="earth-systems-hub.html" class="grade-card">
+                    <h3>Earth Systems</h3>
+                    <p>Geology, meteorology, oceanography, astronomy, and environmental science.</p>
+                    <span class="standards-tag">SES1-6 • Earth Systems</span>
+                </a>
+                <a href="environmental-science-hub.html" class="grade-card">
+                    <h3>Environmental Science</h3>
+                    <p>Ecosystems, biodiversity, human impact, resources, sustainability, climate change.</p>
+                    <span class="standards-tag">SEV1-5 • Environmental Science</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🏆 Advanced Placement (AP) <span class="hub-count">4 Hubs</span></h2>
+            <div class="grade-grid">
+                <a href="ap-biology-hub.html" class="grade-card">
+                    <h3>AP Biology</h3>
+                    <p>Evolution, cellular processes, genetics, ecology, and biological systems interactions.</p>
+                    <span class="standards-tag">College Board AP® • Units 1-8</span>
+                </a>
+                <a href="ap-chemistry-hub.html" class="grade-card">
+                    <h3>AP Chemistry</h3>
+                    <p>Atomic structure, bonding, reactions, kinetics, thermodynamics, equilibrium.</p>
+                    <span class="standards-tag">College Board AP® • Units 1-9</span>
+                </a>
+                <a href="ap-physics-hub.html" class="grade-card">
+                    <h3>AP Physics 1</h3>
+                    <p>Kinematics, dynamics, energy, momentum, rotation, oscillations, and waves.</p>
+                    <span class="standards-tag">College Board AP® • Units 1-7</span>
+                </a>
+                <a href="ap-environmental-science-hub.html" class="grade-card">
+                    <h3>AP Environmental Science</h3>
+                    <p>Earth systems, biodiversity, populations, land and water use, energy, pollution.</p>
+                    <span class="standards-tag">College Board AP® • Units 1-9</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h3>📋 Each Hub Includes 17 Resource Tabs</h3>
+            <div class="features-grid">
+                <span class="feature-tag">📋 Standards</span>
+                <span class="feature-tag">👩‍🏫 Teacher Background</span>
+                <span class="feature-tag">🔬 Labs & CER</span>
+                <span class="feature-tag">📚 5E Lesson Plans</span>
+                <span class="feature-tag">🧪 Investigations</span>
+                <span class="feature-tag">🎬 Videos</span>
+                <span class="feature-tag">📖 Articles</span>
+                <span class="feature-tag">📝 Assessments</span>
+                <span class="feature-tag">🖨️ Printables</span>
+                <span class="feature-tag">🔤 Vocabulary</span>
+                <span class="feature-tag">🎮 Games</span>
+                <span class="feature-tag">♿ Differentiation</span>
+                <span class="feature-tag">❓ Misconceptions</span>
+                <span class="feature-tag">🌍 Cultural Connections</span>
+                <span class="feature-tag">⚠️ Safety</span>
+                <span class="feature-tag">🤖 AI for Teachers</span>
+                <span class="feature-tag">🧒 AI for Students</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Created by Dr. Rebecca Cooper</p>
+            <p>Standards: GSE (Georgia Standards of Excellence) • AKS (Academic Knowledge and Skills) • NGSS • College Board AP®</p>
+            <p><a href="https://github.com/rcooper2005/K-12-Science-Teacher-Resources">View on GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
