@@ -120,11 +120,26 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.12);
         }
 
+        .grade-card.coming-soon {
+            opacity: 0.6;
+            border-left-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .grade-card.coming-soon:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
         .grade-card h3 {
             font-size: 1.2rem;
             font-weight: 600;
             color: #065f46;
             margin-bottom: 8px;
+        }
+
+        .grade-card.coming-soon h3 {
+            color: #64748b;
         }
 
         .grade-card p {
@@ -139,6 +154,16 @@
             color: #065f46;
             font-weight: 600;
             background: #d1fae5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .coming-soon-tag {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 600;
+            background: #e2e8f0;
             padding: 4px 10px;
             border-radius: 4px;
             display: inline-block;
@@ -235,12 +260,12 @@
         <section class="section">
             <h2 class="section-title">🌱 Elementary School (K-5) <span class="hub-count">6 Hubs</span></h2>
             <div class="grade-grid">
-                <a href="kindergarten-science-hub.html" class="grade-card">
+                <a href="kindergarten.html" class="grade-card">
                     <h3>Kindergarten Science</h3>
                     <p>Weather patterns, plant and animal needs, pushes and pulls, and properties of matter.</p>
                     <span class="standards-tag">SKE • SKL • SKP</span>
                 </a>
-                <a href="grade1-science-hub.html" class="grade-card">
+                <a href="grade1.html" class="grade-card">
                     <h3>1st Grade Science</h3>
                     <p>Earth materials, living vs. nonliving, light and sound, and physical properties.</p>
                     <span class="standards-tag">S1E • S1L • S1P</span>
@@ -260,7 +285,7 @@
                     <p>Weather and climate, ecosystems, light and sound waves, and simple machines.</p>
                     <span class="standards-tag">S4E • S4L • S4P</span>
                 </a>
-                <a href="grade5-science-hub.html" class="grade-card">
+                <a href="grade5_science_hub.html" class="grade-card">
                     <h3>5th Grade Science</h3>
                     <p>Water cycle, cells and microorganisms, physical and chemical changes, electricity.</p>
                     <span class="standards-tag">S5E • S5L • S5P</span>
@@ -271,17 +296,17 @@
         <section class="section">
             <h2 class="section-title">🧬 Middle School (6-8) <span class="hub-count">3 Hubs</span></h2>
             <div class="grade-grid">
-                <a href="grade6-earth-science-hub.html" class="grade-card">
+                <a href="earth-space-science-hub.html" class="grade-card">
                     <h3>6th Grade Earth Science</h3>
                     <p>Plate tectonics, minerals and rocks, weather systems, oceanography, and astronomy.</p>
                     <span class="standards-tag">S6E1-6 • Earth Systems</span>
                 </a>
-                <a href="grade7-life-science-hub.html" class="grade-card">
+                <a href="life-science-hub.html" class="grade-card">
                     <h3>7th Grade Life Science</h3>
                     <p>Cells and organisms, genetics, evolution, ecosystems, and human body systems.</p>
                     <span class="standards-tag">S7L1-5 • Life Science</span>
                 </a>
-                <a href="grade8-physical-science-hub.html" class="grade-card">
+                <a href="8th-grade-physical-science-hub.html" class="grade-card">
                     <h3>8th Grade Physical Science</h3>
                     <p>Atoms and elements, chemical reactions, forces and motion, energy transformations.</p>
                     <span class="standards-tag">S8P1-5 • Physical Science</span>
@@ -292,7 +317,7 @@
         <section class="section">
             <h2 class="section-title">🎓 High School (9-12) <span class="hub-count">5 Hubs</span></h2>
             <div class="grade-grid">
-                <a href="biology-hub.html" class="grade-card">
+                <a href="9th-Grade-Biology-Resource-Hub.html" class="grade-card">
                     <h3>Biology</h3>
                     <p>Cell biology, genetics, evolution, ecology, and human anatomy and physiology.</p>
                     <span class="standards-tag">SB1-5 • Biology Standards</span>
@@ -302,38 +327,38 @@
                     <p>Atomic structure, periodic trends, bonding, reactions, stoichiometry, solutions.</p>
                     <span class="standards-tag">SC1-6 • Chemistry Standards</span>
                 </a>
-                <a href="physics-hub.html" class="grade-card">
+                <a href="physics-teacher-hub.html" class="grade-card">
                     <h3>Physics</h3>
                     <p>Mechanics, energy, waves, electricity and magnetism, modern physics.</p>
                     <span class="standards-tag">SP1-7 • Physics Standards</span>
                 </a>
-                <a href="earth-systems-hub.html" class="grade-card">
+                <a href="earth-space-science-hub.html" class="grade-card">
                     <h3>Earth Systems</h3>
                     <p>Geology, meteorology, oceanography, astronomy, and environmental science.</p>
                     <span class="standards-tag">SES1-6 • Earth Systems</span>
                 </a>
-                <a href="environmental-science-hub.html" class="grade-card">
+                <div class="grade-card coming-soon">
                     <h3>Environmental Science</h3>
                     <p>Ecosystems, biodiversity, human impact, resources, sustainability, climate change.</p>
-                    <span class="standards-tag">SEV1-5 • Environmental Science</span>
-                </a>
+                    <span class="coming-soon-tag">Coming Soon</span>
+                </div>
             </div>
         </section>
 
         <section class="section">
             <h2 class="section-title">🏆 Advanced Placement (AP) <span class="hub-count">4 Hubs</span></h2>
             <div class="grade-grid">
-                <a href="ap-biology-hub.html" class="grade-card">
+                <a href="ap_biology_resource_hub.html" class="grade-card">
                     <h3>AP Biology</h3>
                     <p>Evolution, cellular processes, genetics, ecology, and biological systems interactions.</p>
                     <span class="standards-tag">College Board AP® • Units 1-8</span>
                 </a>
-                <a href="ap-chemistry-hub.html" class="grade-card">
+                <a href="ap_chemistry_resource_hub.html" class="grade-card">
                     <h3>AP Chemistry</h3>
                     <p>Atomic structure, bonding, reactions, kinetics, thermodynamics, equilibrium.</p>
                     <span class="standards-tag">College Board AP® • Units 1-9</span>
                 </a>
-                <a href="ap-physics-hub.html" class="grade-card">
+                <a href="APphysics-resource-hub%20(2).html" class="grade-card">
                     <h3>AP Physics 1</h3>
                     <p>Kinematics, dynamics, energy, momentum, rotation, oscillations, and waves.</p>
                     <span class="standards-tag">College Board AP® • Units 1-7</span>
